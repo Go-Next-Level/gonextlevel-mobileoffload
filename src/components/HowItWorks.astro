@@ -1,0 +1,121 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Your Existing Wi-Fi Network",
+    description: "No new hardware required. We use your current access points and infrastructure exactly as-is.",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>`,
+  },
+  {
+    number: "02",
+    title: "Software Integration",
+    description: "We configure a dedicated carrier SSID with Passpoint (Hotspot 2.0) and RadSec protocols in ~1 hour. Zero impact on your existing networks.",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+  },
+  {
+    number: "03",
+    title: "Mobile Traffic Offload",
+    description: "AT&T, T-Mobile, and Google Fi subscribers auto-authenticate when they enter your location — no passwords, no friction. Data flows through your Wi-Fi.",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>`,
+  },
+  {
+    number: "04",
+    title: "You Earn Revenue",
+    description: "Carriers pay per GB of data offloaded. You receive 50% monthly by the 5th of each month, with full transparency reports.",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+  },
+];
+---
+<section id="how-it-works" class="py-28 relative" style="background: var(--color-bg-surface);">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Section header -->
+    <div class="text-center mb-20">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 text-xs font-semibold tracking-widest uppercase"
+           style="background: var(--color-primary-muted); color: var(--color-accent); font-family: var(--font-body); border: 1px solid rgba(27,111,235,0.2);">
+        The Process
+      </div>
+      <h2 class="text-4xl lg:text-5xl font-bold mb-6" style="font-family: var(--font-display); letter-spacing: -0.02em;">
+        From Cost Center to<br/>
+        <span class="gradient-text-blue">Revenue Engine</span>
+      </h2>
+      <p class="text-lg max-w-2xl mx-auto" style="color: var(--color-text-secondary); font-family: var(--font-body);">
+        Setup takes approximately 1 hour. We handle all the technical complexity — you just collect the check.
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="relative">
+      <!-- Connecting line (desktop) -->
+      <div class="hidden lg:block absolute top-16 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent 0%, var(--color-border-bright) 20%, var(--color-border-bright) 80%, transparent 100%); margin: 0 12.5%;" aria-hidden="true"></div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {steps.map((step, i) => (
+          <div class="relative card-dark p-8 group cursor-default">
+            <!-- Step number -->
+            <div class="text-7xl font-bold mb-6 leading-none" style={`font-family: var(--font-mono); color: ${i === 3 ? 'var(--color-success)' : 'var(--color-border-bright)'}; line-height: 1;`}>
+              {step.number}
+            </div>
+
+            <!-- Icon -->
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-colors duration-200"
+                 style={`background: ${i === 3 ? 'rgba(16,185,129,0.12)' : 'var(--color-primary-muted)'}; color: ${i === 3 ? 'var(--color-success)' : 'var(--color-primary)'}; border: 1px solid ${i === 3 ? 'rgba(16,185,129,0.25)' : 'rgba(27,111,235,0.25)'};`}>
+              <Fragment set:html={step.icon} />
+            </div>
+
+            <h3 class="text-lg font-bold mb-3" style="font-family: var(--font-display);">
+              {step.title}
+            </h3>
+            <p class="text-sm leading-relaxed" style="color: var(--color-text-secondary); font-family: var(--font-body);">
+              {step.description}
+            </p>
+
+            {i === 3 && (
+              <div class="mt-4 text-xs font-semibold" style="color: var(--color-success); font-family: var(--font-body);">
+                → Monthly payments, no exceptions
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Bottom highlight bar -->
+    <div class="mt-16 p-6 rounded-2xl flex flex-col md:flex-row items-center gap-6"
+         style="background: var(--color-primary-muted); border: 1px solid rgba(27,111,235,0.25);">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--color-primary);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <div>
+          <div class="font-semibold text-sm" style="font-family: var(--font-display);">~1 Hour Setup</div>
+          <div class="text-xs" style="color: var(--color-text-secondary); font-family: var(--font-body);">Requires minimal IT coordination</div>
+        </div>
+      </div>
+      <div class="hidden md:block h-8 w-px" style="background: rgba(27,111,235,0.3);"></div>
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(16,185,129,0.2);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <div>
+          <div class="font-semibold text-sm" style="font-family: var(--font-display);">Zero Impact on Existing Networks</div>
+          <div class="text-xs" style="color: var(--color-text-secondary); font-family: var(--font-body);">Completely isolated dedicated SSID</div>
+        </div>
+      </div>
+      <div class="hidden md:block h-8 w-px" style="background: rgba(27,111,235,0.3);"></div>
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(14,165,233,0.15);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <div>
+          <div class="font-semibold text-sm" style="font-family: var(--font-display);">Month-to-Month Agreement</div>
+          <div class="text-xs" style="color: var(--color-text-secondary); font-family: var(--font-body);">No long-term contracts or penalties</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,75 @@
+---
+---
+<header class="fixed top-0 left-0 right-0 z-50" style="background: rgba(4, 7, 15, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--color-border);">
+  <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 group" aria-label="Mobile Offload home">
+      <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #1B6FEB, #0EA5E9);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M8.53 16.11a6 6 0 0 1 6.95 0" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="20" r="1" fill="white"/>
+        </svg>
+      </div>
+      <span style="font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--color-text-primary);" class="group-hover:opacity-80 transition-opacity duration-200">
+        Mobile<span style="color: var(--color-primary);">Offload</span>
+      </span>
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#how-it-works" style="color: var(--color-text-secondary); font-family: var(--font-body); font-size: 0.9rem; font-weight: 500;" class="hover:text-white transition-colors duration-200 cursor-pointer">How It Works</a>
+      <a href="#revenue" style="color: var(--color-text-secondary); font-family: var(--font-body); font-size: 0.9rem; font-weight: 500;" class="hover:text-white transition-colors duration-200 cursor-pointer">Revenue</a>
+      <a href="#case-studies" style="color: var(--color-text-secondary); font-family: var(--font-body); font-size: 0.9rem; font-weight: 500;" class="hover:text-white transition-colors duration-200 cursor-pointer">Case Studies</a>
+      <a href="#security" style="color: var(--color-text-secondary); font-family: var(--font-body); font-size: 0.9rem; font-weight: 500;" class="hover:text-white transition-colors duration-200 cursor-pointer">Security</a>
+    </div>
+
+    <!-- CTA -->
+    <a href="#qualify" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-all duration-200 cursor-pointer"
+       style="background: var(--color-primary); font-family: var(--font-body);"
+       onmouseover="this.style.background='var(--color-primary-hover)'"
+       onmouseout="this.style.background='var(--color-primary)'">
+      Check Your Eligibility
+    </a>
+
+    <!-- Mobile hamburger -->
+    <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg cursor-pointer" style="color: var(--color-text-secondary);" aria-label="Toggle mobile menu" aria-expanded="false">
+      <svg id="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden px-6 pb-4" style="border-top: 1px solid var(--color-border);">
+    <div class="flex flex-col gap-1 pt-4">
+      <a href="#how-it-works" class="mobile-menu-link py-3 px-4 rounded-lg text-sm font-medium cursor-pointer" style="color: var(--color-text-secondary); font-family: var(--font-body);">How It Works</a>
+      <a href="#revenue" class="mobile-menu-link py-3 px-4 rounded-lg text-sm font-medium cursor-pointer" style="color: var(--color-text-secondary); font-family: var(--font-body);">Revenue</a>
+      <a href="#case-studies" class="mobile-menu-link py-3 px-4 rounded-lg text-sm font-medium cursor-pointer" style="color: var(--color-text-secondary); font-family: var(--font-body);">Case Studies</a>
+      <a href="#security" class="mobile-menu-link py-3 px-4 rounded-lg text-sm font-medium cursor-pointer" style="color: var(--color-text-secondary); font-family: var(--font-body);">Security</a>
+      <a href="#qualify" class="mt-2 py-3 px-4 rounded-lg text-sm font-semibold text-white text-center cursor-pointer" style="background: var(--color-primary); font-family: var(--font-body);">Check Your Eligibility</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  // Close menu on link click
+  document.querySelectorAll('.mobile-menu-link, #mobile-menu a[href="#qualify"]').forEach(link => {
+    link.addEventListener('click', () => {
+      menu?.classList.add('hidden');
+      btn?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

@@ -1,0 +1,170 @@
+---
+const cases = [
+  {
+    location: "Studio City, CA",
+    type: "Hair Salon",
+    badge: "Greenfield · 1 AP",
+    dailyRevenue: "$19.24",
+    annualRevenue: "$7,023",
+    dailyUsers: "1,082",
+    monthlyData: "1.95 TB",
+    highlight: false,
+  },
+  {
+    location: "Glendale, CA",
+    type: "Shopping Mall",
+    badge: "Greenfield · 1 AP",
+    dailyRevenue: "$64.29",
+    annualRevenue: "$23,464",
+    dailyUsers: "1,419",
+    monthlyData: "8.12 TB",
+    highlight: false,
+  },
+  {
+    location: "Irvine, CA",
+    type: "Fitness Center",
+    badge: "Greenfield · 1 AP",
+    dailyRevenue: "$60.81",
+    annualRevenue: "$22,197",
+    dailyUsers: "1,172",
+    monthlyData: "7.79 TB",
+    highlight: false,
+  },
+  {
+    location: "New Orleans, LA",
+    type: "Restaurant",
+    badge: "Brownfield · 3 APs",
+    dailyRevenue: "$29.62",
+    annualRevenue: "$10,662",
+    dailyUsers: "5,023",
+    monthlyData: "3.56 TB",
+    highlight: false,
+  },
+  {
+    location: "Baltimore, MD",
+    type: "BWI Airport",
+    badge: "Brownfield · 242 APs",
+    dailyRevenue: "$320.83",
+    annualRevenue: "$115,499",
+    dailyUsers: "5,945",
+    monthlyData: "75 TB",
+    highlight: true,
+  },
+];
+---
+<section id="case-studies" class="py-28" style="background: var(--color-bg-surface);">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 text-xs font-semibold tracking-widest uppercase"
+           style="background: rgba(14,165,233,0.1); color: var(--color-accent); font-family: var(--font-body); border: 1px solid rgba(14,165,233,0.2);">
+        Proven Performance
+      </div>
+      <h2 class="text-4xl lg:text-5xl font-bold mb-6" style="font-family: var(--font-display); letter-spacing: -0.02em;">
+        Real Deployments.<br/>
+        <span class="gradient-text-blue">Real Revenue.</span>
+      </h2>
+      <p class="text-lg max-w-2xl mx-auto" style="color: var(--color-text-secondary); font-family: var(--font-body);">
+        Live performance data from active carrier offload deployments across the country.
+      </p>
+    </div>
+
+    <!-- Network growth banner -->
+    <div class="grid sm:grid-cols-2 gap-4 mb-12">
+      <div class="p-6 rounded-2xl" style="background: linear-gradient(135deg, #0A1930 0%, #0D2040 100%); border: 1px solid rgba(27,111,235,0.3);">
+        <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color: var(--color-accent); font-family: var(--font-body);">Network Growth Q3 2024 → Q4 2025</div>
+        <div class="text-6xl font-bold" style="font-family: var(--font-mono); color: var(--color-text-primary);">555%</div>
+        <div class="text-sm mt-2" style="color: var(--color-text-secondary); font-family: var(--font-body);">Data offloaded increased from 88 TB to 576 TB</div>
+      </div>
+      <div class="p-6 rounded-2xl" style="background: var(--color-bg-card); border: 1px solid var(--color-border-bright);">
+        <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color: var(--color-text-muted); font-family: var(--font-body);">Active Subscribers</div>
+        <div class="text-6xl font-bold" style="font-family: var(--font-mono); color: var(--color-text-primary);">124K+</div>
+        <div class="text-sm mt-2" style="color: var(--color-text-secondary); font-family: var(--font-body);">Across 6 major carriers nationwide</div>
+      </div>
+    </div>
+
+    <!-- Case study cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {cases.filter((_, i) => i < 4).map((c) => (
+        <div class="card-dark p-6 flex flex-col gap-4">
+          <div>
+            <div class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold mb-3"
+                 style="background: var(--color-primary-muted); color: var(--color-accent); font-family: var(--font-body);">
+              {c.badge}
+            </div>
+            <h3 class="text-lg font-bold" style="font-family: var(--font-display);">{c.type}</h3>
+            <p class="text-sm" style="color: var(--color-text-muted); font-family: var(--font-body);">{c.location}</p>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Daily Revenue</div>
+              <div class="text-xl font-bold" style="font-family: var(--font-mono); color: var(--color-success);">{c.dailyRevenue}</div>
+            </div>
+            <div>
+              <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Annual Projected</div>
+              <div class="text-xl font-bold" style="font-family: var(--font-mono); color: var(--color-text-primary);">{c.annualRevenue}</div>
+            </div>
+            <div>
+              <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Avg Daily Users</div>
+              <div class="text-lg font-semibold" style="font-family: var(--font-mono); color: var(--color-accent);">{c.dailyUsers}</div>
+            </div>
+            <div>
+              <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Monthly Data</div>
+              <div class="text-lg font-semibold" style="font-family: var(--font-mono); color: var(--color-accent);">{c.monthlyData}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+
+      <!-- BWI Airport featured card (spans 2 cols) -->
+      {cases.filter(c => c.highlight).map((c) => (
+        <div class="sm:col-span-2 lg:col-span-2 p-8 rounded-2xl" style="background: linear-gradient(135deg, #071A0F 0%, #081828 50%, #071A0F 100%); border: 1px solid rgba(16,185,129,0.3);">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+            <div>
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold mb-3"
+                   style="background: rgba(16,185,129,0.15); color: var(--color-success); font-family: var(--font-body);">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><circle cx="5" cy="5" r="5"/></svg>
+                Featured · {c.badge}
+              </div>
+              <h3 class="text-2xl font-bold" style="font-family: var(--font-display);">{c.type}</h3>
+              <p class="text-sm" style="color: var(--color-text-muted); font-family: var(--font-body);">{c.location}</p>
+            </div>
+            <div class="text-right">
+              <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Annual Revenue</div>
+              <div class="text-4xl font-bold" style="font-family: var(--font-mono); color: var(--color-success);">{c.annualRevenue}</div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-6">
+            <div>
+              <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Daily Revenue</div>
+              <div class="text-2xl font-bold" style="font-family: var(--font-mono); color: var(--color-text-primary);">{c.dailyRevenue}</div>
+            </div>
+            <div>
+              <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Avg Daily Users</div>
+              <div class="text-2xl font-bold" style="font-family: var(--font-mono); color: var(--color-accent);">{c.dailyUsers}</div>
+            </div>
+            <div>
+              <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Monthly Data</div>
+              <div class="text-2xl font-bold" style="font-family: var(--font-mono); color: var(--color-accent);">{c.monthlyData}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Key takeaway -->
+    <div class="mt-8 p-5 rounded-xl" style="background: var(--color-bg-elevated); border-left: 3px solid var(--color-primary);">
+      <p class="text-sm" style="color: var(--color-text-secondary); font-family: var(--font-body); line-height: 1.7;">
+        <strong style="color: var(--color-text-primary); font-family: var(--font-display);">Key Takeaway:</strong> Carrier offload generates revenue across all venue sizes.
+        Greenfield (new AP) deployments yield <strong style="color: var(--color-success);">$7K–$23K/year</strong>.
+        Brownfield (existing Wi-Fi) scales from <strong style="color: var(--color-success);">$10K to $115K+</strong> with zero hardware cost and no impact on network operations.
+      </p>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,187 @@
+---
+---
+<section class="relative min-h-screen flex items-center overflow-hidden grid-texture" style="padding-top: 4rem;" aria-label="Hero">
+  <!-- Background radial glow -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full opacity-20"
+         style="background: radial-gradient(ellipse at center, #1B6FEB 0%, transparent 70%); filter: blur(80px);"></div>
+    <div class="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full opacity-10"
+         style="background: radial-gradient(ellipse at center, #0EA5E9 0%, transparent 70%); filter: blur(60px);"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-6 py-24 w-full">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: Content -->
+      <div>
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 text-sm font-medium"
+             style="background: var(--color-primary-muted); border: 1px solid rgba(27, 111, 235, 0.3); color: var(--color-accent); font-family: var(--font-body);">
+          <span class="w-2 h-2 rounded-full animate-pulse-ring" style="background: var(--color-accent);"></span>
+          Carrier Offload Network Partnership
+        </div>
+
+        <!-- Headline -->
+        <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight" style="font-family: var(--font-display); letter-spacing: -0.02em;">
+          Your Wi-Fi Is<br/>
+          <span class="gradient-text">Leaving Money</span><br/>
+          on the Table
+        </h1>
+
+        <p class="text-lg mb-10 max-w-lg" style="color: var(--color-text-secondary); line-height: 1.7; font-family: var(--font-body);">
+          Partner with Mobile Offload to monetize your existing Wi-Fi infrastructure. AT&T, T-Mobile, and Google Fi pay you every time their subscribers connect through your network — zero hardware, zero setup fees.
+        </p>
+
+        <!-- Stats row -->
+        <div class="flex flex-wrap gap-8 mb-10">
+          <div>
+            <div class="text-3xl font-bold" style="font-family: var(--font-mono); color: var(--color-success);">555%</div>
+            <div class="text-sm mt-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Network Growth Q3→Q4 2025</div>
+          </div>
+          <div style="width: 1px; background: var(--color-border);"></div>
+          <div>
+            <div class="text-3xl font-bold" style="font-family: var(--font-mono); color: var(--color-success);">124K+</div>
+            <div class="text-sm mt-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Active Subscribers</div>
+          </div>
+          <div style="width: 1px; background: var(--color-border);"></div>
+          <div>
+            <div class="text-3xl font-bold" style="font-family: var(--font-mono); color: var(--color-success);">50/50</div>
+            <div class="text-sm mt-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Revenue Split</div>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#qualify"
+             class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-semibold text-white transition-all duration-200 cursor-pointer"
+             style="background: var(--color-primary); font-family: var(--font-body);"
+             onmouseover="this.style.background='var(--color-primary-hover)'; this.style.transform='translateY(-1px)'; this.style.boxShadow='0 8px 32px rgba(27,111,235,0.4)'"
+             onmouseout="this.style.background='var(--color-primary)'; this.style.transform='none'; this.style.boxShadow='none'">
+            Check If You Qualify
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="#revenue"
+             class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-medium transition-all duration-200 cursor-pointer"
+             style="background: transparent; border: 1px solid var(--color-border-bright); color: var(--color-text-secondary); font-family: var(--font-body);"
+             onmouseover="this.style.borderColor='var(--color-primary)'; this.style.color='var(--color-text-primary)'"
+             onmouseout="this.style.borderColor='var(--color-border-bright)'; this.style.color='var(--color-text-secondary)'">
+            Calculate Revenue
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Visual network diagram -->
+      <div class="relative hidden lg:flex items-center justify-center" aria-hidden="true">
+        <!-- Central Wi-Fi signal graphic -->
+        <div class="relative w-80 h-80">
+          <!-- Animated rings -->
+          <div class="absolute inset-0 rounded-full opacity-10 animate-pulse" style="background: radial-gradient(circle, #1B6FEB 0%, transparent 70%); animation-duration: 3s;"></div>
+
+          <!-- Central node -->
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full flex items-center justify-center"
+               style="background: linear-gradient(135deg, #1B6FEB, #0EA5E9); box-shadow: 0 0 60px rgba(27,111,235,0.5);">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <path d="M8.53 16.11a6 6 0 0 1 6.95 0" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="12" cy="20" r="1.5" fill="white"/>
+            </svg>
+          </div>
+
+          <!-- Orbiting carrier nodes -->
+          <div class="carrier-orbit absolute" style="top: 10%; left: 50%; transform: translateX(-50%);">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: var(--color-bg-card); border: 1px solid var(--color-border-bright);">
+              <svg width="28" height="20" viewBox="0 0 80 30" fill="none" aria-label="AT&T">
+                <text x="0" y="24" font-family="Arial" font-weight="700" font-size="22" fill="#00A8E0">AT&T</text>
+              </svg>
+            </div>
+          </div>
+          <div class="carrier-orbit absolute" style="bottom: 10%; left: 20%;">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: var(--color-bg-card); border: 1px solid var(--color-border-bright);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-label="T-Mobile">
+                <circle cx="12" cy="12" r="10" fill="#E20074"/>
+                <text x="7" y="16" font-family="Arial" font-weight="700" font-size="8" fill="white">T</text>
+              </svg>
+            </div>
+          </div>
+          <div class="carrier-orbit absolute" style="bottom: 10%; right: 20%;">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: var(--color-bg-card); border: 1px solid var(--color-border-bright);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-label="Google Fi">
+                <circle cx="12" cy="12" r="10" fill="#1A73E8"/>
+                <circle cx="12" cy="12" r="6" fill="none" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Revenue floating card -->
+          <div class="absolute -right-8 top-8 p-4 rounded-xl shadow-xl" style="background: var(--color-bg-card); border: 1px solid var(--color-border-bright); min-width: 160px;">
+            <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Monthly Revenue</div>
+            <div class="text-2xl font-bold" style="font-family: var(--font-mono); color: var(--color-success);">$15,909</div>
+            <div class="text-xs mt-1 flex items-center gap-1" style="color: var(--color-success); font-family: var(--font-body);">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+              BWI Airport Example
+            </div>
+          </div>
+
+          <!-- "Zero setup" badge -->
+          <div class="absolute -left-8 bottom-12 p-3 rounded-xl" style="background: var(--color-bg-card); border: 1px solid rgba(16,185,129,0.3);">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: rgba(16,185,129,0.15);">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              <div>
+                <div class="text-xs font-semibold" style="color: var(--color-text-primary); font-family: var(--font-display);">Zero Setup</div>
+                <div class="text-xs" style="color: var(--color-text-muted); font-family: var(--font-body);">No hardware needed</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Partner logos -->
+    <div class="mt-20 pt-12" style="border-top: 1px solid var(--color-border);">
+      <p class="text-xs font-semibold tracking-widest uppercase mb-8 text-center" style="color: var(--color-text-muted); font-family: var(--font-body);">
+        Carrier Partners
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-12">
+        <!-- AT&T -->
+        <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity duration-200" title="AT&T Partner">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="AT&T">
+            <circle cx="16" cy="16" r="16" fill="#00A8E0"/>
+            <path d="M8 20 Q16 10 24 20" stroke="white" stroke-width="2" fill="none"/>
+            <path d="M10 23 Q16 13 22 23" stroke="white" stroke-width="2" fill="none"/>
+            <path d="M12 26 Q16 18 20 26" stroke="white" stroke-width="2" fill="none"/>
+          </svg>
+          <span style="font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; color: #00A8E0;">AT&T</span>
+        </div>
+
+        <div style="width: 1px; height: 28px; background: var(--color-border);"></div>
+
+        <!-- T-Mobile -->
+        <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity duration-200" title="T-Mobile Partner">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-label="T-Mobile">
+            <rect width="28" height="28" rx="6" fill="#E20074"/>
+            <text x="8" y="21" font-family="Arial" font-weight="900" font-size="16" fill="white">T</text>
+          </svg>
+          <span style="font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--color-text-secondary);">T-Mobile</span>
+        </div>
+
+        <div style="width: 1px; height: 28px; background: var(--color-border);"></div>
+
+        <!-- Google Fi -->
+        <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity duration-200" title="Google Fi Partner">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-label="Google Fi">
+            <circle cx="14" cy="14" r="14" fill="#1A73E8"/>
+            <path d="M14 6 Q20 10 20 14 Q20 18 14 22 Q8 18 8 14 Q8 10 14 6Z" fill="none" stroke="white" stroke-width="1.5"/>
+            <circle cx="14" cy="14" r="3" fill="white"/>
+          </svg>
+          <span style="font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--color-text-secondary);">Google Fi</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

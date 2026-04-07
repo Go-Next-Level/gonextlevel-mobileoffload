@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import '../styles/global.css';
+---
+<Base title="404 — Page Not Found | Mobile Offload" description="The page you're looking for doesn't exist.">
+  <div class="min-h-screen flex items-center justify-center px-6 grid-texture" style="background: var(--color-bg-base);">
+    <div class="text-center max-w-lg">
+      <div class="text-9xl font-bold mb-4" style="font-family: var(--font-mono); color: var(--color-border-bright);">404</div>
+      <h1 class="text-3xl font-bold mb-4" style="font-family: var(--font-display);">Page Not Found</h1>
+      <p class="mb-8" style="color: var(--color-text-secondary); font-family: var(--font-body);">
+        The signal got lost. Let's get you back on track.
+      </p>
+      <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white cursor-pointer" style="background: var(--color-primary); font-family: var(--font-body);">
+        Go Home
+      </a>
+    </div>
+  </div>
+</Base>

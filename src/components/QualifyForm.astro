@@ -1,0 +1,343 @@
+---
+const venueTypes = [
+  "Restaurant / Bar",
+  "Fitness Center",
+  "Hotel / Motel",
+  "Convention Center",
+  "Shopping Center / Mall",
+  "Airport / Transportation Hub",
+  "Music / Sports Venue",
+  "University / Campus",
+  "Co-Working Space",
+  "Other",
+];
+---
+<section id="qualify" class="py-28 relative overflow-hidden" style="background: var(--color-bg-base);">
+  <!-- Background decoration -->
+  <div class="absolute inset-0 grid-texture opacity-50 pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px" style="background: linear-gradient(90deg, transparent 0%, var(--color-primary) 50%, transparent 100%);" aria-hidden="true"></div>
+
+  <div class="relative max-w-4xl mx-auto px-6">
+
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 text-xs font-semibold tracking-widest uppercase"
+           style="background: var(--color-primary-muted); color: var(--color-accent); font-family: var(--font-body); border: 1px solid rgba(27,111,235,0.25);">
+        Free Assessment
+      </div>
+      <h2 class="text-4xl lg:text-5xl font-bold mb-6" style="font-family: var(--font-display); letter-spacing: -0.02em;">
+        Start Generating Revenue<br/>
+        <span class="gradient-text">From Your Wi-Fi</span>
+      </h2>
+      <p class="text-lg max-w-2xl mx-auto" style="color: var(--color-text-secondary); font-family: var(--font-body);">
+        Find out if your location qualifies for our carrier offload network. Free assessment, no obligation, honest guidance.
+      </p>
+    </div>
+
+    <!-- Next steps -->
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      {[
+        { num: "01", label: "Free Consultation", desc: "Schedule a call, review your setup" },
+        { num: "02", label: "Revenue Assessment", desc: "We model your specific location potential" },
+        { num: "03", label: "Begin Earning", desc: "Live and earning within days of setup" },
+      ].map((step) => (
+        <div class="text-center p-5 rounded-xl" style="background: var(--color-bg-surface); border: 1px solid var(--color-border);">
+          <div class="text-2xl font-bold mb-2" style="font-family: var(--font-mono); color: var(--color-primary);">{step.num}/</div>
+          <div class="text-sm font-semibold mb-1" style="font-family: var(--font-display);">{step.label}</div>
+          <div class="text-xs" style="color: var(--color-text-muted); font-family: var(--font-body);">{step.desc}</div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Form -->
+    <div class="p-8 lg:p-12 rounded-3xl" style="background: var(--color-bg-surface); border: 1px solid var(--color-border-bright);">
+      <h3 class="text-2xl font-bold mb-8" style="font-family: var(--font-display);">Check If Your Location Qualifies</h3>
+
+      <form
+        action="https://api.web3forms.com/submit"
+        method="POST"
+        id="qualify-form"
+        novalidate
+      >
+        <input type="hidden" name="access_key" value={import.meta.env.WEB3FORMS_KEY || 'YOUR_WEB3FORMS_KEY'} />
+        <input type="hidden" name="subject" value="New Qualification Form - Mobile Offload" />
+        <input type="hidden" name="redirect" value="https://mobileoffload.com/thank-you" />
+        <input type="hidden" name="from_name" value="Mobile Offload Website" />
+
+        <div class="grid sm:grid-cols-2 gap-6 mb-6">
+          <!-- First name -->
+          <div>
+            <label for="first-name" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+              First Name <span style="color: var(--color-primary);" aria-hidden="true">*</span>
+            </label>
+            <input
+              type="text"
+              id="first-name"
+              name="first_name"
+              required
+              autocomplete="given-name"
+              placeholder="John"
+              class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200"
+              style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"
+              onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
+              onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
+            />
+            <span class="field-error hidden text-xs mt-1" style="color: #f87171; font-family: var(--font-body);" role="alert">Required</span>
+          </div>
+
+          <!-- Last name -->
+          <div>
+            <label for="last-name" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+              Last Name <span style="color: var(--color-primary);" aria-hidden="true">*</span>
+            </label>
+            <input
+              type="text"
+              id="last-name"
+              name="last_name"
+              required
+              autocomplete="family-name"
+              placeholder="Smith"
+              class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200"
+              style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"
+              onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
+              onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
+            />
+            <span class="field-error hidden text-xs mt-1" style="color: #f87171; font-family: var(--font-body);" role="alert">Required</span>
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label for="email" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+              Email Address <span style="color: var(--color-primary);" aria-hidden="true">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              autocomplete="email"
+              placeholder="john@yourcompany.com"
+              class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200"
+              style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"
+              onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
+              onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
+            />
+            <span class="field-error hidden text-xs mt-1" style="color: #f87171; font-family: var(--font-body);" role="alert">Valid email required</span>
+          </div>
+
+          <!-- Phone -->
+          <div>
+            <label for="phone" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              autocomplete="tel"
+              placeholder="(555) 000-0000"
+              class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200"
+              style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"
+              onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
+              onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
+            />
+          </div>
+
+          <!-- Business name -->
+          <div>
+            <label for="business" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+              Business Name <span style="color: var(--color-primary);" aria-hidden="true">*</span>
+            </label>
+            <input
+              type="text"
+              id="business"
+              name="business_name"
+              required
+              autocomplete="organization"
+              placeholder="Your Business LLC"
+              class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200"
+              style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"
+              onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
+              onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
+            />
+            <span class="field-error hidden text-xs mt-1" style="color: #f87171; font-family: var(--font-body);" role="alert">Required</span>
+          </div>
+
+          <!-- Venue type -->
+          <div>
+            <label for="venue-type" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+              Venue Type <span style="color: var(--color-primary);" aria-hidden="true">*</span>
+            </label>
+            <select
+              id="venue-type"
+              name="venue_type"
+              required
+              class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200 cursor-pointer"
+              style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none; appearance: none; -webkit-appearance: none; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237D99BE' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 12px center;"
+              onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
+              onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
+            >
+              <option value="" disabled selected style="background: var(--color-bg-elevated); color: var(--color-text-muted);">Select venue type...</option>
+              {venueTypes.map((v) => (
+                <option value={v.toLowerCase().replace(/\s+/g, '-')} style="background: var(--color-bg-elevated);">{v}</option>
+              ))}
+            </select>
+            <span class="field-error hidden text-xs mt-1" style="color: #f87171; font-family: var(--font-body);" role="alert">Please select a venue type</span>
+          </div>
+        </div>
+
+        <!-- Access points -->
+        <div class="mb-6">
+          <label for="access-points" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+            Approximate Number of Wi-Fi Access Points
+          </label>
+          <select
+            id="access-points"
+            name="access_points"
+            class="w-full px-4 py-3 rounded-xl text-sm cursor-pointer"
+            style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none; appearance: none; -webkit-appearance: none; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237D99BE' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 12px center;"
+            onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
+            onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
+          >
+            <option value="" style="background: var(--color-bg-elevated);">Not sure</option>
+            <option value="1" style="background: var(--color-bg-elevated);">1 (Single location / small space)</option>
+            <option value="2-10" style="background: var(--color-bg-elevated);">2–10 APs</option>
+            <option value="11-50" style="background: var(--color-bg-elevated);">11–50 APs</option>
+            <option value="51-200" style="background: var(--color-bg-elevated);">51–200 APs</option>
+            <option value="200+" style="background: var(--color-bg-elevated);">200+ APs (Enterprise)</option>
+          </select>
+        </div>
+
+        <!-- Message -->
+        <div class="mb-8">
+          <label for="message" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+            Tell Us About Your Location (optional)
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows="3"
+            placeholder="Brief description of your location, daily foot traffic, or any questions..."
+            class="w-full px-4 py-3 rounded-xl text-sm resize-none transition-all duration-200"
+            style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none; line-height: 1.6;"
+            onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
+            onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
+          ></textarea>
+        </div>
+
+        <!-- Honeypot -->
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" aria-hidden="true" />
+
+        <!-- Submit -->
+        <button
+          type="submit"
+          id="submit-btn"
+          class="w-full py-4 px-8 rounded-xl font-semibold text-base text-white transition-all duration-200 cursor-pointer"
+          style="background: var(--color-primary); font-family: var(--font-body);"
+          onmouseover="this.style.background='var(--color-primary-hover)'; this.style.transform='translateY(-1px)'; this.style.boxShadow='0 8px 32px rgba(27,111,235,0.35)'"
+          onmouseout="this.style.background='var(--color-primary)'; this.style.transform='none'; this.style.boxShadow='none'"
+        >
+          <span id="submit-text">Get My Free Revenue Assessment</span>
+        </button>
+
+        <!-- Success message -->
+        <div id="form-success" class="hidden mt-6 p-5 rounded-xl text-center" style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3);" role="alert" aria-live="polite">
+          <div class="font-semibold mb-1" style="color: var(--color-success); font-family: var(--font-display);">We received your submission!</div>
+          <div class="text-sm" style="color: var(--color-text-secondary); font-family: var(--font-body);">Our team will be in touch within 1 business day with your free assessment.</div>
+        </div>
+
+        <!-- Error message -->
+        <div id="form-error" class="hidden mt-6 p-5 rounded-xl text-center" style="background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.3);" role="alert" aria-live="polite">
+          <div class="text-sm" style="color: #f87171; font-family: var(--font-body);">Something went wrong. Please try again or email us directly at david@mobileoffload.com</div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Alternative contact -->
+    <div class="mt-10 text-center">
+      <p class="text-sm mb-4" style="color: var(--color-text-muted); font-family: var(--font-body);">Prefer to reach out directly?</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+        <a href="mailto:david@mobileoffload.com" class="flex items-center gap-2 text-sm transition-colors duration-200 cursor-pointer" style="color: var(--color-text-secondary); font-family: var(--font-body);"
+           onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          david@mobileoffload.com
+        </a>
+        <a href="tel:3234479494" class="flex items-center gap-2 text-sm transition-colors duration-200 cursor-pointer" style="color: var(--color-text-secondary); font-family: var(--font-body);"
+           onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.1 2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.09 6.09l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          323-447-9494
+        </a>
+        <span class="text-sm" style="color: var(--color-text-muted); font-family: var(--font-body);">Mon–Fri 9am–5pm</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('qualify-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const submitText = document.getElementById('submit-text');
+  const successMsg = document.getElementById('form-success');
+  const errorMsg = document.getElementById('form-error');
+
+  function showError(input: HTMLInputElement | HTMLSelectElement): void {
+    const err = input.parentElement?.querySelector('.field-error');
+    if (err) err.classList.remove('hidden');
+    input.style.borderColor = '#f87171';
+  }
+
+  function clearError(input: HTMLInputElement | HTMLSelectElement): void {
+    const err = input.parentElement?.querySelector('.field-error');
+    if (err) err.classList.add('hidden');
+    input.style.borderColor = 'var(--color-border-bright)';
+  }
+
+  // Live validation
+  form?.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[required]').forEach(field => {
+    field.addEventListener('blur', () => {
+      if (!field.value.trim() || (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value))) {
+        showError(field);
+      } else {
+        clearError(field);
+      }
+    });
+    field.addEventListener('input', () => clearError(field));
+  });
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    let valid = true;
+
+    form.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[required]').forEach(field => {
+      if (!field.value.trim()) { showError(field); valid = false; }
+      else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) { showError(field); valid = false; }
+      else clearError(field);
+    });
+
+    if (!valid) return;
+
+    // Disable button
+    submitBtn.disabled = true;
+    if (submitText) submitText.textContent = 'Submitting...';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' },
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        successMsg?.classList.remove('hidden');
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      errorMsg?.classList.remove('hidden');
+      submitBtn.disabled = false;
+      if (submitText) submitText.textContent = 'Get My Free Revenue Assessment';
+    }
+  });
+</script>

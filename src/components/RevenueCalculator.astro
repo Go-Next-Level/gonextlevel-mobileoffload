@@ -1,0 +1,290 @@
+---
+---
+<section id="revenue" class="py-28 relative grid-texture" style="background: var(--color-bg-base);">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 text-xs font-semibold tracking-widest uppercase"
+           style="background: rgba(16,185,129,0.1); color: var(--color-success); font-family: var(--font-body); border: 1px solid rgba(16,185,129,0.25);">
+        Revenue Potential
+      </div>
+      <h2 class="text-4xl lg:text-5xl font-bold mb-6" style="font-family: var(--font-display); letter-spacing: -0.02em;">
+        Calculate Your<br/>
+        <span class="gradient-text">Monthly Earnings</span>
+      </h2>
+      <p class="text-lg max-w-2xl mx-auto" style="color: var(--color-text-secondary); font-family: var(--font-body);">
+        Estimates based on actual deployment data. Your 50% revenue share, paid monthly.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-8 items-start">
+
+      <!-- Calculator controls -->
+      <div class="card-dark p-8">
+        <h3 class="text-xl font-bold mb-8" style="font-family: var(--font-display);">Estimate Your Revenue</h3>
+
+        <!-- Venue Type -->
+        <div class="mb-8">
+          <label class="block text-sm font-semibold mb-4" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+            Venue Type
+          </label>
+          <div class="grid grid-cols-2 gap-2" id="venue-selector" role="radiogroup" aria-label="Select venue type">
+            <button type="button" data-venue="restaurant" data-daily="29.62" data-annual="10662" data-users="1200" data-tb="3.5"
+                    class="venue-btn active py-3 px-4 rounded-xl text-sm font-medium text-left transition-all duration-200 cursor-pointer"
+                    aria-pressed="false">
+              <div style="font-family: var(--font-display);">Restaurant / Bar</div>
+              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Up to $24K/yr</div>
+            </button>
+            <button type="button" data-venue="fitness" data-daily="60.81" data-annual="22197" data-users="1172" data-tb="7.79"
+                    class="venue-btn py-3 px-4 rounded-xl text-sm font-medium text-left transition-all duration-200 cursor-pointer"
+                    aria-pressed="false">
+              <div style="font-family: var(--font-display);">Fitness Center</div>
+              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Up to $48K/yr</div>
+            </button>
+            <button type="button" data-venue="hotel" data-daily="164.38" data-annual="59999" data-users="2400" data-tb="18"
+                    class="venue-btn py-3 px-4 rounded-xl text-sm font-medium text-left transition-all duration-200 cursor-pointer"
+                    aria-pressed="false">
+              <div style="font-family: var(--font-display);">Hotel / Convention</div>
+              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Up to $240K/yr</div>
+            </button>
+            <button type="button" data-venue="shopping" data-daily="176.71" data-annual="64500" data-users="3000" data-tb="22"
+                    class="venue-btn py-3 px-4 rounded-xl text-sm font-medium text-left transition-all duration-200 cursor-pointer"
+                    aria-pressed="false">
+              <div style="font-family: var(--font-display);">Shopping Center</div>
+              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Up to $300K/yr</div>
+            </button>
+            <button type="button" data-venue="venue" data-daily="176.71" data-annual="64500" data-users="5000" data-tb="28"
+                    class="venue-btn py-3 px-4 rounded-xl text-sm font-medium text-left transition-all duration-200 cursor-pointer"
+                    aria-pressed="false">
+              <div style="font-family: var(--font-display);">Music / Sports Venue</div>
+              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Up to $300K/yr</div>
+            </button>
+            <button type="button" data-venue="airport" data-daily="329.59" data-annual="120000" data-users="8000" data-tb="75"
+                    class="venue-btn py-3 px-4 rounded-xl text-sm font-medium text-left transition-all duration-200 cursor-pointer"
+                    aria-pressed="false">
+              <div style="font-family: var(--font-display);">Airport Terminal</div>
+              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Up to $360K/yr</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Access Points slider -->
+        <div class="mb-8">
+          <div class="flex justify-between items-center mb-4">
+            <label for="ap-slider" class="text-sm font-semibold" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+              Access Points
+            </label>
+            <span id="ap-display" class="text-lg font-bold" style="font-family: var(--font-mono); color: var(--color-accent);">1</span>
+          </div>
+          <input type="range" id="ap-slider" min="1" max="250" value="1" step="1" aria-label="Number of access points" aria-valuemin="1" aria-valuemax="250" aria-valuenow="1"/>
+          <div class="flex justify-between mt-2 text-xs" style="color: var(--color-text-muted); font-family: var(--font-body);">
+            <span>1 AP</span>
+            <span>250 APs</span>
+          </div>
+        </div>
+
+        <!-- Daily footfall multiplier -->
+        <div class="mb-6">
+          <div class="flex justify-between items-center mb-4">
+            <label for="traffic-slider" class="text-sm font-semibold" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+              Daily Foot Traffic
+            </label>
+            <span id="traffic-display" class="text-lg font-bold" style="font-family: var(--font-mono); color: var(--color-accent);">~1,000</span>
+          </div>
+          <input type="range" id="traffic-slider" min="0.5" max="3" value="1" step="0.1" aria-label="Daily foot traffic multiplier" aria-valuemin="0.5" aria-valuemax="3" aria-valuenow="1"/>
+          <div class="flex justify-between mt-2 text-xs" style="color: var(--color-text-muted); font-family: var(--font-body);">
+            <span>Low traffic</span>
+            <span>High traffic</span>
+          </div>
+        </div>
+
+        <p class="text-xs" style="color: var(--color-text-muted); font-family: var(--font-body); line-height: 1.6;">
+          * Estimates based on real deployment data. Actual results vary by location, dwell time, and carrier mix. Mobile Offload makes no revenue guarantee.
+        </p>
+      </div>
+
+      <!-- Results panel -->
+      <div class="flex flex-col gap-4">
+        <!-- Monthly -->
+        <div class="p-8 rounded-2xl" style="background: linear-gradient(135deg, #0B1A10 0%, #0D1F2A 100%); border: 1px solid rgba(16,185,129,0.25);">
+          <div class="text-sm font-semibold mb-3" style="color: var(--color-success); font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.1em;">Your Monthly Share (50%)</div>
+          <div id="monthly-revenue" class="text-6xl font-bold mb-2 tabular-nums" style="font-family: var(--font-mono); color: var(--color-success);">$1,480</div>
+          <div class="text-sm" style="color: var(--color-text-secondary); font-family: var(--font-body);">Paid by the 5th of each month</div>
+        </div>
+
+        <!-- Annual -->
+        <div class="p-6 rounded-2xl" style="background: var(--color-bg-card); border: 1px solid var(--color-border-bright);">
+          <div class="text-sm mb-2" style="color: var(--color-text-secondary); font-family: var(--font-body);">Annual Projected Revenue</div>
+          <div id="annual-revenue" class="text-3xl font-bold" style="font-family: var(--font-mono); color: var(--color-text-primary);">$17,760</div>
+        </div>
+
+        <!-- Stats row -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="p-5 rounded-xl" style="background: var(--color-bg-card); border: 1px solid var(--color-border);">
+            <div class="text-xs mb-1.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Avg Daily Users</div>
+            <div id="daily-users" class="text-2xl font-bold tabular-nums" style="font-family: var(--font-mono); color: var(--color-accent);">1,200</div>
+          </div>
+          <div class="p-5 rounded-xl" style="background: var(--color-bg-card); border: 1px solid var(--color-border);">
+            <div class="text-xs mb-1.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Monthly Data Offloaded</div>
+            <div id="monthly-tb" class="text-2xl font-bold tabular-nums" style="font-family: var(--font-mono); color: var(--color-accent);">3.5 TB</div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <a href="#qualify" class="block w-full py-4 px-6 rounded-xl text-center font-semibold text-white transition-all duration-200 cursor-pointer"
+           style="background: var(--color-primary); font-family: var(--font-body);"
+           onmouseover="this.style.background='var(--color-primary-hover)'"
+           onmouseout="this.style.background='var(--color-primary)'">
+          Get Your Free Revenue Assessment
+        </a>
+      </div>
+    </div>
+
+    <!-- Revenue table by location type -->
+    <div class="mt-16">
+      <h3 class="text-2xl font-bold mb-8 text-center" style="font-family: var(--font-display);">Revenue by Location Type (Your 50% Share)</h3>
+      <div class="rounded-2xl overflow-hidden" style="border: 1px solid var(--color-border);">
+        <table class="w-full" role="table">
+          <thead>
+            <tr style="background: var(--color-bg-elevated); border-bottom: 1px solid var(--color-border);">
+              <th scope="col" class="text-left px-6 py-4 text-sm font-semibold" style="color: var(--color-text-secondary); font-family: var(--font-display);">Location Type</th>
+              <th scope="col" class="text-right px-6 py-4 text-sm font-semibold" style="color: var(--color-text-secondary); font-family: var(--font-display);">Annual Potential</th>
+              <th scope="col" class="hidden sm:table-cell text-right px-6 py-4 text-sm font-semibold" style="color: var(--color-text-secondary); font-family: var(--font-display);">Monthly Est.</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { type: "Airport Terminals", annual: "$360,000", monthly: "$30,000", highlight: true },
+              { type: "Shopping Centers", annual: "$300,000", monthly: "$25,000", highlight: false },
+              { type: "Music & Sporting Venues", annual: "$300,000", monthly: "$25,000", highlight: false },
+              { type: "Hotels & Convention Centers", annual: "$240,000", monthly: "$20,000", highlight: false },
+              { type: "Fitness Centers", annual: "$48,000", monthly: "$4,000", highlight: false },
+              { type: "Restaurants & Bars", annual: "$24,000", monthly: "$2,000", highlight: false },
+            ].map((row, i) => (
+              <tr class={`transition-colors duration-150 ${row.highlight ? '' : ''}`}
+                  style={`background: ${i % 2 === 0 ? 'var(--color-bg-surface)' : 'var(--color-bg-base)'}; border-bottom: 1px solid var(--color-border);`}
+                  onmouseover={`this.style.background='var(--color-bg-card)'`}
+                  onmouseout={`this.style.background='${i % 2 === 0 ? 'var(--color-bg-surface)' : 'var(--color-bg-base)'}'`}>
+                <td class="px-6 py-4 text-sm font-medium" style="font-family: var(--font-body); color: var(--color-text-primary);">{row.type}</td>
+                <td class="px-6 py-4 text-right font-bold" style={`font-family: var(--font-mono); color: ${row.highlight ? 'var(--color-success)' : 'var(--color-text-primary)'};`}>
+                  {row.annual}
+                  <span class="text-xs font-normal ml-1" style="color: var(--color-text-muted); font-family: var(--font-body);">/yr</span>
+                </td>
+                <td class="hidden sm:table-cell px-6 py-4 text-right text-sm" style="color: var(--color-text-secondary); font-family: var(--font-mono);">{row.monthly}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .venue-btn {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+  }
+  .venue-btn:hover {
+    border-color: var(--color-border-bright);
+    color: var(--color-text-primary);
+  }
+  .venue-btn.active {
+    background: var(--color-primary-muted);
+    border-color: rgba(27,111,235,0.5);
+    color: var(--color-text-primary);
+  }
+</style>
+
+<script>
+  interface VenueData {
+    daily: number;
+    annual: number;
+    users: number;
+    tb: number;
+  }
+
+  function formatCurrency(n: number): string {
+    if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+    if (n >= 1000) return '$' + Math.round(n / 1000) + 'K';
+    return '$' + n.toLocaleString();
+  }
+
+  function formatLarge(n: number): string {
+    if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+    if (n >= 1000) return Math.round(n / 1000) + 'K';
+    return n.toLocaleString();
+  }
+
+  let currentVenue: VenueData = { daily: 29.62, annual: 10662, users: 1200, tb: 3.5 };
+  let apCount = 1;
+  let trafficMultiplier = 1;
+
+  function updateCalculator(): void {
+    const scale = apCount * trafficMultiplier;
+    const monthly = Math.round(currentVenue.daily * 30 * scale);
+    const annual = Math.round(currentVenue.annual * scale);
+    const users = Math.round(currentVenue.users * trafficMultiplier);
+    const tb = (currentVenue.tb * scale).toFixed(1);
+
+    const monthlyEl = document.getElementById('monthly-revenue');
+    const annualEl = document.getElementById('annual-revenue');
+    const usersEl = document.getElementById('daily-users');
+    const tbEl = document.getElementById('monthly-tb');
+
+    if (monthlyEl) monthlyEl.textContent = formatCurrency(monthly);
+    if (annualEl) annualEl.textContent = formatCurrency(annual) + '/yr';
+    if (usersEl) usersEl.textContent = formatLarge(users);
+    if (tbEl) tbEl.textContent = tb + ' TB';
+  }
+
+  // Venue selector
+  document.querySelectorAll<HTMLButtonElement>('.venue-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.venue-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentVenue = {
+        daily: parseFloat(btn.dataset.daily || '29.62'),
+        annual: parseInt(btn.dataset.annual || '10662'),
+        users: parseInt(btn.dataset.users || '1200'),
+        tb: parseFloat(btn.dataset.tb || '3.5'),
+      };
+      updateCalculator();
+    });
+  });
+
+  // AP slider
+  const apSlider = document.getElementById('ap-slider') as HTMLInputElement;
+  const apDisplay = document.getElementById('ap-display');
+  apSlider?.addEventListener('input', () => {
+    apCount = parseInt(apSlider.value);
+    if (apDisplay) apDisplay.textContent = apCount.toString();
+    apSlider.setAttribute('aria-valuenow', apSlider.value);
+    updateCalculator();
+  });
+
+  // Traffic slider
+  const trafficSlider = document.getElementById('traffic-slider') as HTMLInputElement;
+  const trafficDisplay = document.getElementById('traffic-display');
+  const trafficLabels: Record<string, string> = {
+    '0.5': '~500', '0.6': '~600', '0.7': '~700', '0.8': '~800', '0.9': '~900',
+    '1.0': '~1,000', '1.1': '~1,100', '1.2': '~1,200', '1.5': '~1,500',
+    '2.0': '~2,000', '2.5': '~2,500', '3.0': '~3,000+'
+  };
+
+  trafficSlider?.addEventListener('input', () => {
+    trafficMultiplier = parseFloat(trafficSlider.value);
+    const rounded = Math.round(trafficMultiplier * 10) / 10;
+    if (trafficDisplay) {
+      trafficDisplay.textContent = trafficLabels[rounded.toFixed(1)] || '~' + Math.round(1000 * trafficMultiplier).toLocaleString();
+    }
+    trafficSlider.setAttribute('aria-valuenow', trafficSlider.value);
+    updateCalculator();
+  });
+
+  // Initial state
+  document.querySelector<HTMLButtonElement>('.venue-btn')?.click();
+  updateCalculator();
+</script>

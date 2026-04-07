@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import '../styles/global.css';
+---
+<Base title="Thank You — Mobile Offload" description="Thanks for your submission. We'll be in touch within 1 business day.">
+  <div class="min-h-screen flex items-center justify-center px-6" style="background: var(--color-bg-base);">
+    <div class="text-center max-w-lg">
+      <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-8" style="background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3);">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 6L9 17l-5-5"/>
+        </svg>
+      </div>
+      <h1 class="text-4xl font-bold mb-4" style="font-family: var(--font-display);">Submission Received</h1>
+      <p class="text-lg mb-8" style="color: var(--color-text-secondary); font-family: var(--font-body);">
+        Our team will review your location details and be in touch within 1 business day with your free revenue assessment.
+      </p>
+      <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white cursor-pointer" style="background: var(--color-primary); font-family: var(--font-body);">
+        Back to Home
+      </a>
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,125 @@
+---
+const features = [
+  {
+    title: "Complete Network Separation",
+    description: "The carrier offload network operates on a completely separate SSID from your guest and internal networks. Zero overlap, zero risk to your business operations.",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+  },
+  {
+    title: "Device Isolation",
+    description: "Client device isolation prevents any device-to-device communication on the carrier offload network. Users on the offload SSID cannot see each other.",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
+  },
+  {
+    title: "Zero Access to Your Systems",
+    description: "Mobile Offload cannot and will not access, modify, or monitor your internal business networks, customer data, POS systems, or other SSIDs.",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>`,
+  },
+  {
+    title: "Enterprise-Grade Encryption",
+    description: "WPA3 Enterprise encryption, Passpoint (Hotspot 2.0) authentication, and RadSec (RADIUS over TLS) for end-to-end encrypted carrier authentication.",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
+  },
+];
+
+const protocols = [
+  { label: "WPA3 Enterprise", desc: "Strongest Wi-Fi encryption standard" },
+  { label: "Passpoint / Hotspot 2.0", desc: "Automatic secure carrier auth" },
+  { label: "RadSec (RADIUS over TLS)", desc: "Encrypted RADIUS traffic" },
+  { label: "Dedicated SSID", desc: "Complete separation from your network" },
+];
+---
+<section id="security" class="py-28 relative" style="background: var(--color-bg-base);">
+  <!-- Background accent -->
+  <div class="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full opacity-5 pointer-events-none" aria-hidden="true"
+       style="background: radial-gradient(circle, #1B6FEB, transparent); filter: blur(80px);"></div>
+
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: Content -->
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 text-xs font-semibold tracking-widest uppercase"
+             style="background: rgba(16,185,129,0.1); color: var(--color-success); font-family: var(--font-body); border: 1px solid rgba(16,185,129,0.2);">
+          Security First
+        </div>
+        <h2 class="text-4xl lg:text-5xl font-bold mb-6" style="font-family: var(--font-display); letter-spacing: -0.02em;">
+          Your Network.<br/>
+          <span class="gradient-text">Your Control.</span>
+        </h2>
+        <p class="text-lg mb-10" style="color: var(--color-text-secondary); font-family: var(--font-body); line-height: 1.7;">
+          The carrier offload network is completely isolated from your business operations. We built the security architecture around one principle: your existing infrastructure is never touched.
+        </p>
+
+        <!-- Security features -->
+        <div class="flex flex-col gap-5">
+          {features.map((f) => (
+            <div class="flex gap-4">
+              <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--color-primary-muted); color: var(--color-primary); border: 1px solid rgba(27,111,235,0.2);">
+                <Fragment set:html={f.icon} />
+              </div>
+              <div>
+                <h3 class="text-base font-bold mb-1" style="font-family: var(--font-display);">{f.title}</h3>
+                <p class="text-sm leading-relaxed" style="color: var(--color-text-secondary); font-family: var(--font-body);">{f.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: Protocol stack visual -->
+      <div>
+        <div class="card-dark p-8">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: rgba(16,185,129,0.15);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </div>
+            <div>
+              <div class="font-bold" style="font-family: var(--font-display);">Security Protocol Stack</div>
+              <div class="text-xs" style="color: var(--color-text-muted); font-family: var(--font-body);">Carrier-grade authentication chain</div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-3 mb-8">
+            {protocols.map((p, i) => (
+              <div class="flex items-center gap-4 p-4 rounded-xl" style={`background: var(--color-bg-elevated); border: 1px solid var(--color-border); opacity: ${1 - i * 0.05};`}>
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 text-xs font-bold" style="background: var(--color-primary); color: white; font-family: var(--font-mono);">
+                  {i + 1}
+                </div>
+                <div class="flex-1">
+                  <div class="text-sm font-semibold" style="font-family: var(--font-display);">{p.label}</div>
+                  <div class="text-xs" style="color: var(--color-text-muted); font-family: var(--font-body);">{p.desc}</div>
+                </div>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+            ))}
+          </div>
+
+          <!-- Separation diagram -->
+          <div class="p-5 rounded-xl" style="background: var(--color-bg-base); border: 1px solid var(--color-border);">
+            <div class="text-xs font-semibold mb-4 text-center" style="color: var(--color-text-muted); font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.08em;">Network Architecture</div>
+            <div class="flex gap-3 justify-center flex-wrap">
+              <div class="px-4 py-3 rounded-xl text-center" style="background: rgba(27,111,235,0.1); border: 1px solid rgba(27,111,235,0.3); min-width: 120px;">
+                <div class="text-xs font-bold mb-1" style="color: var(--color-accent); font-family: var(--font-display);">Carrier SSID</div>
+                <div class="text-xs" style="color: var(--color-text-muted); font-family: var(--font-body);">AT&T / T-Mobile / Fi<br/>Isolated</div>
+              </div>
+              <div class="flex items-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-label="separated from">
+                  <line x1="6" y1="12" x2="18" y2="12" stroke="#4A6480" stroke-width="2" stroke-dasharray="4 2"/>
+                </svg>
+              </div>
+              <div class="px-4 py-3 rounded-xl text-center" style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); min-width: 120px;">
+                <div class="text-xs font-bold mb-1" style="color: var(--color-success); font-family: var(--font-display);">Your Networks</div>
+                <div class="text-xs" style="color: var(--color-text-muted); font-family: var(--font-body);">Guest + Internal<br/>Untouched</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
