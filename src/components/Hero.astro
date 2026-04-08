@@ -72,70 +72,172 @@
         </div>
       </div>
 
-      <!-- Right: Visual network diagram -->
-      <div class="relative hidden lg:flex items-center justify-center" aria-hidden="true">
-        <!-- Central Wi-Fi signal graphic -->
-        <div class="relative w-80 h-80">
-          <!-- Animated rings -->
-          <div class="absolute inset-0 rounded-full opacity-10 animate-pulse" style="background: radial-gradient(circle, #1B6FEB 0%, transparent 70%); animation-duration: 3s;"></div>
+      <!-- Right: Live network animation -->
+      <div class="relative hidden lg:block" aria-hidden="true">
+        <div class="relative rounded-2xl overflow-hidden" style="background: var(--color-bg-surface); border: 1px solid var(--color-border);">
+          <svg id="hero-svg" viewBox="0 0 480 370" xmlns="http://www.w3.org/2000/svg" class="w-full" aria-label="Live carrier offload network diagram" role="img">
+            <defs>
+              <filter id="hglow-blue" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="3.5" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="hglow-green" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="5" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="hglow-sm" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="2.5" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
 
-          <!-- Central node -->
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full flex items-center justify-center"
-               style="background: linear-gradient(135deg, #1B6FEB, #0EA5E9); box-shadow: 0 0 60px rgba(27,111,235,0.5);">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke="white" stroke-width="2" stroke-linecap="round"/>
-              <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke="white" stroke-width="2" stroke-linecap="round"/>
-              <path d="M8.53 16.11a6 6 0 0 1 6.95 0" stroke="white" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="12" cy="20" r="1.5" fill="white"/>
-            </svg>
-          </div>
+              <linearGradient id="hgrad-att" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#00A8E0;stop-opacity:0.9"/>
+                <stop offset="100%" style="stop-color:#1B6FEB;stop-opacity:0.35"/>
+              </linearGradient>
+              <linearGradient id="hgrad-tmobile" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" style="stop-color:#E20074;stop-opacity:0.9"/>
+                <stop offset="100%" style="stop-color:#1B6FEB;stop-opacity:0.35"/>
+              </linearGradient>
+              <linearGradient id="hgrad-fi" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#1A73E8;stop-opacity:0.9"/>
+                <stop offset="100%" style="stop-color:#1B6FEB;stop-opacity:0.35"/>
+              </linearGradient>
+              <linearGradient id="hgrad-rev" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#1B6FEB;stop-opacity:0.6"/>
+                <stop offset="100%" style="stop-color:#10B981;stop-opacity:0.9"/>
+              </linearGradient>
 
-          <!-- Orbiting carrier nodes -->
-          <div class="carrier-orbit absolute" style="top: 10%; left: 50%; transform: translateX(-50%);">
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: var(--color-bg-card); border: 1px solid var(--color-border-bright);">
-              <svg width="28" height="20" viewBox="0 0 80 30" fill="none" aria-label="AT&T">
-                <text x="0" y="24" font-family="Arial" font-weight="700" font-size="22" fill="#00A8E0">AT&T</text>
-              </svg>
-            </div>
-          </div>
-          <div class="carrier-orbit absolute" style="bottom: 10%; left: 20%;">
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: var(--color-bg-card); border: 1px solid var(--color-border-bright);">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-label="T-Mobile">
-                <circle cx="12" cy="12" r="10" fill="#E20074"/>
-                <text x="7" y="16" font-family="Arial" font-weight="700" font-size="8" fill="white">T</text>
-              </svg>
-            </div>
-          </div>
-          <div class="carrier-orbit absolute" style="bottom: 10%; right: 20%;">
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: var(--color-bg-card); border: 1px solid var(--color-border-bright);">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-label="Google Fi">
-                <circle cx="12" cy="12" r="10" fill="#1A73E8"/>
-                <circle cx="12" cy="12" r="6" fill="none" stroke="white" stroke-width="2"/>
-              </svg>
-            </div>
-          </div>
+              <radialGradient id="hbuilding-glow" cx="50%" cy="40%" r="50%">
+                <stop offset="0%" style="stop-color:#1B6FEB;stop-opacity:0.22"/>
+                <stop offset="100%" style="stop-color:#1B6FEB;stop-opacity:0"/>
+              </radialGradient>
 
-          <!-- Revenue floating card -->
-          <div class="absolute -right-8 top-8 p-4 rounded-xl shadow-xl" style="background: var(--color-bg-card); border: 1px solid var(--color-border-bright); min-width: 160px;">
-            <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Monthly Revenue</div>
-            <div class="text-2xl font-bold" style="font-family: var(--font-mono); color: var(--color-success);">$15,909</div>
-            <div class="text-xs mt-1 flex items-center gap-1" style="color: var(--color-success); font-family: var(--font-body);">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
-              BWI Airport Example
-            </div>
-          </div>
+              <!-- Motion paths: carriers flow TOP → DOWN to building -->
+              <path id="h-att"      d="M 88 66 C 140 116 185 152 227 166"/>
+              <path id="h-tmobile"  d="M 240 47 L 240 149"/>
+              <path id="h-fi"       d="M 392 66 C 340 116 295 152 253 166"/>
+              <path id="h-rev"      d="M 240 218 L 240 280"/>
+            </defs>
 
-          <!-- "Zero setup" badge -->
-          <div class="absolute -left-8 bottom-12 p-3 rounded-xl" style="background: var(--color-bg-card); border: 1px solid rgba(16,185,129,0.3);">
-            <div class="flex items-center gap-2">
-              <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: rgba(16,185,129,0.15);">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-              </div>
-              <div>
-                <div class="text-xs font-semibold" style="color: var(--color-text-primary); font-family: var(--font-display);">Zero Setup</div>
-                <div class="text-xs" style="color: var(--color-text-muted); font-family: var(--font-body);">No hardware needed</div>
-              </div>
-            </div>
+            <!-- carrier row label -->
+            <text x="240" y="18" text-anchor="middle" fill="rgba(125,153,190,0.45)" font-size="7.5" font-family="var(--font-body)" font-weight="600" letter-spacing="0.12em">CARRIER NETWORK</text>
+
+            <!-- Connection lines -->
+            <path d="M 88 66 C 140 116 185 152 227 166" stroke="url(#hgrad-att)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.55"/>
+            <path d="M 240 47 L 240 149" stroke="url(#hgrad-tmobile)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.55"/>
+            <path d="M 392 66 C 340 116 295 152 253 166" stroke="url(#hgrad-fi)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.55"/>
+            <path d="M 240 218 L 240 280" stroke="url(#hgrad-rev)" stroke-width="2" stroke-dasharray="4 3" fill="none" opacity="0.65"/>
+
+            <!-- Pulse rings (centered on building ~240, 188) -->
+            <circle class="hero-pulse hp1" cx="240" cy="188" r="46" fill="none" stroke="#1B6FEB" stroke-width="1"/>
+            <circle class="hero-pulse hp2" cx="240" cy="188" r="46" fill="none" stroke="#1B6FEB" stroke-width="1"/>
+            <circle class="hero-pulse hp3" cx="240" cy="188" r="46" fill="none" stroke="#1B6FEB" stroke-width="1"/>
+
+            <!-- Building glow -->
+            <ellipse cx="240" cy="196" rx="66" ry="54" fill="url(#hbuilding-glow)"/>
+
+            <!-- ── BUILDING ICON (centered ~240, 190) ── -->
+            <!-- Rooftop antenna -->
+            <line x1="240" y1="140" x2="240" y2="150" stroke="#1B6FEB" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="240" cy="138" r="2.2" fill="#1B6FEB" opacity="0.85"/>
+            <!-- Wi-Fi arcs -->
+            <path d="M 233 146 Q 240 140 247 146" stroke="#1B6FEB" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+            <path d="M 228 149 Q 240 141 252 149" stroke="#1B6FEB" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.4"/>
+
+            <!-- Top floor -->
+            <rect x="213" y="150" width="54" height="18" rx="1.5" fill="rgba(8,36,90,0.92)" stroke="#1B6FEB" stroke-width="1.5"/>
+            <rect x="218" y="153" width="10" height="11" rx="1.5" fill="rgba(14,165,233,0.65)" stroke="rgba(14,165,233,0.3)" stroke-width="0.7"/>
+            <rect x="234" y="153" width="10" height="11" rx="1.5" fill="rgba(14,165,233,0.9)" stroke="rgba(14,165,233,0.4)" stroke-width="0.7"/>
+            <rect x="250" y="153" width="10" height="11" rx="1.5" fill="rgba(14,165,233,0.5)" stroke="rgba(14,165,233,0.3)" stroke-width="0.7"/>
+
+            <!-- Mid floor -->
+            <rect x="208" y="167" width="64" height="20" rx="1.5" fill="rgba(10,42,108,0.92)" stroke="#1B6FEB" stroke-width="1.5"/>
+            <rect x="213" y="171" width="11" height="12" rx="1.5" fill="rgba(14,165,233,0.45)" stroke="rgba(14,165,233,0.2)" stroke-width="0.7"/>
+            <rect x="230" y="171" width="11" height="12" rx="1.5" fill="rgba(14,165,233,0.75)" stroke="rgba(14,165,233,0.35)" stroke-width="0.7"/>
+            <rect x="247" y="171" width="11" height="12" rx="1.5" fill="rgba(14,165,233,0.5)" stroke="rgba(14,165,233,0.25)" stroke-width="0.7"/>
+            <rect x="263" y="171" width="6" height="12" rx="1.5" fill="rgba(14,165,233,0.3)" stroke="rgba(14,165,233,0.15)" stroke-width="0.7"/>
+
+            <!-- Ground floor -->
+            <rect x="203" y="186" width="74" height="24" rx="1.5" fill="rgba(12,48,118,0.92)" stroke="#1B6FEB" stroke-width="1.5"/>
+            <rect x="207" y="190" width="15" height="15" rx="1.5" fill="rgba(14,165,233,0.4)" stroke="rgba(14,165,233,0.2)" stroke-width="0.7"/>
+            <rect x="228" y="190" width="15" height="15" rx="1.5" fill="rgba(14,165,233,0.3)" stroke="rgba(14,165,233,0.2)" stroke-width="0.7"/>
+            <!-- Door -->
+            <rect x="249" y="195" width="16" height="15" rx="2" fill="rgba(27,111,235,0.45)" stroke="#1B6FEB" stroke-width="1.1"/>
+            <circle cx="263" cy="202" r="1.6" fill="#1B6FEB" opacity="0.9"/>
+            <rect x="271" y="190" width="4" height="15" rx="1" fill="rgba(14,165,233,0.3)" stroke="rgba(14,165,233,0.15)" stroke-width="0.5"/>
+
+            <!-- "YOUR LOCATION" label -->
+            <text x="240" y="225" text-anchor="middle" fill="rgba(255,255,255,0.72)" font-size="9" font-family="var(--font-display)" font-weight="600" letter-spacing="0.06em">YOUR LOCATION</text>
+
+            <!-- Revenue pill -->
+            <rect x="182" y="283" width="116" height="52" rx="12" fill="rgba(4,18,12,0.96)" stroke="#10B981" stroke-width="1.8" filter="url(#hglow-green)"/>
+            <text x="240" y="300" text-anchor="middle" fill="rgba(16,185,129,0.6)" font-size="7.5" font-family="var(--font-body)" font-weight="700" letter-spacing="0.1em">REVENUE EARNED</text>
+            <text id="hero-rev" x="240" y="324" text-anchor="middle" fill="#10B981" font-size="21" font-family="var(--font-mono)" font-weight="700">$0.00</text>
+
+            <!-- Traveling packets: AT&T → Building -->
+            <circle r="4" fill="#00A8E0" filter="url(#hglow-sm)" opacity="0.9">
+              <animateMotion dur="2.2s" repeatCount="indefinite" begin="0s"><mpath href="#h-att"/></animateMotion>
+            </circle>
+            <circle r="3" fill="#00A8E0" filter="url(#hglow-sm)" opacity="0.65">
+              <animateMotion dur="2.2s" repeatCount="indefinite" begin="0.8s"><mpath href="#h-att"/></animateMotion>
+            </circle>
+            <circle r="2.2" fill="#00A8E0" opacity="0.4">
+              <animateMotion dur="2.2s" repeatCount="indefinite" begin="1.6s"><mpath href="#h-att"/></animateMotion>
+            </circle>
+
+            <!-- Traveling packets: T-Mobile → Building -->
+            <circle r="4" fill="#E20074" filter="url(#hglow-sm)" opacity="0.9">
+              <animateMotion dur="1.9s" repeatCount="indefinite" begin="0.3s"><mpath href="#h-tmobile"/></animateMotion>
+            </circle>
+            <circle r="3" fill="#E20074" filter="url(#hglow-sm)" opacity="0.65">
+              <animateMotion dur="1.9s" repeatCount="indefinite" begin="1.0s"><mpath href="#h-tmobile"/></animateMotion>
+            </circle>
+            <circle r="2.2" fill="#E20074" opacity="0.4">
+              <animateMotion dur="1.9s" repeatCount="indefinite" begin="1.6s"><mpath href="#h-tmobile"/></animateMotion>
+            </circle>
+
+            <!-- Traveling packets: Google Fi → Building -->
+            <circle r="4" fill="#1A73E8" filter="url(#hglow-sm)" opacity="0.9">
+              <animateMotion dur="2.4s" repeatCount="indefinite" begin="0.5s"><mpath href="#h-fi"/></animateMotion>
+            </circle>
+            <circle r="3" fill="#1A73E8" filter="url(#hglow-sm)" opacity="0.65">
+              <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.3s"><mpath href="#h-fi"/></animateMotion>
+            </circle>
+            <circle r="2.2" fill="#1A73E8" opacity="0.4">
+              <animateMotion dur="2.4s" repeatCount="indefinite" begin="2.0s"><mpath href="#h-fi"/></animateMotion>
+            </circle>
+
+            <!-- Traveling packets: Building → Revenue -->
+            <circle r="5" fill="#10B981" filter="url(#hglow-sm)" opacity="0.95">
+              <animateMotion dur="1.5s" repeatCount="indefinite" begin="1.2s"><mpath href="#h-rev"/></animateMotion>
+            </circle>
+            <circle r="3.5" fill="#10B981" filter="url(#hglow-sm)" opacity="0.75">
+              <animateMotion dur="1.5s" repeatCount="indefinite" begin="2.1s"><mpath href="#h-rev"/></animateMotion>
+            </circle>
+
+            <!-- AT&T node -->
+            <circle cx="88" cy="66" r="28" fill="#060F18" stroke="#00A8E0" stroke-width="1.5" filter="url(#hglow-sm)"/>
+            <text x="88" y="62" text-anchor="middle" fill="#00A8E0" font-size="10" font-family="var(--font-display)" font-weight="700">AT&amp;T</text>
+            <text x="88" y="77" text-anchor="middle" fill="rgba(125,153,190,0.65)" font-size="8" font-family="var(--font-body)">Carrier</text>
+
+            <!-- T-Mobile node -->
+            <circle cx="240" cy="47" r="28" fill="#120010" stroke="#E20074" stroke-width="1.5" filter="url(#hglow-sm)"/>
+            <text x="240" y="43" text-anchor="middle" fill="#E20074" font-size="9.5" font-family="var(--font-display)" font-weight="700">T-Mobile</text>
+            <text x="240" y="58" text-anchor="middle" fill="rgba(125,153,190,0.65)" font-size="8" font-family="var(--font-body)">Carrier</text>
+
+            <!-- Google Fi node -->
+            <circle cx="392" cy="66" r="28" fill="#060C18" stroke="#1A73E8" stroke-width="1.5" filter="url(#hglow-sm)"/>
+            <text x="392" y="58" text-anchor="middle" fill="#1A73E8" font-size="9.5" font-family="var(--font-display)" font-weight="700">Google</text>
+            <text x="392" y="71" text-anchor="middle" fill="#1A73E8" font-size="9.5" font-family="var(--font-display)" font-weight="700">Fi</text>
+            <text x="392" y="84" text-anchor="middle" fill="rgba(125,153,190,0.65)" font-size="8" font-family="var(--font-body)">Carrier</text>
+
+          </svg>
+
+          <!-- Live badge -->
+          <div class="absolute top-3 left-3 flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-semibold"
+               style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: #10B981; font-family: var(--font-body);">
+            <span class="hero-ping w-1.5 h-1.5 rounded-full" style="background: #10B981;"></span>
+            Live
           </div>
         </div>
       </div>
@@ -185,3 +287,36 @@
     </div>
   </div>
 </section>
+
+<style>
+  .hero-pulse {
+    animation: hero-pulse-expand 3s ease-out infinite;
+  }
+  .hero-pulse.hp1 { transform-origin: 240px 188px; }
+  .hero-pulse.hp2 { transform-origin: 240px 188px; animation-delay: 1s; }
+  .hero-pulse.hp3 { transform-origin: 240px 188px; animation-delay: 2s; }
+
+  @keyframes hero-pulse-expand {
+    0%   { r: 38; opacity: 0.5; }
+    100% { r: 84; opacity: 0; }
+  }
+
+  @keyframes hero-ping {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.5); }
+  }
+  .hero-ping { animation: hero-ping 1.5s ease-in-out infinite; }
+</style>
+
+<script>
+  const heroRev = document.getElementById('hero-rev');
+  let hVal = 0;
+  const hTarget = 47.82;
+  const hInc = hTarget / (8000 / 50);
+  function tickHero(): void {
+    hVal += hInc;
+    if (hVal >= hTarget) hVal = 0;
+    if (heroRev) heroRev.textContent = '$' + hVal.toFixed(2);
+  }
+  setInterval(tickHero, 50);
+</script>

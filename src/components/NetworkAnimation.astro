@@ -1,12 +1,10 @@
 ---
 ---
 <section id="in-action" class="py-24 relative overflow-hidden" style="background: var(--color-bg-base);">
-  <!-- Subtle radial bg -->
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
-       style="background: radial-gradient(ellipse 60% 50% at 30% 50%, rgba(27,111,235,0.06) 0%, transparent 70%);"></div>
+       style="background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(27,111,235,0.07) 0%, transparent 70%);"></div>
 
   <div class="max-w-7xl mx-auto px-6">
-    <!-- Header -->
     <div class="text-center mb-14">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 text-xs font-semibold tracking-widest uppercase"
            style="background: var(--color-primary-muted); color: var(--color-accent); font-family: var(--font-body); border: 1px solid rgba(27,111,235,0.2);">
@@ -16,18 +14,17 @@
         Watch the Money Flow
       </h2>
       <p class="text-lg max-w-xl mx-auto" style="color: var(--color-text-secondary); font-family: var(--font-body);">
-        Every time a carrier subscriber walks into your location, this is what happens — automatically.
+        Every time a carrier subscriber walks through your door, this is what happens — automatically.
       </p>
     </div>
 
-    <div class="grid lg:grid-cols-5 gap-8 items-center">
+    <div class="grid lg:grid-cols-5 gap-8 items-start">
 
       <!-- SVG Animation: 3 cols -->
       <div class="lg:col-span-3">
         <div class="relative rounded-2xl overflow-hidden" style="background: var(--color-bg-surface); border: 1px solid var(--color-border); aspect-ratio: 4/3;">
           <svg id="net-svg" viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg" class="w-full h-full" aria-label="Network animation showing carrier offload flow" role="img">
             <defs>
-              <!-- Glow filters -->
               <filter id="glow-blue" x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur stdDeviation="4" result="blur"/>
                 <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
@@ -37,180 +34,163 @@
                 <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
               </filter>
               <filter id="glow-sm" x="-30%" y="-30%" width="160%" height="160%">
-                <feGaussianBlur stdDeviation="2" result="blur"/>
+                <feGaussianBlur stdDeviation="2.5" result="blur"/>
                 <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
               </filter>
 
-              <!-- Gradients for connection lines -->
               <linearGradient id="grad-att" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#00A8E0; stop-opacity:0.8"/>
-                <stop offset="100%" style="stop-color:#1B6FEB; stop-opacity:0.4"/>
+                <stop offset="0%" style="stop-color:#00A8E0;stop-opacity:0.9"/>
+                <stop offset="100%" style="stop-color:#1B6FEB;stop-opacity:0.4"/>
               </linearGradient>
               <linearGradient id="grad-tmobile" x1="50%" y1="0%" x2="50%" y2="100%">
-                <stop offset="0%" style="stop-color:#E20074; stop-opacity:0.8"/>
-                <stop offset="100%" style="stop-color:#1B6FEB; stop-opacity:0.4"/>
+                <stop offset="0%" style="stop-color:#E20074;stop-opacity:0.9"/>
+                <stop offset="100%" style="stop-color:#1B6FEB;stop-opacity:0.4"/>
               </linearGradient>
               <linearGradient id="grad-fi" x1="100%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color:#1A73E8; stop-opacity:0.8"/>
-                <stop offset="100%" style="stop-color:#1B6FEB; stop-opacity:0.4"/>
+                <stop offset="0%" style="stop-color:#1A73E8;stop-opacity:0.9"/>
+                <stop offset="100%" style="stop-color:#1B6FEB;stop-opacity:0.4"/>
               </linearGradient>
-              <linearGradient id="grad-revenue" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#1B6FEB; stop-opacity:0.6"/>
-                <stop offset="100%" style="stop-color:#10B981; stop-opacity:0.9"/>
-              </linearGradient>
-              <linearGradient id="grad-device" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:#7D99BE; stop-opacity:0.5"/>
-                <stop offset="100%" style="stop-color:#1B6FEB; stop-opacity:0.8"/>
+              <linearGradient id="grad-rev-line" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#1B6FEB;stop-opacity:0.6"/>
+                <stop offset="100%" style="stop-color:#10B981;stop-opacity:0.9"/>
               </linearGradient>
 
-              <!-- Venue gradient -->
-              <radialGradient id="venue-fill" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" style="stop-color:#1B6FEB; stop-opacity:1"/>
-                <stop offset="100%" style="stop-color:#0A3A9A; stop-opacity:1"/>
+              <radialGradient id="building-glow" cx="50%" cy="40%" r="50%">
+                <stop offset="0%" style="stop-color:#1B6FEB;stop-opacity:0.25"/>
+                <stop offset="100%" style="stop-color:#1B6FEB;stop-opacity:0"/>
               </radialGradient>
 
-              <!-- Venue glow -->
-              <radialGradient id="venue-glow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" style="stop-color:#1B6FEB; stop-opacity:0.3"/>
-                <stop offset="100%" style="stop-color:#1B6FEB; stop-opacity:0"/>
-              </radialGradient>
-
-              <!-- Paths for animateMotion -->
-              <path id="p-att"    d="M 110 95 Q 175 130 280 210"/>
-              <path id="p-tmobile" d="M 280 68 L 280 210"/>
-              <path id="p-fi"    d="M 450 95 Q 385 130 280 210"/>
-              <path id="p-device" d="M 110 330 Q 185 280 280 210"/>
-              <path id="p-revenue" d="M 280 210 Q 360 255 450 305"/>
+              <!-- Paths for animateMotion (carriers go TOP → DOWN to building) -->
+              <path id="p-att"    d="M 110 72 C 170 128 222 168 268 183"/>
+              <path id="p-tmobile" d="M 280 52 L 280 168"/>
+              <path id="p-fi"    d="M 450 72 C 390 128 338 168 292 183"/>
+              <path id="p-rev"   d="M 280 240 L 280 305"/>
             </defs>
 
-            <!-- ── PULSE RINGS (venue) ── -->
-            <circle class="pulse-ring r1" cx="280" cy="210" r="52" fill="none" stroke="#1B6FEB" stroke-width="1"/>
-            <circle class="pulse-ring r2" cx="280" cy="210" r="52" fill="none" stroke="#1B6FEB" stroke-width="1"/>
-            <circle class="pulse-ring r3" cx="280" cy="210" r="52" fill="none" stroke="#1B6FEB" stroke-width="1"/>
+            <!-- ── CARRIER LABELS (top row) ── -->
+            <text x="280" y="20" text-anchor="middle" fill="rgba(125,153,190,0.5)" font-size="8.5" font-family="var(--font-body)" font-weight="600" letter-spacing="0.12em">CARRIER NETWORK</text>
 
-            <!-- ── VENUE GLOW HALO ── -->
-            <circle cx="280" cy="210" r="80" fill="url(#venue-glow)"/>
+            <!-- ── CONNECTION LINES (top carriers → building) ── -->
+            <path d="M 110 72 C 170 128 222 168 268 183" stroke="url(#grad-att)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.6"/>
+            <path d="M 280 52 L 280 168" stroke="url(#grad-tmobile)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.6"/>
+            <path d="M 450 72 C 390 128 338 168 292 183" stroke="url(#grad-fi)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.6"/>
+            <!-- Building → Revenue line -->
+            <path d="M 280 240 L 280 305" stroke="url(#grad-rev-line)" stroke-width="2" stroke-dasharray="4 3" fill="none" opacity="0.7"/>
 
-            <!-- ── CONNECTION LINES (dashed) ── -->
-            <!-- AT&T -->
-            <path d="M 110 95 Q 175 130 280 210" stroke="url(#grad-att)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.7" class="conn-line"/>
-            <!-- T-Mobile -->
-            <path d="M 280 68 L 280 210" stroke="url(#grad-tmobile)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.7" class="conn-line"/>
-            <!-- Google Fi -->
-            <path d="M 450 95 Q 385 130 280 210" stroke="url(#grad-fi)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.7" class="conn-line"/>
-            <!-- Device -->
-            <path d="M 110 330 Q 185 280 280 210" stroke="url(#grad-device)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.5" class="conn-line" id="device-line"/>
-            <!-- Revenue -->
-            <path d="M 280 210 Q 360 255 450 305" stroke="url(#grad-revenue)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.6" class="conn-line"/>
+            <!-- ── PULSE RINGS (centered on building) ── -->
+            <circle class="na-pulse r1" cx="280" cy="208" r="54" fill="none" stroke="#1B6FEB" stroke-width="1"/>
+            <circle class="na-pulse r2" cx="280" cy="208" r="54" fill="none" stroke="#1B6FEB" stroke-width="1"/>
+            <circle class="na-pulse r3" cx="280" cy="208" r="54" fill="none" stroke="#1B6FEB" stroke-width="1"/>
 
-            <!-- ── TRAVELING PACKETS: AT&T → Venue ── -->
+            <!-- ── BUILDING GLOW HALO ── -->
+            <ellipse cx="280" cy="218" rx="76" ry="62" fill="url(#building-glow)"/>
+
+            <!-- ── BUILDING ICON (centered ~280, 208) ── -->
+            <!-- Rooftop antenna -->
+            <line x1="280" y1="158" x2="280" y2="167" stroke="#1B6FEB" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="280" cy="156" r="2.5" fill="#1B6FEB" opacity="0.85"/>
+            <!-- Wi-Fi arcs on rooftop -->
+            <path d="M 272 163 Q 280 157 288 163" stroke="#1B6FEB" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+            <path d="M 267 167 Q 280 158 293 167" stroke="#1B6FEB" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.4"/>
+
+            <!-- Top floor -->
+            <rect x="250" y="167" width="60" height="20" rx="1.5" fill="rgba(8,36,90,0.92)" stroke="#1B6FEB" stroke-width="1.5"/>
+            <!-- Top floor windows -->
+            <rect x="256" y="170" width="11" height="13" rx="1.5" fill="rgba(14,165,233,0.65)" stroke="rgba(14,165,233,0.3)" stroke-width="0.7"/>
+            <rect x="273" y="170" width="11" height="13" rx="1.5" fill="rgba(14,165,233,0.9)" stroke="rgba(14,165,233,0.4)" stroke-width="0.7"/>
+            <rect x="290" y="170" width="11" height="13" rx="1.5" fill="rgba(14,165,233,0.55)" stroke="rgba(14,165,233,0.3)" stroke-width="0.7"/>
+
+            <!-- Mid floor (slightly wider) -->
+            <rect x="245" y="186" width="70" height="22" rx="1.5" fill="rgba(10,42,108,0.92)" stroke="#1B6FEB" stroke-width="1.5"/>
+            <!-- Mid floor windows -->
+            <rect x="250" y="190" width="12" height="14" rx="1.5" fill="rgba(14,165,233,0.45)" stroke="rgba(14,165,233,0.25)" stroke-width="0.7"/>
+            <rect x="268" y="190" width="12" height="14" rx="1.5" fill="rgba(14,165,233,0.75)" stroke="rgba(14,165,233,0.35)" stroke-width="0.7"/>
+            <rect x="286" y="190" width="12" height="14" rx="1.5" fill="rgba(14,165,233,0.5)" stroke="rgba(14,165,233,0.25)" stroke-width="0.7"/>
+            <rect x="304" y="190" width="7" height="14" rx="1.5" fill="rgba(14,165,233,0.35)" stroke="rgba(14,165,233,0.2)" stroke-width="0.7"/>
+
+            <!-- Ground floor (widest) -->
+            <rect x="240" y="207" width="80" height="26" rx="1.5" fill="rgba(12,48,118,0.92)" stroke="#1B6FEB" stroke-width="1.5"/>
+            <!-- Ground floor windows -->
+            <rect x="245" y="211" width="16" height="16" rx="1.5" fill="rgba(14,165,233,0.4)" stroke="rgba(14,165,233,0.2)" stroke-width="0.7"/>
+            <rect x="267" y="211" width="16" height="16" rx="1.5" fill="rgba(14,165,233,0.3)" stroke="rgba(14,165,233,0.2)" stroke-width="0.7"/>
+            <!-- Door (right of center) -->
+            <rect x="289" y="216" width="18" height="17" rx="2" fill="rgba(27,111,235,0.45)" stroke="#1B6FEB" stroke-width="1.2"/>
+            <circle cx="305" cy="224" r="1.8" fill="#1B6FEB" opacity="0.9"/>
+            <!-- Right ground window -->
+            <rect x="313" y="211" width="4" height="16" rx="1" fill="rgba(14,165,233,0.3)" stroke="rgba(14,165,233,0.15)" stroke-width="0.5"/>
+
+            <!-- "YOUR LOCATION" label -->
+            <text x="280" y="248" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="10" font-family="var(--font-display)" font-weight="600" letter-spacing="0.06em">YOUR LOCATION</text>
+
+            <!-- ── REVENUE PILL ── -->
+            <rect x="224" y="308" width="112" height="52" rx="12" fill="rgba(4,18,12,0.96)" stroke="#10B981" stroke-width="1.8" filter="url(#glow-green)"/>
+            <text x="280" y="325" text-anchor="middle" fill="rgba(16,185,129,0.65)" font-size="8" font-family="var(--font-body)" font-weight="700" letter-spacing="0.1em">YOUR REVENUE</text>
+            <text id="rev-counter" x="280" y="348" text-anchor="middle" fill="#10B981" font-size="22" font-family="var(--font-mono)" font-weight="700">$0.00</text>
+
+            <!-- ── TRAVELING PACKETS: AT&T → Building ── -->
             <circle r="4.5" fill="#00A8E0" filter="url(#glow-sm)" opacity="0.9">
               <animateMotion dur="2.2s" repeatCount="indefinite" begin="0s"><mpath href="#p-att"/></animateMotion>
             </circle>
             <circle r="3.5" fill="#00A8E0" filter="url(#glow-sm)" opacity="0.7">
-              <animateMotion dur="2.2s" repeatCount="indefinite" begin="0.7s"><mpath href="#p-att"/></animateMotion>
+              <animateMotion dur="2.2s" repeatCount="indefinite" begin="0.75s"><mpath href="#p-att"/></animateMotion>
             </circle>
-            <circle r="3" fill="#00A8E0" opacity="0.5">
-              <animateMotion dur="2.2s" repeatCount="indefinite" begin="1.4s"><mpath href="#p-att"/></animateMotion>
+            <circle r="2.8" fill="#00A8E0" opacity="0.45">
+              <animateMotion dur="2.2s" repeatCount="indefinite" begin="1.5s"><mpath href="#p-att"/></animateMotion>
             </circle>
 
-            <!-- ── TRAVELING PACKETS: T-Mobile → Venue ── -->
+            <!-- ── TRAVELING PACKETS: T-Mobile → Building ── -->
             <circle r="4.5" fill="#E20074" filter="url(#glow-sm)" opacity="0.9">
               <animateMotion dur="1.9s" repeatCount="indefinite" begin="0.3s"><mpath href="#p-tmobile"/></animateMotion>
             </circle>
             <circle r="3.5" fill="#E20074" filter="url(#glow-sm)" opacity="0.7">
               <animateMotion dur="1.9s" repeatCount="indefinite" begin="1.0s"><mpath href="#p-tmobile"/></animateMotion>
             </circle>
-            <circle r="3" fill="#E20074" opacity="0.5">
-              <animateMotion dur="1.9s" repeatCount="indefinite" begin="1.6s"><mpath href="#p-tmobile"/></animateMotion>
+            <circle r="2.8" fill="#E20074" opacity="0.45">
+              <animateMotion dur="1.9s" repeatCount="indefinite" begin="1.65s"><mpath href="#p-tmobile"/></animateMotion>
             </circle>
 
-            <!-- ── TRAVELING PACKETS: Google Fi → Venue ── -->
+            <!-- ── TRAVELING PACKETS: Google Fi → Building ── -->
             <circle r="4.5" fill="#1A73E8" filter="url(#glow-sm)" opacity="0.9">
               <animateMotion dur="2.4s" repeatCount="indefinite" begin="0.5s"><mpath href="#p-fi"/></animateMotion>
             </circle>
             <circle r="3.5" fill="#1A73E8" filter="url(#glow-sm)" opacity="0.7">
               <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.2s"><mpath href="#p-fi"/></animateMotion>
             </circle>
-            <circle r="3" fill="#1A73E8" opacity="0.5">
+            <circle r="2.8" fill="#1A73E8" opacity="0.45">
               <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.9s"><mpath href="#p-fi"/></animateMotion>
             </circle>
 
-            <!-- ── TRAVELING PACKETS: Device → Venue ── -->
-            <circle r="5" fill="#7D99BE" filter="url(#glow-sm)" opacity="0.8">
-              <animateMotion dur="3s" repeatCount="indefinite" begin="0.8s"><mpath href="#p-device"/></animateMotion>
-            </circle>
-            <circle r="3.5" fill="#7D99BE" opacity="0.5">
-              <animateMotion dur="3s" repeatCount="indefinite" begin="2.3s"><mpath href="#p-device"/></animateMotion>
-            </circle>
-
-            <!-- ── TRAVELING PACKETS: Venue → Revenue ($) ── -->
-            <circle r="5" fill="#10B981" filter="url(#glow-sm)" opacity="0.95">
-              <animateMotion dur="1.8s" repeatCount="indefinite" begin="1.1s"><mpath href="#p-revenue"/></animateMotion>
+            <!-- ── TRAVELING PACKETS: Building → Revenue ── -->
+            <circle r="5.5" fill="#10B981" filter="url(#glow-sm)" opacity="0.95">
+              <animateMotion dur="1.6s" repeatCount="indefinite" begin="1.1s"><mpath href="#p-rev"/></animateMotion>
             </circle>
             <circle r="4" fill="#10B981" filter="url(#glow-sm)" opacity="0.8">
-              <animateMotion dur="1.8s" repeatCount="indefinite" begin="2.0s"><mpath href="#p-revenue"/></animateMotion>
+              <animateMotion dur="1.6s" repeatCount="indefinite" begin="2.0s"><mpath href="#p-rev"/></animateMotion>
             </circle>
             <circle r="3" fill="#10B981" opacity="0.6">
-              <animateMotion dur="1.8s" repeatCount="indefinite" begin="2.9s"><mpath href="#p-revenue"/></animateMotion>
+              <animateMotion dur="1.6s" repeatCount="indefinite" begin="2.8s"><mpath href="#p-rev"/></animateMotion>
             </circle>
 
-            <!-- ── VENUE CENTER NODE ── -->
-            <!-- Outer ring -->
-            <circle cx="280" cy="210" r="46" fill="none" stroke="#1B6FEB" stroke-width="1.5" opacity="0.4"/>
-            <!-- Main circle -->
-            <circle cx="280" cy="210" r="38" fill="url(#venue-fill)" filter="url(#glow-blue)"/>
-            <!-- Wi-Fi icon inside venue -->
-            <g transform="translate(262, 196)" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round">
-              <path d="M 18 28 Q 18 22 24 18 Q 30 14 36 18 Q 42 22 42 28" opacity="0.5"/>
-              <path d="M 13 23 Q 13 14 24 8 Q 35 2 47 8 Q 58 14 58 23" opacity="0.3"/>
-              <circle cx="30" cy="28" r="2.5" fill="white" stroke="none"/>
-            </g>
-            <!-- Venue label -->
-            <text x="280" y="262" text-anchor="middle" fill="white" font-size="11" font-family="var(--font-display)" font-weight="600" opacity="0.9">YOUR LOCATION</text>
-
             <!-- ── AT&T NODE ── -->
-            <circle cx="110" cy="95" r="32" fill="#081828" stroke="#00A8E0" stroke-width="1.5" opacity="0.9" filter="url(#glow-sm)"/>
-            <text x="110" y="91" text-anchor="middle" fill="#00A8E0" font-size="11" font-family="var(--font-display)" font-weight="700">AT&amp;T</text>
-            <text x="110" y="108" text-anchor="middle" fill="#7D99BE" font-size="8.5" font-family="var(--font-body)">Carrier</text>
+            <circle cx="110" cy="72" r="32" fill="#060F18" stroke="#00A8E0" stroke-width="1.5" filter="url(#glow-sm)"/>
+            <text x="110" y="68" text-anchor="middle" fill="#00A8E0" font-size="11" font-family="var(--font-display)" font-weight="700">AT&amp;T</text>
+            <text x="110" y="84" text-anchor="middle" fill="rgba(125,153,190,0.7)" font-size="8.5" font-family="var(--font-body)">Carrier</text>
 
             <!-- ── T-MOBILE NODE ── -->
-            <circle cx="280" cy="55" r="32" fill="#1A0818" stroke="#E20074" stroke-width="1.5" opacity="0.9" filter="url(#glow-sm)"/>
-            <text x="280" y="51" text-anchor="middle" fill="#E20074" font-size="10" font-family="var(--font-display)" font-weight="700">T-Mobile</text>
-            <text x="280" y="67" text-anchor="middle" fill="#7D99BE" font-size="8.5" font-family="var(--font-body)">Carrier</text>
+            <circle cx="280" cy="52" r="32" fill="#120010" stroke="#E20074" stroke-width="1.5" filter="url(#glow-sm)"/>
+            <text x="280" y="48" text-anchor="middle" fill="#E20074" font-size="10" font-family="var(--font-display)" font-weight="700">T-Mobile</text>
+            <text x="280" y="64" text-anchor="middle" fill="rgba(125,153,190,0.7)" font-size="8.5" font-family="var(--font-body)">Carrier</text>
 
             <!-- ── GOOGLE FI NODE ── -->
-            <circle cx="450" cy="95" r="32" fill="#081020" stroke="#1A73E8" stroke-width="1.5" opacity="0.9" filter="url(#glow-sm)"/>
-            <text x="450" y="91" text-anchor="middle" fill="#1A73E8" font-size="10" font-family="var(--font-display)" font-weight="700">Google</text>
-            <text x="450" y="103" text-anchor="middle" fill="#1A73E8" font-size="10" font-family="var(--font-display)" font-weight="700">Fi</text>
-            <text x="450" y="118" text-anchor="middle" fill="#7D99BE" font-size="8.5" font-family="var(--font-body)">Carrier</text>
+            <circle cx="450" cy="72" r="32" fill="#060C18" stroke="#1A73E8" stroke-width="1.5" filter="url(#glow-sm)"/>
+            <text x="450" y="64" text-anchor="middle" fill="#1A73E8" font-size="10" font-family="var(--font-display)" font-weight="700">Google</text>
+            <text x="450" y="78" text-anchor="middle" fill="#1A73E8" font-size="10" font-family="var(--font-display)" font-weight="700">Fi</text>
+            <text x="450" y="92" text-anchor="middle" fill="rgba(125,153,190,0.7)" font-size="8.5" font-family="var(--font-body)">Carrier</text>
 
-            <!-- ── SUBSCRIBER DEVICE NODE ── -->
-            <circle cx="110" cy="330" r="30" fill="#091424" stroke="rgba(125,153,190,0.6)" stroke-width="1.5"/>
-            <!-- Phone icon -->
-            <rect x="97" y="315" width="26" height="33" rx="4" fill="none" stroke="#7D99BE" stroke-width="1.8"/>
-            <rect x="102" y="320" width="16" height="20" rx="1.5" fill="rgba(27,111,235,0.25)"/>
-            <circle cx="110" cy="345" r="2" fill="#7D99BE"/>
-            <text x="110" y="374" text-anchor="middle" fill="#7D99BE" font-size="9" font-family="var(--font-body)">Subscriber</text>
-
-            <!-- ── REVENUE NODE ── -->
-            <circle cx="450" cy="310" r="36" fill="#071A0F" stroke="#10B981" stroke-width="1.5" filter="url(#glow-green)" opacity="0.95"/>
-            <!-- Dollar sign -->
-            <text x="450" y="303" text-anchor="middle" fill="#10B981" font-size="20" font-family="var(--font-mono)" font-weight="700">$</text>
-            <!-- Live counter -->
-            <text id="rev-counter" x="450" y="320" text-anchor="middle" fill="#10B981" font-size="10.5" font-family="var(--font-mono)" font-weight="600">0.00</text>
-            <text x="450" y="335" text-anchor="middle" fill="#7D99BE" font-size="8.5" font-family="var(--font-body)">Your Revenue</text>
-
-            <!-- ── STEP LABELS on paths ── -->
-            <!-- Auth label near center of AT&T line -->
-            <g transform="translate(185, 148)">
-              <rect x="-26" y="-10" width="52" height="18" rx="5" fill="rgba(0,168,224,0.12)" stroke="rgba(0,168,224,0.3)" stroke-width="1"/>
+            <!-- ── "AUTO-AUTH" label on path ── -->
+            <g transform="translate(192, 142)">
+              <rect x="-28" y="-10" width="56" height="18" rx="5" fill="rgba(0,168,224,0.1)" stroke="rgba(0,168,224,0.35)" stroke-width="1"/>
               <text text-anchor="middle" y="3" fill="#00A8E0" font-size="8" font-family="var(--font-body)">Auto-auth</text>
-            </g>
-            <!-- Data label near revenue line midpoint -->
-            <g transform="translate(370, 262)">
-              <rect x="-26" y="-10" width="52" height="18" rx="5" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
-              <text text-anchor="middle" y="3" fill="#10B981" font-size="8" font-family="var(--font-body)">Revenue</text>
             </g>
 
           </svg>
@@ -218,7 +198,7 @@
           <!-- Live status badge -->
           <div class="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold"
                style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: #10B981; font-family: var(--font-body);">
-            <span class="w-2 h-2 rounded-full" style="background: #10B981; animation: ping 1.5s ease-in-out infinite;"></span>
+            <span class="na-ping w-2 h-2 rounded-full" style="background: #10B981;"></span>
             Live Network
           </div>
         </div>
@@ -226,7 +206,7 @@
 
       <!-- Step panel: 2 cols -->
       <div class="lg:col-span-2 flex flex-col gap-3">
-        <div class="step-card active p-5 rounded-xl cursor-default transition-all duration-300" data-step="0">
+        <div class="step-card active p-5 rounded-xl cursor-pointer transition-all duration-300" data-step="0">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 step-icon" style="background: var(--color-primary-muted); border: 1px solid rgba(27,111,235,0.3);">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B6FEB" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -242,7 +222,7 @@
           </div>
         </div>
 
-        <div class="step-card p-5 rounded-xl cursor-default transition-all duration-300" data-step="1">
+        <div class="step-card p-5 rounded-xl cursor-pointer transition-all duration-300" data-step="1">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 step-icon" style="background: var(--color-bg-elevated); border: 1px solid var(--color-border);">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-muted)" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -258,7 +238,7 @@
           </div>
         </div>
 
-        <div class="step-card p-5 rounded-xl cursor-default transition-all duration-300" data-step="2">
+        <div class="step-card p-5 rounded-xl cursor-pointer transition-all duration-300" data-step="2">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 step-icon" style="background: var(--color-bg-elevated); border: 1px solid var(--color-border);">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-muted)" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
@@ -274,7 +254,7 @@
           </div>
         </div>
 
-        <div class="step-card p-5 rounded-xl cursor-default transition-all duration-300" data-step="3">
+        <div class="step-card p-5 rounded-xl cursor-pointer transition-all duration-300" data-step="3">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 step-icon" style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2);">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-muted)" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
@@ -316,49 +296,39 @@
     background: var(--color-primary-muted) !important;
     border-color: rgba(27,111,235,0.3) !important;
   }
-  .step-card.active .step-icon svg {
-    stroke: var(--color-primary) !important;
+  .step-card.active .step-icon svg { stroke: var(--color-primary) !important; }
+  .step-card[data-step="3"].active .step-icon svg { stroke: var(--color-success) !important; }
+  .step-card.active .step-num { color: var(--color-primary) !important; }
+  .step-card[data-step="3"].active .step-num { color: var(--color-success) !important; }
+
+  /* Pulse rings — scoped via .na-pulse */
+  .na-pulse {
+    transform-origin: 280px 208px;
+    animation: na-pulse-expand 3s ease-out infinite;
   }
-  .step-card[data-step="3"].active .step-icon svg {
-    stroke: var(--color-success) !important;
-  }
-  .step-card.active .step-num {
-    color: var(--color-primary) !important;
-  }
-  .step-card[data-step="3"].active .step-num {
-    color: var(--color-success) !important;
+  .na-pulse.r2 { animation-delay: 1s; }
+  .na-pulse.r3 { animation-delay: 2s; }
+
+  @keyframes na-pulse-expand {
+    0%   { r: 44; opacity: 0.55; }
+    100% { r: 96; opacity: 0; }
   }
 
-  /* Pulse rings */
-  .pulse-ring {
-    transform-origin: 280px 210px;
-    animation: pulse-expand 3s ease-out infinite;
-  }
-  .pulse-ring.r2 { animation-delay: 1s; }
-  .pulse-ring.r3 { animation-delay: 2s; }
-
-  @keyframes pulse-expand {
-    0%   { r: 42; opacity: 0.6; }
-    100% { r: 90; opacity: 0; }
-  }
-
-  @keyframes ping {
+  @keyframes na-ping {
     0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.4); }
+    50% { opacity: 0.45; transform: scale(1.5); }
   }
+  .na-ping { animation: na-ping 1.5s ease-in-out infinite; }
 
-  /* Step bar fill animation */
   @keyframes fill-bar {
     from { width: 0%; }
     to   { width: 100%; }
   }
-  .step-bar.animating {
-    animation: fill-bar linear forwards;
-  }
+  .step-bar.animating { animation: fill-bar linear forwards; }
 </style>
 
 <script>
-  const STEP_DURATION = 3000; // ms each step stays active
+  const STEP_DURATION = 3000;
   const steps = Array.from(document.querySelectorAll<HTMLElement>('.step-card'));
   let current = 0;
   let timer: ReturnType<typeof setTimeout>;
@@ -370,10 +340,8 @@
       if (bar) {
         bar.style.animation = 'none';
         bar.style.width = '0%';
-        void bar.offsetWidth; // reflow
-        if (i === idx) {
-          bar.style.animation = `fill-bar ${STEP_DURATION}ms linear forwards`;
-        }
+        void bar.offsetWidth;
+        if (i === idx) bar.style.animation = `fill-bar ${STEP_DURATION}ms linear forwards`;
       }
     });
   }
@@ -384,11 +352,9 @@
     timer = setTimeout(nextStep, STEP_DURATION);
   }
 
-  // Start
   activateStep(0);
   timer = setTimeout(nextStep, STEP_DURATION);
 
-  // Click to jump
   steps.forEach((card, idx) => {
     card.addEventListener('click', () => {
       clearTimeout(timer);
@@ -402,13 +368,11 @@
   const revEl = document.getElementById('rev-counter');
   let revValue = 0;
   const TARGET = 47.82;
-  const TICK_MS = 50;
-  const INCREMENT = TARGET / (8000 / TICK_MS); // reach target over ~8s then reset
-
+  const INCREMENT = TARGET / (8000 / 50);
   function tickRevenue(): void {
     revValue += INCREMENT;
     if (revValue >= TARGET) revValue = 0;
-    if (revEl) revEl.textContent = revValue.toFixed(2);
+    if (revEl) revEl.textContent = '$' + revValue.toFixed(2);
   }
-  setInterval(tickRevenue, TICK_MS);
+  setInterval(tickRevenue, 50);
 </script>
