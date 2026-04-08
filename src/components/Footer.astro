@@ -2,11 +2,12 @@
 ---
 <footer style="background: var(--color-bg-surface); border-top: 1px solid var(--color-border);">
   <div class="max-w-7xl mx-auto px-6 py-12">
-    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
 
-      <!-- Logo + tagline -->
-      <div class="text-center md:text-left">
-        <a href="/" class="inline-flex items-center gap-2 mb-3 group" aria-label="Mobile Offload home">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+
+      <!-- Logo + company info -->
+      <div>
+        <a href="/" class="inline-flex items-center gap-2 mb-4 group" aria-label="Mobile Offload home">
           <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #1B6FEB, #0EA5E9);" aria-hidden="true">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke="white" stroke-width="2" stroke-linecap="round"/>
@@ -19,25 +20,83 @@
             Mobile<span style="color: var(--color-primary);">Offload</span>
           </span>
         </a>
-        <p class="text-sm" style="color: var(--color-text-muted); font-family: var(--font-body);">WiFi that pays. © 2026 Mobile Offload. All rights reserved.</p>
+        <p class="text-sm mb-1" style="color: var(--color-text-secondary); font-family: var(--font-body); font-weight: 600;">
+          Goolsby Ventures LLC
+        </p>
+        <p class="text-sm mb-4" style="color: var(--color-text-muted); font-family: var(--font-body);">
+          A partner of Hudson House
+        </p>
+        <p class="text-xs" style="color: var(--color-text-muted); font-family: var(--font-body); line-height: 1.6;">
+          WiFi that pays. © 2026 Goolsby Ventures LLC.<br/>All rights reserved.
+        </p>
       </div>
 
       <!-- Nav links -->
       <nav aria-label="Footer navigation">
-        <div class="flex flex-wrap justify-center gap-6">
-          <a href="#how-it-works" class="text-sm transition-colors duration-200 cursor-pointer" style="color: var(--color-text-muted); font-family: var(--font-body);"
+        <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color: var(--color-text-muted); font-family: var(--font-body);">Navigation</p>
+        <div class="flex flex-col gap-3">
+          <a href="#how-it-works" class="text-sm transition-colors duration-200" style="color: var(--color-text-muted); font-family: var(--font-body);"
              onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-muted)'">How It Works</a>
-          <a href="#revenue" class="text-sm transition-colors duration-200 cursor-pointer" style="color: var(--color-text-muted); font-family: var(--font-body);"
+          <a href="#revenue" class="text-sm transition-colors duration-200" style="color: var(--color-text-muted); font-family: var(--font-body);"
              onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-muted)'">Revenue</a>
-          <a href="#case-studies" class="text-sm transition-colors duration-200 cursor-pointer" style="color: var(--color-text-muted); font-family: var(--font-body);"
+          <a href="#case-studies" class="text-sm transition-colors duration-200" style="color: var(--color-text-muted); font-family: var(--font-body);"
              onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-muted)'">Case Studies</a>
-          <a href="#security" class="text-sm transition-colors duration-200 cursor-pointer" style="color: var(--color-text-muted); font-family: var(--font-body);"
+          <a href="#security" class="text-sm transition-colors duration-200" style="color: var(--color-text-muted); font-family: var(--font-body);"
              onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-muted)'">Security</a>
-          <a href="#qualify" class="text-sm transition-colors duration-200 cursor-pointer" style="color: var(--color-text-muted); font-family: var(--font-body);"
+          <a href="#qualify" class="text-sm transition-colors duration-200" style="color: var(--color-text-muted); font-family: var(--font-body);"
              onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-muted)'">Get Started</a>
+          <a href="/privacy-policy" class="text-sm transition-colors duration-200" style="color: var(--color-text-muted); font-family: var(--font-body);"
+             onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-muted)'">Privacy Policy</a>
         </div>
       </nav>
 
+      <!-- Contact info -->
+      <div>
+        <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color: var(--color-text-muted); font-family: var(--font-body);">Contact</p>
+        <div class="flex flex-col gap-3">
+
+          <!-- Address -->
+          <div class="flex items-start gap-2">
+            <svg class="mt-0.5 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            <address class="text-sm not-italic" style="color: var(--color-text-muted); font-family: var(--font-body); line-height: 1.6;">
+              19277 Sellens View Court<br/>
+              Redding, California 96003
+            </address>
+          </div>
+
+          <!-- Phone -->
+          <div class="flex items-center gap-2">
+            <svg class="shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.06 6.06l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <a href="tel:+15302768183" class="text-sm transition-colors duration-200" style="color: var(--color-text-muted); font-family: var(--font-body);"
+               onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-muted)'">(530) 276-8183</a>
+          </div>
+
+          <!-- Email -->
+          <div class="flex items-center gap-2">
+            <svg class="shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <a href="mailto:support@mobileoffload.com" class="text-sm transition-colors duration-200" style="color: var(--color-text-muted); font-family: var(--font-body);"
+               onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-muted)'">support@mobileoffload.com</a>
+          </div>
+
+        </div>
+      </div>
+
     </div>
+
+    <!-- Bottom bar -->
+    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3" style="border-top: 1px solid var(--color-border);">
+      <p class="text-xs" style="color: var(--color-text-muted); font-family: var(--font-body);">
+        © 2026 Goolsby Ventures LLC · A partner of Hudson House · All rights reserved.
+      </p>
+      <a href="/privacy-policy" class="text-xs transition-colors duration-200" style="color: var(--color-text-muted); font-family: var(--font-body);"
+         onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-muted)'">Privacy Policy</a>
+    </div>
+
   </div>
 </footer>
