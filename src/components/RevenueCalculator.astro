@@ -373,6 +373,14 @@
     updateCalculator();
   });
 
-  // Select first venue on load
-  document.querySelector<HTMLButtonElement>('.venue-btn')?.click();
+  // Initialize with Fitness Center at 400 visitors/day
+  const fitnessBtn = document.querySelector<HTMLButtonElement>('[data-venue="fitness"]');
+  fitnessBtn?.click();
+  // Override default traffic (fitness defaults to 1200) to 400
+  const initSlider = document.getElementById('traffic-slider') as HTMLInputElement;
+  const initDisplay = document.getElementById('traffic-display');
+  if (initSlider) { initSlider.value = '400'; initSlider.setAttribute('aria-valuenow', '400'); }
+  currentTraffic = 400;
+  if (initDisplay) initDisplay.textContent = '400 visitors/day';
+  updateCalculator();
 </script>
