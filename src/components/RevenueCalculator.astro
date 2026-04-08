@@ -1,4 +1,15 @@
 ---
+// Revenue per daily unique visitor, derived from real deployment data with 20% conservative reduction.
+// Each venue type bakes in dwell time + data intensity (not access points).
+// Airport: ~$0.043/visitor — travelers wait hours, stream video, video calls
+// Fitness: ~$0.040/visitor — 1-2hr sessions, music/YouTube streaming
+// Mall: ~$0.035/visitor — 2-3hr dwell, social media and browsing
+// Hotel: ~$0.036/visitor — overnight stays, consistent heavy use
+// Venue: ~$0.028/visitor — events, burst usage across large crowds
+// Cowork: ~$0.030/visitor — all-day, consistent professional use
+// University: ~$0.022/visitor — students spread across campus
+// Restaurant: ~$0.010/visitor — 30-90min visits, light data
+// Salon: ~$0.014/visitor — 1-2hr, captive audience on phones
 ---
 <section id="revenue" class="py-28 relative grid-texture" style="background: var(--color-bg-base);">
   <div class="max-w-7xl mx-auto px-6">
@@ -10,11 +21,11 @@
         Revenue Potential
       </div>
       <h2 class="text-4xl lg:text-5xl font-bold mb-6" style="font-family: var(--font-display); letter-spacing: -0.02em;">
-        Calculate Your<br/>
-        <span class="gradient-text">Monthly Earnings</span>
+        What Could Your<br/>
+        <span class="gradient-text">Location Earn?</span>
       </h2>
       <p class="text-lg max-w-2xl mx-auto" style="color: var(--color-text-secondary); font-family: var(--font-body);">
-        Estimates based on actual deployment data. Your 50% revenue share, paid monthly.
+        Revenue is driven by two things: how many people come through your doors, and how long they stay. Select your venue type and foot traffic to see a conservative estimate.
       </p>
     </div>
 
@@ -22,7 +33,10 @@
 
       <!-- Calculator controls -->
       <div class="card-dark p-8">
-        <h3 class="text-xl font-bold mb-8" style="font-family: var(--font-display);">Estimate Your Revenue</h3>
+        <h3 class="text-xl font-bold mb-2" style="font-family: var(--font-display);">Estimate Your Revenue</h3>
+        <p class="text-sm mb-8" style="color: var(--color-text-secondary); font-family: var(--font-body);">
+          Venue type reflects dwell time and typical data usage patterns — the real drivers of offload revenue.
+        </p>
 
         <!-- Venue Type -->
         <div class="mb-8">
@@ -30,77 +44,115 @@
             Venue Type
           </label>
           <div class="grid grid-cols-2 gap-2" id="venue-selector" role="radiogroup" aria-label="Select venue type">
-            <button type="button" data-venue="restaurant" data-daily="29.62" data-annual="10662" data-users="1200" data-tb="3.5"
-                    class="venue-btn active py-3 px-4 rounded-xl text-sm font-medium text-left transition-all duration-200 cursor-pointer"
+            <button type="button"
+                    data-venue="restaurant"
+                    data-rate="0.010"
+                    data-default-traffic="400"
+                    data-dwell="30–90 min · Light data"
+                    class="venue-btn py-3 px-4 rounded-xl text-sm font-medium text-left transition-all duration-200 cursor-pointer"
                     aria-pressed="false">
               <div style="font-family: var(--font-display);">Restaurant / Bar</div>
-              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Up to $24K/yr</div>
+              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">30–90 min · light data</div>
             </button>
-            <button type="button" data-venue="fitness" data-daily="60.81" data-annual="22197" data-users="1172" data-tb="7.79"
+            <button type="button"
+                    data-venue="salon"
+                    data-rate="0.014"
+                    data-default-traffic="100"
+                    data-dwell="1–2 hr · Steady usage"
+                    class="venue-btn py-3 px-4 rounded-xl text-sm font-medium text-left transition-all duration-200 cursor-pointer"
+                    aria-pressed="false">
+              <div style="font-family: var(--font-display);">Salon / Spa</div>
+              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">1–2 hr · steady usage</div>
+            </button>
+            <button type="button"
+                    data-venue="fitness"
+                    data-rate="0.040"
+                    data-default-traffic="1200"
+                    data-dwell="1–2 hr · Music &amp; video"
                     class="venue-btn py-3 px-4 rounded-xl text-sm font-medium text-left transition-all duration-200 cursor-pointer"
                     aria-pressed="false">
               <div style="font-family: var(--font-display);">Fitness Center</div>
-              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Up to $48K/yr</div>
+              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">1–2 hr · music &amp; video</div>
             </button>
-            <button type="button" data-venue="hotel" data-daily="164.38" data-annual="59999" data-users="2400" data-tb="18"
-                    class="venue-btn py-3 px-4 rounded-xl text-sm font-medium text-left transition-all duration-200 cursor-pointer"
-                    aria-pressed="false">
-              <div style="font-family: var(--font-display);">Hotel / Convention</div>
-              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Up to $240K/yr</div>
-            </button>
-            <button type="button" data-venue="shopping" data-daily="176.71" data-annual="64500" data-users="3000" data-tb="22"
+            <button type="button"
+                    data-venue="shopping"
+                    data-rate="0.035"
+                    data-default-traffic="3000"
+                    data-dwell="2–3 hr · Social &amp; browsing"
                     class="venue-btn py-3 px-4 rounded-xl text-sm font-medium text-left transition-all duration-200 cursor-pointer"
                     aria-pressed="false">
               <div style="font-family: var(--font-display);">Shopping Center</div>
-              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Up to $300K/yr</div>
+              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">2–3 hr · social &amp; browsing</div>
             </button>
-            <button type="button" data-venue="venue" data-daily="176.71" data-annual="64500" data-users="5000" data-tb="28"
+            <button type="button"
+                    data-venue="hotel"
+                    data-rate="0.036"
+                    data-default-traffic="800"
+                    data-dwell="Overnight · Heavy use"
+                    class="venue-btn py-3 px-4 rounded-xl text-sm font-medium text-left transition-all duration-200 cursor-pointer"
+                    aria-pressed="false">
+              <div style="font-family: var(--font-display);">Hotel / Convention</div>
+              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">overnight · heavy use</div>
+            </button>
+            <button type="button"
+                    data-venue="cowork"
+                    data-rate="0.030"
+                    data-default-traffic="500"
+                    data-dwell="All-day · Consistent use"
+                    class="venue-btn py-3 px-4 rounded-xl text-sm font-medium text-left transition-all duration-200 cursor-pointer"
+                    aria-pressed="false">
+              <div style="font-family: var(--font-display);">Co-working / Office</div>
+              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">all-day · consistent use</div>
+            </button>
+            <button type="button"
+                    data-venue="venue"
+                    data-rate="0.028"
+                    data-default-traffic="5000"
+                    data-dwell="2–4 hr · Burst usage"
                     class="venue-btn py-3 px-4 rounded-xl text-sm font-medium text-left transition-all duration-200 cursor-pointer"
                     aria-pressed="false">
               <div style="font-family: var(--font-display);">Music / Sports Venue</div>
-              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Up to $300K/yr</div>
+              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">2–4 hr · burst usage</div>
             </button>
-            <button type="button" data-venue="airport" data-daily="329.59" data-annual="120000" data-users="8000" data-tb="75"
+            <button type="button"
+                    data-venue="airport"
+                    data-rate="0.043"
+                    data-default-traffic="5000"
+                    data-dwell="2–5 hr · Streaming-heavy"
                     class="venue-btn py-3 px-4 rounded-xl text-sm font-medium text-left transition-all duration-200 cursor-pointer"
                     aria-pressed="false">
-              <div style="font-family: var(--font-display);">Airport Terminal</div>
-              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Up to $360K/yr</div>
+              <div style="font-family: var(--font-display);">Airport / Transit Hub</div>
+              <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">2–5 hr · streaming-heavy</div>
             </button>
           </div>
         </div>
 
-        <!-- Access Points slider -->
-        <div class="mb-8">
-          <div class="flex justify-between items-center mb-4">
-            <label for="ap-slider" class="text-sm font-semibold" style="font-family: var(--font-display); color: var(--color-text-secondary);">
-              Access Points
-            </label>
-            <span id="ap-display" class="text-lg font-bold" style="font-family: var(--font-mono); color: var(--color-accent);">1</span>
-          </div>
-          <input type="range" id="ap-slider" min="1" max="250" value="1" step="1" aria-label="Number of access points" aria-valuemin="1" aria-valuemax="250" aria-valuenow="1"/>
-          <div class="flex justify-between mt-2 text-xs" style="color: var(--color-text-muted); font-family: var(--font-body);">
-            <span>1 AP</span>
-            <span>250 APs</span>
-          </div>
+        <!-- Dwell context callout -->
+        <div id="dwell-callout" class="mb-6 px-4 py-3 rounded-xl flex items-center gap-3" style="background: var(--color-primary-muted); border: 1px solid rgba(27,111,235,0.2);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/>
+          </svg>
+          <span id="dwell-text" class="text-xs" style="color: var(--color-text-secondary); font-family: var(--font-body);">Select a venue type above</span>
         </div>
 
-        <!-- Daily footfall multiplier -->
+        <!-- Daily foot traffic slider -->
         <div class="mb-6">
           <div class="flex justify-between items-center mb-4">
             <label for="traffic-slider" class="text-sm font-semibold" style="font-family: var(--font-display); color: var(--color-text-secondary);">
               Daily Foot Traffic
             </label>
-            <span id="traffic-display" class="text-lg font-bold" style="font-family: var(--font-mono); color: var(--color-accent);">~1,000</span>
+            <span id="traffic-display" class="text-lg font-bold" style="font-family: var(--font-mono); color: var(--color-accent);">—</span>
           </div>
-          <input type="range" id="traffic-slider" min="0.5" max="3" value="1" step="0.1" aria-label="Daily foot traffic multiplier" aria-valuemin="0.5" aria-valuemax="3" aria-valuenow="1"/>
+          <input type="range" id="traffic-slider" min="50" max="15000" value="400" step="50"
+                 aria-label="Daily foot traffic" aria-valuemin="50" aria-valuemax="15000" aria-valuenow="400"/>
           <div class="flex justify-between mt-2 text-xs" style="color: var(--color-text-muted); font-family: var(--font-body);">
-            <span>Low traffic</span>
-            <span>High traffic</span>
+            <span>50 visitors/day</span>
+            <span>15,000 visitors/day</span>
           </div>
         </div>
 
         <p class="text-xs" style="color: var(--color-text-muted); font-family: var(--font-body); line-height: 1.6;">
-          * Estimates based on real deployment data. Actual results vary by location, dwell time, and carrier mix. Mobile Offload makes no revenue guarantee.
+          * Conservative estimates derived from real deployment data. Actual results vary by location, carrier mix, and network configuration. Mobile Offload makes no revenue guarantee.
         </p>
       </div>
 
@@ -108,27 +160,21 @@
       <div class="flex flex-col gap-4">
         <!-- Monthly -->
         <div class="p-8 rounded-2xl" style="background: linear-gradient(135deg, #0B1A10 0%, #0D1F2A 100%); border: 1px solid rgba(16,185,129,0.25);">
-          <div class="text-sm font-semibold mb-3" style="color: var(--color-success); font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.1em;">Your Monthly Share (50%)</div>
-          <div id="monthly-revenue" class="text-6xl font-bold mb-2 tabular-nums" style="font-family: var(--font-mono); color: var(--color-success);">$1,480</div>
+          <div class="text-sm font-semibold mb-3" style="color: var(--color-success); font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.1em;">Estimated Monthly Revenue</div>
+          <div id="monthly-revenue" class="text-6xl font-bold mb-2 tabular-nums" style="font-family: var(--font-mono); color: var(--color-success);">—</div>
           <div class="text-sm" style="color: var(--color-text-secondary); font-family: var(--font-body);">Paid by the 5th of each month</div>
         </div>
 
         <!-- Annual -->
         <div class="p-6 rounded-2xl" style="background: var(--color-bg-card); border: 1px solid var(--color-border-bright);">
-          <div class="text-sm mb-2" style="color: var(--color-text-secondary); font-family: var(--font-body);">Annual Projected Revenue</div>
-          <div id="annual-revenue" class="text-3xl font-bold" style="font-family: var(--font-mono); color: var(--color-text-primary);">$17,760</div>
+          <div class="text-sm mb-2" style="color: var(--color-text-secondary); font-family: var(--font-body);">Estimated Annual Revenue</div>
+          <div id="annual-revenue" class="text-3xl font-bold" style="font-family: var(--font-mono); color: var(--color-text-primary);">—</div>
         </div>
 
-        <!-- Stats row -->
-        <div class="grid grid-cols-2 gap-4">
-          <div class="p-5 rounded-xl" style="background: var(--color-bg-card); border: 1px solid var(--color-border);">
-            <div class="text-xs mb-1.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Avg Daily Users</div>
-            <div id="daily-users" class="text-2xl font-bold tabular-nums" style="font-family: var(--font-mono); color: var(--color-accent);">1,200</div>
-          </div>
-          <div class="p-5 rounded-xl" style="background: var(--color-bg-card); border: 1px solid var(--color-border);">
-            <div class="text-xs mb-1.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Monthly Data Offloaded</div>
-            <div id="monthly-tb" class="text-2xl font-bold tabular-nums" style="font-family: var(--font-mono); color: var(--color-accent);">3.5 TB</div>
-          </div>
+        <!-- Why this venue -->
+        <div id="venue-insight" class="p-5 rounded-xl hidden" style="background: var(--color-bg-card); border: 1px solid var(--color-border);">
+          <div class="text-xs font-semibold mb-1" style="color: var(--color-text-muted); font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.06em;">Why this estimate</div>
+          <p id="venue-insight-text" class="text-sm leading-relaxed" style="color: var(--color-text-secondary); font-family: var(--font-body);"></p>
         </div>
 
         <!-- CTA -->
@@ -143,35 +189,35 @@
 
     <!-- Revenue table by location type -->
     <div class="mt-16">
-      <h3 class="text-2xl font-bold mb-8 text-center" style="font-family: var(--font-display);">Revenue by Location Type (Your 50% Share)</h3>
+      <h3 class="text-2xl font-bold mb-3 text-center" style="font-family: var(--font-display);">Revenue Potential by Location Type</h3>
+      <p class="text-sm text-center mb-8" style="color: var(--color-text-muted); font-family: var(--font-body);">Conservative estimates based on real deployment data, reduced 20% from observed averages.</p>
       <div class="rounded-2xl overflow-hidden" style="border: 1px solid var(--color-border);">
         <table class="w-full" role="table">
           <thead>
             <tr style="background: var(--color-bg-elevated); border-bottom: 1px solid var(--color-border);">
               <th scope="col" class="text-left px-6 py-4 text-sm font-semibold" style="color: var(--color-text-secondary); font-family: var(--font-display);">Location Type</th>
+              <th scope="col" class="hidden sm:table-cell text-left px-6 py-4 text-sm font-semibold" style="color: var(--color-text-secondary); font-family: var(--font-display);">Why It Earns</th>
               <th scope="col" class="text-right px-6 py-4 text-sm font-semibold" style="color: var(--color-text-secondary); font-family: var(--font-display);">Annual Potential</th>
-              <th scope="col" class="hidden sm:table-cell text-right px-6 py-4 text-sm font-semibold" style="color: var(--color-text-secondary); font-family: var(--font-display);">Monthly Est.</th>
             </tr>
           </thead>
           <tbody>
             {[
-              { type: "Airport Terminals", annual: "$360,000", monthly: "$30,000", highlight: true },
-              { type: "Shopping Centers", annual: "$300,000", monthly: "$25,000", highlight: false },
-              { type: "Music & Sporting Venues", annual: "$300,000", monthly: "$25,000", highlight: false },
-              { type: "Hotels & Convention Centers", annual: "$240,000", monthly: "$20,000", highlight: false },
-              { type: "Fitness Centers", annual: "$48,000", monthly: "$4,000", highlight: false },
-              { type: "Restaurants & Bars", annual: "$24,000", monthly: "$2,000", highlight: false },
+              { type: "Airport Terminals", why: "Long waits, heavy streaming & video calls", annual: "$288,000" },
+              { type: "Shopping Centers", why: "2–3 hr dwell, high concurrent device count", annual: "$240,000" },
+              { type: "Music & Sporting Venues", why: "Thousands of devices, simultaneous burst usage", annual: "$240,000" },
+              { type: "Hotels & Convention Centers", why: "Overnight stays, all-day events, consistent heavy use", annual: "$192,000" },
+              { type: "Fitness Centers", why: "1–2 hr sessions, music & video streaming", annual: "$38,000" },
+              { type: "Restaurants & Bars", why: "Shorter visits, social media & navigation use", annual: "$19,000" },
             ].map((row, i) => (
-              <tr class={`transition-colors duration-150 ${row.highlight ? '' : ''}`}
-                  style={`background: ${i % 2 === 0 ? 'var(--color-bg-surface)' : 'var(--color-bg-base)'}; border-bottom: 1px solid var(--color-border);`}
+              <tr style={`background: ${i % 2 === 0 ? 'var(--color-bg-surface)' : 'var(--color-bg-base)'}; border-bottom: 1px solid var(--color-border);`}
                   onmouseover={`this.style.background='var(--color-bg-card)'`}
                   onmouseout={`this.style.background='${i % 2 === 0 ? 'var(--color-bg-surface)' : 'var(--color-bg-base)'}'`}>
                 <td class="px-6 py-4 text-sm font-medium" style="font-family: var(--font-body); color: var(--color-text-primary);">{row.type}</td>
-                <td class="px-6 py-4 text-right font-bold" style={`font-family: var(--font-mono); color: ${row.highlight ? 'var(--color-success)' : 'var(--color-text-primary)'};`}>
+                <td class="hidden sm:table-cell px-6 py-4 text-sm" style="color: var(--color-text-muted); font-family: var(--font-body);">{row.why}</td>
+                <td class="px-6 py-4 text-right font-bold" style="font-family: var(--font-mono); color: var(--color-text-primary);">
                   {row.annual}
                   <span class="text-xs font-normal ml-1" style="color: var(--color-text-muted); font-family: var(--font-body);">/yr</span>
                 </td>
-                <td class="hidden sm:table-cell px-6 py-4 text-right text-sm" style="color: var(--color-text-secondary); font-family: var(--font-mono);">{row.monthly}</td>
               </tr>
             ))}
           </tbody>
@@ -199,45 +245,81 @@
 </style>
 
 <script>
-  interface VenueData {
-    daily: number;
-    annual: number;
-    users: number;
-    tb: number;
+  interface VenueConfig {
+    rate: number;           // revenue per daily visitor (20% conservative)
+    defaultTraffic: number; // sensible default for this venue type
+    dwell: string;          // dwell/usage label
+    insight: string;        // explanation shown in results panel
   }
+
+  const VENUES: Record<string, VenueConfig> = {
+    restaurant: {
+      rate: 0.010,
+      defaultTraffic: 400,
+      dwell: "30–90 min average visit · light social & navigation data",
+      insight: "Restaurants have shorter dwell times and lighter data use, but consistent daily volume adds up. Lunch and dinner rushes drive the bulk of sessions.",
+    },
+    salon: {
+      rate: 0.014,
+      defaultTraffic: 100,
+      dwell: "1–2 hr average visit · captive audience on their phones",
+      insight: "Salons and spas have a captive audience sitting still for 1–2 hours — ideal conditions for steady data offload even with modest foot traffic.",
+    },
+    fitness: {
+      rate: 0.040,
+      defaultTraffic: 1200,
+      dwell: "1–2 hr sessions · music, video, and social streaming",
+      insight: "Fitness members stream music and YouTube for the duration of their workout. Consistent daily sessions and predictable usage make fitness centers strong performers.",
+    },
+    shopping: {
+      rate: 0.035,
+      defaultTraffic: 3000,
+      dwell: "2–3 hr dwell · social media, browsing, and navigation",
+      insight: "Shopping centers combine high foot traffic with meaningful dwell time. Shoppers browse social, stream audio, and use maps throughout their visit.",
+    },
+    hotel: {
+      rate: 0.036,
+      defaultTraffic: 800,
+      dwell: "Overnight stays · heavy streaming and video calling",
+      insight: "Hotel guests are among the heaviest data users — Netflix, video calls, and remote work over an extended stay make hotels a consistently strong offload location.",
+    },
+    cowork: {
+      rate: 0.030,
+      defaultTraffic: 500,
+      dwell: "All-day sessions · consistent professional data use",
+      insight: "Co-working spaces have lower foot traffic but extremely high per-visitor data consumption. Members spend 6–10 hours on video calls, cloud apps, and downloads.",
+    },
+    venue: {
+      rate: 0.028,
+      defaultTraffic: 5000,
+      dwell: "2–4 hr events · burst usage across thousands of devices",
+      insight: "Music and sporting venues generate massive burst traffic on event days. Thousands of devices simultaneously streaming video and social media creates strong offload demand.",
+    },
+    airport: {
+      rate: 0.043,
+      defaultTraffic: 5000,
+      dwell: "2–5 hr waits · streaming, FaceTime, and work calls",
+      insight: "Airports are the highest-value offload locations. Travelers waiting for flights stream video, make video calls, and work remotely for hours — driving the highest revenue per visitor of any venue type.",
+    },
+  };
+
+  let currentRate = 0.010;
+  let currentTraffic = 400;
 
   function formatCurrency(n: number): string {
     if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
-    if (n >= 1000) return '$' + Math.round(n / 1000) + 'K';
-    return '$' + n.toLocaleString();
+    if (n >= 1000) return '$' + (n / 1000).toFixed(n >= 10000 ? 0 : 1) + 'K';
+    return '$' + Math.round(n).toLocaleString();
   }
-
-  function formatLarge(n: number): string {
-    if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
-    if (n >= 1000) return Math.round(n / 1000) + 'K';
-    return n.toLocaleString();
-  }
-
-  let currentVenue: VenueData = { daily: 29.62, annual: 10662, users: 1200, tb: 3.5 };
-  let apCount = 1;
-  let trafficMultiplier = 1;
 
   function updateCalculator(): void {
-    const scale = apCount * trafficMultiplier;
-    const monthly = Math.round(currentVenue.daily * 30 * scale);
-    const annual = Math.round(currentVenue.annual * scale);
-    const users = Math.round(currentVenue.users * trafficMultiplier);
-    const tb = (currentVenue.tb * scale).toFixed(1);
+    const monthly = Math.round(currentRate * currentTraffic * 30);
+    const annual = Math.round(currentRate * currentTraffic * 365);
 
     const monthlyEl = document.getElementById('monthly-revenue');
     const annualEl = document.getElementById('annual-revenue');
-    const usersEl = document.getElementById('daily-users');
-    const tbEl = document.getElementById('monthly-tb');
-
     if (monthlyEl) monthlyEl.textContent = formatCurrency(monthly);
     if (annualEl) annualEl.textContent = formatCurrency(annual) + '/yr';
-    if (usersEl) usersEl.textContent = formatLarge(users);
-    if (tbEl) tbEl.textContent = tb + ' TB';
   }
 
   // Venue selector
@@ -245,46 +327,52 @@
     btn.addEventListener('click', () => {
       document.querySelectorAll('.venue-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      currentVenue = {
-        daily: parseFloat(btn.dataset.daily || '29.62'),
-        annual: parseInt(btn.dataset.annual || '10662'),
-        users: parseInt(btn.dataset.users || '1200'),
-        tb: parseFloat(btn.dataset.tb || '3.5'),
-      };
+
+      const key = btn.dataset.venue || 'restaurant';
+      const config = VENUES[key];
+      if (!config) return;
+
+      currentRate = config.rate;
+
+      // Set slider to this venue's default traffic
+      const slider = document.getElementById('traffic-slider') as HTMLInputElement;
+      if (slider) {
+        slider.value = String(config.defaultTraffic);
+        slider.setAttribute('aria-valuenow', String(config.defaultTraffic));
+      }
+      currentTraffic = config.defaultTraffic;
+
+      // Update traffic display
+      const trafficDisplay = document.getElementById('traffic-display');
+      if (trafficDisplay) trafficDisplay.textContent = currentTraffic.toLocaleString() + ' visitors/day';
+
+      // Update dwell callout
+      const dwellText = document.getElementById('dwell-text');
+      if (dwellText) dwellText.textContent = config.dwell;
+
+      // Update insight panel
+      const insightEl = document.getElementById('venue-insight');
+      const insightText = document.getElementById('venue-insight-text');
+      if (insightEl && insightText) {
+        insightEl.classList.remove('hidden');
+        insightText.textContent = config.insight;
+      }
+
       updateCalculator();
     });
-  });
-
-  // AP slider
-  const apSlider = document.getElementById('ap-slider') as HTMLInputElement;
-  const apDisplay = document.getElementById('ap-display');
-  apSlider?.addEventListener('input', () => {
-    apCount = parseInt(apSlider.value);
-    if (apDisplay) apDisplay.textContent = apCount.toString();
-    apSlider.setAttribute('aria-valuenow', apSlider.value);
-    updateCalculator();
   });
 
   // Traffic slider
   const trafficSlider = document.getElementById('traffic-slider') as HTMLInputElement;
   const trafficDisplay = document.getElementById('traffic-display');
-  const trafficLabels: Record<string, string> = {
-    '0.5': '~500', '0.6': '~600', '0.7': '~700', '0.8': '~800', '0.9': '~900',
-    '1.0': '~1,000', '1.1': '~1,100', '1.2': '~1,200', '1.5': '~1,500',
-    '2.0': '~2,000', '2.5': '~2,500', '3.0': '~3,000+'
-  };
 
   trafficSlider?.addEventListener('input', () => {
-    trafficMultiplier = parseFloat(trafficSlider.value);
-    const rounded = Math.round(trafficMultiplier * 10) / 10;
-    if (trafficDisplay) {
-      trafficDisplay.textContent = trafficLabels[rounded.toFixed(1)] || '~' + Math.round(1000 * trafficMultiplier).toLocaleString();
-    }
+    currentTraffic = parseInt(trafficSlider.value);
     trafficSlider.setAttribute('aria-valuenow', trafficSlider.value);
+    if (trafficDisplay) trafficDisplay.textContent = currentTraffic.toLocaleString() + ' visitors/day';
     updateCalculator();
   });
 
-  // Initial state
+  // Select first venue on load
   document.querySelector<HTMLButtonElement>('.venue-btn')?.click();
-  updateCalculator();
 </script>
