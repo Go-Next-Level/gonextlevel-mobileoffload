@@ -190,7 +190,7 @@
     <!-- Revenue table by location type -->
     <div class="mt-16">
       <h3 class="text-2xl font-bold mb-3 text-center" style="font-family: var(--font-display);">Revenue Potential by Location Type</h3>
-      <p class="text-sm text-center mb-8" style="color: var(--color-text-muted); font-family: var(--font-body);">Conservative estimates based on real deployment data, reduced 20% from observed averages.</p>
+      <p class="text-sm text-center mb-8" style="color: var(--color-text-muted); font-family: var(--font-body);">Conservative estimates based on real deployment data.</p>
       <div class="rounded-2xl overflow-hidden" style="border: 1px solid var(--color-border);">
         <table class="w-full" role="table">
           <thead>
@@ -202,12 +202,12 @@
           </thead>
           <tbody>
             {[
-              { type: "Airport Terminals", why: "Long waits, heavy streaming & video calls", annual: "$288,000" },
-              { type: "Shopping Centers", why: "2–3 hr dwell, high concurrent device count", annual: "$240,000" },
-              { type: "Music & Sporting Venues", why: "Thousands of devices, simultaneous burst usage", annual: "$240,000" },
-              { type: "Hotels & Convention Centers", why: "Overnight stays, all-day events, consistent heavy use", annual: "$192,000" },
-              { type: "Fitness Centers", why: "1–2 hr sessions, music & video streaming", annual: "$38,000" },
-              { type: "Restaurants & Bars", why: "Shorter visits, social media & navigation use", annual: "$19,000" },
+              { type: "Airport Terminals", why: "Long waits, heavy streaming & video calls", annual: "$317,000" },
+              { type: "Shopping Centers", why: "2–3 hr dwell, high concurrent device count", annual: "$264,000" },
+              { type: "Music & Sporting Venues", why: "Thousands of devices, simultaneous burst usage", annual: "$264,000" },
+              { type: "Hotels & Convention Centers", why: "Overnight stays, all-day events, consistent heavy use", annual: "$211,000" },
+              { type: "Fitness Centers", why: "1–2 hr sessions, music & video streaming", annual: "$42,000" },
+              { type: "Restaurants & Bars", why: "Shorter visits, social media & navigation use", annual: "$21,000" },
             ].map((row, i) => (
               <tr style={`background: ${i % 2 === 0 ? 'var(--color-bg-surface)' : 'var(--color-bg-base)'}; border-bottom: 1px solid var(--color-border);`}
                   onmouseover={`this.style.background='var(--color-bg-card)'`}
@@ -254,49 +254,49 @@
 
   const VENUES: Record<string, VenueConfig> = {
     restaurant: {
-      rate: 0.010,
+      rate: 0.011,
       defaultTraffic: 400,
       dwell: "30–90 min average visit · light social & navigation data",
       insight: "Restaurants have shorter dwell times and lighter data use, but consistent daily volume adds up. Lunch and dinner rushes drive the bulk of sessions.",
     },
     salon: {
-      rate: 0.014,
+      rate: 0.0154,
       defaultTraffic: 100,
       dwell: "1–2 hr average visit · captive audience on their phones",
       insight: "Salons and spas have a captive audience sitting still for 1–2 hours — ideal conditions for steady data offload even with modest foot traffic.",
     },
     fitness: {
-      rate: 0.040,
+      rate: 0.044,
       defaultTraffic: 1200,
       dwell: "1–2 hr sessions · music, video, and social streaming",
       insight: "Fitness members stream music and YouTube for the duration of their workout. Consistent daily sessions and predictable usage make fitness centers strong performers.",
     },
     shopping: {
-      rate: 0.035,
+      rate: 0.0385,
       defaultTraffic: 3000,
       dwell: "2–3 hr dwell · social media, browsing, and navigation",
       insight: "Shopping centers combine high foot traffic with meaningful dwell time. Shoppers browse social, stream audio, and use maps throughout their visit.",
     },
     hotel: {
-      rate: 0.036,
+      rate: 0.0396,
       defaultTraffic: 800,
       dwell: "Overnight stays · heavy streaming and video calling",
       insight: "Hotel guests are among the heaviest data users — Netflix, video calls, and remote work over an extended stay make hotels a consistently strong offload location.",
     },
     cowork: {
-      rate: 0.030,
+      rate: 0.033,
       defaultTraffic: 500,
       dwell: "All-day sessions · consistent professional data use",
       insight: "Co-working spaces have lower foot traffic but extremely high per-visitor data consumption. Members spend 6–10 hours on video calls, cloud apps, and downloads.",
     },
     venue: {
-      rate: 0.028,
+      rate: 0.0308,
       defaultTraffic: 5000,
       dwell: "2–4 hr events · burst usage across thousands of devices",
       insight: "Music and sporting venues generate massive burst traffic on event days. Thousands of devices simultaneously streaming video and social media creates strong offload demand.",
     },
     airport: {
-      rate: 0.043,
+      rate: 0.0473,
       defaultTraffic: 5000,
       dwell: "2–5 hr waits · streaming, FaceTime, and work calls",
       insight: "Airports are the highest-value offload locations. Travelers waiting for flights stream video, make video calls, and work remotely for hours — driving the highest revenue per visitor of any venue type.",
