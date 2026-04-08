@@ -23,7 +23,7 @@
       <!-- SVG Animation: 3 cols -->
       <div class="lg:col-span-3">
         <div class="relative rounded-2xl overflow-hidden" style="background: var(--color-bg-surface); border: 1px solid var(--color-border); aspect-ratio: 4/3;">
-          <svg id="net-svg" viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg" class="w-full h-full" aria-label="Network animation showing carrier offload flow" role="img">
+          <svg id="net-svg" viewBox="0 -18 560 438" xmlns="http://www.w3.org/2000/svg" class="w-full h-full" aria-label="Network animation showing carrier offload flow" role="img">
             <defs>
               <filter id="glow-blue" x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur stdDeviation="4" result="blur"/>
@@ -61,19 +61,19 @@
               </radialGradient>
 
               <!-- Paths for animateMotion (carriers go TOP → DOWN to building) -->
-              <path id="p-att"    d="M 110 72 C 170 128 222 168 268 183"/>
-              <path id="p-tmobile" d="M 280 52 L 280 168"/>
-              <path id="p-fi"    d="M 450 72 C 390 128 338 168 292 183"/>
+              <path id="p-att"    d="M 110 92 C 170 140 222 173 268 183"/>
+              <path id="p-tmobile" d="M 280 92 L 280 168"/>
+              <path id="p-fi"    d="M 450 92 C 390 140 338 173 292 183"/>
               <path id="p-rev"   d="M 280 240 L 280 305"/>
             </defs>
 
             <!-- ── CARRIER LABELS (top row) ── -->
-            <text x="280" y="20" text-anchor="middle" fill="rgba(125,153,190,0.5)" font-size="8.5" font-family="var(--font-body)" font-weight="600" letter-spacing="0.12em">CARRIER NETWORK</text>
+            <text x="280" y="-5" text-anchor="middle" fill="rgba(125,153,190,0.5)" font-size="8.5" font-family="var(--font-body)" font-weight="600" letter-spacing="0.12em">CARRIER NETWORK</text>
 
             <!-- ── CONNECTION LINES (top carriers → building) ── -->
-            <path d="M 110 72 C 170 128 222 168 268 183" stroke="url(#grad-att)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.6"/>
-            <path d="M 280 52 L 280 168" stroke="url(#grad-tmobile)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.6"/>
-            <path d="M 450 72 C 390 128 338 168 292 183" stroke="url(#grad-fi)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.6"/>
+            <path d="M 110 92 C 170 140 222 173 268 183" stroke="url(#grad-att)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.6"/>
+            <path d="M 280 92 L 280 168" stroke="url(#grad-tmobile)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.6"/>
+            <path d="M 450 92 C 390 140 338 173 292 183" stroke="url(#grad-fi)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.6"/>
             <!-- Building → Revenue line -->
             <path d="M 280 240 L 280 305" stroke="url(#grad-rev-line)" stroke-width="2" stroke-dasharray="4 3" fill="none" opacity="0.7"/>
 
@@ -172,20 +172,20 @@
             </circle>
 
             <!-- ── AT&T NODE ── -->
-            <circle cx="110" cy="72" r="32" fill="#060F18" stroke="#00A8E0" stroke-width="1.5" filter="url(#glow-sm)"/>
-            <text x="110" y="68" text-anchor="middle" fill="#00A8E0" font-size="11" font-family="var(--font-display)" font-weight="700">AT&amp;T</text>
-            <text x="110" y="84" text-anchor="middle" fill="rgba(125,153,190,0.7)" font-size="8.5" font-family="var(--font-body)">Carrier</text>
+            <circle cx="110" cy="92" r="32" fill="#060F18" stroke="#00A8E0" stroke-width="1.5" filter="url(#glow-sm)"/>
+            <text x="110" y="88" text-anchor="middle" fill="#00A8E0" font-size="11" font-family="var(--font-display)" font-weight="700">AT&amp;T</text>
+            <text x="110" y="104" text-anchor="middle" fill="rgba(125,153,190,0.7)" font-size="8.5" font-family="var(--font-body)">Carrier</text>
 
             <!-- ── T-MOBILE NODE ── -->
-            <circle cx="280" cy="52" r="32" fill="#120010" stroke="#E20074" stroke-width="1.5" filter="url(#glow-sm)"/>
-            <text x="280" y="48" text-anchor="middle" fill="#E20074" font-size="10" font-family="var(--font-display)" font-weight="700">T-Mobile</text>
-            <text x="280" y="64" text-anchor="middle" fill="rgba(125,153,190,0.7)" font-size="8.5" font-family="var(--font-body)">Carrier</text>
+            <circle cx="280" cy="92" r="32" fill="#120010" stroke="#E20074" stroke-width="1.5" filter="url(#glow-sm)"/>
+            <text x="280" y="88" text-anchor="middle" fill="#E20074" font-size="10" font-family="var(--font-display)" font-weight="700">T-Mobile</text>
+            <text x="280" y="104" text-anchor="middle" fill="rgba(125,153,190,0.7)" font-size="8.5" font-family="var(--font-body)">Carrier</text>
 
             <!-- ── GOOGLE FI NODE ── -->
-            <circle cx="450" cy="72" r="32" fill="#060C18" stroke="#1A73E8" stroke-width="1.5" filter="url(#glow-sm)"/>
-            <text x="450" y="64" text-anchor="middle" fill="#1A73E8" font-size="10" font-family="var(--font-display)" font-weight="700">Google</text>
-            <text x="450" y="78" text-anchor="middle" fill="#1A73E8" font-size="10" font-family="var(--font-display)" font-weight="700">Fi</text>
-            <text x="450" y="92" text-anchor="middle" fill="rgba(125,153,190,0.7)" font-size="8.5" font-family="var(--font-body)">Carrier</text>
+            <circle cx="450" cy="92" r="32" fill="#060C18" stroke="#1A73E8" stroke-width="1.5" filter="url(#glow-sm)"/>
+            <text x="450" y="84" text-anchor="middle" fill="#1A73E8" font-size="10" font-family="var(--font-display)" font-weight="700">Google</text>
+            <text x="450" y="98" text-anchor="middle" fill="#1A73E8" font-size="10" font-family="var(--font-display)" font-weight="700">Fi</text>
+            <text x="450" y="112" text-anchor="middle" fill="rgba(125,153,190,0.7)" font-size="8.5" font-family="var(--font-body)">Carrier</text>
 
             <!-- ── "AUTO-AUTH" label on path ── -->
             <g transform="translate(192, 142)">

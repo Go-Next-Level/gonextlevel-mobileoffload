@@ -23,9 +23,9 @@
 
         <!-- Headline -->
         <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight" style="font-family: var(--font-display); letter-spacing: -0.02em;">
-          Your Wi-Fi Is<br/>
-          <span class="gradient-text">Leaving Money</span><br/>
-          on the Table
+          Get Paid Every Time<br/>
+          <span class="gradient-text">Someone Uses</span><br/>
+          Your Wi-Fi
         </h1>
 
         <p class="text-lg mb-10 max-w-lg" style="color: var(--color-text-secondary); line-height: 1.7; font-family: var(--font-body);">
@@ -75,7 +75,7 @@
       <!-- Right: Live network animation -->
       <div class="relative hidden lg:block" aria-hidden="true">
         <div class="relative rounded-2xl overflow-hidden" style="background: var(--color-bg-surface); border: 1px solid var(--color-border);">
-          <svg id="hero-svg" viewBox="0 0 480 370" xmlns="http://www.w3.org/2000/svg" class="w-full" aria-label="Live carrier offload network diagram" role="img">
+          <svg id="hero-svg" viewBox="0 -18 480 388" xmlns="http://www.w3.org/2000/svg" class="w-full" aria-label="Live carrier offload network diagram" role="img">
             <defs>
               <filter id="hglow-blue" x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur stdDeviation="3.5" result="blur"/>
@@ -114,17 +114,17 @@
 
               <!-- Motion paths: carriers flow TOP → DOWN to building -->
               <path id="h-att"      d="M 88 66 C 140 116 185 152 227 166"/>
-              <path id="h-tmobile"  d="M 240 47 L 240 149"/>
+              <path id="h-tmobile"  d="M 240 66 L 240 149"/>
               <path id="h-fi"       d="M 392 66 C 340 116 295 152 253 166"/>
               <path id="h-rev"      d="M 240 218 L 240 280"/>
             </defs>
 
             <!-- carrier row label -->
-            <text x="240" y="18" text-anchor="middle" fill="rgba(125,153,190,0.45)" font-size="7.5" font-family="var(--font-body)" font-weight="600" letter-spacing="0.12em">CARRIER NETWORK</text>
+            <text x="240" y="-5" text-anchor="middle" fill="rgba(125,153,190,0.45)" font-size="7.5" font-family="var(--font-body)" font-weight="600" letter-spacing="0.12em">CARRIER NETWORK</text>
 
             <!-- Connection lines -->
             <path d="M 88 66 C 140 116 185 152 227 166" stroke="url(#hgrad-att)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.55"/>
-            <path d="M 240 47 L 240 149" stroke="url(#hgrad-tmobile)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.55"/>
+            <path d="M 240 66 L 240 149" stroke="url(#hgrad-tmobile)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.55"/>
             <path d="M 392 66 C 340 116 295 152 253 166" stroke="url(#hgrad-fi)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.55"/>
             <path d="M 240 218 L 240 280" stroke="url(#hgrad-rev)" stroke-width="2" stroke-dasharray="4 3" fill="none" opacity="0.65"/>
 
@@ -221,9 +221,9 @@
             <text x="88" y="77" text-anchor="middle" fill="rgba(125,153,190,0.65)" font-size="8" font-family="var(--font-body)">Carrier</text>
 
             <!-- T-Mobile node -->
-            <circle cx="240" cy="47" r="28" fill="#120010" stroke="#E20074" stroke-width="1.5" filter="url(#hglow-sm)"/>
-            <text x="240" y="43" text-anchor="middle" fill="#E20074" font-size="9.5" font-family="var(--font-display)" font-weight="700">T-Mobile</text>
-            <text x="240" y="58" text-anchor="middle" fill="rgba(125,153,190,0.65)" font-size="8" font-family="var(--font-body)">Carrier</text>
+            <circle cx="240" cy="66" r="28" fill="#120010" stroke="#E20074" stroke-width="1.5" filter="url(#hglow-sm)"/>
+            <text x="240" y="62" text-anchor="middle" fill="#E20074" font-size="9.5" font-family="var(--font-display)" font-weight="700">T-Mobile</text>
+            <text x="240" y="77" text-anchor="middle" fill="rgba(125,153,190,0.65)" font-size="8" font-family="var(--font-body)">Carrier</text>
 
             <!-- Google Fi node -->
             <circle cx="392" cy="66" r="28" fill="#060C18" stroke="#1A73E8" stroke-width="1.5" filter="url(#hglow-sm)"/>

@@ -4,7 +4,7 @@ const cases = [
     location: "Studio City, CA",
     type: "Hair Salon",
     badge: "Greenfield · 1 AP",
-    dailyRevenue: "$19.24",
+    monthlyRevenue: "$577",
     annualRevenue: "$7,023",
     dailyUsers: "1,082",
     monthlyData: "1.95 TB",
@@ -14,7 +14,7 @@ const cases = [
     location: "Glendale, CA",
     type: "Shopping Mall",
     badge: "Greenfield · 1 AP",
-    dailyRevenue: "$64.29",
+    monthlyRevenue: "$1,929",
     annualRevenue: "$23,464",
     dailyUsers: "1,419",
     monthlyData: "8.12 TB",
@@ -24,7 +24,7 @@ const cases = [
     location: "Irvine, CA",
     type: "Fitness Center",
     badge: "Greenfield · 1 AP",
-    dailyRevenue: "$60.81",
+    monthlyRevenue: "$1,824",
     annualRevenue: "$22,197",
     dailyUsers: "1,172",
     monthlyData: "7.79 TB",
@@ -34,7 +34,7 @@ const cases = [
     location: "New Orleans, LA",
     type: "Restaurant",
     badge: "Brownfield · 3 APs",
-    dailyRevenue: "$29.62",
+    monthlyRevenue: "$889",
     annualRevenue: "$10,662",
     dailyUsers: "5,023",
     monthlyData: "3.56 TB",
@@ -44,7 +44,7 @@ const cases = [
     location: "Baltimore, MD",
     type: "BWI Airport",
     badge: "Brownfield · 242 APs",
-    dailyRevenue: "$320.83",
+    monthlyRevenue: "$9,625",
     annualRevenue: "$115,499",
     dailyUsers: "5,945",
     monthlyData: "75 TB",
@@ -101,8 +101,8 @@ const cases = [
 
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Daily Revenue</div>
-              <div class="text-xl font-bold" style="font-family: var(--font-mono); color: var(--color-success);">{c.dailyRevenue}</div>
+              <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Monthly Revenue</div>
+              <div class="text-xl font-bold" style="font-family: var(--font-mono); color: var(--color-success);">{c.monthlyRevenue}</div>
             </div>
             <div>
               <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Annual Projected</div>
@@ -141,8 +141,8 @@ const cases = [
 
           <div class="grid grid-cols-3 gap-6">
             <div>
-              <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Daily Revenue</div>
-              <div class="text-2xl font-bold" style="font-family: var(--font-mono); color: var(--color-text-primary);">{c.dailyRevenue}</div>
+              <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Monthly Revenue</div>
+              <div class="text-2xl font-bold" style="font-family: var(--font-mono); color: var(--color-text-primary);">{c.monthlyRevenue}</div>
             </div>
             <div>
               <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Avg Daily Users</div>
