@@ -13,7 +13,6 @@ const venueTypes = [
 ];
 ---
 <section id="qualify" class="py-28 relative overflow-hidden" style="background: var(--color-bg-base);">
-  <!-- Background decoration -->
   <div class="absolute inset-0 grid-texture opacity-50 pointer-events-none" aria-hidden="true"></div>
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px" style="background: linear-gradient(90deg, transparent 0%, var(--color-primary) 50%, transparent 100%);" aria-hidden="true"></div>
 
@@ -49,283 +48,255 @@ const venueTypes = [
       ))}
     </div>
 
-    <!-- Form -->
+    <!-- Multi-step form card -->
     <div class="p-8 lg:p-12 rounded-3xl" style="background: var(--color-bg-surface); border: 1px solid var(--color-border-bright);">
-      <h3 class="text-2xl font-bold mb-8" style="font-family: var(--font-display);">Check If Your Location Qualifies</h3>
 
-      <form
-        id="qualify-form"
-        novalidate
-      >
+      <!-- Step progress indicator -->
+      <div class="mb-10">
+        <div class="flex items-center justify-between mb-3">
+          <span id="step-label" class="text-sm font-semibold" style="font-family: var(--font-display); color: var(--color-text-secondary);">Step 1 of 3 — Contact Info</span>
+          <span id="step-pct" class="text-sm font-bold" style="font-family: var(--font-mono); color: var(--color-accent);">33%</span>
+        </div>
+        <div class="w-full h-1.5 rounded-full" style="background: var(--color-border);">
+          <div id="step-bar" class="h-1.5 rounded-full transition-all duration-500" style="background: linear-gradient(90deg, #1B6FEB, #0EA5E9); width: 33%;"></div>
+        </div>
+        <!-- Step dots -->
+        <div class="flex justify-between mt-4">
+          {[
+            { n: 1, label: "Contact" },
+            { n: 2, label: "Business" },
+            { n: 3, label: "Setup" },
+          ].map(s => (
+            <div class="flex flex-col items-center gap-1.5">
+              <div id={`dot-${s.n}`} class="step-dot w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300"
+                   style={s.n === 1
+                     ? "background: var(--color-primary); color: #fff; font-family: var(--font-mono);"
+                     : "background: var(--color-border); color: var(--color-text-muted); font-family: var(--font-mono);"}>
+                {s.n}
+              </div>
+              <span class="text-xs" style="color: var(--color-text-muted); font-family: var(--font-body);">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
 
-        <div class="grid sm:grid-cols-2 gap-6 mb-6">
-          <!-- First name -->
-          <div>
-            <label for="first-name" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
-              First Name <span style="color: var(--color-primary);" aria-hidden="true">*</span>
-            </label>
-            <input
-              type="text"
-              id="first-name"
-              name="first_name"
-              required
-              autocomplete="given-name"
-              placeholder="John"
-              class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200"
-              style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"
-              onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
-              onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
-            />
-            <span class="field-error hidden text-xs mt-1" style="color: #f87171; font-family: var(--font-body);" role="alert">Required</span>
-          </div>
+      <form id="qualify-form" novalidate>
+        <input type="hidden" name="botcheck" value="" />
 
-          <!-- Last name -->
-          <div>
-            <label for="last-name" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
-              Last Name <span style="color: var(--color-primary);" aria-hidden="true">*</span>
-            </label>
-            <input
-              type="text"
-              id="last-name"
-              name="last_name"
-              required
-              autocomplete="family-name"
-              placeholder="Smith"
-              class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200"
-              style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"
-              onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
-              onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
-            />
-            <span class="field-error hidden text-xs mt-1" style="color: #f87171; font-family: var(--font-body);" role="alert">Required</span>
-          </div>
+        <!-- ── STEP 1: Contact Info ── -->
+        <div id="step-1" class="form-step">
+          <h3 class="text-xl font-bold mb-6" style="font-family: var(--font-display);">Tell us about yourself</h3>
+          <div class="grid sm:grid-cols-2 gap-6">
 
-          <!-- Email -->
-          <div>
-            <label for="email" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
-              Email Address <span style="color: var(--color-primary);" aria-hidden="true">*</span>
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              autocomplete="email"
-              placeholder="john@yourcompany.com"
-              class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200"
-              style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"
-              onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
-              onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
-            />
-            <span class="field-error hidden text-xs mt-1" style="color: #f87171; font-family: var(--font-body);" role="alert">Valid email required</span>
-          </div>
+            <div>
+              <label for="first-name" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+                First Name <span style="color: var(--color-primary);" aria-hidden="true">*</span>
+              </label>
+              <input type="text" id="first-name" name="first_name" required autocomplete="given-name" placeholder="John"
+                class="form-input w-full px-4 py-3 rounded-xl text-sm"
+                style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"/>
+              <span class="field-error hidden text-xs mt-1 block" style="color: #f87171; font-family: var(--font-body);" role="alert">Required</span>
+            </div>
 
-          <!-- Phone -->
-          <div>
-            <label for="phone" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              autocomplete="tel"
-              placeholder="(555) 000-0000"
-              class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200"
-              style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"
-              onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
-              onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
-            />
-          </div>
+            <div>
+              <label for="last-name" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+                Last Name <span style="color: var(--color-primary);" aria-hidden="true">*</span>
+              </label>
+              <input type="text" id="last-name" name="last_name" required autocomplete="family-name" placeholder="Smith"
+                class="form-input w-full px-4 py-3 rounded-xl text-sm"
+                style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"/>
+              <span class="field-error hidden text-xs mt-1 block" style="color: #f87171; font-family: var(--font-body);" role="alert">Required</span>
+            </div>
 
-          <!-- Business name -->
-          <div>
-            <label for="business" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
-              Business Name <span style="color: var(--color-primary);" aria-hidden="true">*</span>
-            </label>
-            <input
-              type="text"
-              id="business"
-              name="business_name"
-              required
-              autocomplete="organization"
-              placeholder="Your Business LLC"
-              class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200"
-              style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"
-              onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
-              onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
-            />
-            <span class="field-error hidden text-xs mt-1" style="color: #f87171; font-family: var(--font-body);" role="alert">Required</span>
-          </div>
+            <div>
+              <label for="email" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+                Email Address <span style="color: var(--color-primary);" aria-hidden="true">*</span>
+              </label>
+              <input type="email" id="email" name="email" required autocomplete="email" placeholder="john@yourcompany.com"
+                class="form-input w-full px-4 py-3 rounded-xl text-sm"
+                style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"/>
+              <span class="field-error hidden text-xs mt-1 block" style="color: #f87171; font-family: var(--font-body);" role="alert">Valid email required</span>
+            </div>
 
-          <!-- Venue type -->
-          <div>
-            <label for="venue-type" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
-              Venue Type <span style="color: var(--color-primary);" aria-hidden="true">*</span>
-            </label>
-            <select
-              id="venue-type"
-              name="venue_type"
-              required
-              class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200 cursor-pointer"
-              style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none; appearance: none; -webkit-appearance: none; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237D99BE' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 12px center;"
-              onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
-              onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
-            >
-              <option value="" disabled selected style="background: var(--color-bg-elevated); color: var(--color-text-muted);">Select venue type...</option>
-              {venueTypes.map((v) => (
-                <option value={v.toLowerCase().replace(/\s+/g, '-')} style="background: var(--color-bg-elevated);">{v}</option>
-              ))}
-            </select>
-            <span class="field-error hidden text-xs mt-1" style="color: #f87171; font-family: var(--font-body);" role="alert">Please select a venue type</span>
+            <div>
+              <label for="phone" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+                Phone Number
+              </label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(555) 000-0000"
+                class="form-input w-full px-4 py-3 rounded-xl text-sm"
+                style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"/>
+            </div>
           </div>
         </div>
 
-        <!-- Foot traffic + Locations row -->
-        <div class="grid sm:grid-cols-2 gap-6 mb-6">
+        <!-- ── STEP 2: Business Info ── -->
+        <div id="step-2" class="form-step hidden">
+          <h3 class="text-xl font-bold mb-6" style="font-family: var(--font-display);">Tell us about your business</h3>
+          <div class="grid sm:grid-cols-2 gap-6">
 
-          <!-- Estimated foot traffic -->
-          <div>
-            <label for="foot-traffic" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
-              Estimated Daily Foot Traffic <span style="color: var(--color-primary);" aria-hidden="true">*</span>
-            </label>
-            <select
-              id="foot-traffic"
-              name="foot_traffic"
-              required
-              class="w-full px-4 py-3 rounded-xl text-sm cursor-pointer"
-              style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none; appearance: none; -webkit-appearance: none; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237D99BE' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 12px center;"
-              onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
-              onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
-            >
-              <option value="" disabled selected style="background: var(--color-bg-elevated); color: var(--color-text-muted);">Select a range...</option>
-              <option value="under-100" style="background: var(--color-bg-elevated);">Under 100 people/day</option>
-              <option value="100-500" style="background: var(--color-bg-elevated);">100–500 people/day</option>
-              <option value="500-1000" style="background: var(--color-bg-elevated);">500–1,000 people/day</option>
-              <option value="1000-5000" style="background: var(--color-bg-elevated);">1,000–5,000 people/day</option>
-              <option value="5000-10000" style="background: var(--color-bg-elevated);">5,000–10,000 people/day</option>
-              <option value="10000+" style="background: var(--color-bg-elevated);">10,000+ people/day</option>
-            </select>
-            <span class="field-error hidden text-xs mt-1" style="color: #f87171; font-family: var(--font-body);" role="alert">Please select foot traffic</span>
-          </div>
+            <div>
+              <label for="business" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+                Business Name <span style="color: var(--color-primary);" aria-hidden="true">*</span>
+              </label>
+              <input type="text" id="business" name="business_name" required autocomplete="organization" placeholder="Your Business LLC"
+                class="form-input w-full px-4 py-3 rounded-xl text-sm"
+                style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"/>
+              <span class="field-error hidden text-xs mt-1 block" style="color: #f87171; font-family: var(--font-body);" role="alert">Required</span>
+            </div>
 
-          <!-- Number of locations -->
-          <div>
-            <label for="num-locations" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
-              How Many Locations? <span style="color: var(--color-primary);" aria-hidden="true">*</span>
-            </label>
-            <select
-              id="num-locations"
-              name="num_locations"
-              required
-              class="w-full px-4 py-3 rounded-xl text-sm cursor-pointer"
-              style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none; appearance: none; -webkit-appearance: none; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237D99BE' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 12px center;"
-              onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
-              onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
-            >
-              <option value="" disabled selected style="background: var(--color-bg-elevated); color: var(--color-text-muted);">Select...</option>
-              <option value="1" style="background: var(--color-bg-elevated);">1 location</option>
-              <option value="2-5" style="background: var(--color-bg-elevated);">2–5 locations</option>
-              <option value="6-10" style="background: var(--color-bg-elevated);">6–10 locations</option>
-              <option value="11-25" style="background: var(--color-bg-elevated);">11–25 locations</option>
-              <option value="26-50" style="background: var(--color-bg-elevated);">26–50 locations</option>
-              <option value="50+" style="background: var(--color-bg-elevated);">50+ locations</option>
-            </select>
-            <span class="field-error hidden text-xs mt-1" style="color: #f87171; font-family: var(--font-body);" role="alert">Please select number of locations</span>
-          </div>
-        </div>
+            <div>
+              <label for="venue-type" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+                Venue Type <span style="color: var(--color-primary);" aria-hidden="true">*</span>
+              </label>
+              <select id="venue-type" name="venue_type" required
+                class="form-input w-full px-4 py-3 rounded-xl text-sm cursor-pointer"
+                style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none; appearance: none; -webkit-appearance: none; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237D99BE' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 12px center;">
+                <option value="" disabled selected style="background: var(--color-bg-elevated); color: var(--color-text-muted);">Select venue type...</option>
+                {venueTypes.map((v) => (
+                  <option value={v.toLowerCase().replace(/\s+/g, '-')} style="background: var(--color-bg-elevated);">{v}</option>
+                ))}
+              </select>
+              <span class="field-error hidden text-xs mt-1 block" style="color: #f87171; font-family: var(--font-body);" role="alert">Please select a venue type</span>
+            </div>
 
-        <!-- Primary Business Address -->
-        <div class="mb-6">
-          <label for="business-address" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
-            Primary Business Address <span style="color: var(--color-primary);" aria-hidden="true">*</span>
-          </label>
-          <input
-            type="text"
-            id="business-address"
-            name="business_address"
-            required
-            autocomplete="street-address"
-            placeholder="123 Main St, City, State, ZIP"
-            class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200"
-            style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"
-            onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
-            onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
-          />
-          <span class="field-error hidden text-xs mt-1" style="color: #f87171; font-family: var(--font-body);" role="alert">Required</span>
-        </div>
+            <div class="sm:col-span-2">
+              <label for="business-address" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+                Primary Business Address <span style="color: var(--color-primary);" aria-hidden="true">*</span>
+              </label>
+              <input type="text" id="business-address" name="business_address" required autocomplete="street-address" placeholder="123 Main St, City, State, ZIP"
+                class="form-input w-full px-4 py-3 rounded-xl text-sm"
+                style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"/>
+              <span class="field-error hidden text-xs mt-1 block" style="color: #f87171; font-family: var(--font-body);" role="alert">Required</span>
+            </div>
 
-        <!-- Wi-Fi Controller -->
-        <div class="mb-6">
-          <label for="wifi-controller" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
-            Wi-Fi Controller Make &amp; Model
-          </label>
-          <select
-            id="wifi-controller"
-            name="wifi_controller"
-            class="w-full px-4 py-3 rounded-xl text-sm cursor-pointer"
-            style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none; appearance: none; -webkit-appearance: none; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237D99BE' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 12px center;"
-            onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
-            onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
-          >
-            <option value="" style="background: var(--color-bg-elevated); color: var(--color-text-muted);">Not sure / None yet</option>
-            <option value="Aruba" style="background: var(--color-bg-elevated);">Aruba</option>
-            <option value="Cambium cnMaestro" style="background: var(--color-bg-elevated);">Cambium cnMaestro</option>
-            <option value="Fortinet" style="background: var(--color-bg-elevated);">Fortinet</option>
-            <option value="Juniper Mist" style="background: var(--color-bg-elevated);">Juniper Mist</option>
-            <option value="Meraki" style="background: var(--color-bg-elevated);">Meraki</option>
-            <option value="Cisco Catalyst 9800" style="background: var(--color-bg-elevated);">Cisco Catalyst 9800</option>
-            <option value="Cisco Catalyst 5520" style="background: var(--color-bg-elevated);">Cisco Catalyst 5520</option>
-            <option value="MikroTik" style="background: var(--color-bg-elevated);">MikroTik</option>
-            <option value="Ruckus" style="background: var(--color-bg-elevated);">Ruckus</option>
-            <option value="Ubiquiti" style="background: var(--color-bg-elevated);">Ubiquiti</option>
-            <option value="other" style="background: var(--color-bg-elevated);">Other (please specify)</option>
-          </select>
-          <!-- Conditional: Other -->
-          <div id="wifi-other-wrap" class="hidden mt-3">
-            <input
-              type="text"
-              id="wifi-controller-other"
-              name="wifi_controller_other"
-              placeholder="Please specify your Wi-Fi controller..."
-              class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200"
-              style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"
-              onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
-              onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
-            />
+            <div class="sm:col-span-2">
+              <label for="num-locations" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+                How Many Locations? <span style="color: var(--color-primary);" aria-hidden="true">*</span>
+              </label>
+              <select id="num-locations" name="num_locations" required
+                class="form-input w-full px-4 py-3 rounded-xl text-sm cursor-pointer"
+                style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none; appearance: none; -webkit-appearance: none; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237D99BE' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 12px center;">
+                <option value="" disabled selected style="background: var(--color-bg-elevated); color: var(--color-text-muted);">Select...</option>
+                <option value="1" style="background: var(--color-bg-elevated);">1 location</option>
+                <option value="2-5" style="background: var(--color-bg-elevated);">2–5 locations</option>
+                <option value="6-10" style="background: var(--color-bg-elevated);">6–10 locations</option>
+                <option value="11-25" style="background: var(--color-bg-elevated);">11–25 locations</option>
+                <option value="26-50" style="background: var(--color-bg-elevated);">26–50 locations</option>
+                <option value="50+" style="background: var(--color-bg-elevated);">50+ locations</option>
+              </select>
+              <span class="field-error hidden text-xs mt-1 block" style="color: #f87171; font-family: var(--font-body);" role="alert">Please select number of locations</span>
+            </div>
           </div>
         </div>
 
-        <!-- Message -->
-        <div class="mb-8">
-          <label for="message" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
-            Tell Us About Your Location (optional)
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows="3"
-            placeholder="Brief description of your location, daily foot traffic, or any questions..."
-            class="w-full px-4 py-3 rounded-xl text-sm resize-none transition-all duration-200"
-            style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none; line-height: 1.6;"
-            onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
-            onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
-          ></textarea>
+        <!-- ── STEP 3: Setup + Consent ── -->
+        <div id="step-3" class="form-step hidden">
+          <h3 class="text-xl font-bold mb-6" style="font-family: var(--font-display);">Your Wi-Fi setup</h3>
+          <div class="flex flex-col gap-6">
+
+            <!-- Foot traffic -->
+            <div>
+              <label for="foot-traffic" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+                Estimated Daily Foot Traffic <span style="color: var(--color-primary);" aria-hidden="true">*</span>
+              </label>
+              <select id="foot-traffic" name="foot_traffic" required
+                class="form-input w-full px-4 py-3 rounded-xl text-sm cursor-pointer"
+                style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none; appearance: none; -webkit-appearance: none; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237D99BE' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 12px center;">
+                <option value="" disabled selected style="background: var(--color-bg-elevated); color: var(--color-text-muted);">Select a range...</option>
+                <option value="under-100" style="background: var(--color-bg-elevated);">Under 100 people/day</option>
+                <option value="100-500" style="background: var(--color-bg-elevated);">100–500 people/day</option>
+                <option value="500-1000" style="background: var(--color-bg-elevated);">500–1,000 people/day</option>
+                <option value="1000-5000" style="background: var(--color-bg-elevated);">1,000–5,000 people/day</option>
+                <option value="5000-10000" style="background: var(--color-bg-elevated);">5,000–10,000 people/day</option>
+                <option value="10000+" style="background: var(--color-bg-elevated);">10,000+ people/day</option>
+              </select>
+              <span class="field-error hidden text-xs mt-1 block" style="color: #f87171; font-family: var(--font-body);" role="alert">Please select foot traffic</span>
+            </div>
+
+            <!-- Wi-Fi controller -->
+            <div>
+              <label for="wifi-controller" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+                Wi-Fi Controller Make &amp; Model
+              </label>
+              <select id="wifi-controller" name="wifi_controller"
+                class="form-input w-full px-4 py-3 rounded-xl text-sm cursor-pointer"
+                style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none; appearance: none; -webkit-appearance: none; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237D99BE' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 12px center;">
+                <option value="" style="background: var(--color-bg-elevated); color: var(--color-text-muted);">Not sure / None yet</option>
+                <option value="Aruba" style="background: var(--color-bg-elevated);">Aruba</option>
+                <option value="Cambium cnMaestro" style="background: var(--color-bg-elevated);">Cambium cnMaestro</option>
+                <option value="Fortinet" style="background: var(--color-bg-elevated);">Fortinet</option>
+                <option value="Juniper Mist" style="background: var(--color-bg-elevated);">Juniper Mist</option>
+                <option value="Meraki" style="background: var(--color-bg-elevated);">Meraki</option>
+                <option value="Cisco Catalyst 9800" style="background: var(--color-bg-elevated);">Cisco Catalyst 9800</option>
+                <option value="Cisco Catalyst 5520" style="background: var(--color-bg-elevated);">Cisco Catalyst 5520</option>
+                <option value="MikroTik" style="background: var(--color-bg-elevated);">MikroTik</option>
+                <option value="Ruckus" style="background: var(--color-bg-elevated);">Ruckus</option>
+                <option value="Ubiquiti" style="background: var(--color-bg-elevated);">Ubiquiti</option>
+                <option value="other" style="background: var(--color-bg-elevated);">Other (please specify)</option>
+              </select>
+              <div id="wifi-other-wrap" class="hidden mt-3">
+                <input type="text" id="wifi-controller-other" name="wifi_controller_other"
+                  placeholder="Please specify your Wi-Fi controller..."
+                  class="form-input w-full px-4 py-3 rounded-xl text-sm"
+                  style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"/>
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div>
+              <label for="message" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+                Anything else we should know? (optional)
+              </label>
+              <textarea id="message" name="message" rows="3"
+                placeholder="Brief description of your location or any questions..."
+                class="form-input w-full px-4 py-3 rounded-xl text-sm resize-none"
+                style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none; line-height: 1.6;"></textarea>
+            </div>
+
+            <!-- Consent checkbox -->
+            <div class="p-5 rounded-xl" style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright);">
+              <label class="flex items-start gap-3 cursor-pointer">
+                <div class="relative mt-0.5 shrink-0">
+                  <input type="checkbox" id="consent" name="consent" required
+                    class="sr-only peer" />
+                  <div id="consent-box"
+                    class="w-5 h-5 rounded flex items-center justify-center transition-all duration-200"
+                    style="background: var(--color-bg-base); border: 2px solid var(--color-border-bright);">
+                    <svg id="consent-check" class="hidden w-3 h-3" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                      <path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+                <span class="text-sm leading-relaxed" style="color: var(--color-text-secondary); font-family: var(--font-body);">
+                  I understand and agree that by submitting this form, I am giving <strong style="color: var(--color-text-primary);">Goolsby Ventures LLC (Mobile Offload)</strong> and its partner <strong style="color: var(--color-text-primary);">Hudson House</strong> permission to contact me by phone, email, or text regarding carrier offload network services. I have read and agree to the <a href="/privacy-policy" target="_blank" style="color: var(--color-accent); text-decoration: underline;">Privacy Policy</a>.
+                  <span style="color: var(--color-primary);" aria-hidden="true"> *</span>
+                </span>
+              </label>
+              <span id="consent-error" class="hidden text-xs mt-2 block pl-8" style="color: #f87171; font-family: var(--font-body);" role="alert">You must agree to continue</span>
+            </div>
+
+          </div>
         </div>
 
-        <!-- Honeypot -->
-        <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" aria-hidden="true" />
-
-        <!-- Submit -->
-        <button
-          type="submit"
-          id="submit-btn"
-          class="w-full py-4 px-8 rounded-xl font-semibold text-base text-white transition-all duration-200 cursor-pointer"
-          style="background: var(--color-primary); font-family: var(--font-body);"
-          onmouseover="this.style.background='var(--color-primary-hover)'; this.style.transform='translateY(-1px)'; this.style.boxShadow='0 8px 32px rgba(27,111,235,0.35)'"
-          onmouseout="this.style.background='var(--color-primary)'; this.style.transform='none'; this.style.boxShadow='none'"
-        >
-          <span id="submit-text">Get My Free Revenue Assessment</span>
-        </button>
+        <!-- Navigation buttons -->
+        <div class="flex items-center justify-between mt-8 gap-4">
+          <button type="button" id="btn-back"
+            class="hidden px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer"
+            style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-secondary); font-family: var(--font-body);">
+            ← Back
+          </button>
+          <div class="flex-1"></div>
+          <button type="button" id="btn-next"
+            class="px-8 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-200 cursor-pointer"
+            style="background: var(--color-primary); font-family: var(--font-body);">
+            Continue →
+          </button>
+          <button type="submit" id="submit-btn"
+            class="hidden px-8 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-200 cursor-pointer"
+            style="background: var(--color-primary); font-family: var(--font-body);">
+            <span id="submit-text">Get My Free Assessment</span>
+          </button>
+        </div>
 
         <!-- Success message -->
         <div id="form-success" class="hidden mt-6 p-5 rounded-xl text-center" style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3);" role="alert" aria-live="polite">
@@ -337,23 +308,52 @@ const venueTypes = [
         <div id="form-error" class="hidden mt-6 p-5 rounded-xl text-center" style="background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.3);" role="alert" aria-live="polite">
           <div class="text-sm" style="color: #f87171; font-family: var(--font-body);">Something went wrong. Please try again or contact us directly.</div>
         </div>
+
       </form>
     </div>
-
   </div>
 </section>
+
+<style>
+  .form-input:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 3px rgba(27,111,235,0.15);
+  }
+  #btn-next:hover, #submit-btn:hover {
+    background: var(--color-primary-hover) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 32px rgba(27,111,235,0.35);
+  }
+  #btn-back:hover {
+    border-color: var(--color-primary) !important;
+    color: var(--color-text-primary) !important;
+  }
+</style>
 
 <script>
   const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/4aIMOOEHb5YojmrdglB9/webhook-trigger/6926eea6-52bf-4158-a4a0-580e835d83db';
 
-  const form = document.getElementById('qualify-form') as HTMLFormElement;
-  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
-  const submitText = document.getElementById('submit-text');
-  const successMsg = document.getElementById('form-success');
-  const errorMsg = document.getElementById('form-error');
+  const STEPS = 3;
+  let currentStep = 1;
 
-  // Conditional: show/hide "Other" Wi-Fi controller field
-  const wifiSelect = document.getElementById('wifi-controller') as HTMLSelectElement;
+  const form       = document.getElementById('qualify-form') as HTMLFormElement;
+  const btnNext    = document.getElementById('btn-next') as HTMLButtonElement;
+  const btnBack    = document.getElementById('btn-back') as HTMLButtonElement;
+  const btnSubmit  = document.getElementById('submit-btn') as HTMLButtonElement;
+  const submitText = document.getElementById('submit-text');
+  const stepLabel  = document.getElementById('step-label');
+  const stepPct    = document.getElementById('step-pct');
+  const stepBar    = document.getElementById('step-bar') as HTMLElement;
+  const errorMsg   = document.getElementById('form-error');
+
+  const stepTitles = [
+    'Step 1 of 3 — Contact Info',
+    'Step 2 of 3 — Business Info',
+    'Step 3 of 3 — Your Setup',
+  ];
+
+  // ── Wi-Fi controller conditional ──
+  const wifiSelect    = document.getElementById('wifi-controller') as HTMLSelectElement;
   const wifiOtherWrap = document.getElementById('wifi-other-wrap') as HTMLElement;
   wifiSelect?.addEventListener('change', () => {
     if (wifiSelect.value === 'other') {
@@ -364,19 +364,39 @@ const venueTypes = [
     }
   });
 
-  function showError(input: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement): void {
-    const err = input.parentElement?.querySelector('.field-error');
+  // ── Custom consent checkbox ──
+  const consentInput = document.getElementById('consent') as HTMLInputElement;
+  const consentBox   = document.getElementById('consent-box') as HTMLElement;
+  const consentCheck = document.getElementById('consent-check') as HTMLElement;
+  const consentError = document.getElementById('consent-error') as HTMLElement;
+
+  consentBox?.parentElement?.addEventListener('click', () => {
+    consentInput.checked = !consentInput.checked;
+    if (consentInput.checked) {
+      consentBox.style.background = 'var(--color-primary)';
+      consentBox.style.borderColor = 'var(--color-primary)';
+      consentCheck.classList.remove('hidden');
+      consentError.classList.add('hidden');
+    } else {
+      consentBox.style.background = 'var(--color-bg-base)';
+      consentBox.style.borderColor = 'var(--color-border-bright)';
+      consentCheck.classList.add('hidden');
+    }
+  });
+
+  // ── Field error helpers ──
+  function showError(el: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement): void {
+    const err = el.closest('div')?.querySelector('.field-error');
     if (err) err.classList.remove('hidden');
-    input.style.borderColor = '#f87171';
+    el.style.borderColor = '#f87171';
   }
-
-  function clearError(input: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement): void {
-    const err = input.parentElement?.querySelector('.field-error');
+  function clearError(el: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement): void {
+    const err = el.closest('div')?.querySelector('.field-error');
     if (err) err.classList.add('hidden');
-    input.style.borderColor = 'var(--color-border-bright)';
+    el.style.borderColor = 'var(--color-border-bright)';
   }
 
-  // Live validation
+  // Live validation on required fields
   form?.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[required]').forEach(field => {
     field.addEventListener('blur', () => {
       if (!field.value.trim() || (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value))) {
@@ -386,24 +406,86 @@ const venueTypes = [
       }
     });
     field.addEventListener('input', () => clearError(field));
+    field.addEventListener('change', () => clearError(field));
   });
 
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  // ── Validate current step's required fields ──
+  function validateStep(step: number): boolean {
+    const panel = document.getElementById(`step-${step}`);
+    if (!panel) return true;
     let valid = true;
-
-    form.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[required]').forEach(field => {
+    panel.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[required]').forEach(field => {
+      if (field.type === 'checkbox') return; // handled separately
       if (!field.value.trim()) { showError(field); valid = false; }
       else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) { showError(field); valid = false; }
       else clearError(field);
     });
+    if (step === STEPS) {
+      if (!consentInput.checked) {
+        consentError.classList.remove('hidden');
+        consentBox.style.borderColor = '#f87171';
+        valid = false;
+      }
+    }
+    return valid;
+  }
 
-    if (!valid) return;
+  // ── Update UI for current step ──
+  function updateStepUI(): void {
+    // Show/hide panels
+    for (let i = 1; i <= STEPS; i++) {
+      const el = document.getElementById(`step-${i}`);
+      if (el) el.classList.toggle('hidden', i !== currentStep);
+      const dot = document.getElementById(`dot-${i}`) as HTMLElement;
+      if (dot) {
+        if (i < currentStep) {
+          dot.style.background = 'var(--color-success)';
+          dot.style.color = '#fff';
+          dot.textContent = '✓';
+        } else if (i === currentStep) {
+          dot.style.background = 'var(--color-primary)';
+          dot.style.color = '#fff';
+          dot.textContent = String(i);
+        } else {
+          dot.style.background = 'var(--color-border)';
+          dot.style.color = 'var(--color-text-muted)';
+          dot.textContent = String(i);
+        }
+      }
+    }
+    // Progress bar
+    const pct = Math.round((currentStep / STEPS) * 100);
+    if (stepBar)  stepBar.style.width  = `${pct}%`;
+    if (stepPct)  stepPct.textContent  = `${pct}%`;
+    if (stepLabel) stepLabel.textContent = stepTitles[currentStep - 1];
+    // Buttons
+    btnBack.classList.toggle('hidden', currentStep === 1);
+    btnNext.classList.toggle('hidden', currentStep === STEPS);
+    btnSubmit.classList.toggle('hidden', currentStep !== STEPS);
+  }
 
-    submitBtn.disabled = true;
+  btnNext?.addEventListener('click', () => {
+    if (!validateStep(currentStep)) return;
+    currentStep = Math.min(currentStep + 1, STEPS);
+    updateStepUI();
+    // Scroll form into view smoothly
+    document.getElementById('qualify-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  btnBack?.addEventListener('click', () => {
+    currentStep = Math.max(currentStep - 1, 1);
+    updateStepUI();
+    document.getElementById('qualify-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // ── Submit ──
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!validateStep(STEPS)) return;
+
+    btnSubmit.disabled = true;
     if (submitText) submitText.textContent = 'Submitting...';
 
-    // Collect form values
     const getData = (name: string) => (form.elements.namedItem(name) as HTMLInputElement)?.value?.trim() ?? '';
 
     const wifiController = getData('wifi_controller') === 'other'
@@ -418,11 +500,12 @@ const venueTypes = [
       name:            `${getData('first_name')} ${getData('last_name')}`.trim(),
       businessName:    getData('business_name'),
       venueType:       getData('venue_type'),
-      footTraffic:     getData('foot_traffic'),
-      numLocations:    getData('num_locations'),
       businessAddress: getData('business_address'),
+      numLocations:    getData('num_locations'),
+      footTraffic:     getData('foot_traffic'),
       wifiController:  wifiController,
       message:         getData('message'),
+      consentGiven:    'Yes',
       source:          'Mobile Offload — Qualification Form',
       tags:            ['mobile-offload-lead'],
     };
@@ -433,7 +516,6 @@ const venueTypes = [
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-
       if (res.ok) {
         window.location.href = '/thank-you';
       } else {
@@ -441,8 +523,8 @@ const venueTypes = [
       }
     } catch {
       errorMsg?.classList.remove('hidden');
-      submitBtn.disabled = false;
-      if (submitText) submitText.textContent = 'Get My Free Revenue Assessment';
+      btnSubmit.disabled = false;
+      if (submitText) submitText.textContent = 'Get My Free Assessment';
     }
   });
 </script>
