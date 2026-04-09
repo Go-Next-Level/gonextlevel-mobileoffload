@@ -180,26 +180,119 @@ const venueTypes = [
           </div>
         </div>
 
-        <!-- Access points -->
+        <!-- Foot traffic + Locations row -->
+        <div class="grid sm:grid-cols-2 gap-6 mb-6">
+
+          <!-- Estimated foot traffic -->
+          <div>
+            <label for="foot-traffic" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+              Estimated Daily Foot Traffic <span style="color: var(--color-primary);" aria-hidden="true">*</span>
+            </label>
+            <select
+              id="foot-traffic"
+              name="foot_traffic"
+              required
+              class="w-full px-4 py-3 rounded-xl text-sm cursor-pointer"
+              style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none; appearance: none; -webkit-appearance: none; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237D99BE' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 12px center;"
+              onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
+              onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
+            >
+              <option value="" disabled selected style="background: var(--color-bg-elevated); color: var(--color-text-muted);">Select a range...</option>
+              <option value="under-100" style="background: var(--color-bg-elevated);">Under 100 people/day</option>
+              <option value="100-500" style="background: var(--color-bg-elevated);">100–500 people/day</option>
+              <option value="500-1000" style="background: var(--color-bg-elevated);">500–1,000 people/day</option>
+              <option value="1000-5000" style="background: var(--color-bg-elevated);">1,000–5,000 people/day</option>
+              <option value="5000-10000" style="background: var(--color-bg-elevated);">5,000–10,000 people/day</option>
+              <option value="10000+" style="background: var(--color-bg-elevated);">10,000+ people/day</option>
+            </select>
+            <span class="field-error hidden text-xs mt-1" style="color: #f87171; font-family: var(--font-body);" role="alert">Please select foot traffic</span>
+          </div>
+
+          <!-- Number of locations -->
+          <div>
+            <label for="num-locations" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+              How Many Locations? <span style="color: var(--color-primary);" aria-hidden="true">*</span>
+            </label>
+            <select
+              id="num-locations"
+              name="num_locations"
+              required
+              class="w-full px-4 py-3 rounded-xl text-sm cursor-pointer"
+              style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none; appearance: none; -webkit-appearance: none; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237D99BE' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 12px center;"
+              onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
+              onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
+            >
+              <option value="" disabled selected style="background: var(--color-bg-elevated); color: var(--color-text-muted);">Select...</option>
+              <option value="1" style="background: var(--color-bg-elevated);">1 location</option>
+              <option value="2-5" style="background: var(--color-bg-elevated);">2–5 locations</option>
+              <option value="6-10" style="background: var(--color-bg-elevated);">6–10 locations</option>
+              <option value="11-25" style="background: var(--color-bg-elevated);">11–25 locations</option>
+              <option value="26-50" style="background: var(--color-bg-elevated);">26–50 locations</option>
+              <option value="50+" style="background: var(--color-bg-elevated);">50+ locations</option>
+            </select>
+            <span class="field-error hidden text-xs mt-1" style="color: #f87171; font-family: var(--font-body);" role="alert">Please select number of locations</span>
+          </div>
+        </div>
+
+        <!-- Primary Business Address -->
         <div class="mb-6">
-          <label for="access-points" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
-            Approximate Number of Wi-Fi Access Points
+          <label for="business-address" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+            Primary Business Address <span style="color: var(--color-primary);" aria-hidden="true">*</span>
+          </label>
+          <input
+            type="text"
+            id="business-address"
+            name="business_address"
+            required
+            autocomplete="street-address"
+            placeholder="123 Main St, City, State, ZIP"
+            class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200"
+            style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"
+            onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
+            onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
+          />
+          <span class="field-error hidden text-xs mt-1" style="color: #f87171; font-family: var(--font-body);" role="alert">Required</span>
+        </div>
+
+        <!-- Wi-Fi Controller -->
+        <div class="mb-6">
+          <label for="wifi-controller" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+            Wi-Fi Controller Make &amp; Model
           </label>
           <select
-            id="access-points"
-            name="access_points"
+            id="wifi-controller"
+            name="wifi_controller"
             class="w-full px-4 py-3 rounded-xl text-sm cursor-pointer"
             style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none; appearance: none; -webkit-appearance: none; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237D99BE' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 12px center;"
             onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
             onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
           >
-            <option value="" style="background: var(--color-bg-elevated);">Not sure</option>
-            <option value="1" style="background: var(--color-bg-elevated);">1 (Single location / small space)</option>
-            <option value="2-10" style="background: var(--color-bg-elevated);">2–10 APs</option>
-            <option value="11-50" style="background: var(--color-bg-elevated);">11–50 APs</option>
-            <option value="51-200" style="background: var(--color-bg-elevated);">51–200 APs</option>
-            <option value="200+" style="background: var(--color-bg-elevated);">200+ APs (Enterprise)</option>
+            <option value="" style="background: var(--color-bg-elevated); color: var(--color-text-muted);">Not sure / None yet</option>
+            <option value="Aruba" style="background: var(--color-bg-elevated);">Aruba</option>
+            <option value="Cambium cnMaestro" style="background: var(--color-bg-elevated);">Cambium cnMaestro</option>
+            <option value="Fortinet" style="background: var(--color-bg-elevated);">Fortinet</option>
+            <option value="Juniper Mist" style="background: var(--color-bg-elevated);">Juniper Mist</option>
+            <option value="Meraki" style="background: var(--color-bg-elevated);">Meraki</option>
+            <option value="Cisco Catalyst 9800" style="background: var(--color-bg-elevated);">Cisco Catalyst 9800</option>
+            <option value="Cisco Catalyst 5520" style="background: var(--color-bg-elevated);">Cisco Catalyst 5520</option>
+            <option value="MikroTik" style="background: var(--color-bg-elevated);">MikroTik</option>
+            <option value="Ruckus" style="background: var(--color-bg-elevated);">Ruckus</option>
+            <option value="Ubiquiti" style="background: var(--color-bg-elevated);">Ubiquiti</option>
+            <option value="other" style="background: var(--color-bg-elevated);">Other (please specify)</option>
           </select>
+          <!-- Conditional: Other -->
+          <div id="wifi-other-wrap" class="hidden mt-3">
+            <input
+              type="text"
+              id="wifi-controller-other"
+              name="wifi_controller_other"
+              placeholder="Please specify your Wi-Fi controller..."
+              class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200"
+              style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none;"
+              onfocus="this.style.borderColor='var(--color-primary)'; this.style.boxShadow='0 0 0 3px rgba(27,111,235,0.15)'"
+              onblur="this.style.borderColor='var(--color-border-bright)'; this.style.boxShadow='none'"
+            />
+          </div>
         </div>
 
         <!-- Message -->
@@ -259,6 +352,18 @@ const venueTypes = [
   const successMsg = document.getElementById('form-success');
   const errorMsg = document.getElementById('form-error');
 
+  // Conditional: show/hide "Other" Wi-Fi controller field
+  const wifiSelect = document.getElementById('wifi-controller') as HTMLSelectElement;
+  const wifiOtherWrap = document.getElementById('wifi-other-wrap') as HTMLElement;
+  wifiSelect?.addEventListener('change', () => {
+    if (wifiSelect.value === 'other') {
+      wifiOtherWrap.classList.remove('hidden');
+    } else {
+      wifiOtherWrap.classList.add('hidden');
+      (document.getElementById('wifi-controller-other') as HTMLInputElement).value = '';
+    }
+  });
+
   function showError(input: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement): void {
     const err = input.parentElement?.querySelector('.field-error');
     if (err) err.classList.remove('hidden');
@@ -301,18 +406,25 @@ const venueTypes = [
     // Collect form values
     const getData = (name: string) => (form.elements.namedItem(name) as HTMLInputElement)?.value?.trim() ?? '';
 
+    const wifiController = getData('wifi_controller') === 'other'
+      ? `Other: ${getData('wifi_controller_other')}`
+      : getData('wifi_controller');
+
     const payload = {
-      firstName:     getData('first_name'),
-      lastName:      getData('last_name'),
-      email:         getData('email'),
-      phone:         getData('phone'),
-      name:          `${getData('first_name')} ${getData('last_name')}`.trim(),
-      businessName:  getData('business_name'),
-      venueType:     getData('venue_type'),
-      accessPoints:  getData('access_points'),
-      message:       getData('message'),
-      source:        'Mobile Offload — Qualification Form',
-      tags:          ['mobile-offload-lead'],
+      firstName:       getData('first_name'),
+      lastName:        getData('last_name'),
+      email:           getData('email'),
+      phone:           getData('phone'),
+      name:            `${getData('first_name')} ${getData('last_name')}`.trim(),
+      businessName:    getData('business_name'),
+      venueType:       getData('venue_type'),
+      footTraffic:     getData('foot_traffic'),
+      numLocations:    getData('num_locations'),
+      businessAddress: getData('business_address'),
+      wifiController:  wifiController,
+      message:         getData('message'),
+      source:          'Mobile Offload — Qualification Form',
+      tags:            ['mobile-offload-lead'],
     };
 
     try {
