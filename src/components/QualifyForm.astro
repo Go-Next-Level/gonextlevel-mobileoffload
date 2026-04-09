@@ -54,15 +54,9 @@ const venueTypes = [
       <h3 class="text-2xl font-bold mb-8" style="font-family: var(--font-display);">Check If Your Location Qualifies</h3>
 
       <form
-        action="https://api.web3forms.com/submit"
-        method="POST"
         id="qualify-form"
         novalidate
       >
-        <input type="hidden" name="access_key" value={import.meta.env.WEB3FORMS_KEY || 'YOUR_WEB3FORMS_KEY'} />
-        <input type="hidden" name="subject" value="New Qualification Form - Mobile Offload" />
-        <input type="hidden" name="redirect" value="https://mobileoffload.com/thank-you" />
-        <input type="hidden" name="from_name" value="Mobile Offload Website" />
 
         <div class="grid sm:grid-cols-2 gap-6 mb-6">
           <!-- First name -->
@@ -257,19 +251,21 @@ const venueTypes = [
 </section>
 
 <script>
+  const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/4aIMOOEHb5YojmrdglB9/webhook-trigger/6926eea6-52bf-4158-a4a0-580e835d83db';
+
   const form = document.getElementById('qualify-form') as HTMLFormElement;
   const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
   const submitText = document.getElementById('submit-text');
   const successMsg = document.getElementById('form-success');
   const errorMsg = document.getElementById('form-error');
 
-  function showError(input: HTMLInputElement | HTMLSelectElement): void {
+  function showError(input: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement): void {
     const err = input.parentElement?.querySelector('.field-error');
     if (err) err.classList.remove('hidden');
     input.style.borderColor = '#f87171';
   }
 
-  function clearError(input: HTMLInputElement | HTMLSelectElement): void {
+  function clearError(input: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement): void {
     const err = input.parentElement?.querySelector('.field-error');
     if (err) err.classList.add('hidden');
     input.style.borderColor = 'var(--color-border-bright)';
@@ -299,22 +295,37 @@ const venueTypes = [
 
     if (!valid) return;
 
-    // Disable button
     submitBtn.disabled = true;
     if (submitText) submitText.textContent = 'Submitting...';
 
+    // Collect form values
+    const getData = (name: string) => (form.elements.namedItem(name) as HTMLInputElement)?.value?.trim() ?? '';
+
+    const payload = {
+      firstName:     getData('first_name'),
+      lastName:      getData('last_name'),
+      email:         getData('email'),
+      phone:         getData('phone'),
+      name:          `${getData('first_name')} ${getData('last_name')}`.trim(),
+      businessName:  getData('business_name'),
+      venueType:     getData('venue_type'),
+      accessPoints:  getData('access_points'),
+      message:       getData('message'),
+      source:        'Mobile Offload — Qualification Form',
+      tags:          ['mobile-offload-lead'],
+    };
+
     try {
-      const res = await fetch(form.action, {
+      const res = await fetch(GHL_WEBHOOK, {
         method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
       });
 
       if (res.ok) {
-        form.style.display = 'none';
-        successMsg?.classList.remove('hidden');
+        window.location.href = '/thank-you';
       } else {
-        throw new Error('Server error');
+        throw new Error('Webhook error');
       }
     } catch {
       errorMsg?.classList.remove('hidden');
