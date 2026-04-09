@@ -242,6 +242,26 @@ const venueTypes = [
               </div>
             </div>
 
+            <!-- How did you hear about us -->
+            <div>
+              <label for="heard-from" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
+                How Did You Hear About Us?
+              </label>
+              <select id="heard-from" name="heard_from"
+                class="form-input w-full px-4 py-3 rounded-xl text-sm cursor-pointer"
+                style="background: var(--color-bg-elevated); border: 1px solid var(--color-border-bright); color: var(--color-text-primary); font-family: var(--font-body); outline: none; appearance: none; -webkit-appearance: none; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237D99BE' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 12px center;">
+                <option value="" style="background: var(--color-bg-elevated); color: var(--color-text-muted);">Select an option...</option>
+                <option value="Google Search" style="background: var(--color-bg-elevated);">Google Search</option>
+                <option value="Social Media" style="background: var(--color-bg-elevated);">Social Media</option>
+                <option value="Referral" style="background: var(--color-bg-elevated);">Referral from a Friend or Colleague</option>
+                <option value="LinkedIn" style="background: var(--color-bg-elevated);">LinkedIn</option>
+                <option value="Industry Event / Conference" style="background: var(--color-bg-elevated);">Industry Event / Conference</option>
+                <option value="Email / Newsletter" style="background: var(--color-bg-elevated);">Email / Newsletter</option>
+                <option value="Online Ad" style="background: var(--color-bg-elevated);">Online Ad</option>
+                <option value="Other" style="background: var(--color-bg-elevated);">Other</option>
+              </select>
+            </div>
+
             <!-- Message -->
             <div>
               <label for="message" class="block text-sm font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-text-secondary);">
@@ -504,6 +524,7 @@ const venueTypes = [
       numLocations:    getData('num_locations'),
       footTraffic:     getData('foot_traffic'),
       wifiController:  wifiController,
+      heardFrom:       getData('heard_from'),
       message:         getData('message'),
       consentGiven:    'Yes',
       source:          'Mobile Offload — Qualification Form',
