@@ -236,11 +236,18 @@
   .venue-btn:hover {
     border-color: var(--color-border-bright);
     color: var(--color-text-primary);
+    background: var(--color-bg-card);
+    transform: translateY(-1px);
   }
   .venue-btn.active {
-    background: var(--color-primary-muted);
-    border-color: rgba(27,111,235,0.5);
-    color: var(--color-text-primary);
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #ffffff;
+    box-shadow: 0 0 0 1px rgba(27,111,235,0.4), 0 4px 20px rgba(27,111,235,0.35);
+    transform: translateY(-1px);
+  }
+  .venue-btn.active .text-xs {
+    color: rgba(255,255,255,0.7) !important;
   }
 </style>
 

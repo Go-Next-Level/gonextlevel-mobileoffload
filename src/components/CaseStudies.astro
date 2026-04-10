@@ -87,7 +87,7 @@ const cases = [
     <!-- Case study cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {cases.filter((_, i) => i < 4).map((c) => (
-        <div class="card-dark p-6 flex flex-col gap-4">
+        <div class="card-dark card-lift p-6 flex flex-col gap-4">
           <div>
             <div class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold mb-3"
                  style="background: var(--color-primary-muted); color: var(--color-accent); font-family: var(--font-body);">
@@ -122,34 +122,39 @@ const cases = [
 
       <!-- BWI Airport featured card (spans 2 cols) -->
       {cases.filter(c => c.highlight).map((c) => (
-        <div class="sm:col-span-2 lg:col-span-2 p-8 rounded-2xl" style="background: linear-gradient(135deg, #071A0F 0%, #081828 50%, #071A0F 100%); border: 1px solid rgba(16,185,129,0.3);">
-          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+        <div class="sm:col-span-2 lg:col-span-2 featured-card card-lift p-8 rounded-2xl relative overflow-hidden"
+             style="background: linear-gradient(135deg, #061610 0%, #071A20 40%, #071020 100%);">
+          <!-- Ambient glow -->
+          <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+               style="background: radial-gradient(ellipse 70% 60% at 30% 50%, rgba(16,185,129,0.08) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 80% 20%, rgba(14,165,233,0.06) 0%, transparent 60%);"></div>
+
+          <div class="relative flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
             <div>
-              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold mb-3"
-                   style="background: rgba(16,185,129,0.15); color: var(--color-success); font-family: var(--font-body);">
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><circle cx="5" cy="5" r="5"/></svg>
-                Featured · {c.badge}
+              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold mb-3"
+                   style="background: rgba(16,185,129,0.18); color: var(--color-success); font-family: var(--font-body); border: 1px solid rgba(16,185,129,0.3);">
+                <span class="featured-dot" aria-hidden="true"></span>
+                Featured Deployment · {c.badge}
               </div>
               <h3 class="text-2xl font-bold" style="font-family: var(--font-display);">{c.type}</h3>
               <p class="text-sm" style="color: var(--color-text-muted); font-family: var(--font-body);">{c.location}</p>
             </div>
-            <div class="text-right">
-              <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Annual Revenue</div>
-              <div class="text-4xl font-bold" style="font-family: var(--font-mono); color: var(--color-success);">{c.annualRevenue}</div>
+            <div class="text-right shrink-0">
+              <div class="text-xs mb-1" style="color: rgba(16,185,129,0.6); font-family: var(--font-body);">Annual Revenue</div>
+              <div class="text-5xl font-bold" style="font-family: var(--font-mono); color: var(--color-success); text-shadow: 0 0 32px rgba(16,185,129,0.4);">{c.annualRevenue}</div>
             </div>
           </div>
 
-          <div class="grid grid-cols-3 gap-6">
-            <div>
-              <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Monthly Revenue</div>
+          <div class="relative grid grid-cols-3 gap-6">
+            <div class="p-4 rounded-xl" style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.15);">
+              <div class="text-xs mb-1.5" style="color: rgba(16,185,129,0.6); font-family: var(--font-body);">Monthly Revenue</div>
               <div class="text-2xl font-bold" style="font-family: var(--font-mono); color: var(--color-text-primary);">{c.monthlyRevenue}</div>
             </div>
-            <div>
-              <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Avg Daily Users</div>
+            <div class="p-4 rounded-xl" style="background: rgba(14,165,233,0.06); border: 1px solid rgba(14,165,233,0.15);">
+              <div class="text-xs mb-1.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Avg Daily Users</div>
               <div class="text-2xl font-bold" style="font-family: var(--font-mono); color: var(--color-accent);">{c.dailyUsers}</div>
             </div>
-            <div>
-              <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Monthly Data</div>
+            <div class="p-4 rounded-xl" style="background: rgba(14,165,233,0.06); border: 1px solid rgba(14,165,233,0.15);">
+              <div class="text-xs mb-1.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Monthly Data</div>
               <div class="text-2xl font-bold" style="font-family: var(--font-mono); color: var(--color-accent);">{c.monthlyData}</div>
             </div>
           </div>

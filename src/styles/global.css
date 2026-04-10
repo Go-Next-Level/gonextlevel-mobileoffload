@@ -94,11 +94,47 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: 12px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 .card-dark:hover {
   border-color: var(--color-border-bright);
   box-shadow: 0 4px 24px rgba(27, 111, 235, 0.1);
+}
+
+.card-lift {
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
+.card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+}
+
+@keyframes border-glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(16,185,129,0.25), 0 8px 48px rgba(16,185,129,0.12); }
+  50% { box-shadow: 0 0 0 1px rgba(16,185,129,0.5), 0 8px 64px rgba(16,185,129,0.22), 0 0 100px rgba(16,185,129,0.1); }
+}
+
+.featured-card {
+  border: 1px solid rgba(16,185,129,0.35);
+  animation: border-glow-pulse 3.5s ease-in-out infinite;
+}
+.featured-card:hover {
+  border-color: rgba(16,185,129,0.6);
+}
+
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.75); }
+}
+
+.featured-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-success);
+  box-shadow: 0 0 6px rgba(16,185,129,0.8);
+  animation: dot-pulse 1.8s ease-in-out infinite;
 }
 
 .section-divider {
