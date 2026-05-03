@@ -306,39 +306,18 @@ const reddingFaqs = [
           </p>
         </div>
 
-        <!-- Video embed placeholder -->
+        <!-- Loom video embed -->
         <div class="relative rounded-2xl overflow-hidden"
-             style="background: var(--color-bg-card); border: 1px solid var(--color-border-bright); aspect-ratio: 16/9; box-shadow: 0 12px 48px rgba(0,0,0,0.35);">
-          <!-- Grid texture overlay -->
-          <div class="absolute inset-0" style="background-image: linear-gradient(rgba(27,111,235,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(27,111,235,0.03) 1px, transparent 1px); background-size: 40px 40px;" aria-hidden="true"></div>
-          <!-- Glow -->
-          <div class="absolute inset-0" style="background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(27,111,235,0.08) 0%, transparent 70%);" aria-hidden="true"></div>
-
-          <div class="absolute inset-0 flex flex-col items-center justify-center gap-5">
-            <!-- Play button -->
-            <div class="w-20 h-20 rounded-full flex items-center justify-center"
-                 style="background: rgba(27,111,235,0.15); border: 2px solid rgba(27,111,235,0.35);">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <polygon points="5,3 19,12 5,21" fill="var(--color-primary)" opacity="0.7"/>
-              </svg>
-            </div>
-
-            <div class="text-center">
-              <p class="text-xl font-bold mb-2" style="font-family: var(--font-display); color: var(--color-text-primary);">
-                Video Explainer Coming Soon
-              </p>
-              <p class="text-sm max-w-sm mx-auto" style="color: var(--color-text-muted); font-family: var(--font-body); line-height: 1.6;">
-                A short walkthrough for Redding business owners explaining how Mobile Offload works and what types of locations may qualify.
-              </p>
-            </div>
-
-            <!-- Coming soon badge -->
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold"
-                 style="background: rgba(14,165,233,0.1); border: 1px solid rgba(14,165,233,0.2); color: var(--color-accent); font-family: var(--font-body);">
-              <span style="width:6px;height:6px;border-radius:50%;background:var(--color-accent);display:inline-block;" aria-hidden="true"></span>
-              In Production
-            </div>
-          </div>
+             style="aspect-ratio: 16/9; box-shadow: 0 12px 48px rgba(0,0,0,0.45); border: 1px solid var(--color-border-bright);">
+          <iframe
+            src="https://www.loom.com/embed/1f29ef5d49c54f9dabb70c34967bc3fe?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true"
+            title="Mobile Offload Program Explainer for Redding Business Owners"
+            frameborder="0"
+            allowfullscreen
+            allow="autoplay; fullscreen"
+            class="absolute inset-0 w-full h-full"
+            loading="lazy"
+          ></iframe>
         </div>
 
       </div>
