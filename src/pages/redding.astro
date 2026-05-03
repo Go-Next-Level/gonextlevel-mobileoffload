@@ -77,45 +77,57 @@ const reddingFaqs = [
     <Nav />
 
     <!-- ── HERO ─────────────────────────────────────────────────── -->
-    <section class="relative overflow-hidden grid-texture" style="background: var(--color-bg-base); min-height: 90vh; display: flex; align-items: center;">
-      <!-- Background glow -->
-      <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
-           style="background: radial-gradient(ellipse 60% 50% at 70% 50%, rgba(27,111,235,0.08) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 10% 80%, rgba(14,165,233,0.05) 0%, transparent 60%);"></div>
+    <section class="relative min-h-screen flex items-center overflow-hidden grid-texture" style="padding-top: 4rem; background: var(--color-bg-base);" aria-label="Hero">
+      <!-- Background radial glow (matches homepage) -->
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full opacity-20"
+             style="background: radial-gradient(ellipse at center, #1B6FEB 0%, transparent 70%); filter: blur(80px);"></div>
+        <div class="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full opacity-10"
+             style="background: radial-gradient(ellipse at center, #0EA5E9 0%, transparent 70%); filter: blur(60px);"></div>
+      </div>
 
       <div class="relative max-w-7xl mx-auto px-6 py-24 w-full">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
 
           <!-- Left: Copy -->
           <div>
-            <!-- Local badge -->
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 text-sm font-medium"
-                 style="background: rgba(14,165,233,0.1); border: 1px solid rgba(14,165,233,0.2); color: var(--color-accent); font-family: var(--font-body);">
-              <span style="width:8px;height:8px;border-radius:50%;background:var(--color-accent);display:inline-block;box-shadow:0 0 6px rgba(14,165,233,0.8);" aria-hidden="true"></span>
-              Redding, California · Local Program Access
+            <!-- Carrier Offload badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5 text-sm font-medium"
+                 style="background: var(--color-primary-muted); border: 1px solid rgba(27,111,235,0.3); color: var(--color-accent); font-family: var(--font-body);">
+              <span class="w-2 h-2 rounded-full redd-ping" style="background: var(--color-accent);"></span>
+              Carrier Offload Network Partnership
             </div>
 
-            <h1 class="font-bold mb-6 leading-tight" style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.25rem); letter-spacing: -0.02em;">
-              Redding Businesses With<br/>
-              <span class="gradient-text-blue">Foot Traffic May Qualify</span><br/>
-              For Monthly Carrier<br/>Program Income
+            <!-- Redding callout -->
+            <div class="flex items-center gap-2 mb-4">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--color-success); letter-spacing: 0.01em;">Redding Businesses</span>
+            </div>
+
+            <!-- Headline — matches homepage -->
+            <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight" style="font-family: var(--font-display); letter-spacing: -0.02em;">
+              Get Paid When<br/>
+              <span class="gradient-text">Mobile Data Is Used</span><br/>
+              at Your Location
             </h1>
 
-            <p class="text-lg mb-10 max-w-xl" style="color: var(--color-text-secondary); font-family: var(--font-body); line-height: 1.7;">
+            <p class="text-lg mb-10 max-w-lg" style="color: var(--color-text-secondary); line-height: 1.7; font-family: var(--font-body);">
               If your Redding location gets steady visitors, your property may be valuable to major mobile carriers looking to reduce network congestion. Mobile Offload helps qualified locations earn monthly income without new hardware, equipment purchases, or changes to daily operations.
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-4 mb-14">
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row gap-4 mb-10">
               <a href="#qualify"
                  class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-semibold text-white transition-all duration-200 cursor-pointer"
-                 style="background: var(--color-primary);"
-                 onmouseover="this.style.background='var(--color-primary-hover)'; this.style.transform='translateY(-1px)'; this.style.boxShadow='0 8px 28px rgba(27,111,235,0.4)'"
-                 onmouseout="this.style.background='var(--color-primary)'; this.style.transform=''; this.style.boxShadow=''">
+                 style="background: var(--color-primary); font-family: var(--font-body);"
+                 onmouseover="this.style.background='var(--color-primary-hover)'; this.style.transform='translateY(-1px)'; this.style.boxShadow='0 8px 32px rgba(27,111,235,0.4)'"
+                 onmouseout="this.style.background='var(--color-primary)'; this.style.transform='none'; this.style.boxShadow='none'">
                 Check If My Redding Location Qualifies
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
               <a href="#how-it-works"
                  class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-medium transition-all duration-200 cursor-pointer"
-                 style="background: var(--color-bg-card); border: 1px solid var(--color-border-bright); color: var(--color-text-secondary);"
+                 style="background: transparent; border: 1px solid var(--color-border-bright); color: var(--color-text-secondary); font-family: var(--font-body);"
                  onmouseover="this.style.borderColor='var(--color-primary)'; this.style.color='var(--color-text-primary)'"
                  onmouseout="this.style.borderColor='var(--color-border-bright)'; this.style.color='var(--color-text-secondary)'">
                 See How It Works
@@ -123,64 +135,160 @@ const reddingFaqs = [
             </div>
 
             <!-- Stats row -->
-            <div class="flex flex-wrap gap-0">
-              <div class="pr-8 mr-8" style="border-right: 1px solid var(--color-border-bright);">
-                <div class="text-2xl font-bold mb-1" style="font-family: var(--font-mono); color: var(--color-success);">Monthly Payouts</div>
-                <div class="text-sm" style="color: var(--color-text-muted); font-family: var(--font-body);">Per GB of data offloaded</div>
-              </div>
-              <div class="pr-8 mr-8" style="border-right: 1px solid var(--color-border-bright);">
-                <div class="text-2xl font-bold mb-1" style="font-family: var(--font-mono); color: var(--color-accent);">124K+</div>
-                <div class="text-sm" style="color: var(--color-text-muted); font-family: var(--font-body);">Active Subscribers</div>
-              </div>
+            <div class="flex flex-wrap gap-8">
               <div>
-                <div class="text-2xl font-bold mb-1" style="font-family: var(--font-mono); color: var(--color-text-primary);">$0</div>
-                <div class="text-sm" style="color: var(--color-text-muted); font-family: var(--font-body);">Upfront Cost</div>
+                <div class="text-3xl font-bold" style="font-family: var(--font-mono); color: var(--color-success);">Monthly Payouts</div>
+                <div class="text-sm mt-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Per GB of data offloaded</div>
+              </div>
+              <div style="width: 1px; background: var(--color-border);"></div>
+              <div>
+                <div class="text-3xl font-bold" style="font-family: var(--font-mono); color: var(--color-success);">124K+</div>
+                <div class="text-sm mt-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Active Subscribers</div>
+              </div>
+              <div style="width: 1px; background: var(--color-border);"></div>
+              <div>
+                <div class="text-3xl font-bold" style="font-family: var(--font-mono); color: var(--color-success);">$0</div>
+                <div class="text-sm mt-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Upfront Cost</div>
               </div>
             </div>
           </div>
 
-          <!-- Right: Visual card -->
-          <div class="hidden lg:flex items-center justify-center">
-            <div class="relative w-full max-w-md">
-              <!-- Main card -->
-              <div class="p-8 rounded-2xl" style="background: var(--color-bg-card); border: 1px solid var(--color-border-bright); box-shadow: 0 16px 64px rgba(0,0,0,0.4);">
-                <div class="text-xs font-semibold tracking-widest uppercase mb-6" style="color: var(--color-text-muted); font-family: var(--font-body);">Redding, CA · Local Coverage Active</div>
+          <!-- Right: Live network animation + revenue range (matches homepage) -->
+          <div class="relative hidden lg:block" aria-hidden="true">
+            <div class="relative rounded-2xl overflow-hidden" style="background: var(--color-bg-surface); border: 1px solid var(--color-border);">
+              <svg id="redd-hero-svg" viewBox="0 -18 480 388" xmlns="http://www.w3.org/2000/svg" class="w-full" aria-label="Live carrier offload network diagram" role="img">
+                <defs>
+                  <filter id="rhglow-blue" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="3.5" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                  <filter id="rhglow-green" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="5" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                  <filter id="rhglow-sm" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="2.5" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                  <linearGradient id="rhgrad-att" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#00A8E0;stop-opacity:0.9"/>
+                    <stop offset="100%" style="stop-color:#1B6FEB;stop-opacity:0.35"/>
+                  </linearGradient>
+                  <linearGradient id="rhgrad-tmobile" x1="50%" y1="0%" x2="50%" y2="100%">
+                    <stop offset="0%" style="stop-color:#E20074;stop-opacity:0.9"/>
+                    <stop offset="100%" style="stop-color:#1B6FEB;stop-opacity:0.35"/>
+                  </linearGradient>
+                  <linearGradient id="rhgrad-fi" x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#1A73E8;stop-opacity:0.9"/>
+                    <stop offset="100%" style="stop-color:#1B6FEB;stop-opacity:0.35"/>
+                  </linearGradient>
+                  <linearGradient id="rhgrad-rev" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#1B6FEB;stop-opacity:0.6"/>
+                    <stop offset="100%" style="stop-color:#10B981;stop-opacity:0.9"/>
+                  </linearGradient>
+                  <radialGradient id="rhbuilding-glow" cx="50%" cy="40%" r="50%">
+                    <stop offset="0%" style="stop-color:#1B6FEB;stop-opacity:0.22"/>
+                    <stop offset="100%" style="stop-color:#1B6FEB;stop-opacity:0"/>
+                  </radialGradient>
+                  <path id="rh-att"     d="M 88 66 C 140 116 185 152 227 166"/>
+                  <path id="rh-tmobile" d="M 240 66 L 240 149"/>
+                  <path id="rh-fi"      d="M 392 66 C 340 116 295 152 253 166"/>
+                  <path id="rh-rev"     d="M 240 218 L 240 280"/>
+                </defs>
 
-                <!-- Location types preview -->
-                <div class="grid grid-cols-3 gap-3 mb-8">
-                  {["☕ Coffee", "🍽️ Dining", "💪 Gym", "⛪ Church", "🏨 Hotel", "🏥 Medical"].map(item => (
-                    <div class="flex flex-col items-center gap-1.5 p-3 rounded-xl text-center" style="background: var(--color-bg-elevated); border: 1px solid var(--color-border);">
-                      <span style="font-size: 1.25rem;">{item.split(' ')[0]}</span>
-                      <span class="text-xs" style="color: var(--color-text-muted); font-family: var(--font-body);">{item.split(' ').slice(1).join(' ')}</span>
-                    </div>
-                  ))}
-                </div>
+                <text x="240" y="-5" text-anchor="middle" fill="rgba(125,153,190,0.45)" font-size="7.5" font-family="var(--font-body)" font-weight="600" letter-spacing="0.12em">CARRIER NETWORK</text>
 
-                <div class="section-divider mb-6"></div>
+                <path d="M 88 66 C 140 116 185 152 227 166" stroke="url(#rhgrad-att)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.55"/>
+                <path d="M 240 66 L 240 149" stroke="url(#rhgrad-tmobile)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.55"/>
+                <path d="M 392 66 C 340 116 295 152 253 166" stroke="url(#rhgrad-fi)" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.55"/>
+                <path d="M 240 218 L 240 280" stroke="url(#rhgrad-rev)" stroke-width="2" stroke-dasharray="4 3" fill="none" opacity="0.65"/>
 
-                <!-- Revenue preview -->
-                <div class="flex items-center justify-between mb-3">
-                  <span class="text-sm" style="color: var(--color-text-muted); font-family: var(--font-body);">Estimated Monthly Range</span>
-                  <span class="text-xs px-2 py-1 rounded-full" style="background: rgba(16,185,129,0.12); color: var(--color-success); font-family: var(--font-body);">Based on real data</span>
-                </div>
-                <div class="text-3xl font-bold mb-1" style="font-family: var(--font-mono); color: var(--color-success);">$500 – $9,600+</div>
-                <div class="text-xs" style="color: var(--color-text-muted); font-family: var(--font-body);">Varies by location type and foot traffic</div>
+                <circle class="redd-pulse rp1" cx="240" cy="188" r="46" fill="none" stroke="#1B6FEB" stroke-width="1"/>
+                <circle class="redd-pulse rp2" cx="240" cy="188" r="46" fill="none" stroke="#1B6FEB" stroke-width="1"/>
+                <circle class="redd-pulse rp3" cx="240" cy="188" r="46" fill="none" stroke="#1B6FEB" stroke-width="1"/>
 
-                <a href="#qualify"
-                   class="mt-6 flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-semibold text-sm text-white transition-all duration-200 cursor-pointer"
-                   style="background: var(--color-primary);"
-                   onmouseover="this.style.background='var(--color-primary-hover)'"
-                   onmouseout="this.style.background='var(--color-primary)'">
-                  Check My Redding Location
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
+                <ellipse cx="240" cy="196" rx="66" ry="54" fill="url(#rhbuilding-glow)"/>
+
+                <line x1="240" y1="140" x2="240" y2="150" stroke="#1B6FEB" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="240" cy="138" r="2.2" fill="#1B6FEB" opacity="0.85"/>
+                <path d="M 233 146 Q 240 140 247 146" stroke="#1B6FEB" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+                <path d="M 228 149 Q 240 141 252 149" stroke="#1B6FEB" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.4"/>
+
+                <rect x="213" y="150" width="54" height="18" rx="1.5" fill="rgba(8,36,90,0.92)" stroke="#1B6FEB" stroke-width="1.5"/>
+                <rect x="218" y="153" width="10" height="11" rx="1.5" fill="rgba(14,165,233,0.65)" stroke="rgba(14,165,233,0.3)" stroke-width="0.7"/>
+                <rect x="234" y="153" width="10" height="11" rx="1.5" fill="rgba(14,165,233,0.9)" stroke="rgba(14,165,233,0.4)" stroke-width="0.7"/>
+                <rect x="250" y="153" width="10" height="11" rx="1.5" fill="rgba(14,165,233,0.5)" stroke="rgba(14,165,233,0.3)" stroke-width="0.7"/>
+
+                <rect x="208" y="167" width="64" height="20" rx="1.5" fill="rgba(10,42,108,0.92)" stroke="#1B6FEB" stroke-width="1.5"/>
+                <rect x="213" y="171" width="11" height="12" rx="1.5" fill="rgba(14,165,233,0.45)" stroke="rgba(14,165,233,0.2)" stroke-width="0.7"/>
+                <rect x="230" y="171" width="11" height="12" rx="1.5" fill="rgba(14,165,233,0.75)" stroke="rgba(14,165,233,0.35)" stroke-width="0.7"/>
+                <rect x="247" y="171" width="11" height="12" rx="1.5" fill="rgba(14,165,233,0.5)" stroke="rgba(14,165,233,0.25)" stroke-width="0.7"/>
+                <rect x="263" y="171" width="6" height="12" rx="1.5" fill="rgba(14,165,233,0.3)" stroke="rgba(14,165,233,0.15)" stroke-width="0.7"/>
+
+                <rect x="203" y="186" width="74" height="24" rx="1.5" fill="rgba(12,48,118,0.92)" stroke="#1B6FEB" stroke-width="1.5"/>
+                <rect x="207" y="190" width="15" height="15" rx="1.5" fill="rgba(14,165,233,0.4)" stroke="rgba(14,165,233,0.2)" stroke-width="0.7"/>
+                <rect x="228" y="190" width="15" height="15" rx="1.5" fill="rgba(14,165,233,0.3)" stroke="rgba(14,165,233,0.2)" stroke-width="0.7"/>
+                <rect x="249" y="195" width="16" height="15" rx="2" fill="rgba(27,111,235,0.45)" stroke="#1B6FEB" stroke-width="1.1"/>
+                <circle cx="263" cy="202" r="1.6" fill="#1B6FEB" opacity="0.9"/>
+                <rect x="271" y="190" width="4" height="15" rx="1" fill="rgba(14,165,233,0.3)" stroke="rgba(14,165,233,0.15)" stroke-width="0.5"/>
+
+                <text x="240" y="225" text-anchor="middle" fill="rgba(255,255,255,0.72)" font-size="9" font-family="var(--font-display)" font-weight="600" letter-spacing="0.06em">YOUR LOCATION</text>
+
+                <rect x="182" y="283" width="116" height="52" rx="12" fill="rgba(4,18,12,0.96)" stroke="#10B981" stroke-width="1.8" filter="url(#rhglow-green)"/>
+                <text x="240" y="300" text-anchor="middle" fill="rgba(16,185,129,0.6)" font-size="7.5" font-family="var(--font-body)" font-weight="700" letter-spacing="0.1em">REVENUE EARNED</text>
+                <text id="redd-rev" x="240" y="324" text-anchor="middle" fill="#10B981" font-size="21" font-family="var(--font-mono)" font-weight="700">$0.00</text>
+
+                <!-- Packets: AT&T -->
+                <circle r="4" fill="#00A8E0" filter="url(#rhglow-sm)" opacity="0.9"><animateMotion dur="2.2s" repeatCount="indefinite" begin="0s"><mpath href="#rh-att"/></animateMotion></circle>
+                <circle r="3" fill="#00A8E0" filter="url(#rhglow-sm)" opacity="0.65"><animateMotion dur="2.2s" repeatCount="indefinite" begin="0.8s"><mpath href="#rh-att"/></animateMotion></circle>
+                <circle r="2.2" fill="#00A8E0" opacity="0.4"><animateMotion dur="2.2s" repeatCount="indefinite" begin="1.6s"><mpath href="#rh-att"/></animateMotion></circle>
+                <!-- Packets: T-Mobile -->
+                <circle r="4" fill="#E20074" filter="url(#rhglow-sm)" opacity="0.9"><animateMotion dur="1.9s" repeatCount="indefinite" begin="0.3s"><mpath href="#rh-tmobile"/></animateMotion></circle>
+                <circle r="3" fill="#E20074" filter="url(#rhglow-sm)" opacity="0.65"><animateMotion dur="1.9s" repeatCount="indefinite" begin="1.0s"><mpath href="#rh-tmobile"/></animateMotion></circle>
+                <circle r="2.2" fill="#E20074" opacity="0.4"><animateMotion dur="1.9s" repeatCount="indefinite" begin="1.6s"><mpath href="#rh-tmobile"/></animateMotion></circle>
+                <!-- Packets: Google Fi -->
+                <circle r="4" fill="#1A73E8" filter="url(#rhglow-sm)" opacity="0.9"><animateMotion dur="2.4s" repeatCount="indefinite" begin="0.5s"><mpath href="#rh-fi"/></animateMotion></circle>
+                <circle r="3" fill="#1A73E8" filter="url(#rhglow-sm)" opacity="0.65"><animateMotion dur="2.4s" repeatCount="indefinite" begin="1.3s"><mpath href="#rh-fi"/></animateMotion></circle>
+                <circle r="2.2" fill="#1A73E8" opacity="0.4"><animateMotion dur="2.4s" repeatCount="indefinite" begin="2.0s"><mpath href="#rh-fi"/></animateMotion></circle>
+                <!-- Packets: Revenue -->
+                <circle r="5" fill="#10B981" filter="url(#rhglow-sm)" opacity="0.95"><animateMotion dur="1.5s" repeatCount="indefinite" begin="1.2s"><mpath href="#rh-rev"/></animateMotion></circle>
+                <circle r="3.5" fill="#10B981" filter="url(#rhglow-sm)" opacity="0.75"><animateMotion dur="1.5s" repeatCount="indefinite" begin="2.1s"><mpath href="#rh-rev"/></animateMotion></circle>
+
+                <!-- AT&T node -->
+                <circle cx="88" cy="66" r="28" fill="#060F18" stroke="#00A8E0" stroke-width="1.5" filter="url(#rhglow-sm)"/>
+                <text x="88" y="62" text-anchor="middle" fill="#00A8E0" font-size="10" font-family="var(--font-display)" font-weight="700">AT&amp;T</text>
+                <text x="88" y="77" text-anchor="middle" fill="rgba(125,153,190,0.65)" font-size="8" font-family="var(--font-body)">Carrier</text>
+                <!-- T-Mobile node -->
+                <circle cx="240" cy="66" r="28" fill="#120010" stroke="#E20074" stroke-width="1.5" filter="url(#rhglow-sm)"/>
+                <text x="240" y="62" text-anchor="middle" fill="#E20074" font-size="9.5" font-family="var(--font-display)" font-weight="700">T-Mobile</text>
+                <text x="240" y="77" text-anchor="middle" fill="rgba(125,153,190,0.65)" font-size="8" font-family="var(--font-body)">Carrier</text>
+                <!-- Google Fi node -->
+                <circle cx="392" cy="66" r="28" fill="#060C18" stroke="#1A73E8" stroke-width="1.5" filter="url(#rhglow-sm)"/>
+                <text x="392" y="58" text-anchor="middle" fill="#1A73E8" font-size="9.5" font-family="var(--font-display)" font-weight="700">Google</text>
+                <text x="392" y="71" text-anchor="middle" fill="#1A73E8" font-size="9.5" font-family="var(--font-display)" font-weight="700">Fi</text>
+                <text x="392" y="84" text-anchor="middle" fill="rgba(125,153,190,0.65)" font-size="8" font-family="var(--font-body)">Carrier</text>
+              </svg>
+
+              <!-- Live badge -->
+              <div class="absolute top-3 left-3 flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-semibold"
+                   style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: #10B981; font-family: var(--font-body);">
+                <span class="redd-ping w-1.5 h-1.5 rounded-full" style="background: #10B981;"></span>
+                Live
               </div>
+            </div>
 
-              <!-- Floating badge -->
-              <div class="absolute -top-4 -right-4 px-3 py-2 rounded-xl text-xs font-bold"
-                   style="background: var(--color-bg-elevated); border: 1px solid rgba(16,185,129,0.4); color: var(--color-success); font-family: var(--font-body); box-shadow: 0 4px 16px rgba(0,0,0,0.3);">
-                ✓ No Hardware Required
+            <!-- Estimated Monthly Range strip below animation -->
+            <div class="mt-4 px-5 py-4 rounded-xl flex items-center justify-between gap-4"
+                 style="background: var(--color-bg-card); border: 1px solid var(--color-border-bright);">
+              <div>
+                <div class="text-xs mb-1" style="color: var(--color-text-muted); font-family: var(--font-body);">Estimated Monthly Range</div>
+                <div class="text-2xl font-bold" style="font-family: var(--font-mono); color: var(--color-success);">$500 – $9,600+</div>
+                <div class="text-xs mt-0.5" style="color: var(--color-text-muted); font-family: var(--font-body);">Varies by location type and foot traffic</div>
               </div>
+              <span class="text-xs px-2.5 py-1.5 rounded-full flex-shrink-0"
+                    style="background: rgba(16,185,129,0.12); color: var(--color-success); font-family: var(--font-body); border: 1px solid rgba(16,185,129,0.25);">
+                Based on real data
+              </span>
             </div>
           </div>
 
@@ -525,9 +633,41 @@ const reddingFaqs = [
   .faq-item.open .faq-chevron {
     transform: rotate(180deg);
   }
+
+  /* Hero animation */
+  .redd-pulse {
+    animation: redd-pulse-expand 3s ease-out infinite;
+  }
+  .redd-pulse.rp1 { transform-origin: 240px 188px; }
+  .redd-pulse.rp2 { transform-origin: 240px 188px; animation-delay: 1s; }
+  .redd-pulse.rp3 { transform-origin: 240px 188px; animation-delay: 2s; }
+
+  @keyframes redd-pulse-expand {
+    0%   { r: 38; opacity: 0.5; }
+    100% { r: 84; opacity: 0; }
+  }
+
+  @keyframes redd-ping {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.5); }
+  }
+  .redd-ping { animation: redd-ping 1.5s ease-in-out infinite; }
 </style>
 
 <script>
+  // Hero revenue counter
+  const reddRev = document.getElementById('redd-rev');
+  let reddVal = 0;
+  const reddTarget = 47.82;
+  const reddInc = reddTarget / (8000 / 50);
+  function tickRedd(): void {
+    reddVal += reddInc;
+    if (reddVal >= reddTarget) reddVal = 0;
+    if (reddRev) reddRev.textContent = '$' + reddVal.toFixed(2);
+  }
+  setInterval(tickRedd, 50);
+
+  // FAQ accordion
   document.querySelectorAll<HTMLButtonElement>('#redding-faq-list .faq-trigger').forEach(trigger => {
     trigger.addEventListener('click', () => {
       const item = trigger.closest('.faq-item') as HTMLElement;
