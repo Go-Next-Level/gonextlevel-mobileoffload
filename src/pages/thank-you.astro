@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import '../styles/global.css';
 ---
 <Base title="Thank You — Mobile Offload" description="Thanks for your submission. We'll be in touch within 1 business day.">
+  <script>oaiq("measure", "registration_completed", { type: "customer_action" });</script>
   <div class="min-h-screen flex items-center justify-center px-6" style="background: var(--color-bg-base);">
     <div class="text-center max-w-lg">
       <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-8" style="background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3);">
