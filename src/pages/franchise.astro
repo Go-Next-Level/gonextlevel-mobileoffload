@@ -470,7 +470,7 @@ const schema = {
   }
 
   .franchise-hero__copy {
-    width: min(100%, 940px);
+    width: min(100%, 1080px);
   }
 
   .franchise-kicker {
@@ -494,8 +494,11 @@ const schema = {
   }
 
   .franchise-hero h1 {
-    font-size: clamp(2.55rem, 8.2vw, 5.6rem);
-    line-height: 0.96;
+    max-width: 1060px;
+    margin-inline: auto;
+    font-size: clamp(2.5rem, 6.8vw, 5rem);
+    line-height: 1.02;
+    text-wrap: balance;
   }
 
   .franchise-hero__lead {
@@ -944,6 +947,23 @@ const schema = {
   }
 
   @media (min-width: 768px) {
+    .franchise-nav__inner {
+      display: grid;
+      grid-template-columns: minmax(180px, 1fr) auto minmax(180px, 1fr);
+    }
+
+    .franchise-brand {
+      justify-self: start;
+    }
+
+    .franchise-nav__links {
+      justify-self: center;
+    }
+
+    .franchise-nav__cta {
+      justify-self: end;
+    }
+
     .franchise-nav__links,
     .franchise-nav__cta {
       display: inline-flex;
