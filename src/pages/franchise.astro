@@ -149,28 +149,6 @@ const schema = {
           </div>
           <p class="franchise-trust">Built for restaurants, gyms, retail chains, hotels, car washes, laundromats, entertainment venues, and franchise groups.</p>
         </div>
-
-        <aside class="franchise-signal-card" aria-label="Portfolio fit summary">
-          <div class="franchise-signal-card__top">
-            <span>Portfolio Review</span>
-            <span>Audit-first</span>
-          </div>
-          <div class="franchise-signal-card__meter" aria-hidden="true">
-            <span></span><span></span><span></span><span></span><span></span>
-          </div>
-          <div class="franchise-signal-card__stat">
-            <span>Best fit</span>
-            <strong>20+ locations</strong>
-          </div>
-          <div class="franchise-signal-card__stat">
-            <span>Setup goal</span>
-            <strong>Quiet background operation</strong>
-          </div>
-          <div class="franchise-signal-card__note">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-            <p>No customer app, no staff training, no change to checkout.</p>
-          </div>
-        </aside>
       </div>
     </section>
 
@@ -487,7 +465,12 @@ const schema = {
   .franchise-hero__grid {
     position: relative;
     display: grid;
-    gap: 36px;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .franchise-hero__copy {
+    width: min(100%, 940px);
   }
 
   .franchise-kicker {
@@ -517,7 +500,7 @@ const schema = {
 
   .franchise-hero__lead {
     max-width: 680px;
-    margin: 24px 0 0;
+    margin: 24px auto 0;
     color: var(--color-text-secondary);
     font-size: clamp(1.05rem, 2.8vw, 1.28rem);
     line-height: 1.62;
@@ -526,6 +509,8 @@ const schema = {
   .franchise-actions {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
     gap: 12px;
     margin-top: 34px;
   }
@@ -574,88 +559,10 @@ const schema = {
 
   .franchise-trust {
     max-width: 740px;
-    margin: 22px 0 0;
+    margin: 22px auto 0;
     color: var(--color-text-muted);
     font-size: 0.94rem;
     line-height: 1.6;
-  }
-
-  .franchise-signal-card {
-    border: 1px solid rgba(30, 51, 88, 0.9);
-    border-radius: 18px;
-    padding: 22px;
-    background: linear-gradient(180deg, rgba(16, 29, 51, 0.86), rgba(8, 15, 28, 0.92));
-    box-shadow: 0 22px 70px rgba(0, 0, 0, 0.32);
-  }
-
-  .franchise-signal-card__top,
-  .franchise-signal-card__stat {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-
-  .franchise-signal-card__top {
-    color: var(--color-text-muted);
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .franchise-signal-card__meter {
-    height: 92px;
-    margin: 26px 0;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    align-items: end;
-    gap: 10px;
-  }
-
-  .franchise-signal-card__meter span {
-    border-radius: 8px 8px 3px 3px;
-    background: linear-gradient(180deg, rgba(14, 165, 233, 0.95), rgba(27, 111, 235, 0.34));
-    min-height: 28px;
-  }
-
-  .franchise-signal-card__meter span:nth-child(1) { height: 38%; opacity: 0.58; }
-  .franchise-signal-card__meter span:nth-child(2) { height: 58%; opacity: 0.7; }
-  .franchise-signal-card__meter span:nth-child(3) { height: 76%; opacity: 0.82; }
-  .franchise-signal-card__meter span:nth-child(4) { height: 92%; opacity: 0.94; }
-  .franchise-signal-card__meter span:nth-child(5) { height: 68%; opacity: 0.76; }
-
-  .franchise-signal-card__stat {
-    padding: 16px 0;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .franchise-signal-card__stat span {
-    color: var(--color-text-muted);
-    font-size: 0.83rem;
-  }
-
-  .franchise-signal-card__stat strong {
-    color: var(--color-text-primary);
-    font-family: var(--font-display);
-    text-align: right;
-  }
-
-  .franchise-signal-card__note {
-    display: flex;
-    gap: 12px;
-    margin-top: 14px;
-    padding: 14px;
-    border: 1px solid rgba(16, 185, 129, 0.24);
-    border-radius: 12px;
-    background: rgba(16, 185, 129, 0.08);
-  }
-
-  .franchise-signal-card__note p {
-    margin: 0;
-    color: var(--color-text-secondary);
-    font-size: 0.9rem;
-    line-height: 1.5;
   }
 
   .franchise-section {
@@ -1054,11 +961,6 @@ const schema = {
   @media (min-width: 1024px) {
     .franchise-hero {
       padding: 130px 0 86px;
-    }
-
-    .franchise-hero__grid {
-      grid-template-columns: minmax(0, 1fr) 360px;
-      align-items: center;
     }
 
     .franchise-fit-grid,
