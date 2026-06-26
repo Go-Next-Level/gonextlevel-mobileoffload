@@ -1,4 +1,27 @@
 ---
+interface Props {
+  badge?: string;
+  titleLine1?: string;
+  titleHighlight?: string;
+  titleLine3?: string;
+  description?: string;
+  primaryCta?: string;
+  secondaryCta?: string;
+  secondaryHref?: string;
+  showSecondaryCta?: boolean;
+}
+
+const {
+  badge = 'Carrier Offload Network Partnership',
+  titleLine1 = 'Get Paid When',
+  titleHighlight = 'Mobile Data Is Used',
+  titleLine3 = 'at Your Location',
+  description = 'AT&T, T-Mobile, and Google Fi pay you every time their subscribers come in range of your business location - zero hardware, zero setup fees.',
+  primaryCta = 'Check If You Qualify',
+  secondaryCta = 'Calculate Revenue',
+  secondaryHref = '#revenue',
+  showSecondaryCta = true,
+} = Astro.props;
 ---
 <section class="relative min-h-screen flex items-center overflow-hidden grid-texture" style="padding-top: 4rem;" aria-label="Hero">
   <!-- Background radial glow -->
@@ -18,18 +41,18 @@
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 text-sm font-medium"
              style="background: var(--color-primary-muted); border: 1px solid rgba(27, 111, 235, 0.3); color: var(--color-accent); font-family: var(--font-body);">
           <span class="w-2 h-2 rounded-full animate-pulse-ring" style="background: var(--color-accent);"></span>
-          Carrier Offload Network Partnership
+          {badge}
         </div>
 
         <!-- Headline -->
         <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight" style="font-family: var(--font-display); letter-spacing: -0.02em;">
-          Get Paid When<br/>
-          <span class="gradient-text">Mobile Data Is Used</span><br/>
-          at Your Location
+          {titleLine1}<br/>
+          <span class="gradient-text">{titleHighlight}</span><br/>
+          {titleLine3}
         </h1>
 
         <p class="text-lg mb-10 max-w-lg" style="color: var(--color-text-secondary); line-height: 1.7; font-family: var(--font-body);">
-          AT&amp;T, T-Mobile, and Google Fi pay you every time their subscribers come in range of your business location — zero hardware, zero setup fees.
+          {description}
         </p>
 
         <!-- Stats row -->
@@ -57,18 +80,20 @@
              style="background: var(--color-primary); font-family: var(--font-body);"
              onmouseover="this.style.background='var(--color-primary-hover)'; this.style.transform='translateY(-1px)'; this.style.boxShadow='0 8px 32px rgba(27,111,235,0.4)'"
              onmouseout="this.style.background='var(--color-primary)'; this.style.transform='none'; this.style.boxShadow='none'">
-            Check If You Qualify
+            {primaryCta}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
-          <a href="#revenue"
-             class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-medium transition-all duration-200 cursor-pointer"
-             style="background: transparent; border: 1px solid var(--color-border-bright); color: var(--color-text-secondary); font-family: var(--font-body);"
-             onmouseover="this.style.borderColor='var(--color-primary)'; this.style.color='var(--color-text-primary)'"
-             onmouseout="this.style.borderColor='var(--color-border-bright)'; this.style.color='var(--color-text-secondary)'">
-            Calculate Revenue
-          </a>
+          {showSecondaryCta && (
+            <a href={secondaryHref}
+               class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-medium transition-all duration-200 cursor-pointer"
+               style="background: transparent; border: 1px solid var(--color-border-bright); color: var(--color-text-secondary); font-family: var(--font-body);"
+               onmouseover="this.style.borderColor='var(--color-primary)'; this.style.color='var(--color-text-primary)'"
+               onmouseout="this.style.borderColor='var(--color-border-bright)'; this.style.color='var(--color-text-secondary)'">
+              {secondaryCta}
+            </a>
+          )}
         </div>
       </div>
 
