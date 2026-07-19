@@ -402,14 +402,6 @@ const venueTypes = [
     table.deployments .t-scope { font-family: var(--mono); font-size: 12.5px; color: var(--ink-2); }
     table.deployments .t-num { font-family: var(--mono); font-size: 15px; color: var(--ink); }
     table.deployments .t-rev { font-family: var(--mono); font-size: 15px; font-weight: 600; color: var(--green); }
-    tr.flagship { background: var(--green-wash); }
-    tr.flagship td { border-bottom: 1px solid var(--rule); }
-    .flag-badge {
-      display: inline-block; font-family: var(--mono); font-size: 10px;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--green); border: 1px solid var(--green);
-      padding: 3px 8px; margin-bottom: 8px;
-    }
     .tbl-footnote {
       margin-top: 18px; font-size: 13px; color: var(--ink-3); line-height: 1.6;
       font-family: var(--mono); max-width: 78ch;
@@ -727,7 +719,7 @@ const venueTypes = [
       <div class="hero-grid-bg" aria-hidden="true"></div>
       <div class="wrap hero-inner">
         <p class="eyebrow">Carrier Offload · AT&amp;T / T-Mobile / Google Fi</p>
-        <h1 class="display">Your venues carry the carriers' traffic.<br/><span class="hl">Get paid for it.</span></h1>
+        <h1 class="display">Get paid when mobile data is used <span class="hl">across your locations.</span></h1>
         <p class="hero-sub">
           Mobile carriers pay to route subscriber data through enterprise Wi-Fi in high-traffic venues.
           Mobile Offload activates that revenue across your entire portfolio — software-only deployment
@@ -760,7 +752,7 @@ const venueTypes = [
               <div class="m-note">Authenticated across six major carriers nationwide</div>
             </div>
             <div class="metric">
-              <div class="m-label">Flagship Site, Annual</div>
+              <div class="m-label">Example Site, Annual</div>
               <div class="m-value">$115K</div>
               <div class="m-note">BWI Airport — 242 access points, 75 TB offloaded monthly</div>
             </div>
@@ -848,9 +840,8 @@ const venueTypes = [
               </thead>
               <tbody>
                 {deployments.map((d) => (
-                  <tr class={d.flagship ? "flagship" : ""}>
+                  <tr>
                     <td>
-                      {d.flagship && <span class="flag-badge">Flagship</span>}
                       <div class="t-type">{d.type}</div>
                       <div class="t-loc">{d.location}</div>
                     </td>
