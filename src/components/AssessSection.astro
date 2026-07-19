@@ -1,0 +1,267 @@
+---
+// Shared "Request an assessment" section + lead form (main GHL webhook).
+// Styling comes from the Enterprise layout's global design system.
+interface Point { title: string; desc: string }
+
+interface Props {
+  secNum?: string;
+  heading?: string;
+  sub?: string;
+  points?: Point[];
+  formTitle?: string;
+  submitLabel?: string;
+  venueTypes?: string[];
+  sourceLabel?: string;
+}
+
+const {
+  secNum = "08 — Engage",
+  heading = "Request a network assessment.",
+  sub = "We model offload capacity across your portfolio — site by site — and return a revenue projection with deployment scope. No cost, no obligation.",
+  points = [
+    { title: "Portfolio review", desc: "A call to review your locations, traffic profile, and network infrastructure." },
+    { title: "Capacity model", desc: "Per-site offload projections built from live network data." },
+    { title: "Deployment plan", desc: "Rollout waves, IT coordination, and settlement structure." },
+  ],
+  formTitle = "Network Assessment Request",
+  submitLabel = "Request Assessment →",
+  venueTypes = [
+    "Multi-Location Franchise",
+    "Airport / Transportation Hub",
+    "Stadium / Arena / Event Venue",
+    "Shopping Center / Mall",
+    "Hotel / Hospitality Group",
+    "University / Campus",
+    "Healthcare System",
+    "Convention Center",
+    "Restaurant Group",
+    "Other",
+  ],
+  sourceLabel = "Mobile Offload — Qualification Form",
+} = Astro.props;
+
+const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/4aIMOOEHb5YojmrdglB9/webhook-trigger/6926eea6-52bf-4158-a4a0-580e835d83db';
+---
+<section class="section assess" id="assessment" aria-label="Request a network assessment">
+  <div class="wrap">
+    <div class="assess-grid">
+      <div class="assess-copy reveal">
+        <div class="sec-num" style="margin-bottom: 18px;">{secNum}</div>
+        <h2 class="display">{heading}</h2>
+        <p class="a-sub">{sub}</p>
+        <div class="assess-points">
+          {points.map((p, i) => (
+            <div class="a-point">
+              <span class="ap-num">{String(i + 1).padStart(2, "0")}</span>
+              <span class="ap-txt"><strong>{p.title}</strong><span>{p.desc}</span></span>
+            </div>
+          ))}
+        </div>
+        <p class="assess-contact">
+          Direct: <a href="sms:+15302324445">(530) 232-4445</a> — text only<br/>
+          <a href="mailto:corey@mobileoffload.com">corey@mobileoffload.com</a>
+        </p>
+      </div>
+
+      <div class="form-card reveal">
+        <div class="fc-title">{formTitle}</div>
+        <form id="assess-form" novalidate>
+          <div class="f-grid">
+            <div class="f-field">
+              <label for="as-first">First Name <span class="req">*</span></label>
+              <input type="text" id="as-first" name="first_name" required autocomplete="given-name" />
+              <span class="f-err">Required</span>
+            </div>
+            <div class="f-field">
+              <label for="as-last">Last Name <span class="req">*</span></label>
+              <input type="text" id="as-last" name="last_name" required autocomplete="family-name" />
+              <span class="f-err">Required</span>
+            </div>
+            <div class="f-field">
+              <label for="as-email">Work Email <span class="req">*</span></label>
+              <input type="email" id="as-email" name="email" required autocomplete="email" />
+              <span class="f-err">Valid email required</span>
+            </div>
+            <div class="f-field">
+              <label for="as-phone">Phone</label>
+              <input type="tel" id="as-phone" name="phone" autocomplete="tel" />
+            </div>
+            <div class="f-field">
+              <label for="as-company">Organization <span class="req">*</span></label>
+              <input type="text" id="as-company" name="business_name" required autocomplete="organization" />
+              <span class="f-err">Required</span>
+            </div>
+            <div class="f-field">
+              <label for="as-venue">Location Type <span class="req">*</span></label>
+              <select id="as-venue" name="venue_type" required>
+                <option value="" disabled selected>Select…</option>
+                {venueTypes.map((v) => (
+                  <option value={v.toLowerCase().replace(/[^a-z0-9]+/g, "-")}>{v}</option>
+                ))}
+              </select>
+              <span class="f-err">Please select</span>
+            </div>
+            <div class="f-field">
+              <label for="as-locations">Number of Locations <span class="req">*</span></label>
+              <select id="as-locations" name="num_locations" required>
+                <option value="" disabled selected>Select…</option>
+                <option value="1">1 location</option>
+                <option value="2-5">2–5 locations</option>
+                <option value="6-10">6–10 locations</option>
+                <option value="11-25">11–25 locations</option>
+                <option value="26-50">26–50 locations</option>
+                <option value="50+">50+ locations</option>
+              </select>
+              <span class="f-err">Please select</span>
+            </div>
+            <div class="f-field">
+              <label for="as-traffic">Daily Foot Traffic (per site) <span class="req">*</span></label>
+              <select id="as-traffic" name="foot_traffic" required>
+                <option value="" disabled selected>Select…</option>
+                <option value="under-100">Under 100 / day</option>
+                <option value="100-500">100–500 / day</option>
+                <option value="500-1000">500–1,000 / day</option>
+                <option value="1000-5000">1,000–5,000 / day</option>
+                <option value="5000-10000">5,000–10,000 / day</option>
+                <option value="10000+">10,000+ / day</option>
+              </select>
+              <span class="f-err">Please select</span>
+            </div>
+            <div class="f-field full">
+              <label for="as-address">Primary Business Address <span class="req">*</span></label>
+              <input type="text" id="as-address" name="business_address" required autocomplete="street-address" />
+              <span class="f-err">Required</span>
+            </div>
+            <div class="f-field">
+              <label for="as-wifi">Wi-Fi Controller</label>
+              <select id="as-wifi" name="wifi_controller">
+                <option value="">Not sure / varies by site</option>
+                <option value="Aruba">Aruba</option>
+                <option value="Cambium cnMaestro">Cambium cnMaestro</option>
+                <option value="Fortinet">Fortinet</option>
+                <option value="Juniper Mist">Juniper Mist</option>
+                <option value="Meraki">Meraki</option>
+                <option value="Cisco Catalyst 9800">Cisco Catalyst 9800</option>
+                <option value="Cisco Catalyst 5520">Cisco Catalyst 5520</option>
+                <option value="MikroTik">MikroTik</option>
+                <option value="Ruckus">Ruckus</option>
+                <option value="Ubiquiti">Ubiquiti</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="f-field">
+              <label for="as-heard">How Did You Hear About Us?</label>
+              <select id="as-heard" name="heard_from">
+                <option value="">Select…</option>
+                <option value="Google Search">Google Search</option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="Referral">Referral</option>
+                <option value="Industry Event / Conference">Industry Event / Conference</option>
+                <option value="Email / Newsletter">Email / Newsletter</option>
+                <option value="Social Media">Social Media</option>
+                <option value="Online Ad">Online Ad</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="f-field full">
+              <label for="as-message">Notes (optional)</label>
+              <textarea id="as-message" name="message" rows="3" placeholder="Location details, timeline, or questions…"></textarea>
+            </div>
+            <div class="consent-row" id="as-consent-row">
+              <label>
+                <input type="checkbox" id="as-consent" name="consent" required />
+                <span class="c-txt">
+                  I agree that by submitting this form, <strong>Goolsby Ventures LLC (Mobile Offload)</strong> and its
+                  partner <strong>Hudson House</strong> may contact me by phone, email, or text regarding carrier
+                  offload network services. I have read and agree to the <a href="/privacy-policy" target="_blank">Privacy Policy</a>. <span class="req">*</span>
+                </span>
+              </label>
+              <span class="consent-err">You must agree to continue</span>
+            </div>
+            <div class="form-error-msg" id="as-form-error">Something went wrong. Please try again or contact us directly.</div>
+            <button type="submit" class="f-submit" id="as-submit">{submitLabel}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ GHL_WEBHOOK, sourceLabel, submitLabel }}>
+  const form = document.getElementById('assess-form');
+  const submitBtn = document.getElementById('as-submit');
+  const errorMsg = document.getElementById('as-form-error');
+  const consentRow = document.getElementById('as-consent-row');
+  const consentInput = document.getElementById('as-consent');
+
+  const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  const fieldWrap = (el) => el.closest('.f-field');
+
+  form?.querySelectorAll('[required]').forEach(field => {
+    if (field.type === 'checkbox') return;
+    const clear = () => fieldWrap(field)?.classList.remove('invalid');
+    field.addEventListener('input', clear);
+    field.addEventListener('change', clear);
+  });
+  consentInput?.addEventListener('change', () => consentRow.classList.remove('invalid'));
+
+  function validate() {
+    let valid = true;
+    let firstInvalid = null;
+    form.querySelectorAll('[required]').forEach(field => {
+      if (field.type === 'checkbox') {
+        if (!field.checked) { consentRow.classList.add('invalid'); valid = false; firstInvalid ||= consentRow; }
+        return;
+      }
+      const bad = !field.value.trim() || (field.type === 'email' && !emailOk(field.value));
+      fieldWrap(field)?.classList.toggle('invalid', bad);
+      if (bad) { valid = false; firstInvalid ||= field; }
+    });
+    if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return valid;
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorMsg.style.display = 'none';
+    if (!validate()) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    const val = (name) => form.elements.namedItem(name)?.value?.trim() ?? '';
+
+    const payload = {
+      firstName:       val('first_name'),
+      lastName:        val('last_name'),
+      email:           val('email'),
+      phone:           val('phone'),
+      name:            `${val('first_name')} ${val('last_name')}`.trim(),
+      businessName:    val('business_name'),
+      venueType:       val('venue_type'),
+      businessAddress: val('business_address'),
+      numLocations:    val('num_locations'),
+      footTraffic:     val('foot_traffic'),
+      wifiController:  val('wifi_controller'),
+      heardFrom:       val('heard_from'),
+      message:         val('message'),
+      consentGiven:    'Yes',
+      source:          sourceLabel,
+      tags:            ['mobile-offload-lead'],
+    };
+
+    try {
+      const res = await fetch(GHL_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error('Webhook error');
+      window.location.href = '/thank-you';
+    } catch {
+      errorMsg.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = submitLabel;
+    }
+  });
+</script>

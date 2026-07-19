@@ -1,52 +1,41 @@
 ---
-import Base from '../layouts/Base.astro';
-import Nav from '../components/Nav.astro';
-import Hero from '../components/Hero.astro';
-import HowItWorks from '../components/HowItWorks.astro';
-import NetworkAnimation from '../components/NetworkAnimation.astro';
-import CaseStudies from '../components/CaseStudies.astro';
-import Security from '../components/Security.astro';
-import PartnershipTerms from '../components/PartnershipTerms.astro';
-import FAQ from '../components/FAQ.astro';
-import QualifyForm from '../components/QualifyForm.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import Enterprise from '../layouts/Enterprise.astro';
+import AssessSection from '../components/AssessSection.astro';
 
 const title = 'Franchise Wi-Fi Revenue Audit | Mobile Offload';
 const description = 'Own 20+ franchise locations? Mobile Offload helps multi-location businesses find out whether their existing Wi-Fi can generate monthly revenue through carrier offload.';
 const canonicalURL = 'https://mobileoffload.com/franchise';
 
 const revenueRows = [
-  {
-    type: 'Restaurants & QSR',
-    why: 'Short visits, steady daily traffic, social media, ordering apps, and navigation use.',
-    annual: '$21,000',
-  },
-  {
-    type: 'Fitness Centers',
-    why: '1-2 hour sessions with music, video, podcasts, and repeat weekly visits.',
-    annual: '$42,000',
-  },
-  {
-    type: 'Hotels & Convention Centers',
-    why: 'Overnight stays, all-day events, video calls, streaming, and business travel.',
-    annual: '$211,000',
-  },
-  {
-    type: 'Shopping Centers',
-    why: 'Longer dwell time, high concurrent device count, browsing, social media, and maps.',
-    annual: '$264,000',
-  },
-  {
-    type: 'Music & Sporting Venues',
-    why: 'Thousands of devices, event-day bursts, video sharing, messaging, and live social usage.',
-    annual: '$264,000',
-  },
-  {
-    type: 'Airport Terminals',
-    why: 'Long waits, heavy streaming, work calls, video calls, and high traveler volume.',
-    annual: '$317,000',
-  },
+  { type: 'Restaurants & QSR',            why: 'Short visits, steady daily traffic, social media, ordering apps, and navigation use.',                 annual: '$21,000' },
+  { type: 'Fitness Centers',              why: '1–2 hour sessions with music, video, podcasts, and repeat weekly visits.',                              annual: '$42,000' },
+  { type: 'Hotels & Convention Centers',  why: 'Overnight stays, all-day events, video calls, streaming, and business travel.',                        annual: '$211,000' },
+  { type: 'Shopping Centers',             why: 'Longer dwell time, high concurrent device count, browsing, social media, and maps.',                   annual: '$264,000' },
+  { type: 'Music & Sporting Venues',      why: 'Thousands of devices, event-day bursts, video sharing, messaging, and live social usage.',             annual: '$264,000' },
+  { type: 'Airport Terminals',            why: 'Long waits, heavy streaming, work calls, video calls, and high traveler volume.',                      annual: '$317,000' },
+];
+
+const steps = [
+  { num: "01", title: "Portfolio Audit", desc: "We review your locations, traffic profile, and existing Wi-Fi infrastructure to model offload capacity across the group." },
+  { num: "02", title: "Software Integration", desc: "A dedicated carrier SSID configured with Passpoint (Hotspot 2.0) and RadSec — roughly one hour per site, rolled out in coordinated waves with your IT or MSP." },
+  { num: "03", title: "Automatic Carrier Offload", desc: "AT&T, T-Mobile, and Google Fi subscribers authenticate automatically on entry at every location. No passwords, no splash pages." },
+  { num: "04", title: "Consolidated Settlement", desc: "Carriers pay per gigabyte offloaded. Your organization receives 50% by the 5th of each month, with consolidated reporting across the portfolio." },
+];
+
+const deployments = [
+  { location: "Baltimore, MD",   type: "International Airport", scope: "Brownfield · 242 APs", monthly: "$9,625", annual: "$115,499", users: "5,945", data: "75 TB" },
+  { location: "Glendale, CA",    type: "Shopping Mall",         scope: "Greenfield · 1 AP",    monthly: "$1,929", annual: "$23,464",  users: "1,419", data: "8.12 TB" },
+  { location: "Irvine, CA",      type: "Fitness Center",        scope: "Greenfield · 1 AP",    monthly: "$1,824", annual: "$22,197",  users: "1,172", data: "7.79 TB" },
+  { location: "New Orleans, LA", type: "Restaurant Group",      scope: "Brownfield · 3 APs",   monthly: "$889",   annual: "$10,662",  users: "5,023", data: "3.56 TB" },
+  { location: "Studio City, CA", type: "Retail Location",       scope: "Greenfield · 1 AP",    monthly: "$577",   annual: "$7,023",   users: "1,082", data: "1.95 TB" },
+];
+
+const faqs = [
+  { q: "How does the revenue share work?", a: "Carrier revenue is split equally — your organization receives 50% of all carrier payments generated across your locations. No tiered structures and no fine print. Settlement is paid by the 5th of each month with full session-level reporting per site." },
+  { q: "How is a multi-site rollout managed?", a: "One master agreement covers the portfolio. Sites are activated in coordinated waves with your IT team or MSP — roughly one hour of configuration per site, scheduled off-peak. Reporting is consolidated across all locations." },
+  { q: "Does offload affect existing Wi-Fi performance?", a: "No. The carrier offload network runs on a completely separate SSID with dedicated bandwidth allocation. Guest networks, internal networks, and POS systems are untouched. We validate zero impact before any site goes live." },
+  { q: "Is new hardware required?", a: "In most deployments, no. If your access points support Passpoint / Hotspot 2.0 — standard on enterprise hardware from Cisco, Aruba, Ruckus, Juniper Mist, and others — we deploy on what you have. Where an addition is recommended, we handle it." },
+  { q: "What if we want to exit?", a: "During the first six months, either party can exit with 30 days written notice — no termination fees, no penalties. On exit, every network is restored to its original configuration." },
 ];
 
 const schema = {
@@ -55,131 +44,246 @@ const schema = {
     {
       '@type': 'Service',
       name: 'Franchise Wi-Fi Revenue Audit',
-      provider: {
-        '@type': 'Organization',
-        name: 'Mobile Offload',
-        url: 'https://mobileoffload.com',
-      },
+      provider: { '@type': 'Organization', name: 'Mobile Offload', url: 'https://mobileoffload.com' },
       areaServed: 'United States',
       description,
       serviceType: 'Carrier offload revenue audit for multi-location businesses',
-      audience: {
-        '@type': 'BusinessAudience',
-        audienceType: 'Franchise owners and multi-location business operators',
-      },
+      audience: { '@type': 'BusinessAudience', audienceType: 'Franchise owners and multi-location business operators' },
     },
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: 'https://mobileoffload.com/',
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Franchise Wi-Fi Revenue Audit',
-          item: canonicalURL,
-        },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mobileoffload.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Franchise Wi-Fi Revenue Audit', item: canonicalURL },
       ],
     },
   ],
 };
+
+const navLinks = [
+  { href: '#revenue', label: 'Revenue Potential' },
+  { href: '#network', label: 'Results' },
+  { href: '#how-it-works', label: 'How It Works' },
+  { href: '#faq', label: 'FAQ' },
+];
 ---
+<Enterprise
+  title={title}
+  description={description}
+  canonicalURL={canonicalURL}
+  schema={schema}
+  navLinks={navLinks}
+  ctaLabel="Request an Audit"
+  ctaHref="#assessment"
+>
 
-<Base title={title} description={description} canonicalURL={canonicalURL}>
-  <main id="main">
-    <Nav />
-    <Hero
-      badge="Franchise Wi-Fi Revenue Audit"
-      titleLine1="Own 20+ Locations?"
-      titleHighlight="Turn Existing Wi-Fi"
-      titleLine3="Into Monthly Revenue"
-      description="Mobile Offload helps multi-location businesses monetize eligible mobile data usage through their existing Wi-Fi infrastructure - without changing the customer experience."
-      primaryCta="Check If My Locations Qualify"
-      secondaryCta="See Revenue Potential"
-      secondaryHref="#revenue"
-    />
+  <!-- ═══ HERO ═══════════════════════════════════════════════ -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Franchise Wi-Fi Revenue Audit</p>
+      <h1 class="display">Own 20+ locations? Your Wi-Fi is <span class="hl">an unmonetized asset.</span></h1>
+      <p class="hero-sub">
+        Mobile Offload helps multi-location businesses monetize eligible mobile data usage through
+        their existing Wi-Fi infrastructure — without changing the customer experience. One master
+        agreement, portfolio-wide deployment, consolidated monthly settlement.
+      </p>
+      <div class="hero-ctas">
+        <a href="#assessment" class="btn-primary">Check If My Locations Qualify <span class="arr">→</span></a>
+        <a href="#revenue" class="btn-ghost">See Revenue Potential</a>
+      </div>
+      <div class="hero-carriers" aria-label="Participating carriers">
+        <span>Carriers on the network</span>
+        <span class="carrier">AT&amp;T</span>
+        <span class="carrier">T-Mobile</span>
+        <span class="carrier">Google Fi</span>
+      </div>
+    </div>
 
-    <section id="revenue" class="py-28 relative grid-texture" style="background: var(--color-bg-base);">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 text-xs font-semibold tracking-widest uppercase"
-               style="background: rgba(16,185,129,0.1); color: var(--color-success); font-family: var(--font-body); border: 1px solid rgba(16,185,129,0.25);">
-            Revenue Potential
+    <!-- Metrics band -->
+    <div class="metrics">
+      <div class="wrap" style="padding: 0;">
+        <div class="metrics-grid">
+          <div class="metric">
+            <div class="m-label">Best Fit</div>
+            <div class="m-value sm">20+ sites</div>
+            <div class="m-note">Consistent foot traffic. Some 10+ location groups may also qualify</div>
           </div>
-          <h2 class="text-4xl lg:text-5xl font-bold mb-6" style="font-family: var(--font-display); letter-spacing: -0.02em;">
-            Do You Own 20+<br/>
-            <span class="gradient-text">Franchise Locations?</span>
-          </h2>
-          <p class="text-lg max-w-3xl mx-auto" style="color: var(--color-text-secondary); font-family: var(--font-body); line-height: 1.7;">
-            Revenue potential depends on traffic, dwell time, Wi-Fi quality, carrier needs in your area, and eligible data usage. The examples below show annual potential per location type, per location. They are not guarantees.
-          </p>
+          <div class="metric">
+            <div class="m-label">Data Offloaded / Quarter</div>
+            <div class="m-value">576 <sup>TB</sup></div>
+            <div class="m-note">Up from 88 TB — 555% network growth in five quarters</div>
+          </div>
+          <div class="metric">
+            <div class="m-label">Upfront Cost</div>
+            <div class="m-value">$0</div>
+            <div class="m-note">Software-only deployment on existing infrastructure in most cases</div>
+          </div>
+          <div class="metric">
+            <div class="m-label">Partner Revenue Share</div>
+            <div class="m-value">50%</div>
+            <div class="m-note">Of all carrier payments, settled by the 5th of each month</div>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="grid lg:grid-cols-[0.75fr_1.25fr] gap-8 items-start">
-          <div class="card-dark p-8">
-            <h3 class="text-2xl font-bold mb-4" style="font-family: var(--font-display);">Portfolio math can add up quickly.</h3>
-            <p class="text-sm mb-6" style="color: var(--color-text-secondary); font-family: var(--font-body); line-height: 1.7;">
-              One location may be interesting. A 20, 50, or 100-location portfolio is where this can become meaningful. Mobile Offload reviews your locations, traffic profile, and existing Wi-Fi to see whether your group may qualify.
-            </p>
-            <div class="p-5 rounded-xl mb-6" style="background: var(--color-primary-muted); border: 1px solid rgba(27,111,235,0.25);">
-              <div class="text-xs font-semibold tracking-widest uppercase mb-2" style="color: var(--color-accent); font-family: var(--font-body);">Best Fit</div>
-              <p class="text-sm" style="color: var(--color-text-secondary); font-family: var(--font-body); line-height: 1.7;">
-                20+ locations with consistent foot traffic. Some 10+ location groups may also qualify.
-              </p>
-            </div>
-            <a href="#qualify" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-semibold text-white transition-all duration-200 cursor-pointer"
-               style="background: var(--color-primary); font-family: var(--font-body);"
-               onmouseover="this.style.background='var(--color-primary-hover)'"
-               onmouseout="this.style.background='var(--color-primary)'">
-              Request a Wi-Fi Revenue Audit
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-
-          <div class="rounded-2xl overflow-hidden" style="border: 1px solid var(--color-border);">
-            <table class="w-full" role="table">
-              <caption class="sr-only">Annual revenue potential by location type, per location</caption>
-              <thead>
-                <tr style="background: var(--color-bg-elevated); border-bottom: 1px solid var(--color-border);">
-                  <th scope="col" class="text-left px-6 py-4 text-sm font-semibold" style="color: var(--color-text-secondary); font-family: var(--font-display);">Location Type</th>
-                  <th scope="col" class="hidden md:table-cell text-left px-6 py-4 text-sm font-semibold" style="color: var(--color-text-secondary); font-family: var(--font-display);">Why It Earns</th>
-                  <th scope="col" class="text-right px-6 py-4 text-sm font-semibold" style="color: var(--color-text-secondary); font-family: var(--font-display);">Annual Potential</th>
+  <!-- ═══ REVENUE POTENTIAL ══════════════════════════════════ -->
+  <section class="section band-alt" id="revenue" aria-label="Revenue potential">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="sh-left">
+          <div class="sec-num">01 — Potential</div>
+        </div>
+        <div>
+          <p class="eyebrow">Portfolio Math</p>
+          <h2 class="display" style="margin-top: 22px;">Per-location potential, multiplied across the portfolio.</h2>
+          <p class="sh-sub">Revenue potential depends on traffic, dwell time, Wi-Fi quality, carrier needs in your area, and eligible data usage. The examples below show annual potential per location type, per location — they are not guarantees.</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="tbl-wrap">
+          <table class="deployments">
+            <thead>
+              <tr>
+                <th scope="col">Location Type</th>
+                <th scope="col">Why It Earns</th>
+                <th scope="col">Annual Potential / Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              {revenueRows.map((row) => (
+                <tr>
+                  <td><div class="t-type">{row.type}</div></td>
+                  <td><span style="font-size: 14px; color: var(--ink-2); line-height: 1.6;">{row.why}</span></td>
+                  <td><span class="t-rev">{row.annual}</span></td>
                 </tr>
-              </thead>
-              <tbody>
-                {revenueRows.map((row, i) => (
-                  <tr style={`background: ${i % 2 === 0 ? 'var(--color-bg-surface)' : 'var(--color-bg-base)'}; border-bottom: 1px solid var(--color-border);`}>
-                    <td class="px-6 py-4 text-sm font-medium" style="font-family: var(--font-body); color: var(--color-text-primary);">{row.type}</td>
-                    <td class="hidden md:table-cell px-6 py-4 text-sm" style="color: var(--color-text-muted); font-family: var(--font-body); line-height: 1.55;">{row.why}</td>
-                    <td class="px-6 py-4 text-right font-bold whitespace-nowrap" style="font-family: var(--font-mono); color: var(--color-text-primary);">
-                      {row.annual}
-                      <span class="block text-xs font-normal mt-1" style="color: var(--color-text-muted); font-family: var(--font-body);">/yr per location</span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
-
-        <p class="text-xs mt-6 text-center max-w-3xl mx-auto" style="color: var(--color-text-muted); font-family: var(--font-body); line-height: 1.7;">
-          These are example categories based on deployment-style assumptions and public-facing venue patterns. Actual revenue depends on location count, traffic, carrier mix, local network demand, eligible offloaded data, and final qualification.
+        <p class="tbl-footnote">
+          Example categories based on deployment-style assumptions and public-facing venue patterns.
+          Actual revenue depends on location count, traffic, carrier mix, local network demand,
+          eligible offloaded data, and final qualification. One location may be interesting — a 20,
+          50, or 100-location portfolio is where this becomes meaningful.
         </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <HowItWorks />
-    <NetworkAnimation />
-    <CaseStudies />
-    <Security />
-    <PartnershipTerms />
-    <FAQ />
-    <QualifyForm />
-    <Footer />
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-  </main>
-</Base>
+  <!-- ═══ NETWORK PERFORMANCE ════════════════════════════════ -->
+  <section class="section" id="network" aria-label="Network performance">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="sh-left">
+          <div class="sec-num">02 — Performance</div>
+        </div>
+        <div>
+          <p class="eyebrow">Live Deployments</p>
+          <h2 class="display" style="margin-top: 22px;">Audited results from the active network.</h2>
+          <p class="sh-sub">Settlement figures from live carrier offload sites. Greenfield denotes a new access point; brownfield runs entirely on existing infrastructure.</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="tbl-wrap">
+          <table class="deployments">
+            <thead>
+              <tr>
+                <th scope="col">Deployment</th>
+                <th scope="col">Scope</th>
+                <th scope="col">Avg Daily Users</th>
+                <th scope="col">Data / Month</th>
+                <th scope="col">Revenue / Month</th>
+                <th scope="col">Annualized</th>
+              </tr>
+            </thead>
+            <tbody>
+              {deployments.map((d) => (
+                <tr>
+                  <td>
+                    <div class="t-type">{d.type}</div>
+                    <div class="t-loc">{d.location}</div>
+                  </td>
+                  <td><span class="t-scope">{d.scope}</span></td>
+                  <td><span class="t-num">{d.users}</span></td>
+                  <td><span class="t-num">{d.data}</span></td>
+                  <td><span class="t-rev">{d.monthly}</span></td>
+                  <td><span class="t-rev">{d.annual}</span></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="tbl-footnote">
+          Figures reflect the partner's 50% share of carrier settlement. Multi-site portfolios compound
+          per location under a single master agreement.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS ═══════════════════════════════════════ -->
+  <section class="section band-white" id="how-it-works" aria-label="Deployment process">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="sh-left">
+          <div class="sec-num">03 — Deployment</div>
+        </div>
+        <div>
+          <p class="eyebrow">From Audit to Settlement</p>
+          <h2 class="display" style="margin-top: 22px;">Software-only. About an hour per site.</h2>
+          <p class="sh-sub">No hardware purchase in most deployments. No disruption to existing networks. Your IT team or MSP coordinates once — we handle the rest, in rollout waves across the portfolio.</p>
+        </div>
+      </div>
+      <div class="steps-grid reveal">
+        {steps.map((s) => (
+          <div class="step">
+            <div class="s-num">{s.num}</div>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ════════════════════════════════════════════════ -->
+  <section class="section band-alt" id="faq" aria-label="Frequently asked questions">
+    <div class="wrap" style="max-width: 900px;">
+      <div style="margin-bottom: 52px;" class="reveal">
+        <div class="sec-num" style="margin-bottom: 18px;">04 — Questions</div>
+        <h2 class="display" style="font-size: clamp(32px, 4vw, 48px);">Common questions.</h2>
+      </div>
+      <div class="faq-list reveal">
+        {faqs.map((f, i) => (
+          <div class="faq-item">
+            <button type="button" class="faq-q" aria-expanded="false" aria-controls={`ffaq-${i}`} id={`ffaq-btn-${i}`}>
+              {f.q}
+              <span class="fq-mark" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id={`ffaq-${i}`} role="region" aria-labelledby={`ffaq-btn-${i}`}>
+              <p>{f.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ASSESSMENT FORM ════════════════════════════════════ -->
+  <AssessSection
+    secNum="05 — Engage"
+    heading="Request a Wi-Fi revenue audit."
+    sub="We review your locations, traffic profile, and existing Wi-Fi to see whether your group may qualify — and return per-site projections with a rollout plan. No cost, no obligation."
+    points={[
+      { title: "Portfolio review", desc: "A call to review your locations, traffic profile, and network infrastructure." },
+      { title: "Per-site projections", desc: "Offload capacity modeled from live network data for each location type." },
+      { title: "Rollout plan", desc: "Deployment waves, IT coordination, and consolidated settlement structure." },
+    ]}
+    formTitle="Franchise Wi-Fi Revenue Audit"
+    submitLabel="Request My Audit →"
+  />
+
+</Enterprise>
