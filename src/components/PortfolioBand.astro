@@ -1,0 +1,158 @@
+---
+const venueProfiles = [
+  {
+    index: '01',
+    title: 'National franchise networks',
+    detail: 'Food and service operators with hundreds or thousands of locations.',
+  },
+  {
+    index: '02',
+    title: 'Healthcare systems',
+    detail: 'Hospitals, medical campuses, and multi-state care infrastructure.',
+  },
+  {
+    index: '03',
+    title: 'Professional sports venues',
+    detail: 'Football, basketball, and baseball stadiums and arenas.',
+  },
+  {
+    index: '04',
+    title: 'Universities and campuses',
+    detail: 'Large academic environments with sustained, high-dwell mobile demand.',
+  },
+  {
+    index: '05',
+    title: 'Shopping and grocery portfolios',
+    detail: 'Malls, grocery networks, and multi-location retail environments.',
+  },
+  {
+    index: '06',
+    title: 'High-traffic destinations',
+    detail: 'Transportation, hospitality, entertainment, and mixed-use properties.',
+  },
+];
+---
+
+<section class="portfolio-band" aria-labelledby="portfolio-band-title">
+  <div class="wrap portfolio-band-inner">
+    <div class="portfolio-intro">
+      <p class="portfolio-kicker">Portfolio-scale carrier offload</p>
+      <h2 id="portfolio-band-title">Built for the places where mobile demand concentrates.</h2>
+      <p>
+        We work with operators whose scale, visitor dwell time, and network footprint can deliver
+        meaningful offload volume across one major destination or an entire portfolio.
+      </p>
+    </div>
+
+    <div class="venue-profile-grid" aria-label="Location types MobileOffload works with">
+      {venueProfiles.map((profile) => (
+        <article class="venue-profile">
+          <span class="venue-index">{profile.index}</span>
+          <div>
+            <h3>{profile.title}</h3>
+            <p>{profile.detail}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .portfolio-band {
+    margin-top: 88px;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--rule-dark);
+    background: var(--white);
+  }
+  .portfolio-band-inner {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.75fr) minmax(0, 1.55fr);
+    gap: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .portfolio-intro {
+    padding: 42px 38px 42px 0;
+    border-right: 1px solid var(--rule-dark);
+  }
+  .portfolio-kicker {
+    color: var(--blue);
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+  .portfolio-intro h2 {
+    max-width: 14ch;
+    margin-top: 15px;
+    color: var(--ink);
+    font: 500 clamp(28px, 3vw, 39px)/1.08 var(--serif);
+    letter-spacing: -0.02em;
+  }
+  .portfolio-intro > p:last-child {
+    max-width: 42ch;
+    margin-top: 18px;
+    color: var(--ink-2);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .venue-profile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .venue-profile {
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 13px;
+    min-height: 126px;
+    padding: 25px 26px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    background: var(--white);
+    transition: background 180ms ease;
+  }
+  .venue-profile:nth-child(2n) { border-right: 0; }
+  .venue-profile:nth-last-child(-n + 2) { border-bottom: 0; }
+  .venue-profile:hover { background: var(--blue-wash); }
+  .venue-index {
+    padding-top: 2px;
+    color: var(--blue);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+  }
+  .venue-profile h3 {
+    color: var(--ink);
+    font: 600 17px/1.25 var(--sans);
+    letter-spacing: -0.01em;
+  }
+  .venue-profile p {
+    margin-top: 8px;
+    color: var(--ink-2);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 900px) {
+    .portfolio-band-inner { grid-template-columns: 1fr; }
+    .portfolio-intro { padding: 38px 0; border-right: 0; border-bottom: 1px solid var(--rule-dark); }
+    .portfolio-intro h2 { max-width: 20ch; }
+    .portfolio-intro > p:last-child { max-width: 62ch; }
+  }
+  @media (max-width: 640px) {
+    .portfolio-band { margin-top: 68px; }
+    .venue-profile-grid { grid-template-columns: 1fr; }
+    .venue-profile {
+      min-height: 0;
+      padding: 23px 0;
+      border-right: 0;
+    }
+    .venue-profile:nth-last-child(2) { border-bottom: 1px solid var(--rule); }
+    .venue-profile:last-child { border-bottom: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .venue-profile { transition: none; }
+  }
+</style>
