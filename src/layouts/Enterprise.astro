@@ -57,13 +57,37 @@ const resourceLinks = [
   <!-- Google Search Console verification -->
   <meta name="google-site-verification" content="cNUSBTquyDdTrA0L62A7-8ZgARY-vwDgyARdNeFUjWc" />
 
-  <!-- Google tag (gtag.js) — GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5892CHVPGF"></script>
+  <!-- Google tag (gtag.js) — queued immediately, library deferred until interaction/idle -->
   <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-5892CHVPGF');
+
+    (() => {
+      let loaded = false;
+      const loadMeasurement = () => {
+        if (loaded) return;
+        loaded = true;
+        const google = document.createElement('script');
+        google.async = true;
+        google.src = 'https://www.googletagmanager.com/gtag/js?id=G-5892CHVPGF';
+        document.head.appendChild(google);
+        const openai = document.createElement('script');
+        openai.async = true;
+        openai.src = 'https://bzrcdn.openai.com/sdk/oaiq.min.js';
+        document.head.appendChild(openai);
+        window.oaiq?.('init', { pixelId: 'Fo95CtGQHTqpSdAXfHvtWo' });
+        ['pointerdown', 'keydown', 'scroll'].forEach((eventName) =>
+          window.removeEventListener(eventName, loadMeasurement)
+        );
+      };
+
+      ['pointerdown', 'keydown', 'scroll'].forEach((eventName) =>
+        window.addEventListener(eventName, loadMeasurement, { once: true, passive: true })
+      );
+      window.addEventListener('load', () => window.setTimeout(loadMeasurement, 8000), { once: true });
+    })();
   </script>
 
   <title>{title}</title>
@@ -92,8 +116,8 @@ const resourceLinks = [
 
   {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 
-  <!-- OpenAI Pixel -->
-  <script>{"!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,\"script\",\"https://bzrcdn.openai.com/sdk/oaiq.min.js\");oaiq(\"init\",{pixelId:\"Fo95CtGQHTqpSdAXfHvtWo\"});"}</script>
+  <!-- OpenAI measurement queue; library loading is deferred with GA4 above. -->
+  <script is:inline>window.oaiq = window.oaiq || function(){ (window.oaiq.q = window.oaiq.q || []).push(arguments); };</script>
 
   <meta name="generator" content={Astro.generator} />
 
