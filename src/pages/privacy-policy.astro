@@ -26,13 +26,8 @@ import Enterprise from '../layouts/Enterprise.astro';
             Privacy Policy
           </h1>
           <p class="privacy-date">
-            Effective Date: April 8, 2026 &nbsp;·&nbsp; Last Updated: October 26, 2026
+            Effective Date: April 8, 2026 &nbsp;·&nbsp; Last Updated: October 27, 2026
           </p>
-          <div class="policy-notice">
-            <p>
-              Operational disclosure draft: updated to reflect the services currently present in this site's source. Owner and legal review are required before production publication.
-            </p>
-          </div>
         </div>
 
         <!-- Body -->
@@ -61,8 +56,7 @@ import Enterprise from '../layouts/Enterprise.astro';
           </ul>
           <p>
             The site also uses analytics and measurement scripts that may collect device, browser, network, referring-page,
-            page-view, and interaction information. The precise identifiers and retention rules depend on each provider's
-            configuration and should be confirmed by the site owner.
+            page-view, and interaction information. Collection and retention depend on the provider and service configuration.
           </p>
 
           <h2>3. How We Use Your Information</h2>
@@ -80,7 +74,7 @@ import Enterprise from '../layouts/Enterprise.astro';
           <h2>4. Service Providers and Limited Disclosures</h2>
           <p>
             Information may be processed by service providers that support the website, lead intake, analytics, measurement,
-            communications, and any later program evaluation. Current source code identifies the following categories:
+            communications, and any later program evaluation. These providers include:
           </p>
           <ul>
             <li>
@@ -88,13 +82,11 @@ import Enterprise from '../layouts/Enterprise.astro';
               webhook for lead intake and follow-up.
             </li>
             <li>
-              <strong>Google:</strong> Google Analytics is loaded for page and interaction measurement, and Google Fonts is
-              requested to render site typography.
+              <strong>Google:</strong> Google Analytics is used for page and interaction measurement.
             </li>
             <li>
-              <strong>OpenAI measurement:</strong> An OpenAI measurement script is currently loaded on site pages. Its
-              configuration, data fields, purpose, and retention require owner verification. A previously configured IDPixel
-              script was disabled pending an approved consent and data-governance configuration.
+              <strong>OpenAI measurement:</strong> An OpenAI measurement service is used to understand website visits and
+              interactions and may process device, browser, network, referring-page, and interaction information.
             </li>
             <li>
               <strong>Hudson House (Brokerage Partner):</strong> As our brokerage partner, Hudson House may receive the minimum
@@ -113,9 +105,9 @@ import Enterprise from '../layouts/Enterprise.astro';
 
           <h2>5. Data Security</h2>
           <p>
-            The published site uses TLS/HTTPS in transit. Network-assessment forms are sent to a LeadConnector webhook.
-            Storage location, access controls, retention, deletion, backup, and onward integrations in that account require
-            confirmation by the site owner and should be reflected in the final policy.
+            The site uses TLS/HTTPS in transit. Network-assessment forms are processed through LeadConnector. We use
+            reasonable administrative and technical measures to protect information, but no online transmission or storage
+            system can be guaranteed to be completely secure.
           </p>
           <p>
             Security controls for any proposed carrier-offload deployment are separate from this website. They should be
@@ -125,9 +117,8 @@ import Enterprise from '../layouts/Enterprise.astro';
           <h2>6. Cookies & Tracking</h2>
           <p>
             This website currently loads Google Analytics and an OpenAI measurement pixel. These services
-            may use cookies, local storage, pixels, or similar technologies depending on their configuration. The owner should
-            complete a provider-by-provider data inventory, configure consent where required, and identify applicable opt-out
-            mechanisms before production publication.
+            may use cookies, local storage, pixels, or similar technologies depending on their configuration. You can limit
+            cookies through your browser settings, although doing so may affect some website functionality.
           </p>
 
           <h2>7. Your Rights</h2>
@@ -237,20 +228,6 @@ import Enterprise from '../layouts/Enterprise.astro';
     margin: 0;
     color: var(--ink-2);
     font-family: var(--sans);
-  }
-  .policy-notice {
-    margin-top: 24px;
-    padding: 18px 20px;
-    border: 1px solid #d59b31;
-    background: #fff8e8;
-  }
-  .policy-notice p {
-    margin: 0;
-    color: #68450c;
-    font-family: var(--sans);
-    font-size: 0.92rem;
-    font-weight: 600;
-    line-height: 1.6;
   }
   .privacy-back {
     margin-top: 48px;
