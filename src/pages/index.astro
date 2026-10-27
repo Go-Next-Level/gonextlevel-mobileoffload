@@ -23,12 +23,12 @@ const deployments = [
 ];
 
 const segments = [
-  { title: "Multi-Location Franchises", desc: "Franchise groups and operators with 10+ locations. One agreement, portfolio-wide deployment, consolidated monthly reporting across every site." },
-  { title: "Airports & Transit Hubs", desc: "High-dwell, high-density environments where carrier networks are most congested — and where offload economics perform best." },
-  { title: "Stadiums, Arenas & Venues", desc: "Event-driven traffic surges that cellular networks cannot absorb. Venue Wi-Fi becomes carrier capacity, monetized per gigabyte." },
-  { title: "Shopping Centers & Malls", desc: "Anchor properties with thousands of daily visitors and existing enterprise Wi-Fi ready for Passpoint activation." },
-  { title: "Hospitality Portfolios", desc: "Hotel groups and management companies. Guests offload automatically the moment they arrive — no captive portal, no login." },
-  { title: "Campuses & Healthcare", desc: "Universities, hospital systems, and corporate campuses with large populations and enterprise-grade network infrastructure already in place." },
+  { title: "Multi-Location Franchises", desc: "Franchise groups and operators can evaluate a coordinated portfolio pilot, site qualification, and consolidated reporting requirements." },
+  { title: "Airports & Transit Hubs", desc: "High-dwell, high-density environments may be candidates when the network, rights, coverage, and current program requirements align." },
+  { title: "Stadiums, Arenas & Venues", desc: "Event-driven traffic makes capacity planning important, but eligibility and economics must be validated against real traffic and written terms." },
+  { title: "Shopping Centers & Malls", desc: "Properties with substantial visitor dwell time and managed Wi-Fi can be assessed for Passpoint compatibility and program fit." },
+  { title: "Hospitality Portfolios", desc: "Hotel groups can review access-point compatibility, guest-network separation, permissions, and eligible connection behavior by property." },
+  { title: "Campuses & Healthcare", desc: "Large managed networks may be technically relevant, subject to security review, policy, authority, capacity, and current program availability." },
 ];
 
 const steps = [
@@ -39,26 +39,26 @@ const steps = [
 ];
 
 const security = [
-  { title: "Complete network separation", desc: "The carrier SSID is fully isolated from guest, internal, and POS networks. Zero overlap with business operations." },
-  { title: "Client device isolation", desc: "Device-to-device communication is disabled on the offload SSID. Users cannot see or reach one another." },
-  { title: "Zero access to your systems", desc: "Mobile Offload cannot access, modify, or monitor internal networks, customer data, or any other SSID." },
-  { title: "Carrier-grade encryption", desc: "WPA3 Enterprise, Passpoint (Hotspot 2.0) authentication, and RadSec — RADIUS over TLS — end to end." },
+  { title: "Network separation", desc: "Document the proposed SSID, VLAN, routing, firewall policy, and separation from guest, internal, and payment environments." },
+  { title: "Client isolation", desc: "Confirm device-to-device communication policy and test it during the pilot rather than assuming it from the platform name." },
+  { title: "Administrative scope", desc: "Define exactly which parties receive controller, reporting, or support access and retain an auditable approval trail." },
+  { title: "Authentication and encryption", desc: "Record the proposed Passpoint, EAP, RADIUS or RadSec, and Wi-Fi security configuration for technical review." },
 ];
 
 const terms = [
-  { title: "Six-month evaluation window", desc: "Cancel any time in the first six months. No questions, no penalty. The program stays month-to-month for the full window." },
-  { title: "50 / 50 revenue share", desc: "Carrier revenue is split equally. No tiers, no sliding scales, no minimums. Paid by the 5th of each month." },
-  { title: "Annual term after month six", desc: "Continuing partners roll into a one-year agreement — a reliability requirement set by the carriers, not by us." },
-  { title: "Full data transparency", desc: "Monthly reports with sessions, gigabytes offloaded, and per-carrier breakdown — for every site in the portfolio." },
+  { title: "Payment basis", desc: "Identify the eligible traffic definition, measurement source, rate, venue share, deductions, thresholds, and reconciliation process." },
+  { title: "Fees and equipment", desc: "List setup, license, support, backhaul, hardware, tax, and early-exit costs—including who pays when a site is incompatible." },
+  { title: "Term and exit", desc: "Confirm pilot length, renewal, notice, termination assistance, configuration rollback, and any continuing obligations." },
+  { title: "Reporting and audit", desc: "Specify reporting cadence, site-level fields, carrier or program detail, dispute windows, and access to underlying measurement records." },
 ];
 
 const faqs = [
-  { q: "How does the revenue share work?", a: "Carrier revenue is split equally — your organization receives 50% of all carrier payments generated across your locations. No tiered structures and no fine print. Settlement is paid by the 5th of each month with full session-level reporting per site." },
-  { q: "Does offload affect existing Wi-Fi performance?", a: "No. The carrier offload network runs on a completely separate SSID with dedicated bandwidth allocation. Guest networks, internal networks, and POS systems are untouched. We validate zero impact before any site goes live." },
-  { q: "Which carriers participate?", a: "AT&T, T-Mobile, and Google Fi currently ride the network. All three authenticate subscribers through Passpoint (Hotspot 2.0) — automatic and invisible to the user, with no login screen." },
-  { q: "Is new hardware required?", a: "In most deployments, no. If your access points support Passpoint / Hotspot 2.0 — standard on enterprise hardware from Cisco, Aruba, Ruckus, Juniper Mist, and others — we deploy on what you have. Where an addition is recommended, we handle it." },
-  { q: "How is a multi-site rollout managed?", a: "One master agreement covers the portfolio. Sites are activated in coordinated waves with your IT team or MSP — roughly one hour of configuration per site, scheduled off-peak. Reporting is consolidated across all locations." },
-  { q: "What if we want to exit?", a: "During the first six months, either party can exit with 30 days written notice — no termination fees, no penalties. On exit, every network is restored to its original configuration." },
+  { q: "How does carrier-offload compensation work?", a: "Some programs compensate a qualifying venue, network operator, or intermediary for defined eligible traffic. Rates, revenue shares, deductions, thresholds, payment timing, and reporting vary. Use the current written agreement—not a generic calculator—to evaluate a specific offer." },
+  { q: "Does offload affect existing Wi-Fi performance?", a: "It can consume radio and backhaul capacity, so impact should be modeled and tested. A sound pilot defines segmentation, bandwidth policy, monitoring, rollback, and success thresholds before wider rollout." },
+  { q: "Which carriers participate?", a: "Participation is program-, market-, venue-, and time-dependent. Ask for the current supported-network list, the authentication path, geographic scope, and the evidence used to identify eligible traffic in your proposal." },
+  { q: "Is new hardware required?", a: "Sometimes. Compatibility depends on the exact access-point model, controller, firmware, licenses, radio capacity, network design, and the program's requirements. A model-level inventory is the right starting point." },
+  { q: "How is a multi-site rollout managed?", a: "A practical rollout starts with inventory and rights review, then a limited pilot, measured acceptance criteria, and phased activation. Timing and contracting should be based on the actual portfolio rather than a universal per-site estimate." },
+  { q: "What should an exit plan cover?", a: "The agreement should state notice, fees, access revocation, configuration rollback, equipment ownership, data retention, final reporting, and dispute handling. Those terms should be reviewed before a pilot begins." },
 ];
 ---
 <Enterprise title={title} description={description} schema={schema}>
@@ -68,7 +68,7 @@ const faqs = [
     <div class="hero-grid-bg" aria-hidden="true"></div>
     <div class="wrap hero-inner">
       <p class="eyebrow">Commercial Wi-Fi · Carrier offload assessment</p>
-      <h1 class="display">Get paid when mobile data is used <span class="hl">across your locations.</span></h1>
+      <h1 class="display">Could your locations get paid when mobile data <span class="hl">uses their Wi-Fi?</span></h1>
       <p class="hero-sub">
         Some approved network programs compensate qualifying commercial operators for eligible mobile
         data carried over compatible Wi-Fi. MobileOffload helps portfolios assess technical readiness,
@@ -78,11 +78,11 @@ const faqs = [
         <a href="#assessment" class="btn-primary">Request a Network Assessment <span class="arr">→</span></a>
         <a href="#network" class="btn-ghost">View Network Performance</a>
       </div>
-      <div class="hero-carriers" aria-label="Participating carriers">
-        <span>Program participation varies by location</span>
-        <span class="carrier">AT&amp;T</span>
-        <span class="carrier">T-Mobile</span>
-        <span class="carrier">Google Fi</span>
+      <div class="hero-carriers" aria-label="Program qualification notice">
+        <span>Participation is confirmed in the current written proposal</span>
+        <span class="carrier">Network</span>
+        <span class="carrier">Market</span>
+        <span class="carrier">Site</span>
       </div>
     </div>
 
@@ -135,26 +135,25 @@ const faqs = [
         </div>
         <div>
           <p class="eyebrow">The Carrier Mandate</p>
-          <h2 class="display" style="margin-top: 22px;">Cellular networks are out of capacity. Yours is the relief valve.</h2>
+          <h2 class="display" style="margin-top: 22px;">Wi-Fi can complement cellular capacity in the right environment.</h2>
         </div>
       </div>
       <div class="two-col reveal">
         <div class="prose">
           <p>
-            Mobile data demand is compounding faster than carriers can build towers. In dense,
-            high-dwell environments — airports, stadiums, malls, franchise networks — the macro
-            network physically cannot keep up. The industry's answer is <strong>Wi-Fi offload</strong>:
-            carriers pay venue operators to carry subscriber traffic over enterprise Wi-Fi.
+            Mobile traffic and indoor coverage needs make Wi-Fi an important part of converged
+            connectivity. In some dense or high-dwell environments, <strong>Wi-Fi offload</strong>
+            can carry eligible mobile traffic over a compatible, managed Wi-Fi network.
           </p>
           <p>
             Through Passpoint (Hotspot 2.0), subscriber devices authenticate to a dedicated carrier
             SSID automatically — no login screens, no user action. To the carrier it is seamless
-            network extension. To your organization it is <strong>a recurring infrastructure revenue
-            line</strong> on assets you already own and operate.
+            network extension. Some commercial programs may also compensate qualifying participants,
+            but eligibility, payment structure, and results vary by program and site.
           </p>
           <p>
-            Mobile Offload operates the aggregation layer: one agreement, portfolio-wide deployment,
-            consolidated settlement, and carrier-grade reporting across every site.
+            MobileOffload helps commercial operators examine compatibility, program fit, proposed
+            architecture, rollout scope, evidence, and written commercial terms before committing.
           </p>
         </div>
         <div>
@@ -164,8 +163,8 @@ const faqs = [
             <footer>— Wireless Broadband Alliance, 2026 Outlook</footer>
           </blockquote>
           <div class="growth-figure">
-            <span class="gf-num">555%</span>
-            <span class="gf-desc">growth in data offloaded across our network in five quarters</span>
+            <span class="gf-num">4</span>
+            <span class="gf-desc">evidence gates: compatibility, authority, eligible traffic, and written terms</span>
           </div>
         </div>
       </div>
@@ -231,8 +230,8 @@ const faqs = [
         </div>
         <div>
           <p class="eyebrow">From Assessment to Settlement</p>
-          <h2 class="display" style="margin-top: 22px;">Software-only. About an hour per site.</h2>
-          <p class="sh-sub">No hardware purchase in most deployments. No disruption to existing networks. Your IT team or MSP coordinates once — we handle the rest.</p>
+          <h2 class="display" style="margin-top: 22px;">Assess first. Pilot second. Scale only after validation.</h2>
+          <p class="sh-sub">Hardware, licensing, configuration effort, approvals, timing, and operational impact depend on the actual network and program.</p>
         </div>
       </div>
       <div class="steps-grid reveal">
@@ -257,7 +256,7 @@ const faqs = [
         <div>
           <p class="eyebrow">Built for Scale</p>
           <h2 class="display" style="margin-top: 22px;">We partner with operators of high-traffic portfolios.</h2>
-          <p class="sh-sub">Offload economics are driven by foot traffic, dwell time, and site count. These are the environments where the program performs.</p>
+          <p class="sh-sub">Foot traffic, dwell time, eligible-device presence, network capacity, permissions, and current program coverage all influence whether a site merits assessment.</p>
         </div>
       </div>
       <div class="segments-grid reveal">
@@ -281,8 +280,8 @@ const faqs = [
         </div>
         <div>
           <p class="eyebrow">Isolation by Architecture</p>
-          <h2 class="display" style="margin-top: 22px;">Your infrastructure is never touched.</h2>
-          <p class="sh-sub">The offload network is architecturally isolated from business operations. This is the principle the entire security model is built on.</p>
+          <h2 class="display" style="margin-top: 22px;">Require a documented, testable security design.</h2>
+          <p class="sh-sub">Network separation, access scope, authentication, encryption, monitoring, and rollback should be reviewed for the proposed site—not inferred from a product label.</p>
         </div>
       </div>
       <div class="sec-grid reveal">
@@ -300,25 +299,24 @@ const faqs = [
         <div class="protocol-stack">
           <div class="ps-title">Authentication &amp; Encryption Stack</div>
           <div class="proto-row">
-            <span class="p-name">WPA3 Enterprise</span>
-            <span class="p-desc">Strongest Wi-Fi encryption standard</span>
+            <span class="p-name">Wi-Fi security mode</span>
+            <span class="p-desc">Record supported and configured modes</span>
           </div>
           <div class="proto-row">
             <span class="p-name">Passpoint / Hotspot 2.0</span>
-            <span class="p-desc">Automatic secure carrier authentication</span>
+            <span class="p-desc">Validate profiles, credentials, and trust chain</span>
           </div>
           <div class="proto-row">
-            <span class="p-name">RadSec — RADIUS over TLS</span>
-            <span class="p-desc">Encrypted authentication transport</span>
+            <span class="p-name">AAA transport</span>
+            <span class="p-desc">Document RADIUS or RadSec path and ownership</span>
           </div>
           <div class="proto-row">
-            <span class="p-name">Dedicated SSID</span>
-            <span class="p-desc">Complete separation from your networks</span>
+            <span class="p-name">Segmentation</span>
+            <span class="p-desc">Test VLAN, routing, firewall, and client policy</span>
           </div>
           <p class="ps-note">
-            <strong>Network architecture:</strong> the carrier SSID (AT&amp;T / T-Mobile / Fi) operates in
-            full isolation from guest and internal networks. Mobile Offload has zero access to your systems,
-            customer data, or POS environment — by design, not by policy.
+            <strong>Acceptance requirement:</strong> the approved design should identify every administrative
+            party, data flow, trust boundary, configuration change, monitoring control, and rollback step.
           </p>
         </div>
       </div>
@@ -333,9 +331,9 @@ const faqs = [
           <div class="sec-num">06 — Commercial</div>
         </div>
         <div>
-          <p class="eyebrow">Straightforward Terms</p>
-          <h2 class="display" style="margin-top: 22px;">Six months to evaluate. Carrier-grade commitment after.</h2>
-          <p class="sh-sub">Cancel any time in the first six months, no questions asked. Continuing partners roll into an annual agreement — a reliability requirement set by the carriers.</p>
+          <p class="eyebrow">Commercial diligence</p>
+          <h2 class="display" style="margin-top: 22px;">Put every economic and exit term in writing.</h2>
+          <p class="sh-sub">Published program terms can change. Evaluate the specific proposal, responsibilities, fees, payment mechanics, term, and exit path before authorizing a pilot.</p>
         </div>
       </div>
       <div class="terms-grid reveal">
