@@ -93,8 +93,6 @@ const resourceLinks = [
 
   {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 
-  <!-- IDPixel Analytics -->
-  <script src="https://cdn.idpixel.app/v1/idp-analytics-69f9154f80d07eb8f3c59bdf.min.js" defer></script>
   <!-- OpenAI Pixel -->
   <script>{"!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,\"script\",\"https://bzrcdn.openai.com/sdk/oaiq.min.js\");oaiq(\"init\",{pixelId:\"Fo95CtGQHTqpSdAXfHvtWo\"});"}</script>
 
@@ -718,9 +716,9 @@ const resourceLinks = [
     .foot-brand .brand-word { color: var(--paper); font-size: 24px; }
     .foot-brand .brand-word em { color: #7FA4F5; }
     .foot-brand p { margin-top: 14px; font-size: 14px; max-width: 34ch; line-height: 1.7; }
-    .foot-col h4 {
+    .foot-col h2 {
       font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
-      text-transform: uppercase; color: rgba(251,250,247,0.4); margin-bottom: 18px;
+      text-transform: uppercase; color: rgba(251,250,247,0.72); margin-bottom: 18px;
     }
     .foot-col a, .foot-col span {
       display: block; font-size: 14.5px; color: rgba(251,250,247,0.7);
@@ -737,9 +735,9 @@ const resourceLinks = [
       margin-top: 56px; padding-top: 28px;
       border-top: 1px solid rgba(251,250,247,0.12);
       display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
-      font-size: 13px; color: rgba(251,250,247,0.4);
+      font-size: 13px; color: rgba(251,250,247,0.72);
     }
-    .foot-legal a { color: rgba(251,250,247,0.4); }
+    .foot-legal a { color: rgba(251,250,247,0.72); }
     .foot-legal a:hover { color: var(--paper); }
 
     /* ── Reveal on scroll ───────────────────────────────────── */
@@ -757,7 +755,7 @@ const resourceLinks = [
 
   <header class="site-header">
     <div class="wrap nav-inner">
-      <a href="/" class="brand" aria-label="Mobile Offload home">
+      <a href="/" class="brand" aria-label="MobileOffload home">
         <span class="brand-word">Mobile<em>Offload</em></span>
         <span class="brand-tag">Carrier Offload Infrastructure</span>
       </a>
@@ -799,7 +797,7 @@ const resourceLinks = [
           <p>Clear explanations and practical carrier-offload assessment for commercial property operators and multi-location businesses.</p>
         </div>
         <div class="foot-col">
-          <h4>Learn</h4>
+          <h2>Learn</h2>
           <a href="/carrier-offload/">Carrier Offload</a>
           <a href="/get-paid-for-wifi/">Get Paid for Wi-Fi</a>
           <a href="/carrier-offload-companies/">Compare Providers</a>
@@ -807,7 +805,7 @@ const resourceLinks = [
           <a href="/wifi-compatibility/">Compatibility</a>
         </div>
         <div class="foot-col">
-          <h4>Company</h4>
+          <h2>Company</h2>
           <a href="/about/">About</a>
           <a href="/case-studies/">Evidence &amp; Examples</a>
           <a href="/carrier-offload-for-franchises/">Multi-Location Programs</a>
@@ -815,7 +813,7 @@ const resourceLinks = [
           <a href="/privacy-policy">Privacy Policy</a>
         </div>
         <div class="foot-col">
-          <h4>Contact</h4>
+          <h2>Contact</h2>
           <a href="mailto:corey@mobileoffload.com">corey@mobileoffload.com</a>
           <span><a href="sms:+15302324445" style="display:inline;">(530) 232-4445</a><span class="text-badge">Text only</span></span>
           <a href="/network-assessment/" data-assessment-cta="footer">Request an Assessment</a>
