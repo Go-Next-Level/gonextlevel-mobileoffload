@@ -1,0 +1,94 @@
+---
+import Resource from '../layouts/Resource.astro';
+import ResourceFAQ from '../components/ResourceFAQ.astro';
+import ResourceCTA from '../components/ResourceCTA.astro';
+
+const faqs = [
+  { q: 'How much does carrier offload pay per GB?', a: 'There is no universal public rate. Rates can vary by network, agreement, location, time, traffic class, program rules, and deductions. Ask for the current written calculation method instead of relying on a generic per-GB claim.' },
+  { q: 'Does more foot traffic always mean more revenue?', a: 'No. Foot traffic is only one input. Device eligibility, dwell time, data use, radio conditions, network quality, program coverage, uptime, and the venue’s commercial share determine actual results.' },
+  { q: 'Is the provider’s gross network payment the same as venue revenue?', a: 'Not necessarily. Gross network payments may be reduced by operator shares, platform or managed-service fees, equipment recovery, taxes, minimum thresholds, or other contract deductions before the venue is paid.' },
+  { q: 'Can a provider guarantee earnings?', a: 'A written minimum may exist in a specific contract, but ordinary projections should not be treated as guarantees. Program acceptance, usage, rates, and availability can change.' },
+  { q: 'What information is needed for a reliable estimate?', a: 'At minimum: exact locations, visitor and dwell-time data, existing network inventory, backhaul, program availability, compatible device assumptions, measurement rules, payment rate, revenue share, fees, uptime, and deployment cost.' },
+];
+---
+<Resource
+  title="How Much Does Carrier Offload Pay? Wi-Fi Revenue Explained"
+  description="Understand carrier-offload revenue: eligible traffic, network payment rates, venue shares, costs, settlement schedules, and why results vary by property."
+  eyebrow="Commercial guide · Revenue mechanics"
+  h1="How Much Money Can a Business Make From Carrier Offload?"
+  answer="Carrier-offload earnings vary widely and cannot be estimated from visitor count alone. Revenue depends on eligible billable data, the network’s payment method, the venue’s contractual share, uptime, and costs. Two similar properties can earn very different amounts because device eligibility, dwell time, program coverage, and data use differ."
+  canonicalPath="/carrier-offload-earnings/"
+  faqs={faqs}
+>
+  <ul slot="toc">
+    <li><a href="#formula">The basic formula</a></li>
+    <li><a href="#traffic">Eligible vs total traffic</a></li>
+    <li><a href="#money-flow">Gross, payout, and profit</a></li>
+    <li><a href="#estimate">Getting an estimate</a></li>
+  </ul>
+
+  <h2 id="formula">A simple educational revenue formula</h2>
+  <blockquote><p><strong>Venue revenue = eligible billable data × applicable network payment rate × venue revenue share</strong></p></blockquote>
+  <p>This formula is useful for understanding the parts, but real agreements can be more complex. A program may pay by a different unit, use rate tiers, exclude certain sessions, change rates over time, apply a minimum threshold, cap payment, deduct platform costs, or calculate the venue share after other parties are paid.</p>
+  <p>Do not insert an advertised rate into the formula until the provider confirms that the rate applies to your location, traffic, and contract. Do not present an illustrative output as a historical result.</p>
+
+  <h2 id="traffic">Eligible traffic is not the same as total Wi-Fi traffic</h2>
+  <p>A network dashboard may show all guest, staff, operational, and offload data. The settlement system usually counts a narrower category: traffic from eligible subscriber devices, on an approved service profile, during a qualifying session, under the current program rules.</p>
+  <div class="content-grid">
+    <div class="info-card"><h3>Customer count</h3><p>Shows opportunity, but not how many devices carry an eligible profile or how much qualifying data they will use.</p></div>
+    <div class="info-card"><h3>Dwell time</h3><p>Longer visits can create more opportunity, but user behavior and automatic-connection eligibility still matter.</p></div>
+    <div class="info-card"><h3>Site qualification</h3><p>A venue must be approved and technically enabled. A busy property outside program coverage may produce no billable traffic.</p></div>
+    <div class="info-card"><h3>Network performance</h3><p>Poor RF design, backhaul, uptime, or authentication can reduce usable sessions and may breach service requirements.</p></div>
+  </div>
+  <p>Device and subscriber mix can also vary by neighborhood, venue, season, and event. That is why a shopping center and restaurant with the same daily headcount can have different results.</p>
+
+  <h2 id="money-flow">Gross payment, operator payout, venue revenue, and net profit</h2>
+  <div class="table-scroll">
+    <table class="resource-table">
+      <thead><tr><th>Term</th><th>What it means</th><th>What to verify</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Gross network payment</strong></td><td>The amount calculated by the underlying program for eligible traffic before downstream shares or fees.</td><td>Measurement unit, rate schedule, exclusions, adjustments, and reporting source.</td></tr>
+        <tr><td><strong>Operator or partner payout</strong></td><td>The amount received by the network participant or provider under its upstream agreement.</td><td>Whether the venue share is calculated before or after upstream deductions.</td></tr>
+        <tr><td><strong>Venue revenue</strong></td><td>The amount contractually allocated to the property owner or operator.</td><td>Percentage, minimum threshold, payment schedule, statement detail, taxes, and dispute process.</td></tr>
+        <tr><td><strong>Net profit</strong></td><td>Venue revenue after equipment, backhaul, support, labor, taxes, and other incremental costs.</td><td>One-time and ongoing costs, opportunity cost, and contract obligations.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>What can reduce or delay payments?</h2>
+  <ul>
+    <li>Traffic that is visible on Wi-Fi but is not eligible for the program</li>
+    <li>Authentication failures, low uptime, RF gaps, or insufficient internet capacity</li>
+    <li>Changed program rates, coverage, carrier participation, or device profiles</li>
+    <li>Reporting cutoffs, validation periods, minimum payout thresholds, or payment holds</li>
+    <li>Provider fees, equipment recovery, support charges, taxes, or contract deductions</li>
+    <li>Seasonal visitor changes, closures, renovations, or a change in tenant mix</li>
+  </ul>
+
+  <h2>How should a projection be presented?</h2>
+  <p>A credible projection labels every assumption. It separates historic evidence from modeled scenarios, shows a range rather than a single certain outcome, identifies costs, and states that acceptance and payment are subject to the actual program and agreement.</p>
+  <p>If a calculator offers a venue type and visitor slider, treat the result as a conversation starter. Ask for the comparable source data, date range, gross-versus-net definition, carrier mix, eligibility rate, and whether the examples belong to the provider or an upstream network.</p>
+
+  <h2 id="estimate">How to obtain a site-specific assessment</h2>
+  <ul class="checklist">
+    <li>Provide each property address, venue type, operating schedule, and ownership/approval contact.</li>
+    <li>Gather daily visitors, peak occupancy, typical dwell time, and known seasonal patterns.</li>
+    <li>Export the access-point, controller, firmware, and licensing inventory.</li>
+    <li>Document internet circuits, utilization, redundancy, SSIDs, VLANs, and security constraints.</li>
+    <li>Confirm the underlying program’s current local availability and written payment method.</li>
+    <li>Compare projected venue revenue with deployment and ongoing operating costs.</li>
+  </ul>
+  <p>For a portfolio, model locations individually before rolling results into a group estimate. A pilot can validate technical performance and reporting assumptions before a larger deployment.</p>
+
+  <ResourceFAQ faqs={faqs} />
+  <ResourceCTA source="carrier-offload-earnings" heading="Get an assessment built around your actual locations." copy="We review traffic, network inventory, backhaul, and program availability before discussing a range. No generic calculator can substitute for current written terms." />
+
+  <section class="source-list" id="sources">
+    <h2>Related resources</h2>
+    <ul>
+      <li><a href="/get-paid-for-wifi/">Can businesses get paid for Wi-Fi?</a></li>
+      <li><a href="/carrier-offload-companies/">Compare carrier-offload providers</a></li>
+      <li><a href="/case-studies/">Carrier-offload examples and evidence methodology</a></li>
+    </ul>
+  </section>
+</Resource>

@@ -1,0 +1,109 @@
+---
+import Resource from '../layouts/Resource.astro';
+import ResourceFAQ from '../components/ResourceFAQ.astro';
+import ResourceCTA from '../components/ResourceCTA.astro';
+
+const faqs = [
+  { q: 'Is carrier offload the same as guest Wi-Fi?', a: 'No. Guest Wi-Fi is normally selected or joined by a visitor. Carrier offload uses an authorized profile and compatible network so eligible devices can discover and authenticate automatically, often through Passpoint.' },
+  { q: 'Does every phone connect to a carrier-offload network?', a: 'No. The device, subscriber profile, network operator, venue configuration, and local program availability must all be compatible. A Passpoint-capable network does not mean every device or carrier will use it.' },
+  { q: 'Can an ordinary business router earn carrier-offload revenue?', a: 'Usually not by itself. Commercial programs generally need enterprise controls, supported Passpoint configuration, authentication, traffic separation, sufficient backhaul, monitoring, and an approved network relationship.' },
+  { q: 'Who pays for carrier offload?', a: 'Payment arrangements vary. An underlying network ecosystem or operator may compensate a network owner or program participant for eligible, measured traffic. A managed provider may then share part of that payment with a venue under a separate agreement.' },
+  { q: 'Why does a location need an assessment?', a: 'Revenue depends on more than foot traffic. An assessment checks network equipment, internet capacity, visitor patterns, device eligibility, program coverage, property permissions, security requirements, and the commercial agreement.' },
+  { q: 'Is carrier-offload income guaranteed?', a: 'No. Participation, traffic, payment rates, eligibility, and program availability can change. A credible provider should explain assumptions, exclusions, costs, and contract terms before offering an estimate.' },
+];
+---
+<Resource
+  title="Carrier Offload Explained: How Businesses Can Earn Money From Wi-Fi | MobileOffload"
+  description="Learn what carrier offload is, how Passpoint connects eligible mobile devices, why commercial venues may be compensated, and what qualification requires."
+  eyebrow="Definitive guide · Carrier offload"
+  h1="What Is Carrier Offload, and How Can Businesses Get Paid for Wi-Fi?"
+  answer="Carrier offload is a process in which participating mobile carriers route eligible subscribers’ data through compatible Wi-Fi infrastructure instead of their cellular radio network. Under certain programs, qualifying network operators and commercial property owners may receive a share of the payments associated with eligible traffic."
+  canonicalPath="/carrier-offload/"
+  faqs={faqs}
+>
+  <ul slot="toc">
+    <li><a href="#meaning">What carrier offload means</a></li>
+    <li><a href="#flow">How a connection works</a></li>
+    <li><a href="#participants">Who is involved</a></li>
+    <li><a href="#eligibility">What locations need</a></li>
+    <li><a href="#providers">How to evaluate providers</a></li>
+  </ul>
+
+  <h2 id="meaning">Carrier offload, in plain English</h2>
+  <p>Mobile networks have finite radio capacity. Inside a busy airport, hotel, restaurant, gym, shopping center, or commercial campus, many people may be using data in the same small area. If an approved Wi-Fi network can carry some of that traffic securely, the mobile network can preserve cellular capacity while users remain connected.</p>
+  <p><strong>Carrier offload</strong>, <strong>Wi-Fi offload</strong>, and <strong>mobile data offload</strong> describe this transfer of eligible traffic from a cellular radio network to Wi-Fi. The terms are related, but they do not always describe the same commercial program. Some networks improve connectivity without paying a venue. Some compensate a network operator. Others involve an integration or managed-service company that shares revenue with the property.</p>
+  <div class="note"><strong>What carrier offload is not</strong>It is not the same as charging visitors for guest Wi-Fi, leasing rooftop space for a cell tower, or turning on a public hotspot. Owning a router does not automatically make traffic billable.</div>
+
+  <h2 id="flow">How an automatic carrier-offload connection works</h2>
+  <p>A participating device carries a trusted network profile or credential. When it encounters a compatible venue network, it can evaluate the network, authenticate, and connect without asking the customer to find an SSID or type a password. Passpoint—also known as Hotspot 2.0—is the standards-based framework commonly used for this discovery and authentication process.</p>
+  <div class="flow-diagram" role="img" aria-label="Participating mobile device connects through Passpoint authentication to compatible venue Wi-Fi, then reaches the internet through a network operator that measures eligible offload for settlement.">
+    <div class="flow-step">Participating mobile device</div>
+    <div class="flow-step">Passpoint authentication</div>
+    <div class="flow-step">Compatible venue Wi-Fi</div>
+    <div class="flow-step">Internet / network operator</div>
+    <div class="flow-step">Eligible traffic measurement and settlement</div>
+  </div>
+  <ol>
+    <li><strong>Discovery:</strong> the device identifies a network it is authorized to use.</li>
+    <li><strong>Authentication:</strong> the device and network verify eligibility using supported credentials and policy.</li>
+    <li><strong>Connection:</strong> traffic moves over a configured Wi-Fi SSID and segregated network path.</li>
+    <li><strong>Measurement:</strong> the participating system records eligible sessions or data according to the program’s rules.</li>
+    <li><strong>Settlement:</strong> payments, if any, follow the operator’s agreement and the venue’s revenue-share terms.</li>
+  </ol>
+
+  <h2 id="participants">Who is involved?</h2>
+  <div class="content-grid">
+    <div class="info-card"><h3>Mobile carrier or service provider</h3><p>Authorizes eligible subscriber profiles and decides where or how supported devices may use Wi-Fi.</p></div>
+    <div class="info-card"><h3>Offload network ecosystem</h3><p>Operates the technical and commercial system that authenticates traffic, measures eligible use, and administers settlement.</p></div>
+    <div class="info-card"><h3>Integration or managed provider</h3><p>May assess a venue, configure supported infrastructure, coordinate testing, monitor service, and manage reporting.</p></div>
+    <div class="info-card"><h3>Commercial venue</h3><p>Provides property access, network permissions, internet backhaul, and an environment with enough eligible traffic to evaluate.</p></div>
+  </div>
+  <p>These roles are not interchangeable. A company that installs or manages offload at a venue is not necessarily a mobile carrier, and a network ecosystem may not provide hands-on portfolio deployment. Ask every provider to state its role and underlying network relationship clearly.</p>
+
+  <h2 id="eligibility">What does a business need to participate?</h2>
+  <p>Programs vary, but a serious qualification review normally considers both technical readiness and commercial value. High visitor counts can help, yet they do not prove that a site will produce eligible data.</p>
+  <ul class="checklist">
+    <li>Enterprise Wi-Fi equipment with model-, firmware-, controller-, and license-level support for the proposed configuration</li>
+    <li>Passpoint or another approved automatic-authentication path</li>
+    <li>Secure SSID and VLAN design that protects business, payment, staff, and guest systems</li>
+    <li>Enough reliable internet backhaul for additional traffic without harming operations</li>
+    <li>Monitoring, change control, and a technical owner who can approve configuration</li>
+    <li>Visitor volume, dwell time, device mix, and program availability that justify evaluation</li>
+    <li>Property and contractual authority to participate</li>
+  </ul>
+  <p>Airports, transit hubs, shopping centers, hotels, restaurant portfolios, gyms, campuses, event venues, and other high-traffic properties may be worth evaluating. A smaller business can also qualify in some programs, but there is no universal location-size threshold.</p>
+  <p>Existing Wi-Fi may be reusable. Compatibility must be validated against the exact access points, controller, firmware, licenses, security architecture, and operator requirements. See the <a href="/wifi-compatibility/">Wi-Fi compatibility checklist</a> before assuming a brownfield deployment is possible.</p>
+
+  <h2>How can qualifying traffic generate compensation?</h2>
+  <p>An offload system measures traffic that meets the program’s billable rules. Gross network payment is not necessarily the same as the amount a venue receives. Operator fees, managed-service charges, equipment costs, revenue shares, minimum thresholds, taxes, and timing can all affect net proceeds.</p>
+  <p>Before accepting a projection, ask for the unit being measured, the applicable rate or calculation method, the venue’s share, payment cadence, reporting detail, deductions, contract term, and what happens if program rules change. Our <a href="/carrier-offload-earnings/">carrier-offload earnings guide</a> explains the economics without presenting a hypothetical estimate as a historical result.</p>
+
+  <h2 id="providers">How should a buyer evaluate carrier-offload providers?</h2>
+  <ul>
+    <li>Which underlying networks and subscriber profiles are currently enabled at this exact location?</li>
+    <li>Is the company a network operator, implementation partner, managed service, or commercial aggregator?</li>
+    <li>What equipment, licenses, internet capacity, and security changes are required?</li>
+    <li>Who pays whom, how is eligible traffic measured, and can the venue audit reports?</li>
+    <li>What is the venue share after fees, and is any minimum guaranteed in writing?</li>
+    <li>Who owns installed hardware and configuration, and what happens when the agreement ends?</li>
+    <li>Can the same infrastructure participate in other networks without breaching exclusivity?</li>
+  </ul>
+  <p>Different provider models suit different buyers. Use the <a href="/carrier-offload-companies/">objective carrier-offload company comparison</a> to understand networks, implementation partners, and portfolio services before choosing.</p>
+
+  <h2>How MobileOffload approaches an assessment</h2>
+  <p>MobileOffload is operated by Goolsby Ventures LLC. The website positions the service around commercial qualification, technical coordination, portfolio rollout, reporting, and settlement administration. A location-specific assessment is necessary before equipment compatibility, program participation, deployment scope, or revenue can be represented responsibly.</p>
+  <p>Because program coverage and written terms control the real opportunity, educational pages do not promise acceptance, earnings, carrier participation, or a hardware-free deployment.</p>
+
+  <ResourceFAQ faqs={faqs} />
+  <ResourceCTA source="carrier-offload" />
+
+  <section class="source-list" id="sources">
+    <h2>Sources and further reading</h2>
+    <ul>
+      <li><a href="https://wballiance.com/resource/wi-fi-security-guidelines/" rel="noopener">Wireless Broadband Alliance: Wi-Fi Security Guidelines</a></li>
+      <li><a href="https://wballiance.com/resource/imsi-privacy-protection-for-wi-fi/" rel="noopener">Wireless Broadband Alliance: IMSI Privacy Protection for Wi-Fi</a></li>
+      <li><a href="https://wballiance.com/wireless-broadband-alliance-reveals-its-wi-fi-predictions-for-2026-and-beyond/" rel="noopener">Wireless Broadband Alliance: 2026 Wi-Fi outlook</a></li>
+    </ul>
+    <p class="note"><strong>Editorial standard</strong>Technical statements are based on published industry guidance. Commercial availability, carrier enablement, and payment terms must be verified for each program and location.</p>
+  </section>
+</Resource>

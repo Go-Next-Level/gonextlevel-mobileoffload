@@ -1,0 +1,119 @@
+---
+import Resource from '../layouts/Resource.astro';
+import ResourceFAQ from '../components/ResourceFAQ.astro';
+import ResourceCTA from '../components/ResourceCTA.astro';
+
+const faqs = [
+  { q: 'What is the best carrier-offload company?', a: 'There is no universal best provider because companies perform different roles. A direct network ecosystem may suit a technically capable operator, while a managed integration or portfolio service may suit a venue owner that wants deployment and reporting support.' },
+  { q: 'Is Helium Plus the same as a managed offload provider?', a: 'Not exactly. Helium Plus is an ecosystem with direct participation and MSP paths. A managed provider may integrate a venue with an underlying ecosystem and coordinate operations. Buyers should confirm the precise role and contract chain.' },
+  { q: 'Do these providers publish their venue payout rates?', a: 'Some publish general reward or revenue-share language, but exact rates, deductions, and venue shares are often not public or can change. “Not publicly confirmed” is more accurate than inferring terms from a calculator or marketing example.' },
+  { q: 'Can one venue work with more than one offload network?', a: 'Potentially, but technical coexistence and contract rights vary. Ask about SSIDs, profiles, exclusivity, equipment ownership, and whether the agreement restricts other networks.' },
+  { q: 'How was this comparison created?', a: 'It uses provider-owned websites and technical documentation checked on October 26, 2026. Claims are summarized as provider-reported unless independently documented. MobileOffload publishes this guide and is included with that disclosure.' },
+];
+
+const providers = [
+  { name: 'Helium Plus', url: 'https://www.helium.com/plus', model: 'Network ecosystem with direct and MSP participation', ideal: 'Organizations comfortable joining the Helium ecosystem', existing: 'Provider reports support for compatible Passpoint networks; Helium hardware options also exist', approach: 'Direct enrollment or partner-led integration', fees: 'Current no-fee offer published “until further notice”; terms allow change', compensation: 'Crypto or USD payout described; earnings not guaranteed', multi: 'Supported through organization/MSP paths', onboarding: 'Online enrollment and technical qualification' },
+  { name: 'XNET Mobile', url: 'https://xnetmobile.com/msp-isp', model: 'Neutral-host network program for MSPs, ISPs, and operators', ideal: 'Network operators with suitable modern Wi-Fi fleets', existing: 'Provider says existing Wi-Fi 6+ can be integrated', approach: 'Operator/MSP integration', fees: 'Not publicly confirmed', compensation: 'Rewards described; exact commercial rate not confirmed', multi: 'MSP/ISP model supports fleet deployment', onboarding: 'Partner inquiry and network review' },
+  { name: 'Passpoint Partners', url: 'https://passpointpartners.com/', model: 'Venue qualification, integration, and managed deployment', ideal: 'Venues wanting a hands-on implementation path', existing: 'Provider describes enterprise AP conversion and a compact-unit path for smaller sites', approach: 'Managed venue deployment', fees: 'Not publicly confirmed', compensation: 'Monthly share described; exact percentage not public', multi: 'Provider reports 300+ venues', onboarding: 'Venue qualification form' },
+  { name: 'DeployFi', url: 'https://deploy-fi.com/', model: 'Cloud-managed carrier-offload platform for venues', ideal: 'Venues seeking an existing-network integration approach', existing: 'Provider claims support for major enterprise AP brands', approach: 'Cloud-managed isolated SSID/VLAN', fees: 'Provider claims $0 upfront', compensation: 'Relative per-GB claim published; exact payout formula not public', multi: 'Commercial deployments described', onboarding: 'Consultation and technical review' },
+  { name: 'Proof Wireless', url: 'https://proofwireless.com/', model: 'Regional implementation and deployment partner working with Helium', ideal: 'Michigan/regional venues seeking deployment support', existing: 'Existing-network and hosted-hotspot paths described', approach: 'Regional managed implementation', fees: 'Small-business hardware, install, and service described as no-cost', compensation: 'Exact compensation model not publicly confirmed', multi: 'Portfolio support not publicly detailed', onboarding: 'Direct consultation' },
+  { name: 'MobileOffload', url: '/about/', model: 'Commercial assessment, integration coordination, and portfolio administration', ideal: 'Multi-location operators that want one qualification and rollout process', existing: 'Assessment required; compatibility is model and configuration dependent', approach: 'Portfolio assessment and coordinated deployment', fees: 'Current site terms require owner documentation before expansion', compensation: 'Current site publishes a share; supporting records should be reviewed before reliance', multi: 'Portfolio-oriented positioning', onboarding: 'Network assessment' },
+];
+---
+<Resource
+  title="Carrier Offload Companies: Comparing Wi-Fi Monetization Providers"
+  description="Compare Helium Plus, XNET Mobile, Passpoint Partners, DeployFi, Proof Wireless, and MobileOffload by model, deployment, economics, and buyer fit."
+  eyebrow="Independent-use buyer guide · Provider comparison"
+  h1="Which Companies Help Businesses Earn Revenue From Carrier Offload?"
+  answer="Carrier-offload companies do not all sell the same service. Some operate network ecosystems; others integrate venue Wi-Fi, provide managed deployment, or coordinate portfolio-wide operations. The right choice depends on your equipment, technical team, locations, underlying network access, commercial terms, and desired level of support."
+  canonicalPath="/carrier-offload-companies/"
+  faqs={faqs}
+>
+  <ul slot="toc">
+    <li><a href="#models">Provider models</a></li>
+    <li><a href="#comparison">Comparison table</a></li>
+    <li><a href="#method">Methodology</a></li>
+    <li><a href="#questions-buyers">Buyer questions</a></li>
+  </ul>
+
+  <div class="note"><strong>Disclosure</strong>This guide is published by MobileOffload, which is included in the comparison. It is designed to help an independent buyer understand provider models even if they choose another company. Provider claims are labeled as provider-reported and were last checked October 26, 2026.</div>
+
+  <h2 id="models">Four business models buyers should separate</h2>
+  <div class="content-grid">
+    <div class="info-card"><h3>Network ecosystems</h3><p>Operate the underlying participation, authentication, measurement, and reward environment. They may offer direct enrollment or partner channels.</p></div>
+    <div class="info-card"><h3>Venue integration providers</h3><p>Evaluate and configure commercial properties for an underlying network, often coordinating equipment and testing.</p></div>
+    <div class="info-card"><h3>Managed services</h3><p>Provide ongoing monitoring, technical support, reporting, and settlement administration after activation.</p></div>
+    <div class="info-card"><h3>Portfolio aggregators</h3><p>Coordinate qualification and deployment across many locations, potentially bridging property, IT, MSP, and network stakeholders.</p></div>
+  </div>
+  <p>A company can perform more than one role. The important question is who controls the underlying network relationship, who signs with the venue, and who remains responsible when something changes.</p>
+
+  <h2 id="comparison">Carrier-offload provider comparison</h2>
+  <div class="table-scroll">
+    <table class="resource-table">
+      <thead><tr><th>Provider</th><th>Model & best fit</th><th>Existing Wi-Fi / approach</th><th>Published economics</th><th>Onboarding</th></tr></thead>
+      <tbody>
+        {providers.map((p) => (
+          <tr>
+            <td><strong><a href={p.url} rel={p.url.startsWith('http') ? 'noopener' : undefined}>{p.name}</a></strong><br/>Verified 2026-10-26</td>
+            <td><strong>{p.model}</strong><br/>{p.ideal}<br/><em>{p.multi}</em></td>
+            <td>{p.existing}<br/>{p.approach}</td>
+            <td><strong>Fees:</strong> {p.fees}<br/><strong>Compensation:</strong> {p.compensation}</td>
+            <td>{p.onboarding}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="note"><strong>Important limitation</strong>Public websites do not replace a written proposal. “No fee,” “rewards,” “revenue share,” and calculator outputs can use different definitions. Ask for the current agreement, rate method, deductions, geographic availability, and technical requirements.</p>
+
+  <h2>Where each model may fit</h2>
+  <h3>Helium Plus</h3>
+  <p>Helium Plus may fit organizations that want a direct path into the Helium ecosystem or an MSP-led rollout. Its official terms state that rates can change and earnings are not guaranteed. Buyers should understand whether compensation is paid in USD or crypto, how the current no-fee promotion applies, and what technical obligations remain with the organization.</p>
+  <h3>XNET Mobile</h3>
+  <p>XNET’s public program is oriented toward MSPs, ISPs, and network operators. It describes a neutral-host approach and integration of existing Wi-Fi 6+ fleets. Its public calculator is illustrative, so a buyer should not treat the displayed assumptions as contracted economics.</p>
+  <h3>Passpoint Partners</h3>
+  <p>Passpoint Partners presents a hands-on venue model, including existing enterprise-network conversion for larger properties and a compact deployment path for smaller venues. It publishes a monthly-share concept but not an exact public percentage.</p>
+  <h3>DeployFi</h3>
+  <p>DeployFi emphasizes cloud-managed integration with major enterprise Wi-Fi brands and isolated network configuration. The company publishes a $0-upfront claim and comparative per-GB language; buyers should request the actual fee, payout, ownership, and service schedule that applies to their property.</p>
+  <h3>Proof Wireless</h3>
+  <p>Proof Wireless publicly positions itself as a regional deployment partner working with Helium, with an existing-network path and a hosted-hotspot offer for smaller businesses. Its public site does not confirm an exact venue compensation formula or broad portfolio capability.</p>
+  <h3>MobileOffload</h3>
+  <p>MobileOffload’s intended fit is a commercial operator that wants coordinated assessment and deployment across multiple sites. Before choosing MobileOffload, a buyer should request the same documentation expected from any other provider: current underlying network relationships, property-specific enablement, technical scope, gross-to-net payment method, term, and support responsibilities.</p>
+
+  <h2 id="method">How we compared these providers</h2>
+  <p>We reviewed provider-owned websites, published technical documentation, offer pages, and legal terms available on October 26, 2026. Criteria were selected around buyer decisions: provider role, ideal venue, existing-network compatibility, deployment method, published fees and compensation, multi-location capability, technical requirements, and onboarding.</p>
+  <ul>
+    <li>We use “provider-reported” for claims that appear on a company’s own site.</li>
+    <li>We use “Not publicly confirmed” when an exact fee, share, carrier list, requirement, or capability is absent.</li>
+    <li>We do not rank a “best” provider because buyer fit depends on the engagement model and written terms.</li>
+    <li>We do not treat a marketing calculator as historical performance.</li>
+    <li>MobileOffload receives no favorable scoring; this page discloses the publisher relationship.</li>
+  </ul>
+
+  <h2 id="questions-buyers">Questions to ask before choosing a carrier-offload company</h2>
+  <ol>
+    <li>Which participating carriers or subscriber profiles are actually enabled at my locations?</li>
+    <li>What equipment, firmware, controller, license, SSID, VLAN, authentication, and backhaul are required?</li>
+    <li>How is eligible traffic measured, and can I audit session and data reports?</li>
+    <li>How are payments calculated, what percentage reaches the venue, and what deductions apply?</li>
+    <li>Is there a guaranteed minimum? If not, how are projections labeled?</li>
+    <li>Who handles technical support and incident response?</li>
+    <li>Can the same access points participate in other networks?</li>
+    <li>What happens to hardware, configuration, data, and credentials when the agreement ends?</li>
+    <li>What commitments, renewals, notice periods, or exclusivity provisions apply?</li>
+  </ol>
+
+  <ResourceFAQ faqs={faqs} />
+  <ResourceCTA source="carrier-offload-companies" heading="Want a property-specific comparison?" copy="MobileOffload can review your portfolio and explain the technical and commercial questions to resolve before you choose a program. Assessment does not guarantee acceptance or earnings." />
+
+  <section class="source-list" id="sources">
+    <h2>Official provider sources</h2>
+    <ul>
+      <li><a href="https://www.helium.com/plus" rel="noopener">Helium Plus</a>, <a href="https://docs.helium.com/mobile/5g-on-helium/" rel="noopener">technical documentation</a>, <a href="https://www.helium.com/legal/plus" rel="noopener">terms</a>, and <a href="https://www.helium.com/blog/helium-plus-no-fee-program" rel="noopener">no-fee announcement</a></li>
+      <li><a href="https://xnetmobile.com/msp-isp" rel="noopener">XNET Mobile MSP/ISP program</a> and <a href="https://connect.xnetmobile.com/" rel="noopener">illustrative calculator</a></li>
+      <li><a href="https://passpointpartners.com/" rel="noopener">Passpoint Partners</a></li>
+      <li><a href="https://deploy-fi.com/" rel="noopener">DeployFi</a></li>
+      <li><a href="https://proofwireless.com/" rel="noopener">Proof Wireless</a></li>
+    </ul>
+  </section>
+</Resource>

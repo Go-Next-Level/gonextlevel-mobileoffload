@@ -1,0 +1,20 @@
+# MobileOffload
+> Educational and commercial resources about Wi-Fi carrier offload for commercial properties and multi-location businesses.
+
+## Core guides
+- [Carrier Offload Explained](https://mobileoffload.com/carrier-offload/): Plain-language definition, parties, process, eligibility, and limitations.
+- [Can Businesses Get Paid for Wi-Fi?](https://mobileoffload.com/get-paid-for-wifi/): Buyer guide to qualifying carrier-offload programs.
+- [Carrier Offload Companies](https://mobileoffload.com/carrier-offload-companies/): Disclosed provider comparison based on primary sources.
+- [Carrier Offload Earnings](https://mobileoffload.com/carrier-offload-earnings/): Revenue mechanics, costs, and projection limitations.
+- [Passpoint Wi-Fi](https://mobileoffload.com/passpoint-wifi/): Technical guide to Passpoint and Hotspot 2.0.
+- [Wi-Fi Compatibility](https://mobileoffload.com/wifi-compatibility/): Enterprise equipment and qualification checklist.
+
+## Company
+- [About MobileOffload](https://mobileoffload.com/about/): Business identity, service role, and boundaries.
+- [Evidence and Case Studies](https://mobileoffload.com/case-studies/): Evidence policy and current verification status.
+- [Network Assessment](https://mobileoffload.com/network-assessment/): Commercial qualification request.
+
+## Editorial notes
+- MobileOffload is operated by Goolsby Ventures LLC.
+- Participation, compatibility, carrier enablement, traffic, and revenue are not guaranteed.
+- Provider claims are identified as provider-reported; unknown details are not inferred.

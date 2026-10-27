@@ -2,31 +2,24 @@
 import Enterprise from '../layouts/Enterprise.astro';
 import AssessSection from '../components/AssessSection.astro';
 
-const title = "Mobile Offload — Get Paid When Mobile Data Is Used Across Your Locations";
-const description = "AT&T, T-Mobile, and Google Fi pay to route subscriber data through enterprise Wi-Fi. Mobile Offload activates that revenue across your portfolio — software-only deployment, 50% of carrier payments settled monthly.";
+const title = "MobileOffload | Commercial Wi-Fi Carrier Offload";
+const description = "Understand carrier offload, assess commercial Wi-Fi compatibility, compare providers, and evaluate whether high-traffic business locations may qualify.";
 
 const schema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Mobile Offload",
-  "legalName": "Goolsby Ventures LLC",
-  "url": "https://mobileoffload.com",
-  "description": "Carrier offload infrastructure for high-traffic locations. AT&T, T-Mobile, and Google Fi subscriber traffic monetized on enterprise Wi-Fi.",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "customer support",
-    "telephone": "+1-530-232-4445",
-    "email": "corey@mobileoffload.com"
-  },
-  "sameAs": []
+  "@graph": [
+    { "@type": "WebSite", "@id": "https://mobileoffload.com/#website", "url": "https://mobileoffload.com/", "name": "MobileOffload", "publisher": { "@id": "https://mobileoffload.com/#organization" } },
+    { "@type": "Organization", "@id": "https://mobileoffload.com/#organization", "name": "MobileOffload", "legalName": "Goolsby Ventures LLC", "url": "https://mobileoffload.com/", "description": "Commercial carrier-offload education, network assessment, and deployment coordination for business Wi-Fi.", "contactPoint": { "@type": "ContactPoint", "contactType": "customer support", "telephone": "+1-530-232-4445", "email": "corey@mobileoffload.com" } },
+    { "@type": "WebPage", "@id": "https://mobileoffload.com/#webpage", "url": "https://mobileoffload.com/", "name": title, "description": description, "isPartOf": { "@id": "https://mobileoffload.com/#website" } }
+  ]
 };
 
 const deployments = [
-  { location: "Baltimore, MD",   type: "International Airport", scope: "Brownfield · 242 APs", monthly: "$9,625", annual: "$115,499", users: "5,945", data: "75 TB" },
-  { location: "Glendale, CA",    type: "Shopping Mall",         scope: "Greenfield · 1 AP",    monthly: "$1,929", annual: "$23,464",  users: "1,419", data: "8.12 TB" },
-  { location: "Irvine, CA",      type: "Fitness Center",        scope: "Greenfield · 1 AP",    monthly: "$1,824", annual: "$22,197",  users: "1,172", data: "7.79 TB" },
-  { location: "New Orleans, LA", type: "Restaurant Group",      scope: "Brownfield · 3 APs",   monthly: "$889",   annual: "$10,662",  users: "5,023", data: "3.56 TB" },
-  { location: "Studio City, CA", type: "Retail Location",       scope: "Greenfield · 1 AP",    monthly: "$577",   annual: "$7,023",   users: "1,082", data: "1.95 TB" },
+  { location: "Source review pending", type: "International Airport", scope: "Upstream example", monthly: "Not verified", annual: "Not verified", users: "Not verified", data: "Not verified" },
+  { location: "Source review pending", type: "Shopping Mall", scope: "Upstream example", monthly: "Not verified", annual: "Not verified", users: "Not verified", data: "Not verified" },
+  { location: "Source review pending", type: "Fitness Center", scope: "Upstream example", monthly: "Not verified", annual: "Not verified", users: "Not verified", data: "Not verified" },
+  { location: "Source review pending", type: "Restaurant Group", scope: "Upstream example", monthly: "Not verified", annual: "Not verified", users: "Not verified", data: "Not verified" },
+  { location: "Source review pending", type: "Retail Location", scope: "Upstream example", monthly: "Not verified", annual: "Not verified", users: "Not verified", data: "Not verified" },
 ];
 
 const segments = [
@@ -39,10 +32,10 @@ const segments = [
 ];
 
 const steps = [
-  { num: "01", title: "Network Assessment", desc: "We audit your existing access-point infrastructure across the portfolio and model offload capacity per site. No hardware purchase required in most deployments." },
-  { num: "02", title: "Software Integration", desc: "A dedicated carrier SSID configured with Passpoint (Hotspot 2.0) and RadSec — roughly one hour per site, coordinated with your IT or MSP, with zero impact on existing networks." },
-  { num: "03", title: "Automatic Carrier Offload", desc: "AT&T, T-Mobile, and Google Fi subscribers authenticate automatically on entry. No passwords, no splash pages. Traffic flows through your infrastructure." },
-  { num: "04", title: "Monthly Settlement", desc: "Carriers pay per gigabyte offloaded. Your organization receives 50% of all carrier revenue by the 5th of each month, with full session-level reporting." },
+  { num: "01", title: "Network Assessment", desc: "We inventory locations, visitor patterns, access points, controller, firmware, backhaul, permissions, and current program availability." },
+  { num: "02", title: "Technical Design", desc: "Where compatible, an isolated service profile is planned with the venue's IT or MSP. Hardware and timing depend on the actual environment." },
+  { num: "03", title: "Pilot & Validation", desc: "Eligible device authentication, segmentation, capacity, monitoring, reporting, and rollback are tested before wider rollout." },
+  { num: "04", title: "Reporting & Settlement", desc: "Eligible traffic and payments follow the current written program agreement. Participation and revenue are not guaranteed." },
 ];
 
 const security = [
@@ -74,19 +67,19 @@ const faqs = [
   <section class="hero" aria-label="Introduction">
     <div class="hero-grid-bg" aria-hidden="true"></div>
     <div class="wrap hero-inner">
-      <p class="eyebrow">Carrier Offload · AT&amp;T / T-Mobile / Google Fi</p>
+      <p class="eyebrow">Commercial Wi-Fi · Carrier offload assessment</p>
       <h1 class="display">Get paid when mobile data is used <span class="hl">across your locations.</span></h1>
       <p class="hero-sub">
-        Mobile carriers pay to route subscriber data through enterprise Wi-Fi in high-traffic venues.
-        Mobile Offload activates that revenue across your entire portfolio — software-only deployment
-        on your existing infrastructure, 50% of carrier payments settled monthly.
+        Some approved network programs compensate qualifying commercial operators for eligible mobile
+        data carried over compatible Wi-Fi. MobileOffload helps portfolios assess technical readiness,
+        current program fit, rollout scope, and written commercial terms.
       </p>
       <div class="hero-ctas">
         <a href="#assessment" class="btn-primary">Request a Network Assessment <span class="arr">→</span></a>
         <a href="#network" class="btn-ghost">View Network Performance</a>
       </div>
       <div class="hero-carriers" aria-label="Participating carriers">
-        <span>Carriers on the network</span>
+        <span>Program participation varies by location</span>
         <span class="carrier">AT&amp;T</span>
         <span class="carrier">T-Mobile</span>
         <span class="carrier">Google Fi</span>
@@ -98,26 +91,37 @@ const faqs = [
       <div class="wrap" style="padding: 0;">
         <div class="metrics-grid">
           <div class="metric">
-            <div class="m-label">Data Offloaded / Quarter</div>
-            <div class="m-value">576 <sup>TB</sup></div>
-            <div class="m-note">Up from 88 TB — 555% network growth, Q3 2024 to Q4 2025</div>
+            <div class="m-label">Qualification</div>
+            <div class="m-value">Site <sup>by site</sup></div>
+            <div class="m-note">Traffic, network, permissions, and current program coverage reviewed individually</div>
           </div>
           <div class="metric">
-            <div class="m-label">Active Subscribers</div>
-            <div class="m-value">124K+</div>
-            <div class="m-note">Authenticated across six major carriers nationwide</div>
+            <div class="m-label">Compatibility</div>
+            <div class="m-value">Model <sup>level</sup></div>
+            <div class="m-note">Access point, controller, firmware, license, and configuration all matter</div>
           </div>
           <div class="metric">
-            <div class="m-label">Example Site, Annual</div>
-            <div class="m-value">$115K</div>
-            <div class="m-note">BWI Airport — 242 access points, 75 TB offloaded monthly</div>
+            <div class="m-label">Measurement</div>
+            <div class="m-value">Eligible <sup>only</sup></div>
+            <div class="m-note">Total Wi-Fi traffic is not the same as billable program traffic</div>
           </div>
           <div class="metric">
-            <div class="m-label">Partner Revenue Share</div>
-            <div class="m-value">50%</div>
-            <div class="m-note">Of all carrier payments, settled by the 5th of each month</div>
+            <div class="m-label">Commercials</div>
+            <div class="m-value">In <sup>writing</sup></div>
+            <div class="m-note">Rates, fees, venue share, timing, term, and exit conditions require review</div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band-white" aria-label="Carrier offload resources">
+    <div class="wrap"><div class="section-head reveal"><div class="sh-left"><div class="sec-num">Start here</div></div><div><p class="eyebrow">Clear answers before the sales call</p><h2 class="display" style="margin-top:22px;">Understand the opportunity, limits, and provider models.</h2><p class="sh-sub">Carrier offload uses compatible Wi-Fi to carry eligible mobile traffic. It is not ordinary guest Wi-Fi, and owning a router does not create revenue by itself.</p></div></div>
+      <div class="segments-grid reveal">
+        <a class="segment" href="/carrier-offload/"><div class="seg-idx">01</div><h3>Carrier Offload Explained</h3><p>How automatic connections, network roles, measurement, and qualification work.</p></a>
+        <a class="segment" href="/get-paid-for-wifi/"><div class="seg-idx">02</div><h3>Can Businesses Get Paid?</h3><p>A plain-language guide to who pays, why, and what ordinary Wi-Fi cannot do.</p></a>
+        <a class="segment" href="/carrier-offload-companies/"><div class="seg-idx">03</div><h3>Compare Providers</h3><p>An objective buyer guide to ecosystems, integrators, managed services, and portfolio operators.</p></a>
+        <a class="segment" href="/carrier-offload-earnings/"><div class="seg-idx">04</div><h3>Revenue Mechanics</h3><p>Eligible data, payment rates, venue shares, costs, and why projections vary.</p></a>
       </div>
     </div>
   </section>
@@ -177,8 +181,8 @@ const faqs = [
         </div>
         <div>
           <p class="eyebrow">Live Deployments</p>
-          <h2 class="display" style="margin-top: 22px;">Audited results from the active network.</h2>
-          <p class="sh-sub">Settlement figures from live carrier offload sites. Greenfield denotes a new access point; brownfield runs entirely on existing infrastructure.</p>
+          <h2 class="display" style="margin-top: 22px;">Examples awaiting source verification.</h2>
+          <p class="sh-sub">The prior site presented exact upstream deployment figures without supporting records in the repository. They are withheld pending owner verification, attribution, and publication permission.</p>
         </div>
       </div>
       <div class="reveal">
@@ -212,8 +216,7 @@ const faqs = [
           </table>
         </div>
         <p class="tbl-footnote">
-          Figures reflect the partner's 50% share of carrier settlement. Multi-site portfolios compound
-          per location under a single master agreement. Individual results vary with foot traffic, dwell time, and venue type.
+          Do not use these examples to project earnings. See the <a href="/case-studies/">evidence policy and case-study methodology</a>.
         </p>
       </div>
     </div>

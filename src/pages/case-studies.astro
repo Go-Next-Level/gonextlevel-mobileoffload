@@ -1,0 +1,35 @@
+---
+import Resource from '../layouts/Resource.astro';
+import ResourceFAQ from '../components/ResourceFAQ.astro';
+import ResourceCTA from '../components/ResourceCTA.astro';
+const faqs=[
+  {q:'Are the figures previously shown on MobileOffload direct customer results?',a:'The repository does not include enough supporting records to establish ownership, attribution, measurement period, or customer authorization. They should be treated as unverified upstream or industry examples until records are supplied.'},
+  {q:'What makes a carrier-offload case study credible?',a:'A credible case study identifies the property type, relationship, date range, equipment, eligible traffic definition, gross-versus-net revenue, costs, source records, and publication permission.'},
+  {q:'Why not publish anonymous revenue examples?',a:'Anonymous examples can hide material differences and cannot establish that the publisher produced the result. They may be useful only when clearly labeled and supported by a documented source.'},
+  {q:'Will MobileOffload add verified studies?',a:'Yes, when deployment records, attribution, methodology, and customer or partner permission are available. Until then, this page explains the evidence standard and avoids presenting projections as results.'},
+];
+---
+<Resource title="Carrier Offload Examples, Case Studies and Deployment Results" description="An evidence-first guide to evaluating carrier-offload examples, including what must be documented before revenue, traffic, or deployment claims are treated as case studies." eyebrow="Evidence register · Deployment claims" h1="Carrier Offload in Real-World Commercial Locations" answer="Carrier offload is used in commercial environments such as airports, shopping centers, fitness facilities, restaurants, and retail locations. A useful case study must identify the source, relationship, methodology, time period, eligible traffic, costs, and whether results are gross or net. MobileOffload does not currently publish undocumented examples as verified customer results." canonicalPath="/case-studies/" faqs={faqs}>
+  <ul slot="toc"><li><a href="#status">Current evidence status</a></li><li><a href="#standard">Evidence standard</a></li><li><a href="#examples">How venue types differ</a></li><li><a href="#submit">Submit a documented study</a></li></ul>
+  <h2 id="status">Current evidence status</h2>
+  <p>The existing website repository references an airport, shopping mall, fitness center, restaurant group, and retail location with exact users, data, and revenue. The available code does not include settlement reports, methodology, customer authorization, source URLs, or documentation proving that these are direct MobileOffload deployments.</p>
+  <div class="note"><strong>Publication decision</strong>Those figures are not repeated here as MobileOffload case studies. Owner review should classify each as a direct result, partner result, upstream network example, hypothetical model, or unsupported claim before future publication.</div>
+  <div class="table-scroll"><table class="resource-table"><thead><tr><th>Referenced venue</th><th>Current classification</th><th>Evidence needed</th></tr></thead><tbody>
+    <tr><td>Airport</td><td>Unverified upstream/industry example</td><td>Relationship, source report, period, AP count, eligible traffic, payout definition, permission</td></tr>
+    <tr><td>Shopping center</td><td>Unverified upstream/industry example</td><td>Property identity or anonymization basis, source, methodology, gross/net definition</td></tr>
+    <tr><td>Fitness center</td><td>Unverified upstream/industry example</td><td>Deployment ownership, measurement period, equipment, traffic and settlement records</td></tr>
+    <tr><td>Restaurant group</td><td>Unverified upstream/industry example</td><td>Number of sites, source, attribution, traffic definition, costs, permission</td></tr>
+    <tr><td>Retail location</td><td>Unverified upstream/industry example</td><td>Source, relationship, date range, equipment, eligibility, settlement records</td></tr>
+  </tbody></table></div>
+  <h2 id="standard">What a publishable case study should document</h2>
+  <ul class="checklist"><li>Who operated the venue, network, integration, and settlement relationship</li><li>Whether MobileOffload performed the work, supported it, or is only citing an upstream example</li><li>Date range, site count, property type, visitor context, and network architecture</li><li>Access points, controller, deployment type, backhaul, and meaningful configuration changes</li><li>Eligible traffic definition, measurement system, and exclusions</li><li>Gross network payment, venue payment, fees, costs, and whether amounts are actual or annualized</li><li>Baseline, operational impact, limitations, and results that did not meet expectations</li><li>Customer/partner authorization and a stable evidence source</li></ul>
+  <h2 id="examples">Why venue types produce different evidence</h2>
+  <h3>Airports and transit hubs</h3><p>Large RF footprints, procurement, redundancy, security, passenger peaks, concession networks, and many access points make attribution and cost accounting essential.</p>
+  <h3>Shopping centers</h3><p>Shared areas, tenant networks, ownership boundaries, event traffic, and indoor cellular conditions can make device and property scope difficult to compare.</p>
+  <h3>Fitness centers</h3><p>Repeat members and longer dwell time may increase opportunity, but actual eligibility and media use vary. A single-site example should not be generalized to every gym.</p>
+  <h3>Restaurants and retail</h3><p>Shorter visits, lunch/dinner peaks, POS isolation, small footprints, and multi-site aggregation change both technical design and economics.</p>
+  <p>Visit the industry guides for <a href="/carrier-offload-for-airports/">airports</a>, <a href="/carrier-offload-for-shopping-centers/">shopping centers</a>, <a href="/carrier-offload-for-gyms/">gyms</a>, and <a href="/carrier-offload-for-restaurants/">restaurants</a>.</p>
+  <h2 id="submit">Have documentation for a MobileOffload example?</h2><p>Owners, authorized partners, or customers can provide source records for review. Publication should occur only after factual validation, commercial/privacy review, and written permission. Sensitive network and customer information should be redacted.</p>
+  <ResourceFAQ faqs={faqs}/><ResourceCTA source="case-studies" heading="Evaluate your own locations—without borrowing someone else’s result." copy="A location-specific assessment uses your traffic, network, and program facts. It does not assume that another venue’s reported outcome will transfer to yours."/>
+  <section class="source-list" id="sources"><h2>Evidence policy</h2><p>This page was reviewed October 26, 2026 against the repository evidence available during implementation. The classification will be updated when attributable records are approved.</p></section>
+</Resource>

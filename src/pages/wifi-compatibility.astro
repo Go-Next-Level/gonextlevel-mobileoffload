@@ -1,0 +1,62 @@
+---
+import Resource from '../layouts/Resource.astro';
+import ResourceFAQ from '../components/ResourceFAQ.astro';
+import ResourceCTA from '../components/ResourceCTA.astro';
+
+const faqs = [
+  { q: 'Can Cisco access points support carrier offload?', a: 'Some Cisco enterprise platforms can support relevant Passpoint and enterprise-authentication features, but support varies by access point, controller, software release, licensing, and design. Validate the exact bill of materials.' },
+  { q: 'Can Ubiquiti UniFi support Passpoint carrier offload?', a: 'Capability varies by product, controller release, profile requirements, and operator integration. Do not assume compatibility from the brand alone; test the exact environment against the chosen program.' },
+  { q: 'Do I need a separate SSID and VLAN?', a: 'Many designs use a separate service profile and segmented network path to protect business systems and apply policy. The exact architecture should be approved by the venue’s network and security teams.' },
+  { q: 'How much internet capacity is required?', a: 'There is no universal number. Capacity planning should use peak concurrency, expected eligible traffic, current utilization, QoS policy, circuit headroom, redundancy, and service-level requirements.' },
+  { q: 'Can consumer Wi-Fi routers participate?', a: 'Most consumer routers lack the controller, Passpoint, enterprise authentication, segmentation, monitoring, and change-control capabilities expected for commercial offload. Program-specific exceptions should be verified.' },
+];
+---
+<Resource
+  title="Carrier Offload Wi-Fi Requirements: Equipment and Compatibility"
+  description="Check whether existing Cisco, Aruba, Ruckus, Ubiquiti, or Juniper Mist Wi-Fi may support carrier offload, including Passpoint, VLAN, backhaul, and testing requirements."
+  eyebrow="Technical qualification · Existing Wi-Fi"
+  h1="Can Your Existing Business Wi-Fi Support Carrier Offload?"
+  answer="Possibly. Existing enterprise Wi-Fi may support carrier offload when the exact access points, controller, firmware, licensing, authentication, segmentation, backhaul, and program requirements align. Manufacturer names alone are not proof of compatibility, and ordinary consumer routers usually lack the necessary controls."
+  canonicalPath="/wifi-compatibility/"
+  faqs={faqs}
+>
+  <ul slot="toc"><li><a href="#requirements">Core requirements</a></li><li><a href="#vendors">Vendor considerations</a></li><li><a href="#checklist">Qualification checklist</a></li><li><a href="#multi-site">Multi-site rollout</a></li></ul>
+
+  <h2 id="requirements">Core technical requirements</h2>
+  <div class="content-grid">
+    <div class="info-card"><h3>Managed enterprise Wi-Fi</h3><p>Central policy, supported authentication, change control, logging, and repeatable configuration are usually essential.</p></div>
+    <div class="info-card"><h3>Passpoint capability</h3><p>The proposed hardware and software must support the required discovery, ANQP, credential, and roaming configuration.</p></div>
+    <div class="info-card"><h3>Segmentation</h3><p>Dedicated SSID/service profile, VLAN, firewall, client-isolation, and management policy may be needed to protect business systems.</p></div>
+    <div class="info-card"><h3>Internet capacity</h3><p>Circuits need enough measured headroom for offload while preserving POS, operations, staff, and guest service.</p></div>
+  </div>
+  <p>Authentication may involve RADIUS and, where applicable, RadSec. The design also needs DNS, DHCP, certificate, redundancy, monitoring, and support ownership. A secure architecture is validated end to end; it is not created merely by adding a new network name.</p>
+
+  <h2 id="vendors">Common enterprise Wi-Fi manufacturers</h2>
+  <p>Cisco, Aruba, Ruckus, Ubiquiti, and Juniper Mist all have commercial product families used in managed Wi-Fi environments. Their products differ significantly across generation, controller mode, firmware, license, radio capability, cloud management, and Passpoint feature set.</p>
+  <div class="table-scroll"><table class="resource-table"><thead><tr><th>Environment</th><th>Questions to validate</th><th>Do not assume</th></tr></thead><tbody>
+    <tr><td><strong>Cisco / Meraki</strong></td><td>Controller or dashboard model, software train, Hotspot 2.0 profile support, RADIUS behavior, licensing, and template scope</td><td>Every Cisco-branded AP supports the same configuration</td></tr>
+    <tr><td><strong>HPE Aruba</strong></td><td>Central/controller architecture, OS version, Passpoint/ANQP configuration, role policies, and certificate/AAA integration</td><td>Instant, Central, and controller deployments are interchangeable</td></tr>
+    <tr><td><strong>Ruckus</strong></td><td>SmartZone/Cloud/Unleashed mode, firmware, Hotspot 2.0 support, policy, and AAA compatibility</td><td>All management modes expose identical features</td></tr>
+    <tr><td><strong>Ubiquiti UniFi</strong></td><td>Exact network application and AP version, supported Passpoint profile, VLAN, RADIUS, and operator test results</td><td>A forum configuration proves production program acceptance</td></tr>
+    <tr><td><strong>Juniper Mist</strong></td><td>AP generation, cloud configuration, WLAN/authentication template, segmentation, assurance metrics, and program profile</td><td>Cloud management alone confirms commercial eligibility</td></tr>
+  </tbody></table></div>
+
+  <h2 id="checklist">Practical qualification checklist</h2>
+  <ul class="checklist">
+    <li>Export model, serial, location, controller/cloud, firmware, license, and lifecycle status for every AP.</li>
+    <li>Document current SSIDs, VLANs, address plans, firewalls, authentication, captive portals, and QoS.</li>
+    <li>Measure current and peak circuit utilization, latency, loss, DNS/DHCP capacity, and redundancy.</li>
+    <li>Confirm the proposed Passpoint profile and supported device/authentication methods with the program.</li>
+    <li>Review security ownership, vendor access, least privilege, logging, privacy, retention, and incident response.</li>
+    <li>Test in a limited RF area with approved devices, noneligible devices, roaming, failure, and load scenarios.</li>
+    <li>Record a rollback plan and baseline performance before production activation.</li>
+  </ul>
+
+  <h2 id="multi-site">Multi-site deployment considerations</h2>
+  <p>A portfolio may contain different generations, MSPs, circuits, ownership structures, and security standards. Group sites into technical archetypes instead of pushing one configuration everywhere. Start with a representative pilot, document exceptions, and use change windows appropriate to each business.</p>
+  <p>Central reporting should distinguish authentication health, offload data, general Wi-Fi performance, and commercial settlement. A revenue dashboard does not replace network monitoring.</p>
+
+  <ResourceFAQ faqs={faqs} />
+  <ResourceCTA source="wifi-compatibility" heading="Bring us your network inventory." copy="We can review the specific access points, controller, firmware, backhaul, and segmentation constraints across one site or an entire portfolio." />
+  <section class="source-list" id="sources"><h2>Sources and related reading</h2><ul><li><a href="/passpoint-wifi/">What is Passpoint Wi-Fi?</a></li><li><a href="https://wballiance.com/resource/wi-fi-security-guidelines/" rel="noopener">Wireless Broadband Alliance: Wi-Fi Security Guidelines</a></li></ul></section>
+</Resource>

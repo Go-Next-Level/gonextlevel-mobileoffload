@@ -1,0 +1,75 @@
+---
+import Resource from '../layouts/Resource.astro';
+import ResourceFAQ from '../components/ResourceFAQ.astro';
+import ResourceCTA from '../components/ResourceCTA.astro';
+
+const faqs = [
+  { q: 'Is Passpoint the same as Hotspot 2.0?', a: 'The names are closely related: Hotspot 2.0 describes the technical program and Passpoint is the Wi-Fi Alliance certification and market name commonly used for compatible implementations.' },
+  { q: 'Does Passpoint make Wi-Fi automatically secure?', a: 'No. Passpoint supports secure discovery and authentication, but security depends on credentials, encryption, identity privacy, RADIUS or RadSec design, certificate handling, segmentation, monitoring, and operational controls.' },
+  { q: 'Will every device connect to a Passpoint network?', a: 'No. The device must support the required profile and credentials, and the network must advertise a compatible service. Policy, roaming arrangements, user settings, and local program enablement also matter.' },
+  { q: 'Does Passpoint require a captive portal?', a: 'Passpoint is designed to avoid repeated manual network selection and captive-portal login for authorized users. A separate guest network may still use a portal.' },
+  { q: 'What is RadSec?', a: 'RadSec transports RADIUS authentication over TLS. It can protect authentication traffic between network components, but it is one part of a larger architecture and is not required in exactly the same way for every deployment.' },
+];
+---
+<Resource
+  title="What Is Passpoint Wi-Fi? How Hotspot 2.0 Enables Carrier Offload"
+  description="Learn how Passpoint and Hotspot 2.0 enable automatic Wi-Fi discovery and authentication, how carrier offload uses them, and what IT teams must validate."
+  eyebrow="Technical guide · Passpoint / Hotspot 2.0"
+  h1="What Is Passpoint Wi-Fi, and How Does It Work?"
+  answer="Passpoint is a Wi-Fi Alliance program based on Hotspot 2.0 technology that helps compatible devices discover and authenticate to trusted Wi-Fi networks automatically. It can support carrier offload by letting eligible subscriber devices join approved venue Wi-Fi without repeatedly selecting an SSID or entering a password."
+  canonicalPath="/passpoint-wifi/"
+  faqs={faqs}
+>
+  <ul slot="toc">
+    <li><a href="#ordinary">Passpoint vs guest Wi-Fi</a></li>
+    <li><a href="#authentication">Discovery and authentication</a></li>
+    <li><a href="#security">Security and privacy</a></li>
+    <li><a href="#validate">What IT teams validate</a></li>
+  </ul>
+
+  <h2 id="ordinary">How is Passpoint different from ordinary guest Wi-Fi?</h2>
+  <p>Ordinary guest Wi-Fi often asks a person to find a network name, accept terms in a captive portal, or type a shared password. Passpoint lets the device evaluate advertised network information against an installed profile or credential. When the device and network recognize one another, authentication can happen with little or no user action.</p>
+  <p>That automation makes Passpoint useful for roaming and carrier offload. It does not mean the venue Wi-Fi replaces the mobile carrier, nor does it guarantee every subscriber will connect.</p>
+
+  <h2 id="authentication">How discovery and authentication work</h2>
+  <div class="flow-diagram" role="img" aria-label="A supported device discovers a Passpoint network, matches policy and credentials, authenticates through an AAA service, then receives access to a segregated Wi-Fi data path.">
+    <div class="flow-step">Supported device</div><div class="flow-step">Network discovery</div><div class="flow-step">Profile and policy match</div><div class="flow-step">AAA authentication</div><div class="flow-step">Segregated data path</div>
+  </div>
+  <p>Common credential approaches can include SIM-based methods and certificate- or username-based enterprise authentication. The applicable EAP method, identity handling, certificate trust, and roaming relationship depend on the service provider and deployment. An access point advertising Passpoint information is only one part of the system.</p>
+  <p>RADIUS provides authentication, authorization, and accounting functions in many enterprise designs. RadSec adds TLS protection to RADIUS transport between supported components. Network architects should validate certificate lifecycle, identity privacy, logging, failure behavior, and trust boundaries instead of treating “RadSec enabled” as a complete security answer.</p>
+
+  <h2 id="security">Is Passpoint secure?</h2>
+  <p>Passpoint can support a stronger user experience than open Wi-Fi because it is built for authenticated, policy-based connectivity. Security still depends on the complete deployment. Wi-Fi encryption, EAP method, anonymous identity behavior, certificate validation, management-plane security, VLAN policy, firewall rules, DNS, backhaul, monitoring, and patching all matter.</p>
+  <ul class="checklist">
+    <li>Use supported enterprise authentication and current encryption appropriate to the deployment.</li>
+    <li>Protect subscriber identity where supported; avoid exposing unnecessary permanent identifiers.</li>
+    <li>Separate offload, guest, staff, POS, building, and management traffic by policy—not just by name.</li>
+    <li>Validate certificates, AAA reachability, fail-open/fail-closed behavior, and revocation handling.</li>
+    <li>Monitor authentication success, DHCP/DNS behavior, latency, RF health, throughput, and abuse.</li>
+  </ul>
+  <div class="note"><strong>Deployment-dependent</strong>Not every Passpoint network uses identical encryption, credentials, roaming partners, or RADIUS/RadSec architecture. Ask for a diagram of the actual proposed design.</div>
+
+  <h2>How does Passpoint relate to carrier offload?</h2>
+  <p>Carrier offload needs a reliable way for eligible subscriber devices to find and trust venue Wi-Fi. Passpoint provides that access framework. The separate commercial program determines which profiles are enabled, what traffic is eligible, how it is measured, and whether the venue receives compensation.</p>
+  <p>A technically valid Passpoint SSID can exist without a paid offload program. Conversely, a commercial agreement cannot make unsupported hardware or incorrect authentication work. Technical and commercial qualification must both succeed.</p>
+
+  <h2 id="validate">What should an IT team validate before implementation?</h2>
+  <ul>
+    <li>Exact access-point, controller, cloud, firmware, and license support</li>
+    <li>Passpoint release/features, ANQP elements, roaming consortium configuration, and profile matching</li>
+    <li>EAP method, certificates, RADIUS/RadSec endpoints, redundancy, and timeout behavior</li>
+    <li>SSID, VLAN, firewall, QoS, client isolation, DHCP, DNS, and internet egress</li>
+    <li>Management access, audit logs, data retention, incident response, and change ownership</li>
+    <li>Staged testing across supported device types and negative tests for noneligible devices</li>
+    <li>Capacity and performance thresholds that protect operational networks</li>
+  </ul>
+  <p>Continue with the <a href="/wifi-compatibility/">carrier-offload Wi-Fi requirements checklist</a> for a practical inventory process.</p>
+
+  <ResourceFAQ faqs={faqs} />
+  <ResourceCTA source="passpoint-wifi" heading="Need a technical readiness review?" copy="A network assessment inventories the exact controller, access points, firmware, backhaul, segmentation, and administrative constraints before proposing a configuration." />
+
+  <section class="source-list" id="sources"><h2>Technical sources</h2><ul>
+    <li><a href="https://wballiance.com/resource/wi-fi-security-guidelines/" rel="noopener">Wireless Broadband Alliance: Wi-Fi Security Guidelines</a></li>
+    <li><a href="https://wballiance.com/resource/imsi-privacy-protection-for-wi-fi/" rel="noopener">Wireless Broadband Alliance: IMSI Privacy Protection for Wi-Fi</a></li>
+  </ul></section>
+</Resource>
