@@ -1,6 +1,7 @@
 ---
 import Enterprise from '../layouts/Enterprise.astro';
 import AssessSection from '../components/AssessSection.astro';
+import EarningsReality from '../components/EarningsReality.astro';
 
 const title = "MobileOffload | Commercial Wi-Fi Carrier Offload";
 const description = "Understand carrier offload, assess commercial Wi-Fi compatibility, compare providers, and evaluate whether high-traffic business locations may qualify.";
@@ -57,6 +58,7 @@ const faqs = [
   { q: "Which carriers participate?", a: "Participation is program-, market-, venue-, and time-dependent. Ask for the current supported-network list, the authentication path, geographic scope, and the evidence used to identify eligible traffic in your proposal." },
   { q: "Is new hardware required?", a: "Sometimes. Compatibility depends on the exact access-point model, controller, firmware, licenses, radio capacity, network design, and the program's requirements. A model-level inventory is the right starting point." },
   { q: "How is a multi-site rollout managed?", a: "A practical rollout starts with inventory and rights review, then a limited pilot, measured acceptance criteria, and phased activation. Timing and contracting should be based on the actual portfolio rather than a universal per-site estimate." },
+  { q: "Why doesn't MobileOffload publish an earnings calculator?", a: "Generic calculators rely on broad assumptions that no longer reflect how qualified carrier-offload opportunities are evaluated. Meaningful estimates require current carrier demand, compatible infrastructure, eligible usage, portfolio scale, pilot data, costs, and written commercial terms." },
   { q: "What should an exit plan cover?", a: "The agreement should state notice, fees, access revocation, configuration rollback, equipment ownership, data retention, final reporting, and dispute handling. Those terms should be reviewed before a pilot begins." },
 ];
 ---
@@ -194,12 +196,14 @@ const faqs = [
     </div>
   </section>
 
+  <EarningsReality />
+
   <!-- ═══ HOW IT WORKS ═══════════════════════════════════════ -->
   <section class="section band-white" id="how-it-works" aria-label="Deployment process">
     <div class="wrap">
       <div class="section-head reveal">
         <div class="sh-left">
-          <div class="sec-num">03 — Deployment</div>
+          <div class="sec-num">04 — Deployment</div>
         </div>
         <div>
           <p class="eyebrow">From Assessment to Settlement</p>
@@ -224,7 +228,7 @@ const faqs = [
     <div class="wrap">
       <div class="section-head reveal">
         <div class="sh-left">
-          <div class="sec-num">04 — Partners</div>
+          <div class="sec-num">05 — Partners</div>
         </div>
         <div>
           <p class="eyebrow">Built for Scale</p>
@@ -249,7 +253,7 @@ const faqs = [
     <div class="wrap">
       <div class="section-head reveal">
         <div class="sh-left">
-          <div class="sec-num">05 — Security</div>
+          <div class="sec-num">06 — Security</div>
         </div>
         <div>
           <p class="eyebrow">Isolation by Architecture</p>
@@ -301,7 +305,7 @@ const faqs = [
     <div class="wrap">
       <div class="section-head reveal">
         <div class="sh-left">
-          <div class="sec-num">06 — Commercial</div>
+          <div class="sec-num">07 — Commercial</div>
         </div>
         <div>
           <p class="eyebrow">Commercial diligence</p>
@@ -324,7 +328,7 @@ const faqs = [
   <section class="section band-alt" id="faq" aria-label="Frequently asked questions">
     <div class="wrap" style="max-width: 900px;">
       <div style="margin-bottom: 52px;" class="reveal">
-        <div class="sec-num" style="margin-bottom: 18px;">07 — Questions</div>
+        <div class="sec-num" style="margin-bottom: 18px;">08 — Questions</div>
         <h2 class="display" style="font-size: clamp(32px, 4vw, 48px);">Common questions.</h2>
       </div>
       <div class="faq-list reveal">
@@ -344,6 +348,6 @@ const faqs = [
   </section>
 
   <!-- ═══ ASSESSMENT FORM ════════════════════════════════════ -->
-  <AssessSection />
+  <AssessSection secNum="09 — Engage" />
 
 </Enterprise>
