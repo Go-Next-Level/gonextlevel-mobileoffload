@@ -52,6 +52,7 @@ const resourceLinks = [
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script is:inline>document.documentElement.classList.add('js');</script>
 
   <!-- Google Search Console verification -->
   <meta name="google-site-verification" content="cNUSBTquyDdTrA0L62A7-8ZgARY-vwDgyARdNeFUjWc" />
@@ -742,10 +743,11 @@ const resourceLinks = [
     .foot-legal a:hover { color: var(--paper); }
 
     /* ── Reveal on scroll ───────────────────────────────────── */
-    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.in { opacity: 1; transform: none; }
+    .reveal { opacity: 1; transform: none; }
+    .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .js .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; transform: none; transition: none; }
+      .js .reveal { opacity: 1; transform: none; transition: none; }
       html { scroll-behavior: auto; }
     }
   </style>
