@@ -1,10 +1,9 @@
 ---
 import Enterprise from '../layouts/Enterprise.astro';
-import '../styles/global.css';
 ---
 <Enterprise
   title="Privacy Policy — Mobile Offload | Goolsby Ventures LLC"
-  description="Privacy Policy for Mobile Offload, operated by Goolsby Ventures LLC. We do not sell, rent, or share your personal information with third parties."
+  description="Privacy notice for MobileOffload, operated by Goolsby Ventures LLC, including form processing, analytics, service providers, and contact information."
   navLinks={[
     { href: '/carrier-offload/', label: 'Learn' },
     { href: '/about/', label: 'About' },
@@ -12,28 +11,26 @@ import '../styles/global.css';
   ]}
   ctaHref="/network-assessment/"
 >
-  <main id="main">
-    <section class="relative py-24" style="background: var(--paper); padding-top: 140px;">
-      <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
-           style="background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(11,65,194,0.08) 0%, transparent 70%);"></div>
+  <main id="main" class="privacy-shell">
+    <section class="privacy-section">
+      <div class="privacy-glow" aria-hidden="true"></div>
 
-      <div class="relative max-w-3xl mx-auto px-6">
+      <div class="privacy-inner">
 
         <!-- Header -->
-        <div class="mb-12">
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 text-xs font-semibold tracking-widest uppercase"
-               style="background: var(--blue-wash); color: var(--blue); font-family: var(--mono); border: 1px solid rgba(11,65,194,0.2);">
+        <div class="privacy-head">
+          <div class="privacy-kicker">
             Legal
           </div>
-          <h1 class="text-4xl lg:text-5xl font-bold mb-4" style="font-family: var(--serif); letter-spacing: -0.02em;">
+          <h1>
             Privacy Policy
           </h1>
-          <p class="text-base" style="color: var(--ink-2); font-family: var(--sans);">
-            Effective Date: April 8, 2026 &nbsp;·&nbsp; Last Updated: April 8, 2026
+          <p class="privacy-date">
+            Effective Date: April 8, 2026 &nbsp;·&nbsp; Last Updated: October 26, 2026
           </p>
-          <div class="mt-4 p-4 rounded-xl" style="background: var(--green-wash); border: 1px solid rgba(10,124,79,0.25);">
-            <p class="text-sm font-semibold" style="color: var(--green); font-family: var(--sans);">
-              We do not sell, rent, share, or trade your personal information — ever.
+          <div class="policy-notice">
+            <p>
+              Operational disclosure draft: updated to reflect the services currently present in this site's source. Owner and legal review are required before production publication.
             </p>
           </div>
         </div>
@@ -63,8 +60,9 @@ import '../styles/global.css';
             <li>Any additional details you voluntarily provide in the message field</li>
           </ul>
           <p>
-            We also collect standard web analytics data (page views, browser type, referring URL) through privacy-respecting
-            tools. This data is aggregated and never tied to an individual identity.
+            The site also uses analytics and measurement scripts that may collect device, browser, network, referring-page,
+            page-view, and interaction information. The precise identifiers and retention rules depend on each provider's
+            configuration and should be confirmed by the site owner.
           </p>
 
           <h2>3. How We Use Your Information</h2>
@@ -79,21 +77,32 @@ import '../styles/global.css';
             advertisers, or third-party marketers.
           </p>
 
-          <h2>4. We Do Not Share Your Data</h2>
+          <h2>4. Service Providers and Limited Disclosures</h2>
           <p>
-            <strong>Goolsby Ventures LLC does not sell, rent, lease, or share your personal information with any third party</strong>,
-            except in the following limited circumstances:
+            Information may be processed by service providers that support the website, lead intake, analytics, measurement,
+            communications, and any later program evaluation. Current source code identifies the following categories:
           </p>
           <ul>
+            <li>
+              <strong>LeadConnector / GoHighLevel:</strong> Network-assessment form submissions are sent to a LeadConnector
+              webhook for lead intake and follow-up.
+            </li>
+            <li>
+              <strong>Google:</strong> Google Analytics is loaded for page and interaction measurement, and Google Fonts is
+              requested to render site typography.
+            </li>
+            <li>
+              <strong>IDPixel and OpenAI:</strong> Measurement scripts from IDPixel Analytics and OpenAI are currently loaded
+              on site pages. Their configuration, data fields, purposes, and retention require owner verification.
+            </li>
             <li>
               <strong>Hudson House (Brokerage Partner):</strong> As our brokerage partner, Hudson House may receive the minimum
               information necessary to facilitate a carrier agreement on your behalf. This is disclosed to you prior to any
               such sharing and is subject to the same confidentiality standards.
             </li>
             <li>
-              <strong>Carrier Partners (AT&T, T-Mobile, Google Fi):</strong> If you proceed with a deployment agreement,
-              only the business-level information required for the carrier contract (business name, address, point of contact)
-              is shared — never personal financial or consumer data.
+              <strong>Program or network parties:</strong> If you proceed beyond assessment, business contact and site
+              information may be disclosed as described in the applicable proposal, consent, or agreement.
             </li>
             <li>
               <strong>Legal Compliance:</strong> We may disclose information if required to do so by law or in response to
@@ -103,20 +112,21 @@ import '../styles/global.css';
 
           <h2>5. Data Security</h2>
           <p>
-            We take the security of your information seriously. All data transmitted through this website is encrypted via
-            TLS/HTTPS. Form submissions are processed through Web3Forms, a secure third-party form service that does not
-            store your data beyond delivery to our inbox. We do not maintain an internal database of form submissions
-            beyond our own email records.
+            The published site uses TLS/HTTPS in transit. Network-assessment forms are sent to a LeadConnector webhook.
+            Storage location, access controls, retention, deletion, backup, and onward integrations in that account require
+            confirmation by the site owner and should be reflected in the final policy.
           </p>
           <p>
-            The carrier offload network infrastructure itself operates with full WPA3 enterprise-grade encryption and
-            complete network separation between carrier traffic and your existing business network.
+            Security controls for any proposed carrier-offload deployment are separate from this website. They should be
+            documented and tested for the specific site, equipment, configuration, and program.
           </p>
 
           <h2>6. Cookies & Tracking</h2>
           <p>
-            This website uses minimal, privacy-respecting analytics only. We do not use advertising cookies, tracking pixels,
-            or fingerprinting technologies. We do not participate in cross-site behavioral tracking.
+            This website currently loads Google Analytics, IDPixel Analytics, and an OpenAI measurement pixel. These services
+            may use cookies, local storage, pixels, or similar technologies depending on their configuration. The owner should
+            complete a provider-by-provider data inventory, configure consent where required, and identify applicable opt-out
+            mechanisms before production publication.
           </p>
 
           <h2>7. Your Rights</h2>
@@ -152,7 +162,7 @@ import '../styles/global.css';
             19277 Sellins View Court<br/>
             Redding, California 96003</p>
             <p>
-              Phone: <a href="tel:+15302768183">(530) 232-4445</a><br/>
+              Phone: <a href="tel:+15302324445">(530) 232-4445</a><br/>
               Email: <a href="mailto:corey@mobileoffload.com">corey@mobileoffload.com</a>
             </p>
             <p>Brokerage Partner: Hudson House</p>
@@ -161,9 +171,8 @@ import '../styles/global.css';
         </div>
 
         <!-- Back link -->
-        <div class="mt-12">
-          <a href="/" class="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-200"
-             style="color: var(--blue); font-family: var(--sans);">
+        <div class="privacy-back">
+          <a href="/">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M19 12H5M12 5l-7 7 7 7"/>
             </svg>
@@ -177,6 +186,85 @@ import '../styles/global.css';
 </Enterprise>
 
 <style>
+  .privacy-shell {
+    background: var(--paper);
+  }
+  .privacy-section {
+    position: relative;
+    padding: 132px 0 96px;
+    overflow: hidden;
+  }
+  .privacy-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse 60% 34% at 50% 0%, rgba(11,65,194,0.09) 0%, transparent 72%);
+  }
+  .privacy-inner {
+    position: relative;
+    width: min(100% - 40px, 780px);
+    margin-inline: auto;
+  }
+  .privacy-head {
+    margin-bottom: 48px;
+  }
+  .privacy-kicker {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 11px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(11,65,194,0.24);
+    border-radius: 999px;
+    background: rgba(11,65,194,0.07);
+    color: var(--blue);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .privacy-head h1 {
+    margin: 0 0 14px;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 500;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+  }
+  .privacy-date {
+    margin: 0;
+    color: var(--ink-2);
+    font-family: var(--sans);
+  }
+  .policy-notice {
+    margin-top: 24px;
+    padding: 18px 20px;
+    border: 1px solid #d59b31;
+    background: #fff8e8;
+  }
+  .policy-notice p {
+    margin: 0;
+    color: #68450c;
+    font-family: var(--sans);
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+  .privacy-back {
+    margin-top: 48px;
+  }
+  .privacy-back a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    color: var(--blue);
+    font-family: var(--sans);
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
   .prose-custom {
     color: var(--ink-2);
     font-family: var(--sans);
@@ -237,5 +325,11 @@ import '../styles/global.css';
   }
   .prose-custom .contact-block p:last-child {
     margin-bottom: 0;
+  }
+  @media (max-width: 640px) {
+    .privacy-section { padding: 104px 0 72px; }
+    .privacy-inner { width: min(100% - 32px, 780px); }
+    .privacy-head { margin-bottom: 36px; }
+    .prose-custom h2 { margin-top: 2rem; }
   }
 </style>
