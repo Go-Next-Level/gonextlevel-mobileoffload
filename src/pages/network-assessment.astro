@@ -1,0 +1,14 @@
+---
+import Enterprise from '../layouts/Enterprise.astro';
+import AssessSection from '../components/AssessSection.astro';
+const schema={
+  '@context':'https://schema.org','@graph':[
+    {'@type':'WebPage','@id':'https://mobileoffload.com/network-assessment/#webpage',url:'https://mobileoffload.com/network-assessment/',name:'Request a Carrier Offload Network Assessment',description:'Submit commercial locations for a carrier-offload Wi-Fi eligibility and technical-readiness review.'},
+    {'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:'https://mobileoffload.com/'},{'@type':'ListItem',position:2,name:'Network Assessment',item:'https://mobileoffload.com/network-assessment/'}]}
+  ]
+};
+---
+<Enterprise title="Request a Carrier Offload Network Assessment | MobileOffload" description="Submit your commercial locations for a practical carrier-offload eligibility and Wi-Fi readiness review. No guarantee of acceptance or earnings." canonicalURL="https://mobileoffload.com/network-assessment/" schema={schema} navLinks={[{href:'/carrier-offload/',label:'How It Works'},{href:'/wifi-compatibility/',label:'Compatibility'},{href:'/carrier-offload-earnings/',label:'Revenue'}]} ctaLabel="Back to Resources" ctaHref="/carrier-offload/">
+  <section class="hero" style="padding-bottom:72px;"><div class="hero-grid-bg" aria-hidden="true"></div><div class="wrap hero-inner"><p class="eyebrow">Commercial qualification</p><h1 class="display">Request a network assessment.</h1><p class="hero-sub">Tell us about your locations, visitor profile, and existing Wi-Fi. We’ll review technical readiness and the facts needed to evaluate current program fit. Submission does not guarantee acceptance, compatibility, revenue, or a particular carrier relationship.</p></div></section>
+  <AssessSection secNum="01 — Assessment" heading="Share the facts we need to evaluate fit." sub="We use this information to understand the property, network, and stakeholders. Do not include passwords, network credentials, payment data, or other sensitive information." points={[{title:'Location review',desc:'Venue types, addresses, ownership, visitor patterns, and operating context.'},{title:'Technical readiness',desc:'Controller, access points, backhaul, segmentation, and IT ownership.'},{title:'Next-step scope',desc:'Open questions, documentation, pilot criteria, and current program availability.'}]} formTitle="Network Assessment Request" submitLabel="Request Assessment →" sourceLabel="MobileOffload — Network Assessment Page"/>
+</Enterprise>

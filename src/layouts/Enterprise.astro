@@ -16,12 +16,13 @@ interface Props {
   ctaLabel?: string;
   ctaHref?: string;
   schema?: object | null;
+  ogType?: 'website' | 'article';
 }
 
 const {
   title,
   description,
-  image = '/og-image.png',
+  image = '/og-image-v2.png',
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
   noindex = false,
   navLinks = [
@@ -34,7 +35,17 @@ const {
   ctaLabel = 'Request an Assessment',
   ctaHref = '#assessment',
   schema = null,
+  ogType = 'website',
 } = Astro.props;
+
+const resourceLinks = [
+  { href: '/carrier-offload/', label: 'Carrier Offload Explained' },
+  { href: '/get-paid-for-wifi/', label: 'How Businesses Get Paid' },
+  { href: '/carrier-offload-companies/', label: 'Compare Providers' },
+  { href: '/carrier-offload-earnings/', label: 'Earnings & Revenue' },
+  { href: '/passpoint-wifi/', label: 'Passpoint Technology' },
+  { href: '/wifi-compatibility/', label: 'Wi-Fi Compatibility' },
+];
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +71,7 @@ const {
   {noindex && <meta name="robots" content="noindex, nofollow" />}
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
@@ -84,7 +95,7 @@ const {
   <!-- IDPixel Analytics -->
   <script src="https://cdn.idpixel.app/v1/idp-analytics-69f9154f80d07eb8f3c59bdf.min.js" defer></script>
   <!-- OpenAI Pixel -->
-  <script>{"!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,\"script\",\"https://bzrcdn.openai.com/sdk/oaiq.min.js\");oaiq(\"init\",{pixelId:\"Fo95CtGQHTqpSdAXfHvtWo\",debug:true});"}</script>
+  <script>{"!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,\"script\",\"https://bzrcdn.openai.com/sdk/oaiq.min.js\");oaiq(\"init\",{pixelId:\"Fo95CtGQHTqpSdAXfHvtWo\"});"}</script>
 
   <meta name="generator" content={Astro.generator} />
 
@@ -98,7 +109,7 @@ const {
       --white:      #FFFFFF;
       --ink:        #131A20;
       --ink-2:      #47525C;
-      --ink-3:      #7B858E;
+      --ink-3:      #626C75;
       --rule:       #E1DDD2;
       --rule-dark:  #C9C4B6;
       --blue:       #0B41C2;
@@ -192,13 +203,36 @@ const {
       text-transform: uppercase; color: var(--ink-3);
       border-left: 1px solid var(--rule-dark); padding-left: 10px;
     }
-    .nav-links { display: flex; gap: 36px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
     .nav-links a {
       font-family: var(--sans); font-size: 14px; font-weight: 500;
       color: var(--ink-2); text-decoration: none;
       transition: color 0.15s ease;
     }
     .nav-links a:hover { color: var(--blue); }
+    .learn-menu { position: relative; }
+    .learn-trigger {
+      display: inline-flex; align-items: center; gap: 6px;
+      min-height: 44px; border: 0; background: transparent;
+      font-family: var(--sans); font-size: 14px; font-weight: 500;
+      color: var(--ink-2); cursor: pointer;
+    }
+    .learn-trigger:hover, .learn-trigger:focus-visible { color: var(--blue); }
+    .learn-trigger:focus-visible, .nav-links a:focus-visible, .nav-cta:focus-visible,
+    .menu-btn:focus-visible, .mobile-menu a:focus-visible {
+      outline: 3px solid rgba(11, 65, 194, 0.35); outline-offset: 3px;
+    }
+    .learn-panel {
+      position: absolute; top: calc(100% + 8px); left: -24px;
+      width: 310px; padding: 12px; background: var(--white);
+      border: 1px solid var(--rule-dark); box-shadow: 0 18px 48px rgba(19,26,32,0.14);
+      opacity: 0; visibility: hidden; transform: translateY(-6px);
+      transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+    }
+    .learn-menu:hover .learn-panel, .learn-menu:focus-within .learn-panel {
+      opacity: 1; visibility: visible; transform: none;
+    }
+    .learn-panel a { display: block; padding: 10px 12px; }
     .nav-cta {
       font-family: var(--sans); font-size: 14px; font-weight: 600;
       color: var(--paper); background: var(--ink);
@@ -208,7 +242,7 @@ const {
     .nav-cta:hover { background: var(--blue); }
     .menu-btn {
       display: none; background: none; border: 1px solid var(--rule-dark);
-      padding: 9px 11px; cursor: pointer; color: var(--ink);
+      min-width: 44px; min-height: 44px; padding: 9px 11px; cursor: pointer; color: var(--ink);
     }
     .mobile-menu {
       display: none; border-top: 1px solid var(--rule);
@@ -219,6 +253,10 @@ const {
       font-family: var(--sans); font-size: 15px; font-weight: 500;
       color: var(--ink-2); text-decoration: none;
       border-bottom: 1px solid var(--rule);
+    }
+    .mobile-group-label {
+      padding: 16px 4px 6px; font-family: var(--mono); font-size: 10px;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3);
     }
     .mobile-menu a.mm-cta {
       margin-top: 14px; background: var(--ink); color: var(--paper);
@@ -722,16 +760,28 @@ const {
         <span class="brand-tag">Carrier Offload Infrastructure</span>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
+        <div class="learn-menu">
+          <button class="learn-trigger" type="button" aria-haspopup="true">
+            Learn
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="learn-panel">
+            {resourceLinks.map((l) => <a href={l.href} data-resource-link>{l.label}</a>)}
+          </div>
+        </div>
         {navLinks.map((l) => <a href={l.href}>{l.label}</a>)}
       </nav>
-      <a href={ctaHref} class="nav-cta">{ctaLabel}</a>
-      <button class="menu-btn" id="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+      <a href={ctaHref} class="nav-cta" data-assessment-cta="header">{ctaLabel}</a>
+      <button class="menu-btn" id="menu-btn" aria-label="Toggle menu" aria-controls="mobile-menu" aria-expanded="false">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
       </button>
     </div>
     <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-group-label">Learn</div>
+      {resourceLinks.map((l) => <a href={l.href} data-resource-link>{l.label}</a>)}
+      <div class="mobile-group-label">On this page</div>
       {navLinks.map((l) => <a href={l.href}>{l.label}</a>)}
-      <a href={ctaHref} class="mm-cta">{ctaLabel}</a>
+      <a href={ctaHref} class="mm-cta" data-assessment-cta="mobile-menu">{ctaLabel}</a>
     </div>
   </header>
 
@@ -744,26 +794,34 @@ const {
       <div class="foot-grid">
         <div class="foot-brand">
           <span class="brand-word">Mobile<em>Offload</em></span>
-          <p>Carrier offload infrastructure for high-traffic locations. AT&amp;T, T-Mobile, and Google Fi subscriber traffic — monetized on your network.</p>
+          <p>Clear explanations and practical carrier-offload assessment for commercial property operators and multi-location businesses.</p>
         </div>
         <div class="foot-col">
-          <h4>Navigate</h4>
-          <a href="/#network">Network Performance</a>
-          <a href="/#how-it-works">Deployment</a>
-          <a href="/#security">Security</a>
-          <a href="/#terms">Commercial Terms</a>
-          <a href="/#faq">FAQ</a>
+          <h4>Learn</h4>
+          <a href="/carrier-offload/">Carrier Offload</a>
+          <a href="/get-paid-for-wifi/">Get Paid for Wi-Fi</a>
+          <a href="/carrier-offload-companies/">Compare Providers</a>
+          <a href="/passpoint-wifi/">Passpoint Wi-Fi</a>
+          <a href="/wifi-compatibility/">Compatibility</a>
+        </div>
+        <div class="foot-col">
+          <h4>Company</h4>
+          <a href="/about/">About</a>
+          <a href="/case-studies/">Evidence &amp; Examples</a>
+          <a href="/carrier-offload-for-franchises/">Multi-Location Programs</a>
+          <a href="/network-assessment/">Network Assessment</a>
+          <a href="/privacy-policy">Privacy Policy</a>
         </div>
         <div class="foot-col">
           <h4>Contact</h4>
           <a href="mailto:corey@mobileoffload.com">corey@mobileoffload.com</a>
           <span><a href="sms:+15302324445" style="display:inline;">(530) 232-4445</a><span class="text-badge">Text only</span></span>
-          <a href={ctaHref}>{ctaLabel}</a>
+          <a href="/network-assessment/" data-assessment-cta="footer">Request an Assessment</a>
         </div>
       </div>
       <div class="foot-legal">
         <span>© 2026 Goolsby Ventures LLC · Mobile Offload</span>
-        <a href="/privacy-policy">Privacy Policy</a>
+        <span><a href="/privacy-policy">Privacy Policy</a> · <a href="/about/">Business Information</a></span>
       </div>
     </div>
   </footer>
@@ -782,6 +840,29 @@ const {
         menuBtn?.setAttribute('aria-expanded', 'false');
       })
     );
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || !mobileMenu?.classList.contains('open')) return;
+      mobileMenu.classList.remove('open');
+      menuBtn?.setAttribute('aria-expanded', 'false');
+      menuBtn?.focus();
+    });
+
+    document.querySelectorAll<HTMLElement>('[data-assessment-cta]').forEach((link) => {
+      link.addEventListener('click', () => {
+        window.gtag?.('event', 'assessment_cta_click', {
+          cta_location: link.dataset.assessmentCta,
+          source_page: window.location.pathname,
+        });
+      });
+    });
+    document.querySelectorAll<HTMLElement>('[data-resource-link]').forEach((link) => {
+      link.addEventListener('click', () => {
+        window.gtag?.('event', 'resource_link_click', {
+          link_url: (link as HTMLAnchorElement).href,
+          source_page: window.location.pathname,
+        });
+      });
+    });
 
     // ── Scroll reveal ──
     const io = new IntersectionObserver((entries) => {

@@ -1,0 +1,15 @@
+---
+interface FAQ { q: string; a: string }
+const { faqs } = Astro.props as { faqs: FAQ[] };
+---
+<section id="questions" aria-labelledby="questions-title">
+  <h2 id="questions-title">Frequently asked questions</h2>
+  <div class="faq-list-resource">
+    {faqs.map((faq) => (
+      <details class="faq-resource">
+        <summary>{faq.q}</summary>
+        <p>{faq.a}</p>
+      </details>
+    ))}
+  </div>
+</section>

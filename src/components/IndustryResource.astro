@@ -1,0 +1,28 @@
+---
+import Resource from '../layouts/Resource.astro';
+import ResourceFAQ from './ResourceFAQ.astro';
+import ResourceCTA from './ResourceCTA.astro';
+
+interface Item { title: string; text: string }
+interface FAQ { q: string; a: string }
+interface Props {
+  title: string; description: string; h1: string; answer: string; path: string; source: string;
+  audience: string; opportunity: string; operations: Item[]; qualification: string[]; pilot: string[];
+  faqs: FAQ[]; related: { href: string; label: string }[];
+}
+const { title, description, h1, answer, path, source, audience, opportunity, operations, qualification, pilot, faqs, related } = Astro.props;
+---
+<Resource title={title} description={description} eyebrow="Industry guide · Commercial Wi-Fi" h1={h1} answer={answer} canonicalPath={path} faqs={faqs}>
+  <ul slot="toc"><li><a href="#fit">Where offload may fit</a></li><li><a href="#operations">Operational realities</a></li><li><a href="#qualification">Qualification checklist</a></li><li><a href="#pilot">Pilot plan</a></li></ul>
+  <h2 id="fit">Where carrier offload may fit</h2>
+  <p>{audience}</p><p>{opportunity}</p>
+  <div class="note"><strong>Qualification comes first</strong>High foot traffic or long dwell time can make a venue worth evaluating, but neither guarantees program acceptance, eligible devices, a compatible network, or positive net revenue.</div>
+  <h2 id="operations">Operational realities for this industry</h2>
+  <div class="content-grid">{operations.map((item)=><div class="info-card"><h3>{item.title}</h3><p>{item.text}</p></div>)}</div>
+  <h2 id="qualification">What to include in a site assessment</h2><ul class="checklist">{qualification.map((item)=><li>{item}</li>)}</ul>
+  <p>Use the <a href="/wifi-compatibility/">enterprise Wi-Fi compatibility guide</a> to inventory hardware and the <a href="/carrier-offload-earnings/">revenue guide</a> to separate eligible traffic, venue share, and net profit.</p>
+  <h2 id="pilot">A responsible pilot plan</h2><ol>{pilot.map((item)=><li>{item}</li>)}</ol>
+  <p>Document baseline Wi-Fi health before activation, define a rollback path, and compare reported eligible traffic with network telemetry. Scale only after the technical, operational, and commercial results are understood.</p>
+  <ResourceFAQ faqs={faqs}/><ResourceCTA source={source} heading="Evaluate your locations with industry-specific criteria." copy="A network assessment reviews the venue, Wi-Fi, internet capacity, operational constraints, and current program availability before discussing deployment or revenue."/>
+  <section class="source-list" id="sources"><h2>Related resources</h2><ul>{related.map((item)=><li><a href={item.href}>{item.label}</a></li>)}</ul></section>
+</Resource>

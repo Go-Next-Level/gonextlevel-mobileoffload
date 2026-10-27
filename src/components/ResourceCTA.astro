@@ -1,0 +1,14 @@
+---
+const {
+  source,
+  heading = 'Find out whether your locations qualify.',
+  copy = 'A network assessment reviews venue traffic, existing Wi-Fi, backhaul, technical permissions, and program availability. It is the responsible way to discuss feasibility before estimating revenue.',
+  label = 'Request a Network Assessment',
+} = Astro.props;
+const href = `/network-assessment/?source=${encodeURIComponent(source)}`;
+---
+<aside class="resource-cta" aria-label="Request a network assessment">
+  <h2>{heading}</h2>
+  <p>{copy}</p>
+  <a href={href} data-assessment-cta={`resource-${source}`}>{label} →</a>
+</aside>

@@ -1,34 +1,38 @@
 ---
-import Base from '../layouts/Base.astro';
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
+import Enterprise from '../layouts/Enterprise.astro';
+import '../styles/global.css';
 ---
-<Base
+<Enterprise
   title="Privacy Policy — Mobile Offload | Goolsby Ventures LLC"
   description="Privacy Policy for Mobile Offload, operated by Goolsby Ventures LLC. We do not sell, rent, or share your personal information with third parties."
+  navLinks={[
+    { href: '/carrier-offload/', label: 'Learn' },
+    { href: '/about/', label: 'About' },
+    { href: '#main', label: 'Privacy' },
+  ]}
+  ctaHref="/network-assessment/"
 >
-  <Nav />
   <main id="main">
-    <section class="relative py-24" style="background: var(--color-bg-base);">
+    <section class="relative py-24" style="background: var(--paper); padding-top: 140px;">
       <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
-           style="background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(27,111,235,0.06) 0%, transparent 70%);"></div>
+           style="background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(11,65,194,0.08) 0%, transparent 70%);"></div>
 
       <div class="relative max-w-3xl mx-auto px-6">
 
         <!-- Header -->
         <div class="mb-12">
           <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 text-xs font-semibold tracking-widest uppercase"
-               style="background: var(--color-primary-muted); color: var(--color-accent); font-family: var(--font-body); border: 1px solid rgba(27,111,235,0.2);">
+               style="background: var(--blue-wash); color: var(--blue); font-family: var(--mono); border: 1px solid rgba(11,65,194,0.2);">
             Legal
           </div>
-          <h1 class="text-4xl lg:text-5xl font-bold mb-4" style="font-family: var(--font-display); letter-spacing: -0.02em;">
+          <h1 class="text-4xl lg:text-5xl font-bold mb-4" style="font-family: var(--serif); letter-spacing: -0.02em;">
             Privacy Policy
           </h1>
-          <p class="text-base" style="color: var(--color-text-muted); font-family: var(--font-body);">
+          <p class="text-base" style="color: var(--ink-2); font-family: var(--sans);">
             Effective Date: April 8, 2026 &nbsp;·&nbsp; Last Updated: April 8, 2026
           </p>
-          <div class="mt-4 p-4 rounded-xl" style="background: var(--color-bg-surface); border: 1px solid rgba(16,185,129,0.25);">
-            <p class="text-sm font-semibold" style="color: var(--color-success); font-family: var(--font-body);">
+          <div class="mt-4 p-4 rounded-xl" style="background: var(--green-wash); border: 1px solid rgba(10,124,79,0.25);">
+            <p class="text-sm font-semibold" style="color: var(--green); font-family: var(--sans);">
               We do not sell, rent, share, or trade your personal information — ever.
             </p>
           </div>
@@ -159,8 +163,7 @@ import Footer from '../components/Footer.astro';
         <!-- Back link -->
         <div class="mt-12">
           <a href="/" class="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-200"
-             style="color: var(--color-accent); font-family: var(--font-body);"
-             onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-accent)'">
+             style="color: var(--blue); font-family: var(--sans);">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M19 12H5M12 5l-7 7 7 7"/>
             </svg>
@@ -171,24 +174,23 @@ import Footer from '../components/Footer.astro';
       </div>
     </section>
   </main>
-  <Footer />
-</Base>
+</Enterprise>
 
 <style>
   .prose-custom {
-    color: var(--color-text-secondary);
-    font-family: var(--font-body);
+    color: var(--ink-2);
+    font-family: var(--sans);
     line-height: 1.8;
   }
   .prose-custom h2 {
-    font-family: var(--font-display);
+    font-family: var(--serif);
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--color-text-primary);
+    color: var(--ink);
     margin-top: 2.5rem;
     margin-bottom: 0.75rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--rule);
   }
   .prose-custom p {
     margin-bottom: 1rem;
@@ -207,24 +209,24 @@ import Footer from '../components/Footer.astro';
     content: '—';
     position: absolute;
     left: 0;
-    color: var(--color-accent);
+    color: var(--blue);
     font-weight: 700;
   }
   .prose-custom strong {
-    color: var(--color-text-primary);
+    color: var(--ink);
     font-weight: 600;
   }
   .prose-custom a {
-    color: var(--color-accent);
+    color: var(--blue);
     text-decoration: none;
     transition: color 0.2s;
   }
   .prose-custom a:hover {
-    color: var(--color-text-primary);
+    color: var(--ink);
   }
   .prose-custom .contact-block {
-    background: var(--color-bg-surface);
-    border: 1px solid var(--color-border);
+    background: var(--white);
+    border: 1px solid var(--rule-dark);
     border-radius: 12px;
     padding: 1.5rem;
     margin-top: 1rem;

@@ -6,13 +6,15 @@ interface Props {
   description: string;
   image?: string;
   canonicalURL?: string;
+  noindex?: boolean;
 }
 
 const {
   title,
   description,
-  image = '/og-image.png',
+  image = '/og-image-v2.png',
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+  noindex = false,
 } = Astro.props;
 
 const schema = {
@@ -61,6 +63,7 @@ const schema = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -91,7 +94,7 @@ const schema = {
     <script src="https://cdn.idpixel.app/v1/idp-analytics-69f9154f80d07eb8f3c59bdf.min.js" defer></script>
 
     <!-- OpenAI Pixel -->
-    <script>{"!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,\"script\",\"https://bzrcdn.openai.com/sdk/oaiq.min.js\");oaiq(\"init\",{pixelId:\"Fo95CtGQHTqpSdAXfHvtWo\",debug:true});"}</script>
+    <script>{"!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,\"script\",\"https://bzrcdn.openai.com/sdk/oaiq.min.js\");oaiq(\"init\",{pixelId:\"Fo95CtGQHTqpSdAXfHvtWo\"});"}</script>
 
     <!-- Generator -->
     <meta name="generator" content={Astro.generator} />

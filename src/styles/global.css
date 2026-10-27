@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
 
 @theme {
   --color-bg-base: #04070F;
@@ -16,7 +16,7 @@
 
   --color-text-primary: #EDF2FF;
   --color-text-secondary: #7D99BE;
-  --color-text-muted: #4A6480;
+  --color-text-muted: #7693AE;
 
   --color-border: #162035;
   --color-border-bright: #1E3358;

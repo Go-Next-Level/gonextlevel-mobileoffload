@@ -66,6 +66,10 @@ const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/4aIMOOEHb5Yojmrd
       <div class="form-card reveal">
         <div class="fc-title">{formTitle}</div>
         <form id="assess-form" novalidate>
+          <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+            <label for="as-company-site">Company website (leave blank)</label>
+            <input type="text" id="as-company-site" name="company_site" tabindex="-1" autocomplete="off" />
+          </div>
           <div class="f-grid">
             <div class="f-field">
               <label for="as-first">First Name <span class="req">*</span></label>
@@ -178,7 +182,7 @@ const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/4aIMOOEHb5Yojmrd
               </label>
               <span class="consent-err">You must agree to continue</span>
             </div>
-            <div class="form-error-msg" id="as-form-error">Something went wrong. Please try again or contact us directly.</div>
+            <div class="form-error-msg" id="as-form-error" role="alert" aria-live="polite">Something went wrong. Please try again or contact us directly.</div>
             <button type="submit" class="f-submit" id="as-submit">{submitLabel}</button>
           </div>
         </form>
@@ -193,28 +197,45 @@ const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/4aIMOOEHb5Yojmrd
   const errorMsg = document.getElementById('as-form-error');
   const consentRow = document.getElementById('as-consent-row');
   const consentInput = document.getElementById('as-consent');
+  let formStarted = false;
+
+  form?.addEventListener('input', () => {
+    if (formStarted) return;
+    formStarted = true;
+    window.gtag?.('event', 'assessment_form_start');
+  }, { once: true });
 
   const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
   const fieldWrap = (el) => el.closest('.f-field');
 
   form?.querySelectorAll('[required]').forEach(field => {
     if (field.type === 'checkbox') return;
-    const clear = () => fieldWrap(field)?.classList.remove('invalid');
+    const clear = () => {
+      fieldWrap(field)?.classList.remove('invalid');
+      field.removeAttribute('aria-invalid');
+    };
     field.addEventListener('input', clear);
     field.addEventListener('change', clear);
   });
-  consentInput?.addEventListener('change', () => consentRow.classList.remove('invalid'));
+  consentInput?.addEventListener('change', () => {
+    consentRow.classList.remove('invalid');
+    consentInput.removeAttribute('aria-invalid');
+  });
 
   function validate() {
     let valid = true;
     let firstInvalid = null;
     form.querySelectorAll('[required]').forEach(field => {
       if (field.type === 'checkbox') {
-        if (!field.checked) { consentRow.classList.add('invalid'); valid = false; firstInvalid ||= consentRow; }
+        if (!field.checked) {
+          consentRow.classList.add('invalid'); field.setAttribute('aria-invalid', 'true');
+          valid = false; firstInvalid ||= consentRow;
+        }
         return;
       }
       const bad = !field.value.trim() || (field.type === 'email' && !emailOk(field.value));
       fieldWrap(field)?.classList.toggle('invalid', bad);
+      field.toggleAttribute('aria-invalid', bad);
       if (bad) { valid = false; firstInvalid ||= field; }
     });
     if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -225,6 +246,7 @@ const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/4aIMOOEHb5Yojmrd
     e.preventDefault();
     errorMsg.style.display = 'none';
     if (!validate()) return;
+    if (form.elements.namedItem('company_site')?.value) return;
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting…';
@@ -257,6 +279,7 @@ const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/4aIMOOEHb5Yojmrd
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error('Webhook error');
+      window.gtag?.('event', 'assessment_form_submit_success');
       window.location.href = '/thank-you';
     } catch {
       errorMsg.style.display = 'block';
