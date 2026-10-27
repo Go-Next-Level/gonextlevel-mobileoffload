@@ -14,12 +14,11 @@ const schema = {
   ]
 };
 
-const deployments = [
-  { location: "Source review pending", type: "International Airport", scope: "Upstream example", monthly: "Not verified", annual: "Not verified", users: "Not verified", data: "Not verified" },
-  { location: "Source review pending", type: "Shopping Mall", scope: "Upstream example", monthly: "Not verified", annual: "Not verified", users: "Not verified", data: "Not verified" },
-  { location: "Source review pending", type: "Fitness Center", scope: "Upstream example", monthly: "Not verified", annual: "Not verified", users: "Not verified", data: "Not verified" },
-  { location: "Source review pending", type: "Restaurant Group", scope: "Upstream example", monthly: "Not verified", annual: "Not verified", users: "Not verified", data: "Not verified" },
-  { location: "Source review pending", type: "Retail Location", scope: "Upstream example", monthly: "Not verified", annual: "Not verified", users: "Not verified", data: "Not verified" },
+const assessmentFactors = [
+  { title: "Venue demand", desc: "Foot traffic, dwell time, indoor mobile usage, and the number of locations help determine whether an assessment is worthwhile." },
+  { title: "Network readiness", desc: "Access-point models, controller software, firmware, licensing, backhaul capacity, and network design are reviewed for compatibility." },
+  { title: "Program eligibility", desc: "Carrier participation, market coverage, site permissions, and eligible traffic requirements are confirmed for the proposed locations." },
+  { title: "Commercial fit", desc: "Expected eligible traffic, implementation costs, reporting, revenue share, payment timing, and contract terms are evaluated together." },
 ];
 
 const segments = [
@@ -152,8 +151,8 @@ const faqs = [
             but eligibility, payment structure, and results vary by program and site.
           </p>
           <p>
-            MobileOffload helps commercial operators examine compatibility, program fit, proposed
-            architecture, rollout scope, evidence, and written commercial terms before committing.
+            MobileOffload helps commercial operators examine network readiness, program fit,
+            rollout scope, and written commercial terms before committing.
           </p>
         </div>
         <div>
@@ -164,59 +163,33 @@ const faqs = [
           </blockquote>
           <div class="growth-figure">
             <span class="gf-num">4</span>
-            <span class="gf-desc">evidence gates: compatibility, authority, eligible traffic, and written terms</span>
+            <span class="gf-desc">essentials to assess: network, eligibility, operations, and commercial terms</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ NETWORK PERFORMANCE ════════════════════════════════ -->
-  <section class="section" id="network" aria-label="Network performance">
+  <!-- ═══ ASSESSMENT FACTORS ═════════════════════════════════ -->
+  <section class="section" id="network" aria-label="Network assessment factors">
     <div class="wrap">
       <div class="section-head reveal">
         <div class="sh-left">
-          <div class="sec-num">02 — Performance</div>
+          <div class="sec-num">02 — Assessment</div>
         </div>
         <div>
-          <p class="eyebrow">Live Deployments</p>
-          <h2 class="display" style="margin-top: 22px;">Examples awaiting source verification.</h2>
-          <p class="sh-sub">The prior site presented exact upstream deployment figures without supporting records in the repository. They are withheld pending owner verification, attribution, and publication permission.</p>
+          <p class="eyebrow">What We Evaluate</p>
+          <h2 class="display" style="margin-top: 22px;">Is carrier offload a good fit for your locations?</h2>
+          <p class="sh-sub">A network assessment brings the technical, operational, and commercial variables together so you can make a practical decision before committing to a rollout.</p>
         </div>
       </div>
-      <div class="reveal">
-        <div class="tbl-wrap">
-          <table class="deployments">
-            <thead>
-              <tr>
-                <th scope="col">Deployment</th>
-                <th scope="col">Scope</th>
-                <th scope="col">Avg Daily Users</th>
-                <th scope="col">Data / Month</th>
-                <th scope="col">Revenue / Month</th>
-                <th scope="col">Annualized</th>
-              </tr>
-            </thead>
-            <tbody>
-              {deployments.map((d) => (
-                <tr>
-                  <td>
-                    <div class="t-type">{d.type}</div>
-                    <div class="t-loc">{d.location}</div>
-                  </td>
-                  <td><span class="t-scope">{d.scope}</span></td>
-                  <td><span class="t-num">{d.users}</span></td>
-                  <td><span class="t-num">{d.data}</span></td>
-                  <td><span class="t-rev">{d.monthly}</span></td>
-                  <td><span class="t-rev">{d.annual}</span></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p class="tbl-footnote">
-          Do not use these examples to project earnings. See the <a href="/case-studies/">evidence policy and case-study methodology</a>.
-        </p>
+      <div class="terms-grid reveal">
+        {assessmentFactors.map((factor) => (
+          <div class="term">
+            <h3>{factor.title}</h3>
+            <p>{factor.desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
